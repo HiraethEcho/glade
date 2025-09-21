@@ -1,0 +1,52 @@
+{{ define "sidemenu" }}
+    {{ partial "file-tree.html" . }}
+    {{ partial "toc.html" . }}
+{{ end }}
+
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+
+<div>
+<b>bold mark in page.html</b>
+<span>共{{ .WordCount  }}字</span>，阅读约<span> {{ .ReadingTime  }} 分钟</span>
+</div>
+
+{{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }} {{
+$dateHuman := .Date | time.Format ":date_long" }}
+<time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time><br>
+
+{{ partial "breadcrumbs.html" . }}
+
+{{ $page := . }}
+{{ range $taxonomyName, $taxonomy := .Site.Taxonomies }}
+  {{ $terms := ($page.GetTerms $taxonomyName) }}
+  {{ with $terms }}
+    {{ partial "terms.html" (dict "taxonomy" $taxonomyName "page" $page) }}
+  {{ end }}
+{{ end }}
+
+{{ .Content }} 
+
+
+{{ $pages := .CurrentSection.Pages.ByWeight.Reverse }}
+
+{{ with $pages.Prev . }}
+  <a href="{{ .RelPermalink }}">Previous</a>
+{{ end }}
+
+{{ with $pages.Next . }}
+  <a href="{{ .RelPermalink }}">Next</a>
+{{ end }}
+
+<!-- Back to top button -->
+{{ if not (.Param "hideBackToTop") }}
+<div class="back-to-top">
+  <a href="#top">
+    back to top
+  </a>
+</div>
+{{ end }}
+
+<div class="article-comments">{{- partial "comments/artalk" . -}}</div>
+
+{{ end }}

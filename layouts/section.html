@@ -1,0 +1,17 @@
+{{ define "sidemenu" }} 
+{{ partial "file-tree.html" . }} 
+{{ end }} 
+
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+
+<b>blod mark in section</b>
+
+{{ partial "breadcrumbs.html" . }} 
+
+{{ .Content }} 
+{{ range .Pages }}
+<h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+{{ .Summary | plainify | truncate 30 | strings.TrimSpace }}
+{{ end }} 
+{{ end }}

@@ -1,0 +1,31 @@
+{{ define "main" }} 
+This line is main of in home.html before .Content 
+{{ .Content }} 
+{{ end }} 
+
+{{ define "sidemenu" }}
+<aside>
+  start of aside tag. 
+  {{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
+  {{- range $taxonomyName, $taxonomy := .Site.Taxonomies }}
+    {{- if gt (len $taxonomy) 0 }}
+      {{- $taxonomyTitle := index $taxonomyTitles $taxonomyName | default $taxonomyName }}
+      <h2>{{ $taxonomyTitle }}</h2>
+      <ul class="terms-tags">
+        {{- range $name, $value := $taxonomy }}
+          {{- $count := $value.Count }}
+          {{- $page := site.GetPage (printf "/%s/%s" $taxonomyName $name) }}
+          {{- with $page }}
+            <li>
+              <a href="{{ .Permalink }}">{{ .Name }}
+                <sup><strong><sup>{{ $count }}</sup></strong></sup>
+              </a>
+            </li>
+          {{- end }}
+        {{- end }}
+      </ul>
+    {{- end }}
+  {{- end }}
+  end of aside tag.
+</aside>
+{{ end }}

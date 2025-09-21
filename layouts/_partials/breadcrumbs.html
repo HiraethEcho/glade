@@ -1,0 +1,33 @@
+{{ $show := default true (default .Site.Params.ShowBreadCrumbs .Params.ShowBreadCrumbs) }}
+{{ if $show}}
+{{- range .Ancestors.Reverse }}
+{{- $breadcrumbstitle := "" }}
+{{ if .LinkTitle }}
+  {{ $breadcrumbstitle = .LinkTitle }}
+{{ else if .Title }}
+  {{ $breadcrumbstitle = .Title }}
+{{ else if and .IsSection .File }}
+  {{ $breadcrumbstitle = path.Base .File.Dir | humanize | title }}
+{{ else if and .IsPage .File }}
+  {{ $breadcrumbstitle = .File.BaseFileName | humanize | title }}
+{{ end }}
+<a href="{{ .RelPermalink }}">
+{{ if .IsHome }}{{ "Home" }}{{ else }}
+{{ $breadcrumbstitle }}
+{{ end }}
+</a>
+<span class="" aria-hidden="true">/</span>
+{{- end }}
+
+{{- $displaytitle := "" }}
+{{ if .LinkTitle }}
+  {{ $displaytitle = .LinkTitle }}
+{{ else if .Title }}
+  {{ $displaytitle = .Title }}
+{{ else if and .IsSection .File }}
+  {{ $displaytitle = path.Base .File.Dir | humanize | title }}
+{{ else if and .IsPage .File }}
+  {{ $displaytitle = .File.BaseFileName | humanize | title }}
+{{ end }}
+<b>{{ $displaytitle }}</b>
+{{end}}

@@ -1,0 +1,36 @@
+{{ define "main" }}
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+<ul>
+  {{ range .Pages }}
+  <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+{{ end }} 
+</ul>
+    
+        {{ range .Data.Terms.Alphabetical }}
+        <section>
+            <h2 class="term-title">
+                <a href="{{ .Page.RelPermalink }}" class="term-link">
+                    {{ .Page.Title }}
+                </a>
+                <span class="post-count">({{ .Count }} 篇文章)</span>
+            </h2>
+            
+            <div class="posts-list">
+                {{ range .Pages.ByDate.Reverse }}
+                <article class="post-item">
+                    <h3 class="post-title">
+                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                    </h3>
+                    <div class="post-meta">
+                        <time datetime="{{ .Date.Format "2006-01-02" }}">
+                            {{ .Date.Format "2006年1月2日" }}
+                        </time>
+                    </div>
+                </article>
+                {{ end }}
+            </div>
+        </section>
+        {{ end }}
+    </div>
+{{ end }}

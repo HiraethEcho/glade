@@ -1,0 +1,25 @@
+{{ $filetree := default true (default .Site.Params.filetree .Params.filetree) }}
+{{ if $filetree }}
+{{ $root := . }}
+{{ with .Params.fileTreeRoot }}
+  {{ $page := site.GetPage (printf "%s" .) }}
+  {{ if $page }}
+    {{ $root = $page }}
+  {{ end }}
+{{ end }}
+
+{{- $displayroottitle := "" }}
+{{ if $root.LinkTitle }}
+  {{ $displayroottitle = $root.LinkTitle }}
+{{ else if $root.Title }}
+  {{ $displayroottitle = $root.Title }}
+{{ else if and .IsSection .File }}
+  {{ $displayroottitle = path.Base $root.File.Dir | humanize | title }}
+{{ else if and .IsPage .File }}
+  {{ $displayroottitle = $root.File.BaseFileName | humanize | title }}
+{{ end }}
+
+<b>{{print $displayroottitle}}</b>
+
+{{ partial "file-tree-list.html" (dict "context" $root "depth" 1) }}
+{{ end }}
