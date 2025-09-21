@@ -1,19 +1,35 @@
 <!DOCTYPE html>
 <html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
 <head>
+    start of head<br>
   {{ partial "head.html" . }}
+  end of head
 </head>
 <body>
   <header>
+      start of header<br>
     {{ partial "header.html" . }}
+      end of header
   </header>
-    {{ block "sidemenu" . }}{{ end }}
-    {{ block "sidelist" . }}{{ end }}
   <main>
+      start of main<br>
     {{ block "main" . }}{{ end }}
+      end of main
   </main>
+  <aside>
+      start of aside<br>
+  {{ block "aside" . }}{{ end }}
+      end of aside
+  </aside>
+  <aside>
+      start of aside2<br>
+  {{ block "aside2" . }}{{ end }}
+      end of aside2
+  </aside>
   <footer>
+      start of footer<br>
     {{ partial "footer.html" . }}
+      end of footer
   </footer>
 </body>
 </html>

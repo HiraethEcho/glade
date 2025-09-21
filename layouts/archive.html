@@ -29,4 +29,5 @@
     <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
     {{ .Summary | plainify | truncate 30 | strings.TrimSpace }}
   {{ end }}
+
 {{ end }}

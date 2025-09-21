@@ -3,9 +3,7 @@ This line is main of in home.html before .Content
 {{ .Content }} 
 {{ end }} 
 
-{{ define "sidemenu" }}
-<aside>
-  start of aside tag. 
+{{ define "aside" }}
   {{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
   {{- range $taxonomyName, $taxonomy := .Site.Taxonomies }}
     {{- if gt (len $taxonomy) 0 }}
@@ -26,6 +24,4 @@ This line is main of in home.html before .Content
       </ul>
     {{- end }}
   {{- end }}
-  end of aside tag.
-</aside>
 {{ end }}

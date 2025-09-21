@@ -1,3 +1,4 @@
+start of breadcrumbs<br>
 {{ $show := default true (default .Site.Params.ShowBreadCrumbs .Params.ShowBreadCrumbs) }}
 {{ if $show}}
 {{- range .Ancestors.Reverse }}
@@ -31,3 +32,4 @@
 {{ end }}
 <b>{{ $displaytitle }}</b>
 {{end}}
+<br>end of breadcrumbs
