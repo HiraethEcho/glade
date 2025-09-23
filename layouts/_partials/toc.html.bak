@@ -1,7 +1,0 @@
-{{ $toc := default true (default .Site.Params.toc .Params.toc) }}
-{{ if $toc }}
-<aside>
-  <i>TOC</i>
-    {{ .TableOfContents }}
-</aside>
-{{ end }}

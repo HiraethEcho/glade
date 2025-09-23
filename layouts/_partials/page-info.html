@@ -6,13 +6,5 @@ $dateHuman := .Date | time.Format ":date_long" }}
 <span>共{{ .WordCount  }}字</span>，阅读约<span>{{ .ReadingTime  }}分钟</span>
 </div>
 
-{{ if not (.Param "hideTaxonomies") }}
-  {{ range $taxonomyName, $taxonomy := .Site.Taxonomies }}
-    {{ $terms := ($page.GetTerms $taxonomyName) }}
-    {{ with $terms }}
-      {{ partial "terms.html" (dict "taxonomy" $taxonomyName "page" $page) }}
-    {{ end }}
-  {{ end }}
-{{ end }}
 
 <br>end of page-info

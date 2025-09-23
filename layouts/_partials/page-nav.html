@@ -1,36 +1,31 @@
-<!-- Back to top button -->
-{{ if not (.Param "hideBackToTop") }}
-<div class="back-to-top">
-  <a href="#top">
-    back to top
-  </a>
-</div>
+{{ $page := . }}
+{{ range $taxonomyName, $taxonomy := .Site.Taxonomies }}
+  {{ $terms := ($page.GetTerms $taxonomyName) }}
+  {{ with $terms }}
+    {{ partial "terms.html" (dict "taxonomy" $taxonomyName "page" $page) }}
+  {{ end }}
 {{ end }}
 
-{{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- $pages := .CurrentSection.RegularPages }}
 {{- if and (gt (len $pages) 1) (in $pages . ) }}
 <nav class="paginav">
   {{- with $pages.Next . }}
   <a class="prev" href="{{ .Permalink }}">
-    <span class="title">« {{ i18n "prev_page" }}</span>
-    <br>
+    <span class="title">« </span>
     <span>{{- .Name -}}</span>
   </a>
   {{- end }}
   {{- with $pages.Prev . }}
   <a class="next" href="{{ .Permalink }}">
-    <span class="title">{{ i18n "next_page" }} »</span>
-    <br>
+    <span class="title"> »</span>
     <span>{{- .Name -}}</span>
   </a>
   {{- end }}
 </nav>
 {{- end }}
 
-{{ $pages := .CurrentSection.Pages.ByWeight.Reverse }}
-{{ with $pages.Prev . }}
-  <a href="{{ .RelPermalink }}">Previous</a>
-{{ end }}
-{{ with $pages.Next . }}
-  <a href="{{ .RelPermalink }}">Next</a>
-{{ end }}
+<div class="back-to-top">
+  <a href="#top">
+    back to top
+  </a>
+</div>
