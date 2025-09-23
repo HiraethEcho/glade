@@ -1,7 +1,5 @@
 {{ define "main" }}
-
   {{ .Content }}
-
   {{ partial "search.html" . }}
   {{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
   {{- range $taxonomyName, $taxonomy := .Site.Taxonomies }}

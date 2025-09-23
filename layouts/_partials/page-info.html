@@ -1,9 +1,9 @@
-<br>start of meta-info<br>
+<br>start of page-info<br>
 {{ $page := . }}
 {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }} {{
 $dateHuman := .Date | time.Format ":date_long" }}
 <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time><br>
-<span>共{{ .WordCount  }}字</span>，阅读约<span> {{ .ReadingTime  }} 分钟</span>
+<span>共{{ .WordCount  }}字</span>，阅读约<span>{{ .ReadingTime  }}分钟</span>
 </div>
 
 {{ if not (.Param "hideTaxonomies") }}
@@ -14,4 +14,5 @@ $dateHuman := .Date | time.Format ":date_long" }}
     {{ end }}
   {{ end }}
 {{ end }}
-<br>end of meta-info
+
+<br>end of page-info

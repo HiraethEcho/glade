@@ -1,29 +1,11 @@
 {{ define "aside" }}
     {{ partial "file-tree.html" . }}
     {{ partial "toc.html" . }}
-{{ end }}
-
-{{ define "aside2" }}
-{{ $pages := .CurrentSection.Pages.ByWeight.Reverse }}
-{{ with $pages.Prev . }}
-  <a href="{{ .RelPermalink }}">Previous</a>
-{{ end }}
-{{ with $pages.Next . }}
-  <a href="{{ .RelPermalink }}">Next</a>
-{{ end }}
-<!-- Back to top button -->
-{{ if not (.Param "hideBackToTop") }}
-<div class="back-to-top">
-  <a href="#top">
-    back to top
-  </a>
-</div>
-{{ end }}
+    {{ partial "page-nav.html" . }}
 {{ end }}
 
 {{ define "main" }}
-{{ partial "breadcrumbs.html" . }}
-{{ partial "meta-info.html" .}}
+{{ partial "page-info.html" .}}
 <br>start of article<br>
 <article class="page">
 {{ .Content }} 

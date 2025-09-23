@@ -1,6 +1,4 @@
 start of breadcrumbs<br>
-{{ $show := default true (default .Site.Params.ShowBreadCrumbs .Params.ShowBreadCrumbs) }}
-{{ if $show}}
 {{- range .Ancestors.Reverse }}
 {{- $breadcrumbstitle := "" }}
 {{ if .LinkTitle }}
@@ -31,5 +29,7 @@ start of breadcrumbs<br>
   {{ $displaytitle = .File.BaseFileName | humanize | title }}
 {{ end }}
 <b>{{ $displaytitle }}</b>
-{{end}}
+{{ partial "rss-icon.html" . }}
+<br>
+
 <br>end of breadcrumbs
