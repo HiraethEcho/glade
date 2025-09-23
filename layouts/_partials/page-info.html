@@ -6,5 +6,18 @@ $dateHuman := .Date | time.Format ":date_long" }}
 <span>共{{ .WordCount  }}字</span>，阅读约<span>{{ .ReadingTime  }}分钟</span>
 </div>
 
-
-<br>end of page-info
+<div>
+{{ $page := . }}
+{{ range $taxonomyName, $taxonomy := .Site.Taxonomies }}
+  {{ $terms := ($page.GetTerms $taxonomyName) }}
+  {{ with $terms }}
+    <div>
+      {{ $taxonomyName }}:
+        {{- range . }} 
+        <b><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></b>
+        {{ end }} 
+    </div>
+  {{ end }}
+{{ end }}
+</div>
+end of page-info

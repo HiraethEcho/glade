@@ -1,11 +1,23 @@
+<div>
+  <i>Related</i>:
 {{ $page := . }}
 {{ range $taxonomyName, $taxonomy := .Site.Taxonomies }}
   {{ $terms := ($page.GetTerms $taxonomyName) }}
   {{ with $terms }}
-    {{ partial "terms.html" (dict "taxonomy" $taxonomyName "page" $page) }}
+    <details><summary>{{ $taxonomyName }}</summary>
+      {{- range . }} 
+      <details><summary><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></summary>
+        {{ range .RegularPages }}
+          <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+        {{- end }}
+      </details>
+      {{ end }} 
+    </details>
   {{ end }}
 {{ end }}
+</div>
 
+<div>
 {{- $pages := .CurrentSection.RegularPages }}
 {{- if and (gt (len $pages) 1) (in $pages . ) }}
 <nav class="paginav">
@@ -23,6 +35,7 @@
   {{- end }}
 </nav>
 {{- end }}
+</div>
 
 <div class="back-to-top">
   <a href="#top">

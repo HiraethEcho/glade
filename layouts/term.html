@@ -5,7 +5,8 @@
 {{ range .RegularPages }}
   <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
   {{ .Summary | plainify | truncate 30 | strings.TrimSpace }}
-{{ end }} {{ end }}
+{{ end }} 
+{{ end }}
 
 {{ define "aside" }}
 {{ partial "site-info.html" . }}
