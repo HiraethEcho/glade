@@ -1,17 +1,17 @@
+<br>start of site-info<br>
 {{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
 <ul>
-  {{- range $taxonomyName, $taxonomy := .Site.Taxonomies }} {{- $taxonomyTitle
-  := index $taxonomyTitles $taxonomyName | default $taxonomyName }} {{-
-  $taxonomyPage := site.GetPage (printf "/%s" $taxonomyName) }} {{- with
-  $taxonomyPage }}
+  {{- range $taxonomyName, $taxonomy := .Site.Taxonomies }} 
+  {{- $taxonomyTitle := index $taxonomyTitles $taxonomyName | default $taxonomyName }} 
+  {{- $taxonomyPage := site.GetPage (printf "/%s" $taxonomyName) }} 
+  {{- with $taxonomyPage }}
   <li>
     <a href="{{ .Permalink }}">{{ $taxonomyTitle }} </a>
-    <sup
-      ><strong><sup>{{ len $taxonomy }}</sup></strong></sup
-    >
+    <sup>{{ len $taxonomy }}</sup>
   </li>
   {{- end }} {{- end }}
 </ul>
 
 {{- $totalBlogs := len .Site.RegularPages }}
 <a href="/archive">Total {{ $totalBlogs }} posts </a>
+<br>end of site-info<br>
