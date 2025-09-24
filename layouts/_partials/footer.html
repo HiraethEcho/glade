@@ -1,1 +1,6 @@
 <p>Copyright {{ now.Year }}. All rights reserved.</p>
+
+{{ if (findRE "<pre" .Content 1) }}
+    {{ $js := resources.Get "js/copy-code.js" | minify | fingerprint }}
+    <script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
+{{ end }}

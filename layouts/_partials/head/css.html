@@ -1,9 +1,32 @@
-{{- with resources.Get "css/main.css" }}
-  {{- if hugo.IsDevelopment }}
-    <link rel="stylesheet" href="{{ .RelPermalink }}">
-  {{- else }}
-    {{- with . | minify | fingerprint }}
-      <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
-    {{- end }}
+{{
+$CSS := slice
+(resources.Get "css/reset.css")
+(resources.Get "css/vars.css")
+(resources.Get "css/utils.css")
+(resources.Get "css/fonts.css")
+(resources.Get "css/main.css")
+(resources.Get "css/custom.css")
+(resources.Get "css/colors/default.css")
+}}
+
+{{ with .Site.Params.colorPalette }}
+
+{{ $path := printf "css/colors/%s.css" . }}
+{{ $CSS = $CSS | append (resources.Get $path)}}
+
+{{ end }}
+
+{{
+$combined := $CSS
+| resources.Concat "assets/combined.css"
+| minify
+| fingerprint
+}}
+
+{{- if hugo.IsDevelopment }}
+  <link rel="stylesheet" href="{{ $combined.RelPermalink }}">
+{{- else }}
+  {{- with . | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $combined.RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
   {{- end }}
 {{- end }}
