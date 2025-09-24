@@ -29,7 +29,7 @@ start of breadcrumbs<br>
   {{ $displaytitle = .File.BaseFileName | humanize | title }}
 {{ end }}
 <b>{{ $displaytitle }}</b>
-{{ partial "rss-icon.html" . }}
+{{ partial "rss-link.html" . }}
 <br>
 
 <br>end of breadcrumbs

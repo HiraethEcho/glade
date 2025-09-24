@@ -1,0 +1,5 @@
+{{- if or (eq .Kind `term`) (eq .Kind `section`) (eq .Kind `home`) }}
+{{- with .OutputFormats.Get "rss" }}
+<a href="{{ .RelPermalink }}" title="RSS" aria-label="RSS"><u>rss</u></a>
+{{- end }}
+{{- end }}
