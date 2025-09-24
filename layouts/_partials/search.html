@@ -1,17 +1,8 @@
-{{- if .Site.Params.fastSearch -}}
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6"></script>
-{{- end -}}
-{{ $search := resources.Get "js/search.js" | minify | fingerprint }}
-<script type="text/javascript" src="{{ $search.RelPermalink }}"></script>
-
-<h2 style="margin-top: 32px">Search</h2>
-<div id="searchbox">
-    <input id="searchInput" autofocus placeholder="{{ .Params.placeholder | default (printf "%s ↵" .Title) }}"
-        aria-label="search" type="search" autocomplete="off" maxlength="64">
-    <ul id="searchResults" aria-label="search results"></ul>
+{{ if default true .Site.Params.BookSearch }}
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="{{ i18n "Search" }}" aria-label="{{ i18n "Search" }}" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
 </div>
-
-<div id="fastSearch">
-    <input id="searchInput">
-    <ul id="searchResults"></ul>
-</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+{{ end }}
