@@ -1,4 +1,12 @@
 <br>start of page-info<br>
+{{ $cc := (default "nc-sa" (default .Site.Params.copyright .Params.copyright)) }}
+  <a href="https://creativecommons.org/licenses/by-{{ $cc }}/4.0/?ref=chooser-v1"
+      target="_blank"
+      rel="license noopener noreferrer"
+    style="display:inline-block;">
+    CC BY-{{ $cc | upper }} 4.0
+  </a>
+
 {{ $page := . }}
 {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }} {{
 $dateHuman := .Date | time.Format ":date_long" }}
@@ -13,9 +21,9 @@ $dateHuman := .Date | time.Format ":date_long" }}
   {{ with $terms }}
     <div>
       {{ $taxonomyName }}:
-        {{- range . }} 
+        {{- range . }}
         <b><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></b>
-        {{ end }} 
+        {{ end }}
     </div>
   {{ end }}
 {{ end }}

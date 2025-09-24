@@ -1,4 +1,5 @@
 {{ define "aside" }} 
+{{ partial "site-info.html" . }} 
 {{ partial "file-tree.html" . }} 
 {{ end }} 
 
@@ -8,8 +9,10 @@
 <b>blod mark in section</b>
 
 {{ .Content }} 
+
 {{ range .Pages }}
 <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
 {{ .Summary | plainify | truncate 30 | strings.TrimSpace }}
 {{ end }} 
+
 {{ end }}
