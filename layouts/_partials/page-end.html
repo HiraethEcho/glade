@@ -1,0 +1,21 @@
+{{- $pages := .CurrentSection.RegularPages }}
+{{- if and (gt (len $pages) 1) (in $pages . ) }}
+<div class="pre-next-post">
+
+  {{- with $pages.Next . }}
+  <a class="pre-post" href="{{ .Permalink }}">«{{- .Name -}}</a>
+  {{else}}
+  <div class="pre-post"></div>
+  {{- end }}
+
+  <a class="back-to-top" href="#top"> back to top </a>
+
+  {{- with $pages.Prev . }}
+  <a class="next-post" href="{{ .Permalink }}">{{- .Name -}}»</a>
+  {{else}}
+  <div class="next-post"></div>
+  {{- end }}
+
+</div>
+{{- end }}
+

@@ -15,22 +15,3 @@
   {{ end }}
 {{ end }}
 </details>
-
-{{- $pages := .CurrentSection.RegularPages }}
-{{- if and (gt (len $pages) 1) (in $pages . ) }}
-<nav class="pre-next">
-  {{- with $pages.Next . }}
-  <a class="prev" href="{{ .Permalink }}">
-    <span class="title">« </span>
-    <span>{{- .Name -}}</span>
-  </a>
-  {{- end }}
-  {{- with $pages.Prev . }}
-  <a class="next" href="{{ .Permalink }}">
-    <span>{{- .Name -}}</span>
-    <span class="title"> »</span>
-  </a>
-  {{- end }}
-</nav>
-{{- end }}
-

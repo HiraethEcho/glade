@@ -1,7 +1,7 @@
 {{ $context := .context }}
 {{ $depth := .depth }}
 
-<ul>
+<ul class="filetree">
   {{ range $context.Pages }}
     <li>
       {{- $displaytitle := "" }}

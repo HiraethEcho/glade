@@ -1,12 +1,12 @@
 * {
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.6;
   padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  margin: 1rem auto;
+  margin: 0rem auto;
   max-width: 1000px;
   background-color: #f9f9f9;
 }
@@ -16,18 +16,33 @@ header {
   justify-content: space-between;
   align-items: center;
   position: relative;
-  margin: 1rem;
-  padding: 1rem;
-  background-color: #ffffff;
+  margin: 0rem 1rem 0rem;
+  padding: 1rem 2rem;
+  background-color: #1fdf9f;
 }
 
 .site-title {
   font-size: 1.5rem;
+  background-color: #ffafaf;
+}
+
+.sidebar-btn {
+  display: none;
+  background: none;
+  border: none;
+  background-color: #a11f1f;
+}
+.site-nav-btn {
+  display: none;
+  background: none;
+  border: none;
+  background-color: #a11f1f;
 }
 
 .site-nav {
   list-style: none;
   font-size: 1.5rem;
+  background-color: #a11fa0;
 }
 
 .site-nav ul {
@@ -36,33 +51,38 @@ header {
   list-style: none;
 }
 
-li {
-  margin-left: 1rem;
+.filetree ul {
+  background-color: #011f1f;
 }
-
+.filetree ul {
+  list-style: none;
+}
 .main-container {
   display: flex;
-  padding: 1rem;
-  gap: 1rem;
+  margin: 0rem 1rem;
+  background-color: #0110df;
 }
 
 .sidebar {
-  flex: 0 0 300px;
+  flex: 0 0 250px;
   order: 1;
-  padding: 1rem;
-  background-color: #ffffff;
+  padding: 0rem 1rem;
+  background-color: #ffff0f;
 }
 
 main {
   flex: 3;
   order: 2;
-  padding: 1rem;
+  padding: 0rem 1rem;
+  position: relative;
   overflow-wrap: break-word;
   word-wrap: break-word;
-  background-color: #ffffff;
+  background-color: #ff0f6f;
 }
+
 article {
   margin: 1rem;
+  background-color: #a0ff8f;
 }
 
 pre,
@@ -71,6 +91,12 @@ code {
   word-wrap: break-word;
   max-width: 100%;
   overflow-x: auto;
+  overflow-y: auto;
+  max-width: 100rem;
+}
+
+li {
+  margin-left: 1rem;
 }
 
 img {
@@ -82,10 +108,6 @@ table {
   max-width: 100%;
   overflow-x: auto;
   display: block;
-}
-
-main > * {
-  max-width: 100%;
 }
 
 a, .long-word {
@@ -106,30 +128,21 @@ a:hover {
 .toc ul {
   list-style: none;
 }
-.toc li {
-  margin-left: 1rem;
+
+.pre-next-post {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
 }
 
-.pre-next {
-  display:flex;
+.pre-next-post .pre-post {
+  position: absolute;
+  left: 0rem;
 }
-.pre-next .pre {
-  align-self:flex-end;
-}
-.pre-next .next {
-  align-self:flex-end;
-}
-
-/* 响应式设计 - 手机 */
-.sidebar-btn {
-  display: none;
-  background: none;
-  border: none;
-}
-.site-nav-btn {
-  display: none;
-  background: none;
-  border: none;
+.pre-next-post .next-post {
+  position: absolute;
+  right: 0rem;
 }
 
 @media (max-width: 768px) {
@@ -146,6 +159,8 @@ a:hover {
   }
   .site-title {
     display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .site-nav-btn {
     display: block;
