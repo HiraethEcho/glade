@@ -2,15 +2,10 @@
     {{ partial "toc.html" . }}
     {{ partial "page-nav.html" . }}
 {{ end }}
-
 {{ define "main" }}
 {{ partial "page-info.html" .}}
-<br>start of article<br>
 <article class="page">
 {{ .Content }} 
 </article>
-<br>end of article<br>
-start of comment<br>
 {{ partial "comment.html" . }}
-<br>end of comment<br>
 {{ end }}

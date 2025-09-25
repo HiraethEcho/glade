@@ -1,4 +1,3 @@
-start of breadcrumbs<br>
 {{- range .Ancestors.Reverse }}
 {{- $breadcrumbstitle := "" }}
 {{ if .LinkTitle }}
@@ -30,6 +29,3 @@ start of breadcrumbs<br>
 {{ end }}
 <b>{{ $displaytitle }}</b>
 {{ partial "rss-link.html" . }}
-<br>
-
-<br>end of breadcrumbs

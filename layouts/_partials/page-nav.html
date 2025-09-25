@@ -1,5 +1,4 @@
-<div>
-  <i>Related</i>:
+<details class="related-posts" open><summary>related</summary>
 {{ $page := . }}
 {{ range $taxonomyName, $taxonomy := .Site.Taxonomies }}
   {{ $terms := ($page.GetTerms $taxonomyName) }}
@@ -15,7 +14,7 @@
     </details>
   {{ end }}
 {{ end }}
-</div>
+</details>
 
 <div>
 {{- $pages := .CurrentSection.RegularPages }}
@@ -37,8 +36,3 @@
 {{- end }}
 </div>
 
-<div class="back-to-top">
-  <a href="#top">
-    back to top
-  </a>
-</div>

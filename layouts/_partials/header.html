@@ -1,3 +1,11 @@
-<h1><a href="{{ .Site.Home.RelPermalink }}">{{ site.Title }}</a></h1>
-{{ partial "menu.html" (dict "menuID" "main" "page" .) }}
-{{ partial "breadcrumbs.html" . }}
+<a class="site-title" href="{{ .Site.Home.RelPermalink }}">{{ site.Title }}</a>
+
+<nav class="site-nav" id="siteNav">
+<ul>
+  {{ range .Site.Menus.main }}
+      <li><a tabindex="-1" class="menu-link" href="{{ .URL | relURL }}">{{ safeHTML .Name }}</a></li>
+  {{ end }}
+</ul>
+</nav>
+
+<button class="site-nav-btn" id="siteNavBtn">☰</button>
