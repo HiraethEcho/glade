@@ -1,16 +1,14 @@
 * {
   margin: 0;
-  line-height: 1.6;
+  line-height: 1.4;
   padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  margin: 0 auto;
-  background-color: #f5f7fa;
+  margin: 1rem auto;
   max-width: 1000px;
-  display: flex;
-  flex-direction: column;
+  background-color: #f9f9f9;
 }
 
 header {
@@ -18,7 +16,9 @@ header {
   justify-content: space-between;
   align-items: center;
   position: relative;
-  padding: 1rem 2rem;
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #ffffff;
 }
 
 .site-title {
@@ -32,38 +32,65 @@ header {
 
 .site-nav ul {
   display: flex;
+  font-size: 1.5rem;
   list-style: none;
 }
 
-.site-nav li {
+li {
   margin-left: 1rem;
-}
-
-.site-nav-btn {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
 }
 
 .main-container {
   display: flex;
-  flex: 1;
-  width: 100%;
-  margin: 2rem;
-  padding: 0 1rem;
+  padding: 1rem;
   gap: 1rem;
 }
 
 .sidebar {
-  flex: 1;
+  flex: 0 0 300px;
   order: 1;
+  padding: 1rem;
+  background-color: #ffffff;
 }
 
 main {
   flex: 3;
   order: 2;
+  padding: 1rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  background-color: #ffffff;
+}
+article {
+  margin: 1rem;
+}
+
+pre,
+code {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+table {
+  max-width: 100%;
+  overflow-x: auto;
+  display: block;
+}
+
+main > * {
+  max-width: 100%;
+}
+
+a, .long-word {
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 footer {
@@ -80,7 +107,17 @@ a:hover {
   list-style: none;
 }
 .toc li {
-  margin-left: 0.5rem;
+  margin-left: 1rem;
+}
+
+.pre-next {
+  display:flex;
+}
+.pre-next .pre {
+  align-self:flex-end;
+}
+.pre-next .next {
+  align-self:flex-end;
 }
 
 /* 响应式设计 - 手机 */
@@ -130,13 +167,12 @@ a:hover {
   .site-nav {
     display: none;
   }
-  .site-nav ul {
-    flex-direction: column;
-    right: 0;
-    width: 100%;
-  }
   .site-nav.active {
     display: flex;
+  }
+  .site-nav.active ul {
+    display: flex;
+    flex-direction: column;
   }
 
   .main-container {
