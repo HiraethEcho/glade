@@ -1,11 +1,10 @@
+<button class="sidebar-btn">☰</button>
 <a class="site-title" href="{{ .Site.Home.RelPermalink }}">{{ site.Title }}</a>
-
-<nav class="site-nav" id="siteNav">
-<ul>
+<nav class="site-nav">
+  <ul>
   {{ range .Site.Menus.main }}
       <li><a tabindex="-1" class="menu-link" href="{{ .URL | relURL }}">{{ safeHTML .Name }}</a></li>
   {{ end }}
 </ul>
 </nav>
-
-<button class="site-nav-btn" id="siteNavBtn">☰</button>
+<button class="site-nav-btn" aria-label="切换导航">▼</button>

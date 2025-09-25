@@ -16,6 +16,8 @@ body {
 header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  position: relative;
   padding: 1rem 2rem;
 }
 
@@ -37,6 +39,14 @@ header {
   margin-left: 1rem;
 }
 
+.site-nav-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
 .main-container {
   display: flex;
   flex: 1;
@@ -46,7 +56,7 @@ header {
   gap: 1rem;
 }
 
-aside {
+.sidebar {
   flex: 1;
   order: 1;
 }
@@ -74,6 +84,11 @@ a:hover {
 }
 
 /* 响应式设计 - 手机 */
+.sidebar-btn {
+  display: none;
+  background: none;
+  border: none;
+}
 .site-nav-btn {
   display: none;
   background: none;
@@ -82,27 +97,46 @@ a:hover {
 
 @media (max-width: 768px) {
   header {
-    display: flex;
     flex-direction: column;
   }
-  .site-title {
-    display: block;
-  }
 
-  .site-nav-btn {
-    cursor: pointer;
+  .sidebar-btn {
+    display: block;
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
     font-size: 1.5rem;
+  }
+  .site-title {
+    display: flex;
+  }
+  .site-nav-btn {
+    display: block;
     position: absolute;
     right: 1rem;
     top: 1rem;
-    display: block;
+    font-size: 1.5rem;
+  }
+
+  .sidebar {
+    display: none;
+  }
+  .sidebar.active {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
   }
 
   .site-nav {
     display: none;
   }
+  .site-nav ul {
+    flex-direction: column;
+    right: 0;
+    width: 100%;
+  }
   .site-nav.active {
-    display: block;
+    display: flex;
   }
 
   .main-container {
