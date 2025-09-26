@@ -1,11 +1,10 @@
 {{ define "main" }}
-<h1>{{ .Title }}</h1>
-<b>bold mark in term.html</b>
-{{ .Content }} 
-{{ range .RegularPages }}
-  <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-  {{ .Summary | plainify | truncate 30 | strings.TrimSpace }}
-{{ end }} 
+  {{ partial "breadcrumbs.html" . }}
+  {{ .Content }} 
+  {{ range .RegularPages }}
+    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+    {{ .Summary | plainify | truncate 30 | strings.TrimSpace }}
+  {{ end }} 
 {{ end }}
 
 {{ define "aside" }}

@@ -1,5 +1,5 @@
 {{ define "main" }} 
-This line is main of in home.html before .Content 
+  {{ partial "breadcrumbs.html" . }}
 <article class="home">
 {{ .Content }} 
 </article>
@@ -7,4 +7,5 @@ This line is main of in home.html before .Content
 
 {{ define "aside" }}
 {{ partial "site-info.html" . }}
+{{ partial "file-tree.html" . }} 
 {{ end }}

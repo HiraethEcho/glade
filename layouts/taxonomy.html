@@ -1,15 +1,15 @@
 {{ define "main" }}
-    <h1>{{ .Title }}</h1>
-    {{ .Content }}
-{{ range .Pages }} <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a> {{ end }} 
+  {{ partial "breadcrumbs.html" . }}
+  {{ .Content }}
+  {{ range .Pages }} <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a> {{ end }} 
 
-{{ range .Data.Terms.Alphabetical }}
-  <h2><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a><sup>{{ .Count }}</sup></h2>
-  {{ range .Pages.ByDate.Reverse }}
-    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-    {{ .Summary | plainify | truncate 30 | strings.TrimSpace }}
+  {{ range .Data.Terms.Alphabetical }}
+    <h2><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a><sup>{{ .Count }}</sup></h2>
+    {{ range .Pages.ByDate.Reverse }}
+      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+      {{ .Summary | plainify | truncate 30 | strings.TrimSpace }}
+    {{ end }}
   {{ end }}
-{{ end }}
 {{ end }}
 
 
