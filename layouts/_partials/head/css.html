@@ -2,18 +2,10 @@
 $CSS := slice
 (resources.Get "css/main.css")
 }}
-
 {{
 $combined := $CSS
 | resources.Concat "assets/combined.css"
 | minify
 | fingerprint
 }}
-
-{{- if hugo.IsDevelopment }}
-  <link rel="stylesheet" href="{{ $combined.RelPermalink }}">
-{{- else }}
-  {{- with . | minify | fingerprint }}
-    <link rel="stylesheet" href="{{ $combined.RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
-  {{- end }}
-{{- end }}
+<link rel="stylesheet" href="{{ $combined.RelPermalink }}">
