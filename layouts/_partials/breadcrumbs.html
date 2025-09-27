@@ -10,7 +10,7 @@
     {{ $breadcrumbstitle = .File.BaseFileName | humanize | title }}
   {{ end }}
   <a href="{{ .RelPermalink }}">{{ $breadcrumbstitle }}</a>
-  <span>/</span>
+  <span>></span>
 {{- end }}
 
 {{- $displaytitle := "" }}
@@ -23,5 +23,5 @@
 {{ else if and .IsPage .File }}
   {{ $displaytitle = .File.BaseFileName | humanize | title }}
 {{ end }}
-<b>{{ $displaytitle }}</b>
+<i>{{ $displaytitle }}</i>
 {{ partial "rss-link.html" . }}

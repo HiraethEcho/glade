@@ -1,3 +1,4 @@
+<section>
 <nav>
 {{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
 {{- range $taxonomyName, $taxonomy := .Site.Taxonomies }} 
@@ -23,3 +24,4 @@
 
 {{- $totalBlogs := len .Site.RegularPages }}
 <a href="/archive">Total {{ $totalBlogs }} posts </a>
+</section>

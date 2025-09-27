@@ -1,4 +1,4 @@
-<div class="post-end">
+<section class="post-end">
 {{- $pages := .CurrentSection.RegularPages }}
 {{- if and (gt (len $pages) 1) (in $pages . ) }}
   <div class="post-prev">
@@ -12,4 +12,4 @@
   {{- end }}
   </div>
 {{- end }}
-</div>
+</section>

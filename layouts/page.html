@@ -1,20 +1,13 @@
 {{ define "aside" }}
-  <section>
   {{ partial "toc.html" . }}
-  </section>
-  <section>
+  {{ partial "file-tree.html" . }}
   {{ partial "page-nav.html" . }}
-  </section>
 {{ end }}
 
 {{ define "main" }}
-<section>
-{{ partial "page-info.html" .}}
-</section>
+{{ partial "page-start.html" .}}
 <section class="page">
 {{ .Content }} 
 </section>
-<section>
 {{ partial "page-end.html" . }}
-</section>
 {{ end }}

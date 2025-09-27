@@ -7,7 +7,7 @@
 <nav class="site-nav">
 <ul>
   {{ range .Site.Menus.main }}
-      <li><a tabindex="-1" class="menu-link" href="{{ .URL | relURL }}">{{ safeHTML .Name }}</a></li>
+      <li><a tabindex="-1" href="{{ .URL | relURL }}">{{ safeHTML .Name }}</a></li>
   {{ end }}
 </ul>
 </nav>

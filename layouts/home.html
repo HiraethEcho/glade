@@ -1,15 +1,10 @@
 {{ define "main" }} 
-  {{ partial "breadcrumbs.html" . }}
-<article class="home">
+<section class="home">
 {{ .Content }} 
-</article>
+</section>
 {{ end }} 
 
 {{ define "aside" }}
-<section>
 {{ partial "site-info.html" . }}
-</section>
-<section>
 {{ partial "file-tree.html" . }} 
-</section>
 {{ end }}

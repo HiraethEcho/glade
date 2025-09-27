@@ -1,6 +1,8 @@
+<section>
 {{ $toc := default true (default .Site.Params.toc .Params.toc) }}
 {{ if $toc }}
 <details class="toc" open><summary>toc</summary>
     {{ .TableOfContents }}
 </details>
 {{ end }}
+</section>
