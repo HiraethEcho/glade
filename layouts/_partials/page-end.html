@@ -1,13 +1,12 @@
-<div class="pre-next-post">
-<a class="back-to-top" href="#top"> back to top </a>
+<div class="post-end">
 {{- $pages := .CurrentSection.RegularPages }}
 {{- if and (gt (len $pages) 1) (in $pages . ) }}
-  <div class="pre-post">
+  <div class="post-prev">
   {{- with $pages.Next . }}
   <a href="{{ .Permalink }}">«{{- .Name -}}</a>
   {{- end }}
   </div>
-  <div class="next-post">
+  <div class="post-next">
   {{- with $pages.Prev . }}
   <a href="{{ .Permalink }}">{{- .Name -}}»</a>
   {{- end }}

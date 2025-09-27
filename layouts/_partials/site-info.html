@@ -5,7 +5,7 @@
   {{- with $taxonomy }}
     <details>
       <summary>
-          <a href="{{ .Permalink }}">{{ $taxonomyTitle }} </a> <sup>{{ len $taxonomy }}</sup>
+          <a href="/{{ $taxonomyTitle }}">{{ $taxonomyTitle }} </a> <sup>{{ len $taxonomy }}</sup>
       </summary>
     {{- range $name, $value := $taxonomy }}
       {{- $count := $value.Count }}

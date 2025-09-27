@@ -98,21 +98,15 @@ li {
   margin-left: 1rem;
 }
 
-.pre-next-post {
-  display: grid;
-  grid-template-areas: "prev mid next";
-  grid-template-columns: 40% 20% 40%;
+.post-end {
+  display: flex;
 }
-.pre-next-post .pre-post {
-  grid-area: prev;
+.post-end .post-prev {
+  flex:1;
   text-align: left;
 }
-.pre-next-post .back-to-top {
-  grid-area: mid;
-  text-align: center;
-}
-.pre-next-post .next-post {
-  grid-area: next;
+.post-end .post-next {
+  flex:1;
   text-align: right;
 }
 

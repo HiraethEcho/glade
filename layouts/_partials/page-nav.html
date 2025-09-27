@@ -3,17 +3,21 @@
 {{ $page := . }}
 {{ range $taxonomyName, $taxonomy := .Site.Taxonomies }}
   {{ $terms := ($page.GetTerms $taxonomyName) }}
-  {{ with $terms }}
-    <details><summary>{{ $taxonomyName }}</summary>
-      {{- range . }} 
-      <details><summary><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></summary>
-        {{ range .RegularPages }}
-          <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-        {{- end }}
-      </details>
-      {{ end }} 
-    </details>
-  {{ end }}
+  <ul>{{ with $terms }}
+    <li><details>
+        <summary>{{ $taxonomyName }}</summary>
+        <ul>
+          {{- range . }} 
+            <li><details>
+                <summary><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></summary>
+                {{ range .RegularPages }}
+                  <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+                {{- end }}
+            </details></li>
+          {{ end }} 
+        </ul>
+      </details></li>
+  {{ end }}</ul>
 {{ end }}
 </details>
 </nav>
