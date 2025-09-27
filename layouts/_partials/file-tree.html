@@ -21,42 +21,10 @@
 {{ end }}
 
 <section>
-<details open class="filetree">
+<details>
   <summary><b>{{print $displayroottitle}}</b></summary>
 {{ partial "file-tree-list.html" (dict "context" $root "depth" 1) }}
 </details>
 </section>
 {{ end }}
 
-{{ define "file-tree-list.html"}}
-{{ $context := .context }}
-{{ $depth := .depth }}
-
-<ul class="filetree">
-  {{ range $context.Pages }}
-    <li>
-      {{- $displaytitle := "" }}
-      {{ if .LinkTitle }}
-        {{ $displaytitle = .LinkTitle }}
-      {{ else if .Title }}
-        {{ $displaytitle = .Title }}
-      {{ else if and .IsSection .File }}
-        {{ $displaytitle = path.Base .File.Dir | humanize | title }}
-      {{ else if and .IsPage .File }}
-        {{ $displaytitle = .File.BaseFileName | humanize | title }}
-      {{ end }}
-
-      {{ if .IsSection }}
-        <details>
-          <summary>
-            <a href="{{ .RelPermalink }}">{{ $displaytitle }}</a>
-          </summary>
-          {{ partial "file-tree-list.html" (dict "context" . "depth" (add $depth 1)) }}
-        </details>
-      {{ else }}
-        <a href="{{ .RelPermalink }}">{{ $displaytitle }}</a>
-      {{ end }}
-    </li>
-  {{ end }}
-</ul>
-{{ end }}
