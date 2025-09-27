@@ -3,7 +3,6 @@
   {{ .Content }}
   </section>
   <section>
-  All Taxonomies:
   {{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
   {{- range $taxonomyName, $taxonomy := .Site.Taxonomies }}
     {{- if gt (len $taxonomy) 0 }}
@@ -26,4 +25,5 @@
 
 {{ define "aside" }}
   {{ partial "site-info.html" . }}
+  {{ partial "taxonomy-tree.html" . }}
 {{ end }}

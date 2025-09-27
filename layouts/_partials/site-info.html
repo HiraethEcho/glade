@@ -1,27 +1,4 @@
 <section>
-<nav>
-{{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
-{{- range $taxonomyName, $taxonomy := .Site.Taxonomies }} 
-  {{- $taxonomyTitle := index $taxonomyTitles $taxonomyName | default $taxonomyName }} 
-  {{- with $taxonomy }}
-    <details>
-      <summary>
-          <a href="/{{ $taxonomyTitle }}">{{ $taxonomyTitle }} </a> <sup>{{ len $taxonomy }}</sup>
-      </summary>
-    {{- range $name, $value := $taxonomy }}
-      {{- $count := $value.Count }}
-      {{- $page := site.GetPage (printf "/%s/%s" $taxonomyName $name) }}
-      <ul>
-        {{- with $page }}
-        <li><a href="{{ .Permalink }}">{{ .Name }}</a> <sup>{{ $count }}</sup></li>
-        {{- end }}
-      </ul>
-    {{- end }}
-    </details>
-  {{- end }} 
-{{- end }}
-</nav>
-
 {{- $totalBlogs := len .Site.RegularPages }}
 <a href="/archive">Total {{ $totalBlogs }} posts </a>
 </section>
