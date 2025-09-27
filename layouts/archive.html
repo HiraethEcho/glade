@@ -1,6 +1,9 @@
 {{ define "main" }}
+  <section>
   {{ .Content }}
-  <h2>All Taxonomies</h2>
+  </section>
+  <section>
+  All Taxonomies:
   {{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
   {{- range $taxonomyName, $taxonomy := .Site.Taxonomies }}
     {{- if gt (len $taxonomy) 0 }}
@@ -15,10 +18,9 @@
       {{- end }}
     {{- end }}
   {{- end }}
-  <h2>All Posts</h2>
+  </section>
   {{ range site.RegularPages }}
-    <h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary | plainify | truncate 30 | strings.TrimSpace }}
+    {{ partial "post-section.html" . }}
   {{ end }}
 {{ end }}
 

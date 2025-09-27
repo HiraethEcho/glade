@@ -1,9 +1,12 @@
 {{ define "main" }}
   {{ partial "breadcrumbs.html" . }}
+  <h1>{{.Title}}</h1>
+  <section>
+  {{ .Content }}
+  </section>
   {{ .Content }} 
   {{ range .RegularPages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary | plainify | truncate 30 | strings.TrimSpace }}
+    {{ partial "post-section.html" . }}
   {{ end }} 
 {{ end }}
 

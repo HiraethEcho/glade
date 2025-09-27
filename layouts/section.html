@@ -4,11 +4,13 @@
 {{ end }} 
 
 {{ define "main" }}
-{{ partial "breadcrumbs.html" . }}
+{{ partial "page-start.html" . }}
+<section>
 {{ .Content }} 
+</section>
+
 {{ range .Pages }}
-<h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-{{ .Summary | plainify | truncate 30 | strings.TrimSpace }}
+{{ partial "post-section.html" . }}
 {{ end }} 
 
 {{ end }}

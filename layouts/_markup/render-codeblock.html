@@ -1,0 +1,19 @@
+{{- $lang := .Attributes.lang | default .Type -}}
+
+<details open><summary>{{ $lang | default "TEXT" }}</summary>
+{{- if transform.CanHighlight .Type }}
+<pre class="chroma codeblock"><button class="code-copy-btn" onclick="copyCode(this)">copy</button><code class="language-{{ .Type }}" data-lang="{{ .Type }}">{{- with transform.HighlightCodeBlock . -}}{{ .Inner }}{{- end -}}</code></pre>
+{{- else }}
+<pre class="codeblock"><button class="code-copy-btn" onclick="copyCode(this)">copy</button><code class="language-{{ .Type }}" data-lang="{{ .Type }}">{{ .Inner }}</code></pre>
+{{- end }}
+</details>
+
+<script>
+  function copyCode(btn) {
+    const code = btn.nextElementSibling.innerText;
+    navigator.clipboard.writeText(code).then(() => {
+      btn.innerText = "copied";
+      setTimeout(() => (btn.innerText = "copy"), 2000);
+    });
+  }
+</script>

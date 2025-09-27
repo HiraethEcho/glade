@@ -1,18 +1,16 @@
 {{ define "main" }}
   {{ partial "breadcrumbs.html" . }}
   <h1>{{.Title}}</h1>
+  <section>
   {{ .Content }}
-  {{ range .Pages }} <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a> {{ end }} 
-
+  </section>
   {{ range .Data.Terms.Alphabetical }}
     <h2><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a><sup>{{ .Count }}</sup></h2>
     {{ range .Pages.ByDate.Reverse }}
-      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-      {{ .Summary | plainify | truncate 30 | strings.TrimSpace }}
+      {{ partial "post-section.html" . }}
     {{ end }}
   {{ end }}
 {{ end }}
-
 
 {{ define "aside" }}
 {{ partial "site-info.html" . }}

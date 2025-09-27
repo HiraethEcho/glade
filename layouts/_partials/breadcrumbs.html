@@ -1,3 +1,4 @@
+<p>
 {{- range .Ancestors.Reverse }}
   {{- $breadcrumbstitle := "" }}
   {{ if .LinkTitle }}
@@ -10,7 +11,7 @@
     {{ $breadcrumbstitle = .File.BaseFileName | humanize | title }}
   {{ end }}
   <a href="{{ .RelPermalink }}">{{ $breadcrumbstitle }}</a>
-  <span>></span>
+  <span>/</span>
 {{- end }}
 
 {{- $displaytitle := "" }}
@@ -25,3 +26,4 @@
 {{ end }}
 <i>{{ $displaytitle }}</i>
 {{ partial "rss-link.html" . }}
+</p>

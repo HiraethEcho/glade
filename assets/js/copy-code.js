@@ -6,9 +6,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const copyButton = document.createElement("button");
     copyButton.className = "copy-code-button";
     copyButton.textContent = "copy";
-
-    // Insert the button inside the <pre> block
     codeBlock.appendChild(copyButton);
+
+    const codeLang = document.createElement("span");
+    codeLang.className = "code-lang";
+    codeLang.textContent = "lang";
+    codeBlock.appendChild(codeLang);
 
     copyButton.addEventListener("click", function () {
       const code = codeBlock.querySelector("code");
