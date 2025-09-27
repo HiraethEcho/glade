@@ -7,14 +7,14 @@
   <header>
     {{ partial "header.html" . }}
   </header>
-  <div class="grid-main">
-    <main>
-      {{ block "main" . }}{{ end }}
-    </main>
+  <main>
+    <article>
+    {{ block "main" . }}{{ end }}
+    </article>
     <aside class="sidebar">
     {{ block "aside" . }}{{ end }}
     </aside>
-  </div>
+  </main>
   <footer>
     {{ partial "footer.html" . }}
   </footer>

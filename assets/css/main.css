@@ -24,10 +24,10 @@ header {
   background-color: #1fdf9f;
 }
 
-.grid-main {
+main {
   flex: 1;
   display: grid;
-  grid-template-areas: "sidebar maincontent";
+  grid-template-areas: "sidebar post";
   grid-template-columns: 250px 1fr;
   height: 100%;
   position: relative;
@@ -41,12 +41,11 @@ header {
   overflow-y: auto;
 }
 
-main {
-  grid-area: maincontent;
+article {
+  grid-area: post;
   height: 100%;
   overflow-wrap: break-word;
   word-wrap: break-word;
-  background-color: #ff0f6f;
   overflow-y: auto;
 }
 
@@ -87,52 +86,16 @@ article {
   background-color: #a0ff8f;
 }
 
-pre,
-code {
-  border: 5px soild blue;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  max-width: 100%;
-  overflow-x: auto;
-  overflow-y: auto;
-  max-width: 100rem;
+section {
+  margin: 0.5rem;
+}
+
+nav ul {
+  list-style: none;
 }
 
 li {
   margin-left: 1rem;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-table {
-  max-width: 100%;
-  overflow-x: auto;
-  display: block;
-}
-
-a,
-.long-word {
-  word-break: break-word;
-  overflow-wrap: break-word;
-}
-
-a:hover {
-  background-color: rgba(0, 123, 0, 0.2);
-}
-
-.toc ul {
-  list-style: none;
-}
-
-.filetree ul {
-  background-color: #011f1f;
-}
-
-.filetree ul {
-  list-style: none;
 }
 
 .pre-next-post {
@@ -178,8 +141,7 @@ a:hover {
     font-size: 1.5rem;
   }
 
-  .grid-main {
-    grid-area: gridmain;
+  main {
     display: block;
     position: relative;
   }

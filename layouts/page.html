@@ -1,12 +1,21 @@
 {{ define "aside" }}
-    {{ partial "toc.html" . }}
-    {{ partial "page-nav.html" . }}
+  <section>
+  {{ partial "toc.html" . }}
+  </section>
+
+  <section>
+  {{ partial "page-nav.html" . }}
+  </section>
 {{ end }}
 
 {{ define "main" }}
+<section>
 {{ partial "page-info.html" .}}
-<article class="page">
+</section>
+<section class="page">
 {{ .Content }} 
-</article>
+</section>
+<section>
 {{ partial "page-end.html" . }}
+</section>
 {{ end }}

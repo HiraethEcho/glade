@@ -1,29 +1,27 @@
 {{ define "main" }}
-{{ .Content }}
-
-<h2>Taxonomies</h2>
-{{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
-{{- range $taxonomyName, $taxonomy := .Site.Taxonomies }}
-  {{- if gt (len $taxonomy) 0 }}
-    {{- $taxonomyTitle := index $taxonomyTitles $taxonomyName | default $taxonomyName }}
-    <a href="/{{ $taxonomyName }}">{{ $taxonomyTitle }}</a>:
-    {{- range $name, $value := $taxonomy }}
-      {{- $count := $value.Count }}
-      {{- $page := site.GetPage (printf "/%s/%s" $taxonomyName $name) }}
-      {{- with $page }}
-          <a href="{{ .Permalink }}">{{ .Name }}
-            <sup><strong><sup>{{ $count }}</sup></strong></sup>
-          </a>
+  {{ .Content }}
+  <h2>All Taxonomies</h2>
+  {{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
+  {{- range $taxonomyName, $taxonomy := .Site.Taxonomies }}
+    {{- if gt (len $taxonomy) 0 }}
+      {{- $taxonomyTitle := index $taxonomyTitles $taxonomyName | default $taxonomyName }}
+      <h3><a href="/{{ $taxonomyName }}">{{ $taxonomyTitle }}</a></h3>
+      {{- range $name, $value := $taxonomy }}
+        {{- $count := $value.Count }}
+        {{- $page := site.GetPage (printf "/%s/%s" $taxonomyName $name) }}
+        {{- with $page }}
+            <a href="{{ .Permalink }}">{{ .Name }}</a> <sup>{{ $count }}</sup>
+        {{- end }}
       {{- end }}
     {{- end }}
-    </br>
   {{- end }}
-{{- end }}
-
-<h2>Posts</h2>
-{{ range site.RegularPages }}
-  <h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-  {{ .Summary | plainify | truncate 30 | strings.TrimSpace }}
+  <h2>All Posts</h2>
+  {{ range site.RegularPages }}
+    <h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+    {{ .Summary | plainify | truncate 30 | strings.TrimSpace }}
+  {{ end }}
 {{ end }}
 
+{{ define "aside" }}
+  {{ partial "site-info.html" . }}
 {{ end }}

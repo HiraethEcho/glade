@@ -1,17 +1,25 @@
-<br>start of site-info<br>
+<nav>
 {{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
-<ul>
-  {{- range $taxonomyName, $taxonomy := .Site.Taxonomies }} 
+{{- range $taxonomyName, $taxonomy := .Site.Taxonomies }} 
   {{- $taxonomyTitle := index $taxonomyTitles $taxonomyName | default $taxonomyName }} 
-  {{- $taxonomyPage := site.GetPage (printf "/%s" $taxonomyName) }} 
-  {{- with $taxonomyPage }}
-  <li>
-    <a href="{{ .Permalink }}">{{ $taxonomyTitle }} </a>
-    <sup>{{ len $taxonomy }}</sup>
-  </li>
-  {{- end }} {{- end }}
-</ul>
+  {{- with $taxonomy }}
+    <details>
+      <summary>
+          <a href="{{ .Permalink }}">{{ $taxonomyTitle }} </a> <sup>{{ len $taxonomy }}</sup>
+      </summary>
+    {{- range $name, $value := $taxonomy }}
+      {{- $count := $value.Count }}
+      {{- $page := site.GetPage (printf "/%s/%s" $taxonomyName $name) }}
+      <ul>
+        {{- with $page }}
+        <li><a href="{{ .Permalink }}">{{ .Name }}</a> <sup>{{ $count }}</sup></li>
+        {{- end }}
+      </ul>
+    {{- end }}
+    </details>
+  {{- end }} 
+{{- end }}
+</nav>
 
 {{- $totalBlogs := len .Site.RegularPages }}
 <a href="/archive">Total {{ $totalBlogs }} posts </a>
-<br>end of site-info<br>
