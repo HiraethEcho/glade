@@ -1,15 +1,12 @@
 <section class="post-end">
-{{- $pages := .CurrentSection.RegularPages }}
-{{- if and (gt (len $pages) 1) (in $pages . ) }}
   <div class="post-prev">
-  {{- with $pages.Next . }}
+  {{- with .Prev }}
   <a href="{{ .Permalink }}">«{{- .Name -}}</a>
   {{- end }}
   </div>
   <div class="post-next">
-  {{- with $pages.Prev . }}
+  {{- with .Next }}
   <a href="{{ .Permalink }}">{{- .Name -}}»</a>
   {{- end }}
   </div>
-{{- end }}
 </section>
