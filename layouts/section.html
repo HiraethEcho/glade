@@ -1,17 +1,18 @@
-{{ define "aside" }} 
-{{ partial "site-info.html" . }} 
-{{ partial "taxonomy-tree.html" . }}
-{{ partial "file-tree.html" . }} 
-{{ end }} 
-
 {{ define "main" }}
-{{ partial "page-start.html" . }}
-<section>
-{{ .Content }} 
-</section>
-
-{{ range .Pages }}
-{{ partial "post-section.html" . }}
-{{ end }} 
-
+  <h1>{{.Title}}</h1>
+  <section>
+    {{ partial "breadcrumbs.html" . }}
+  </section>
+  <section>
+    {{ .Content }} 
+  </section>
+  {{ range .RegularPages }}
+    {{ partial "post-section.html" . }}
+  {{ end }} 
 {{ end }}
+
+{{ define "aside" }} 
+  {{ partial "site-info.html" . }} 
+  {{ partial "taxonomy-tree.html" . }}
+  {{ partial "file-tree.html" . }} 
+{{ end }} 

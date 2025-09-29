@@ -4,13 +4,12 @@
   <section>
   {{ .Content }}
   </section>
-  {{ .Content }} 
   {{ range .RegularPages }}
     {{ partial "post-section.html" . }}
   {{ end }} 
 {{ end }}
 
 {{ define "aside" }}
-{{ partial "site-info.html" . }}
-{{ partial "taxonomy-tree.html" . }}
+  {{ partial "site-info.html" . }}
+  {{ partial "taxonomy-tree.html" . }}
 {{ end }}

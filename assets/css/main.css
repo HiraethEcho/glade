@@ -95,20 +95,19 @@ section {
   border: 3px solid #000;
 }
 p {
-  margin: 0.2rem;
-  border: 2px solid #f0f;
+  border: 2px solid #a5f;
 }
 
 code {
   overflow: auto;
 }
 
-ul {
-  list-style: none;
+ul > li {
+  margin-left: 1rem;
 }
 
-li {
-  margin-left: 1rem;
+ol > li {
+  margin-left: 1.5rem;
 }
 
 .codeblock {
@@ -123,6 +122,34 @@ li {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+details {
+  border: 1px solid #2a8;
+  position: relative;
+}
+
+details > summary {
+  list-style: none;
+  padding-right: 2rem; /* 为自定义箭头留出空间 */
+  cursor: pointer;
+  position: relative;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details > summary::after {
+  content: "◀";
+  position: absolute;
+  right: 0;
+}
+
+details[open] > summary::after {
+  content: "▼";
+}
+
+#TableOfContents ul {
+  list-style: none;
 }
 
 .post-end {
@@ -179,6 +206,10 @@ li {
 
   .sidebar.active {
     transform: translateX(0);
+  }
+
+  .sidebar details{
+    folded: true;
   }
 
   .site-nav {

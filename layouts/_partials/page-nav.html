@@ -1,12 +1,12 @@
 <section>
-<details class="related-posts" open><summary>related</summary>
+<details open><summary>related</summary>
 {{ $page := . }}
 {{ range $taxonomyName, $taxonomy := .Site.Taxonomies }}
   {{ $terms := ($page.GetTerms $taxonomyName) }}
-  <ul>{{ with $terms }}
+  <ul style="list-style:none;">{{ with $terms }}
     <li><details>
         <summary>{{ $taxonomyName }}</summary>
-        <ul>
+        <ul style="list-style:none;">
           {{- range . }} 
             <li><details>
                 <summary><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></summary>

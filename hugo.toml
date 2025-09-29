@@ -8,7 +8,6 @@ hasCJKLanguage = true
 tag= 'tags'
 category= 'categories'
 series= 'series'
-author = "authors"
 topic = "topics"
 
 [params]

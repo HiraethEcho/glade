@@ -1,6 +1,6 @@
 {{ $show := default true (default .Site.Params.showFileTree .Params.showFileTree) }}
 {{ if $show }}
-{{ $root := . }}
+{{ $root := .FirstSection }}
 
 {{ with .Params.fileTreeRoot }}
   {{ $page := site.GetPage (printf "%s" .) }}
