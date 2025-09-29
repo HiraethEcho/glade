@@ -1,4 +1,6 @@
 <section>
+
+<button id="theme-toggle"> <span id="theme-icon">🌙</span> </button>
 {{$scratch := newScratch}}
 {{ range (where .Site.Pages "Kind" "page" )}}
     {{$scratch.Add "total" .WordCount}}
