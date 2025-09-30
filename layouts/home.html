@@ -1,12 +1,12 @@
-{{ define "main" }} 
+{{ define "nav" }}
+{{ partial "taxonomy-tree.html" . }}
+{{ partial "file-tree.html" . }} 
+{{ partial "site-info.html" . }}
+{{ end }}
+
+{{ define "article" }} 
   <h1>{{.Title}}</h1>
   <section class="home">
     {{ .Content }} 
-  </section>
+  </article>
 {{ end }} 
-
-{{ define "aside" }}
-{{ partial "site-info.html" . }}
-{{ partial "taxonomy-tree.html" . }}
-{{ partial "file-tree.html" . }} 
-{{ end }}

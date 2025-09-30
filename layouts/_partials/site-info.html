@@ -1,20 +1,9 @@
-<section>
-
-<button id="theme-toggle"> <span id="theme-icon">🌙</span> </button>
-{{$scratch := newScratch}}
-{{ range (where .Site.Pages "Kind" "page" )}}
-    {{$scratch.Add "total" .WordCount}}
-{{ end }}
-<p>
-{{$scratch.Get "total" }} words in <a href="/archive">{{ len .Site.RegularPages }}</a> posts.
-</p>
-<p>
+<details open><summary>Site Info</summary>
 {{ with .Site.Params.social }}
-  <ul style="list-style:none;">
+  <ul>
   {{ range . }}
     <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a></li>
   {{ end }}
   </ul>
 {{ end }}
-</p>
-</section>
+</details>

@@ -1,15 +1,15 @@
-{{ define "main" }}
+{{ define "nav" }}
+  {{ partial "taxonomy-tree.html" . }}
+  {{ partial "site-info.html" . }}
+{{ end }}
+
+{{ define "article" }}
   {{ partial "breadcrumbs.html" . }}
   <h1>{{.Title}}</h1>
-  <section>
+  <section class="term">
   {{ .Content }}
   </section>
   {{ range .RegularPages }}
     {{ partial "post-section.html" . }}
   {{ end }} 
-{{ end }}
-
-{{ define "aside" }}
-  {{ partial "site-info.html" . }}
-  {{ partial "taxonomy-tree.html" . }}
 {{ end }}

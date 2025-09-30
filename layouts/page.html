@@ -1,10 +1,11 @@
-{{ define "aside" }}
+{{ define "nav" }}
   {{ partial "toc.html" . }}
   {{ partial "file-tree.html" . }}
-  {{ partial "page-nav.html" . }}
+  {{ partial "post-rel.html" . }}
+  {{ partial "site-info.html" . }}
 {{ end }}
 
-{{ define "main" }}
+{{ define "article" }}
 {{ partial "page-start.html" .}}
 <section class="page">
 {{ .Content }} 

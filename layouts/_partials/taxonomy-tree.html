@@ -1,9 +1,8 @@
-<section>
 <details open>
   <summary>Taxonomy Tree</summary>
   {{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
   {{- range $taxonomyName, $taxonomy := .Site.Taxonomies }} 
-    <ul style="list-style: none;">
+    <ul>
     {{- $taxonomyTitle := index $taxonomyTitles $taxonomyName | default $taxonomyName }} 
     {{- with $taxonomy }}
       <li><details>
@@ -13,7 +12,7 @@
         {{- range $name, $value := $taxonomy }}
           {{- $count := $value.Count }}
           {{- $page := site.GetPage (printf "/%s/%s" $taxonomyName $name) }}
-          <ul style="list-style: none;">
+          <ul>
             {{- with $page }}
               <li><a href="{{ .Permalink }}">{{ .Name }}</a> <sup>{{ $count }}</sup></li>
             {{- end }}
@@ -24,4 +23,3 @@
     </ul>
   {{- end }}
 </details>
-</section>

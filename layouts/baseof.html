@@ -8,12 +8,12 @@
     {{ partial "header.html" . }}
   </header>
   <main>
+    <nav>
+      {{ block "nav" . }}{{ end }}
+    </nav>
     <article>
-    {{ block "main" . }}{{ end }}
+    {{ block "article" . }}{{ end }}
     </article>
-    <aside class="sidebar">
-    {{ block "aside" . }}{{ end }}
-    </aside>
   </main>
   <footer>
     {{ partial "footer.html" . }}

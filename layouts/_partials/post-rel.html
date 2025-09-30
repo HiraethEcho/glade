@@ -1,18 +1,19 @@
-<section>
 <details open><summary>related</summary>
 {{ $page := . }}
 {{ range $taxonomyName, $taxonomy := .Site.Taxonomies }}
   {{ $terms := ($page.GetTerms $taxonomyName) }}
-  <ul style="list-style:none;">{{ with $terms }}
-    <li><details>
+  <ul>{{ with $terms }}
+    <li><details open>
         <summary>{{ $taxonomyName }}</summary>
-        <ul style="list-style:none;">
+        <ul>
           {{- range . }} 
             <li><details>
-                <summary><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></summary>
+              <summary><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></summary>
+              <ul>
                 {{ range .RegularPages }}
-                  <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+                  <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
                 {{- end }}
+              </ul>
             </details></li>
           {{ end }} 
         </ul>
@@ -20,4 +21,3 @@
   {{ end }}</ul>
 {{ end }}
 </details>
-</section>

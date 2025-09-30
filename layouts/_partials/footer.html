@@ -1,2 +1,9 @@
+{{$scratch := newScratch}}
+{{ range (where .Site.Pages "Kind" "page" )}}
+    {{$scratch.Add "total" .WordCount}}
+{{ end }}
+<p>
+{{$scratch.Get "total" }} words in <a href="/archive">{{ len .Site.RegularPages }}</a> posts.
+</p>
 <p>Copyright {{ now.Year }}. All rights reserved.</p>
 

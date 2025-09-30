@@ -1,0 +1,88 @@
+header > menu > ul {
+  display: flex;
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  padding: 0.5rem 0;
+}
+
+article {
+  background-color: var(--article-bg);
+}
+
+section {
+  margin: 0.2rem;
+  padding: 0.2rem;
+}
+
+main > nav ul {
+  list-style: none;
+}
+
+ul > li {
+  margin-left: 1rem;
+}
+
+ol > li {
+  margin-left: 1.5rem;
+}
+
+
+p {
+  margin: 0.2rem;
+  padding: 0.2rem;
+}
+
+pre, code {
+  background-color: var(--code-bg);
+  margin: 0.2rem;
+  padding: 0.2rem;
+}
+
+details {
+  border: 1px solid var(--border-color);
+  padding: 0.2rem;
+  margin: 0.2rem;
+  position: relative;
+  background-color: var(--details-bg);
+}
+
+details > summary {
+  list-style: none;
+  padding-right: 2rem;
+  cursor: pointer;
+  position: relative;
+}
+
+details > summary::after {
+  content: "◀";
+  position: absolute;
+  right: 0;
+}
+
+details[open] > summary::after {
+  content: "▼";
+}
+
+blockquote {
+  border-left: 4px solid var(--border-color);
+  padding: 0.5rem;
+  color: var(--text-color);
+  background-color: var(--details-bg);
+}
+
+
+.codeblock {
+  position: relative;
+}
+.codeblock .code-lang {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.codeblock .code-copy-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
