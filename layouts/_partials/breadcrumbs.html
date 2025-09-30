@@ -11,18 +11,6 @@
     {{ $breadcrumbstitle = .File.BaseFileName | humanize | title }}
   {{ end }}
   <a href="{{ .RelPermalink }}">{{ $breadcrumbstitle }}</a>
-  <span>›</span>
+  <span>/</span>
 {{- end }}
-
-{{- $displaytitle := "" }}
-{{ if .LinkTitle }}
-  {{ $displaytitle = .LinkTitle }}
-{{ else if .Title }}
-  {{ $displaytitle = .Title }}
-{{ else if and .IsSection .File }}
-  {{ $displaytitle = path.Base .File.Dir | humanize | title }}
-{{ else if and .IsPage .File }}
-  {{ $displaytitle = .File.BaseFileName | humanize | title }}
-{{ end }}
-<i>{{ $displaytitle }}</i>
 </p>

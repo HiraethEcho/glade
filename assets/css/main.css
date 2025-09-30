@@ -22,7 +22,20 @@ header {
   position: sticky;
   height: auto;
   top: 0;
+  margin: 0 0.5rem;
+  padding: 0.5rem;
   background-color: var(--header-bg);
+}
+header > menu > ul {
+  display: flex;
+  list-style: none;
+  margin: 0rem;
+}
+header > menu > ul li {
+  margin-left: 0.5rem;
+}
+header > label {
+  display: none;
 }
 
 main {
@@ -37,7 +50,6 @@ nav {
   flex: 0 0 250px;
   height: 100%;
   overflow-y: auto;
-  background-color: var(--nav-bg);
 }
 
 article {
@@ -53,11 +65,6 @@ footer {
   text-align: center;
 }
 
-header > label {
-  display: none;
-}
-
-
 .post-end {
   display: flex;
 }
@@ -72,8 +79,31 @@ header > label {
 
 @media (max-width: 768px) {
   header {
-    align-items: top;
     flex-direction: column;
+  }
+
+  header > menu {
+    display: none;
+  }
+  header > menu > ul {
+    list-style: none;
+    flex-direction: column;
+    text-align: center;
+  }
+  header > menu > ul li {
+    margin: 0rem;
+  }
+
+  header > label {
+    display: block;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+  }
+
+  #menu-checkbox:checked ~ menu {
+    display: block;
+    position: relative;
   }
 
   main {
@@ -88,27 +118,5 @@ header > label {
 
   article {
     height: auto;
-  }
-
-  menu {
-    display: none;
-  }
-
-  menu > ul {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-  }
-
-  header > label {
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-
-  #menu-checkbox:checked ~ menu {
-    display: block;
-    position: relative;
   }
 }

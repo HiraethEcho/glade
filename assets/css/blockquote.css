@@ -1,0 +1,43 @@
+blockquote {
+  margin: 0.2rem 0.5rem;
+  padding: 0.2rem;
+  border-left: 0.3rem solid var(--blockquote-border);
+  background-color: var(--blockquote-bg);
+}
+
+blockquote.alert-note {
+  border-left-color: var(--alert-note-border);
+  background-color: var(--alert-note-bg);
+}
+blockquote.alert-tip {
+  border-left-color: var(--alert-tip-border);
+  background-color: var(--alert-tip-bg);
+}
+blockquote.alert-important {
+  border-left-color: var(--alert-important-border);
+  background-color: var(--alert-important-bg);
+}
+blockquote.alert-caution {
+  border-left-color: var(--alert-caution-border);
+  background-color: var(--alert-caution-bg);
+}
+blockquote.alert-warning {
+  border-left-color: var(--alert-warning-border);
+  background-color: var(--alert-warning-bg);
+}
+
+blockquote.alert-note > .alert-heading {
+  color: var(--alert-note-border);
+}
+blockquote.alert-tip > .alert-heading {
+  color: var(--alert-tip-border);
+}
+blockquote.alert-important > .alert-heading {
+  color: var(--alert-important-border);
+}
+blockquote.alert-caution > .alert-heading {
+  color: var(--alert-caution-border);
+}
+blockquote.alert-warning > .alert-heading {
+  color: var(--alert-warning-border);
+}
