@@ -5,8 +5,8 @@
 {{ end }} 
 
 {{ define "article" }}
-  <h1>{{ .Title }}</h1>
-    {{ partial "breadcrumbs.html" . }}
+  {{ partial "breadcrumbs.html" . }}
+  <h1>{{ .Title }}{{ partial "rss-link.html" . }}</h1>
   <section class="section">
     {{ .Content }} 
   </section>

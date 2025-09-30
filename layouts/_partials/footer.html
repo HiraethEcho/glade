@@ -2,8 +2,10 @@
 {{ range (where .Site.Pages "Kind" "page" )}}
     {{$scratch.Add "total" .WordCount}}
 {{ end }}
-<p>
+Copyright {{ now.Year }}. 
+{{ $cc := default "nc-sa" .Site.Params.copyright }}
+<a href="https://creativecommons.org/licenses/by-{{ $cc }}/4.0">
+  CC BY-{{$cc | upper}}
+</a>
 {{$scratch.Get "total" }} words in <a href="/archive">{{ len .Site.RegularPages }}</a> posts.
-</p>
-<p>Copyright {{ now.Year }}. All rights reserved.</p>
 
