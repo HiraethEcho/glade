@@ -6,7 +6,9 @@
 {{ end }}
 
 {{ define "article" }}
-{{ partial "page-start.html" .}}
+{{ partial "breadcrumbs.html" . }}
+<h1>{{ .Title }}</h1>
+{{ partial "post-info.html" . }}
 <section class="page">
 {{ .Content }} 
 </section>
