@@ -6,11 +6,11 @@
 {{ end }}
 
 {{ define "article" }}
-{{ partial "breadcrumbs.html" . }}
-<h1>{{ .Title }}</h1>
-{{ partial "post-info.html" . }}
-<section class="page">
-{{ .Content }} 
-</section>
-{{ partial "page-end.html" . }}
+  {{ partial "breadcrumbs.html" . }}
+  <h1>{{ .Title }}</h1>
+  {{ partial "post-info.html" . }}
+  <section class="page">
+    {{ .Content }} 
+  </section>
+  {{ partial "page-end.html" . }}
 {{ end }}

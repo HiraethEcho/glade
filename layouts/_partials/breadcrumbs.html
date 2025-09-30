@@ -11,6 +11,6 @@
     {{ $breadcrumbstitle = .File.BaseFileName | humanize | title }}
   {{ end }}
   <a href="{{ .RelPermalink }}">{{ $breadcrumbstitle }}</a>
-  <span>/</span>
+  <span>›</span>
 {{- end }}
 </p>
