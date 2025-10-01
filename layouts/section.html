@@ -7,10 +7,10 @@
 {{ define "main" }}
   {{ partial "breadcrumbs.html" . }}
   <h1>{{ .Title }}{{ partial "rss-link.html" . }}</h1>
-  <section class="section">
+  <article class="section">
     {{ .Content }} 
-  </section>
-  {{ range .RegularPages }}
+  </article>
+  {{ range .RegularPagesRecursive }}
     {{ partial "post-section.html" . }}
   {{ end }} 
 {{ end }}

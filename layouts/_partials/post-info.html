@@ -22,10 +22,11 @@
 {{ range $taxonomyName, $taxonomy := .Site.Taxonomies }}
   {{ $terms := ($page.GetTerms $taxonomyName) }}
   {{ with $terms }}
-      {{ $taxonomyName }}:
-        {{- range . }}
-        <b><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></b>
-        {{ end }}
+    {{ $taxonomyName }}:
+    {{- range . }}
+    <b><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></b>
+    {{ end }}
+    <br>
   {{ end }}
 {{ end }}
 </p>

@@ -9,8 +9,8 @@
   {{ partial "breadcrumbs.html" . }}
   <h1>{{ .Title }}</h1>
   {{ partial "post-info.html" . }}
-  <section class="page">
+  <article class="page">
     {{ .Content }} 
-  </section>
+  </article>
   {{ partial "page-end.html" . }}
 {{ end }}

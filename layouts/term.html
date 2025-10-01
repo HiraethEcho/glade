@@ -6,9 +6,9 @@
 {{ define "main" }}
   {{ partial "breadcrumbs.html" . }}
   <h1>{{ .Title }}{{ partial "rss-link.html" . }}</h1>
-  <section class="term">
+  <article class="term">
   {{ .Content }}
-  </section>
+  </article>
   {{ range .RegularPages }}
     {{ partial "post-section.html" . }}
   {{ end }} 
