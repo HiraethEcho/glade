@@ -20,12 +20,11 @@ header {
   height: auto;
   position: sticky;
   top: 0;
-  margin: 0 0.5rem;
-  padding: 0.5rem;
-  background-color: var(--header-bg);
+  margin: 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border: 1px solid var(--border-color);
 }
 header > menu > ul {
   display: flex;
@@ -47,10 +46,11 @@ main {
   display: flex;
 }
 
-nav {
+main > nav {
   flex: 0 0 250px;
   height: 100%;
   overflow-y: auto;
+  border: 1px solid var(--border-color);
 }
 
 article {
@@ -120,7 +120,7 @@ footer {
     overflow-y: auto;
   }
 
-  nav {
+  main > nav {
     height: auto;
   }
 
