@@ -7,13 +7,12 @@
   <header>
     {{ partial "header.html" . }}
   </header>
+  <input type="checkbox" id="nav-checkbox" style="display: none;">
+  <nav>
+    {{ block "nav" . }}{{ end }}
+  </nav>
   <main>
-    <nav>
-      {{ block "nav" . }}{{ end }}
-    </nav>
-    <article>
-    {{ block "article" . }}{{ end }}
-    </article>
+  {{ block "main" . }}{{ end }}
   </main>
   <footer>
     {{ partial "footer.html" . }}

@@ -1,6 +1,5 @@
 blockquote {
   margin: 0.2rem 0.5rem;
-  padding: 0.2rem;
   border-left: 0.3rem solid var(--blockquote-border);
   background-color: var(--blockquote-bg);
 }

@@ -5,3 +5,6 @@ Copyright {{ now.Year }}.
   CC BY-{{$cc | upper}}
 </a>
 </p>
+{{ with .Site.Params.footer }}
+<p>{{ . }}</p>
+{{ end }}
