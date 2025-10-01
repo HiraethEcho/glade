@@ -1,11 +1,12 @@
 :root {
   --background-color: #ffffff;
   --text-color: rgb(31, 31, 31);
-  --article-bg: #f8e9ea;
+  --main-bg: #f8e9ea;
   --border-color: #e0e0e0;
   --link-color: #1a73e8;
   --code-bg: rgb(245, 245, 245);
   --details-bg: #eaeaea;
+  --summary-bg: #e0e0e0;
 
   --blockquote-bg: #f5f5f5;
   --blockquote-border: #a5a5a5;
@@ -29,6 +30,7 @@
   --border-color: #444444;
   --code-bg: rgb(55, 56, 62);
   --details-bg: #333333;
+  --summary-bg: #202020;
 
   --blockquote-bg: #424242;
   --blockquot-border: #121212;
