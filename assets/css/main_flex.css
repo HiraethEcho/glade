@@ -5,28 +5,26 @@
 }
 
 body {
-  display: grid;
-  grid-template-areas:
-    "banner banner"
-    "sidebar post"
-    "footer footer";
-  grid-template-rows: auto 1fr auto;
-  grid-template-columns: 250px 1fr;
+  display: flex;
+  flex-direction: column;
   margin: 0rem auto;
   height: 100vh;
   max-width: 1200px;
   background-color: var(--background-color);
   color: var(--text-color);
-  overflow: hidden;
+  transition:
 }
 
 header {
-  grid-area: banner;
+  flex: 0;
   height: auto;
   position: sticky;
+  top: 0;
+  margin: 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border: 1px solid var(--border-color);
 }
 header > menu > ul {
   display: flex;
@@ -40,24 +38,33 @@ header > label {
   display: none;
 }
 
-body > main {
-  grid-area: post;
+main {
+  flex: 1;
   height: 100%;
-  position: sticky;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+
+main > nav {
+  flex: 0 0 250px;
+  height: 100%;
+  overflow-y: auto;
+  border: 1px solid var(--border-color);
+}
+
+article {
+  flex: 1;
+  order: 1;
+  height: 100%;
+  margin: 0.5rem;
+  padding: 0 0.5rem;
   overflow-wrap: break-word;
   word-wrap: break-word;
   overflow-y: auto;
 }
 
-body > nav {
-  grid-area: sidebar;
-  height: 100%;
-  position: sticky;
-  overflow-y: auto;
-}
-
 footer {
-  grid-area: footer;
   flex: 0;
   height: auto;
   position: sticky;
@@ -79,39 +86,12 @@ footer {
 }
 
 @media (max-width: 768px) {
-  body {
-    display: flex;
-    flex-direction: column;
-    overflow: visible;
-    height: auto;
-  }
-  body > header,
-  main,
-  footer,
-  nav {
-    overflow: visible;
-    height: auto;
-    position: relative;
-  }
-
   header {
     flex-direction: column;
   }
 
   header > menu {
     display: none;
-  }
-  header > #menu-btn {
-    display: block;
-    position: absolute;
-    right: 0rem;
-  }
-  #menu-checkbox:checked ~ menu {
-    display: block;
-    position: relative;
-  }
-  #menu-checkbox:checked ~ #menu-btn > h1 {
-    transform: rotate(-90deg);
   }
   header > menu > ul {
     list-style: none;
@@ -122,15 +102,29 @@ footer {
     margin: 0rem;
   }
 
-  body > nav {
-    display: none;
-  }
-  header > #nav-btn {
+  header > label {
     display: block;
     position: absolute;
-    left: 0rem;
+    right: 0.5rem;
+    top: 0.5rem;
   }
-  #nav-checkbox:checked ~ nav {
+
+  #menu-checkbox:checked ~ menu {
     display: block;
+    position: relative;
+  }
+
+  main {
+    display: block;
+    position: relative;
+    overflow-y: auto;
+  }
+
+  main > nav {
+    height: auto;
+  }
+
+  article {
+    height: auto;
   }
 }

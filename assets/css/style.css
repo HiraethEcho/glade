@@ -6,8 +6,9 @@ main {
   margin: 0 1rem;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6 {
   padding 0.5rem;
+  margin: 1rem 0;
 }
 
 pre,
@@ -17,13 +18,16 @@ ol,
 p {
   margin: 0.2rem;
 }
+a {
+  color: var(--link-color)
+}
 
 ul > li {
-  margin-left: 1rem;
+  margin-left: 0.7rem;
 }
 
 ol > li {
-  margin-left: 1.5rem;
+  margin-left: 1rem;
 }
 
 pre,
@@ -66,13 +70,13 @@ details > summary {
 }
 
 details > summary::after {
-  content: "◀";
+  content: "«";
   position: absolute;
   right: 0;
 }
 
 details[open] > summary::after {
-  content: "▼";
+  transform: rotate(-90deg);
 }
 
 nav details {
