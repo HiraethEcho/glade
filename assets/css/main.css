@@ -1,7 +1,8 @@
 * {
+  line-height: 1.4;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  line-height: 1.4;
 }
 
 body {
@@ -26,12 +27,6 @@ body > header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #888888;
-  border: 2px solid #f00000;
-}
-
-header h1 {
-  margin: 0; !important
 }
 
 header > menu > ul {
@@ -48,21 +43,19 @@ header > label {
 
 body > main {
   grid-area: post;
-  height: 100%;
   position: sticky;
   overflow-wrap: break-word;
   word-wrap: break-word;
   overflow-y: auto;
-  border: 2px solid #0000f0;
+  padding: 0.5rem;
+  margin: 0.5rem;
 }
 
 body > nav {
   grid-area: sidebar;
-  height: 100%;
   position: sticky;
   overflow-y: auto;
-  background-color: #00f000;
-  border: 2px solid #0080a0;
+  margin: 0 0 0.5rem;
 }
 
 footer {
@@ -71,8 +64,6 @@ footer {
   position: sticky;
   bottom: 0;
   text-align: center;
-  background-color: #f0f0f0;
-  border: 2px solid #f000a0;
 }
 
 .post-end {
@@ -94,9 +85,9 @@ footer {
     "n banner"
     "sidebar post"
     "n2 footer";
-    grid-template-columns: 250px 100vw;
-    width: calc(250px +100vw);
-    left: -250px;
+    grid-template-columns: 50vw 100vw;
+    width: 150vw;
+    left: -50vw;
     overflow-x: auto;
   }
   body > header {
@@ -133,7 +124,7 @@ footer {
   }
   #nav-checkbox:checked ~ nav {
     display: block;
-    left: 0px;
+    left: 0.5rem;
     z-index: 1;
   }
 }

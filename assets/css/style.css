@@ -4,12 +4,12 @@ body {
 }
 
 main {
+  border-radius: var(--radius);
   background-color: var(--main-bg);
 }
 
-h2, h3, h4, h5, h6 {
-  padding 0.5rem;
-  margin: 1rem 0;
+h1, h2, h3, h4, h5, h6 {
+  padding: 0.5rem;
 }
 
 a {
@@ -21,11 +21,11 @@ code,
 ul,
 ol,
 p {
-  margin: 0.2rem;
+  margin: 0.5rem;
 }
 
 ul > li {
-  margin-left: 0.7rem;
+  margin-left: 1rem;
 }
 
 ol > li {
@@ -35,6 +35,7 @@ ol > li {
 pre,
 code {
   background-color: var(--code-bg);
+  border-radius: var(--radius);
 }
 
 .codeblock {
@@ -57,44 +58,44 @@ button {
 }
 
 details {
-  border: 0.1rem solid var(--border-color);
   margin: 0.3rem;
   position: relative;
-  background-color: var(--details-bg);
-  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--code-bg);
+  border-radius: var(--radius);
 }
 
 details > summary {
   list-style: none;
-  margin: 0 0.5rem;
-  padding-right: 1rem;
+  padding: 0.5rem 1rem;
   cursor: pointer;
   position: relative;
-  background-color: var(--summary-bg)
+  background-color: var(--summary-bg);
+  border-radius: var(--radius);
 }
 
 details > summary::after {
   content: "◂";
   position: absolute;
-  right: 0;
+  right: 0.5rem;
 }
 
 details[open] > summary::after {
   transform: rotate(-90deg);
 }
 
-nav details {
-  margin: 0.2rem 0;
+body > nav details {
   border: none;
   padding: 0;
+  margin: 0.4rem 0;
 }
 
-nav ul {
+body > nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-nav > details {
+body > nav > details {
   border: 0.1rem solid var(--border-color);
 }
