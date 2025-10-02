@@ -18,7 +18,7 @@ body {
   overflow: hidden;
 }
 
-header {
+body > header {
   grid-area: banner;
   height: auto;
   position: sticky;
@@ -26,7 +26,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 1rem;
+  background-color: #888888;
+  border: 2px solid #f00000;
 }
 
 header h1 {
@@ -52,7 +53,7 @@ body > main {
   overflow-wrap: break-word;
   word-wrap: break-word;
   overflow-y: auto;
-  padding: 0.5rem;
+  border: 2px solid #0000f0;
 }
 
 body > nav {
@@ -60,7 +61,8 @@ body > nav {
   height: 100%;
   position: sticky;
   overflow-y: auto;
-  padding: 0.5rem;
+  background-color: #00f000;
+  border: 2px solid #0080a0;
 }
 
 footer {
@@ -69,13 +71,12 @@ footer {
   position: sticky;
   bottom: 0;
   text-align: center;
-  padding: 1rem;
-  margin: 1rem 0 0;
+  background-color: #f0f0f0;
+  border: 2px solid #f000a0;
 }
 
 .post-end {
   display: flex;
-  margin: 1rem;
 }
 .post-end .post-prev {
   flex: 1;
@@ -88,27 +89,16 @@ footer {
 
 @media (max-width: 768px) {
   body {
-    /* display: flex; */
-    /* flex-direction: column; */
-    display: grid;
+    position: absolute;
     grid-template-areas:
-      "banner"
-      "sidebar"
-      "post"
-      "footer";
-    grid-template-rows: auto auto 1fr auto;
-    grid-template-columns: 1fr;
-    overflow: auto;
+    "n banner"
+    "sidebar post"
+    "n2 footer";
+    grid-template-columns: 250px 100vw;
+    width: calc(250px +100vw);
+    left: -250px;
+    overflow-x: auto;
   }
-  body > nav {
-    display: none;
-    height: auto;
-  }
-  body > main {
-    overflow: auto;
-    position: static
-  }
-
   body > header {
     flex-direction: column;
   }
@@ -143,5 +133,7 @@ footer {
   }
   #nav-checkbox:checked ~ nav {
     display: block;
+    left: 0px;
+    z-index: 1;
   }
 }
