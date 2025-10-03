@@ -8,7 +8,7 @@ body > main {
 }
 
 body > nav {
-  background-color: var(--nav-bg);
+  background-color: var(--main-bg);
 }
 
 h1,
