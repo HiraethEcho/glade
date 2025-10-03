@@ -1,5 +1,3 @@
-// assets/js/theme-switcher.js
-
 document.addEventListener('DOMContentLoaded', function() {
   const themeToggle = document.getElementById('theme-toggle');
   const themeIcon = document.getElementById('theme-icon');
@@ -30,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const updateButtonIcon = theme => {
     if (themeIcon) {
-      themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+      themeIcon.textContent = theme === 'dark' ? '🌙' : '☀️';
     }
   };
 
