@@ -31,6 +31,7 @@ a:hover {
 pre,
 code,
 ul,
+dd,
 ol,
 p {
   margin: 0.5rem;
@@ -41,11 +42,25 @@ li {
 }
 
 pre,
-code {
+code,
+kbd,
+samp,
+tt,
+var {
   background-color: var(--code-bg);
   border-radius: var(--radius);
+  padding: 0.125rem 0.25rem;
+  font-family: var(--b-font-mono);
+  font-size: 0.875em;
 }
-
+pre {
+  overflow: auto;
+  max-height: 600px;
+  white-space: pre;
+}
+pre code {
+  padding: 0;
+}
 .codeblock {
   position: relative;
 }
@@ -63,6 +78,45 @@ code {
 button {
   border: none;
   background-color: inherit;
+}
+
+img,
+video,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+embed,
+iframe,
+object {
+  max-width: 100%;
+}
+iframe {
+  border-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  text-indent: 0;
+}
+table caption {
+  margin-bottom: 0.5rem;
+}
+tr {
+  border-bottom: 1px solid var(--line);
+}
+td,
+th {
+  padding: 0.5rem 0 0.5rem 1rem;
+  word-break: normal;
+}
+td:first-child,
+th:first-child {
+  padding-left: 0;
+}
+th {
+  text-align: left;
 }
 
 details {
@@ -152,4 +206,12 @@ body> nav li {
 }
 #searchResults .focus {
   background-color: var(--code-bg);
+}
+
+label {
+  cursor: pointer;
+  display: block;
+}
+progress {
+  vertical-align: baseline;
 }

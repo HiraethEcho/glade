@@ -76,10 +76,11 @@ footer {
     "n banner"
     "sidebar post"
     "n2 footer";
-    grid-template-columns: 50vw 100vw;
-    width: 150vw;
-    left: -50vw;
+    grid-template-columns: 70vw 100vw;
+    width: 170vw;
+    left: -70vw;
     overflow-x: auto;
+    --radius: 0px;
   }
   body > header {
     flex-direction: column;
