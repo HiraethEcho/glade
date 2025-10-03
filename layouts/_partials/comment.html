@@ -1,2 +1,9 @@
-<section>
-</section>
+{{ if eq .Site.Params.comment "waline" }}
+  {{ partial "comments/waline.html" . }}
+{{ else if eq .Site.Params.comment "twikoo" }}
+  {{ partial "comments/twikoo.html" . }}
+{{ else if eq .Site.Params.comment "cusdis" }}
+  {{ partial "comments/cusdis.html" . }}
+{{ else if eq .Site.Params.comment "utterances" }}
+  {{ partial "comments/utterances.html" . }}
+{{ end }}

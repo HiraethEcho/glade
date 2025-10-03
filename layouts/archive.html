@@ -10,6 +10,7 @@
   <p>
   {{ .Content }}
   </p>
+  {{ partial "search.html" . }}
   {{ range site.RegularPages }}
     {{ partial "post-section.html" . }}
   {{ end }}

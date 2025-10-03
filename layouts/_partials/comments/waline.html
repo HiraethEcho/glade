@@ -61,7 +61,7 @@
     init({
         // options
         el: '#waline',
-        serverURL: 'https://hexowaline.netlify.app/.netlify/functions/comment/',
+        serverURL: '{{ .Site.Params.walineserver | safeJS }}',
         locale,
         emoji: false,     // 表情
         search: false,    // GIF 表情包

@@ -1,13 +1,14 @@
 <section class="post-end">
   <div class="post-prev">
-  {{- with .Prev }}
-  <a href="{{ .Permalink }}">«{{- .Name -}}</a>
-  {{- end }}
+    {{- with .Prev }}
+      <a href="{{ .Permalink }}"><p>« PREV</p>
+      <p>{{- .Name -}}</p></a>
+    {{- end }}
   </div>
-
   <div class="post-next">
-  {{- with .Next }}
-  <a href="{{ .Permalink }}">{{- .Name -}}»</a>
+    {{- with .Next }}
+    <a href="{{ .Permalink }}"><p>NEXT »</p>
+    <p>{{- .Name -}}</p></a>
   {{- end }}
   </div>
 </section>

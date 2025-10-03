@@ -4,16 +4,21 @@ body {
 }
 
 main {
-  border-radius: var(--radius);
   background-color: var(--main-bg);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   padding: 0.5rem;
 }
 
 a {
-  color: var(--link-color)
+  color: var(--link-color);
+  text-decoration: none;
 }
 
 pre,
@@ -24,11 +29,7 @@ p {
   margin: 0.5rem;
 }
 
-ul > li {
-  margin-left: 1rem;
-}
-
-ol > li {
+li {
   margin-left: 1rem;
 }
 
@@ -60,7 +61,6 @@ button {
 details {
   margin: 0.3rem;
   position: relative;
-  border: 1px solid var(--border-color);
   background-color: var(--code-bg);
   border-radius: var(--radius);
 }
@@ -84,6 +84,15 @@ details[open] > summary::after {
   transform: rotate(-90deg);
 }
 
+body > nav {
+  scrollbar-width: none;
+}
+body > nav::-moz-scrollbar {
+  display: none;
+}
+body > nav::-webkit-scrollbar {
+  display: none;
+}
 body > nav details {
   border: none;
   padding: 0;
@@ -98,4 +107,23 @@ body > nav ul {
 
 body > nav > details {
   border: 0.1rem solid var(--border-color);
+}
+
+.post-end {
+  display: flex;
+  margin: 1rem 0.5rem;
+}
+.post-end .post-prev {
+  flex: 1;
+  border-radius: var(--radius);
+  text-align: left;
+}
+.post-end .post-next {
+  flex: 1;
+  border-radius: var(--radius);
+  text-align: right;
+}
+
+.post-end > div:hover {
+  background-color: var(--summary-bg);
 }

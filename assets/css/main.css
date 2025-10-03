@@ -66,18 +66,6 @@ footer {
   text-align: center;
 }
 
-.post-end {
-  display: flex;
-}
-.post-end .post-prev {
-  flex: 1;
-  text-align: left;
-}
-.post-end .post-next {
-  flex: 1;
-  text-align: right;
-}
-
 @media (max-width: 768px) {
   body {
     position: absolute;
