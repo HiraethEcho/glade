@@ -1,9 +1,20 @@
+<script>
+  if (localStorage.getItem("pref-theme") === "dark") {
+      document.body.classList.add('dark');
+  } else if (localStorage.getItem("pref-theme") === "light") {
+      document.body.classList.remove('dark')
+  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.body.classList.add('dark');
+  }
+</script>
+
 <a href="{{ .Site.Home.RelPermalink }}"><h1>{{ site.Title }}</h1></a>
 <input type="checkbox" id="menu-checkbox" style="display: none;">
 <label for="menu-checkbox" id="menu-btn"><h1>«</h1></label>
 <label for="nav-checkbox" id="nav-btn"><h1>☰</h1></label>
 <menu><ul>
-  <li><button id="theme-toggle"> <span id="theme-icon">🌙</span> </button></li>
+  <li><button id="themetoggle" onclick="toggleTheme()">🌓</button></li>
+  <!-- <li><button id="theme-toggle"> <span id="theme-icon">🌙</span> </button></li> -->
   {{ range .Site.Menus.main }}
     <li><a tabindex="-1" href="{{ .URL | relURL }}">{{ safeHTML .Name }}</a></li>
   {{ end }}
