@@ -30,7 +30,6 @@ a:hover {
 
 pre,
 section,
-code,
 ul,
 dd,
 ol,
@@ -54,23 +53,17 @@ pre,
 code,
 kbd,
 samp,
-tt,
 var {
   background-color: var(--code-bg);
-  padding: 0.125rem 0.25rem;
   font-family: var(--b-font-mono);
-  font-size: 0.875em;
 }
 pre {
   overflow: auto;
   max-height: 600px;
-  white-space: pre;
-}
-pre code {
-  padding: 0;
 }
 .codeblock {
   position: relative;
+  padding: 0.5rem
 }
 .codeblock .code-lang {
   position: absolute;
@@ -90,16 +83,13 @@ button {
 
 img,
 video,
-svg {
-  max-width: 100%;
-  height: auto;
-}
+svg,
 embed,
 iframe,
 object {
+  max-width: 80%;
+  height: auto;
   max-width: 100%;
-}
-iframe {
   border-style: none;
 }
 
