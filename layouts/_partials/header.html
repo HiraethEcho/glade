@@ -15,58 +15,52 @@
 <menu><ul>
   <li><button id="themetoggle" onclick="toggleTheme()">🌓</button></li>
   {{- range site.Menus.main }}
-    {{ if .HasChildren }}
-      <li><select onchange="location = this.value;"><option value="" disabled>{{ .Name }}</option>
-        {{- range .Children }}
-        <option value="{{.URL}}">{{ .Name }}</option>
-        {{- end }}
-      </select></li>
-    {{ else }}
-      <li><a href="{{.URL}}">{{ .Name }}</a></li>
-    {{ end }}
-  {{- end }}
+    {{ partial "menu-select.html" . }}
+  {{ end }}
 </ul></menu>
 
-{{- define "_partials/menu-select.html" -}}
-  {{- range site.Menus.main }}
-    {{ if .HasChildren }}
-      <li><select onchange="location = this.value;"><option value="" disabled>{{ .Name }}</option>
-        {{- range .Children }}
-        <option value="{{.URL}}">{{ .Name }}</option>
-        {{- end }}
-      </select></li>
-    {{ else }}
-      <li><a href="{{.URL}}">{{ .Name }}</a></li>
-    {{ end }}
-  {{- end }}
+
+{{- define "_partials/menu-button.html" -}}
+  {{ if .HasChildren }}
+    <li>
+      <label for="menu-{{ .Identifier }}">{{ .Name }}</label>
+      <input type="checkbox" id="menu-{{ .Identifier }}" style="display: none;">
+      <ul>
+        {{ range .Children }}
+          {{ partial "menu-button.html" . }}
+        {{ end }}
+      </ul>
+    </li>
+  {{ else }}
+    <li><a href="{{.URL | relURL}}">{{ .Name }}</a></li>
+  {{ end }}
 {{end}}
 
-{{- define "_partials/menu-list.html" -}}
-  {{- range .menuEntries }}
-    {{ if .HasChildren }}
-      <li><details><summary>{{ .Name }}</summary><div class="submenu">
-        <ul>
-          {{- with .Children }}
-              {{- partial "menu-list.html" (dict "menuEntries" .) }}
-          {{- end }}
-        </ul></div>
-      </details></li>
-    {{ else }}
-      <li><a href="{{.URL}}">{{ .Name }}</a></li>
-    {{ end }}
-  {{- end }}
-{{- end}}
+{{- define "_partials/menu-select.html" -}}
+  {{ if .HasChildren }}
+    <li>
+      <select onchange="location = this.value;">
+        <option>{{ .Name }}</option>
+        {{- range .Children }}
+          <option value="{{ .URL | relURL }}">{{ .Name }}</option>
+        {{- end }}
+      </select>
+    </li>
+  {{ else }}
+    <li><a href="{{.URL}}">{{ .Name }}</a></li>
+  {{ end }}
+{{end}}
 
-{{- define "_partials/menu-walk.html" -}}
-  {{- range .menuEntries }}
-    {{ if .HasChildren }}
-      <option><select onchange="location = this.value;"><option>{{ .Name }}</option>
-          {{- with .Children }}
-              {{- partial "menu-list.html" (dict "menuEntries" .) }}
-          {{- end }}
-      </select></option>
-    {{ else }}
-      <option value="{{.URL}}">{{ .Name }}</option>
-    {{ end }}
-  {{- end }}
+{{- define "_partials/menu-details.html" -}}
+  {{ if .HasChildren }}
+    <li><details><summary>{{ .Name }}</summary>
+      <ul>
+        {{- range .Children }}
+          {{- partial "menu-details.html" . }}
+        {{- end }}
+      </ul>
+    </details></li>
+  {{ else }}
+    <li><a href="{{.URL}}">{{ .Name }}</a></li>
+  {{ end }}
 {{- end}}

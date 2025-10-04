@@ -26,19 +26,22 @@
   {{ partial "search.html" . }}
   <h2>List of all posts</h2>
   {{ range site.RegularPages }}
-    <section style="border: 1px solid #ccc; margin: 10px; padding: 0.5rem;">
-      <p><a href="{{ .Permalink }}"><b>{{ .Title }}</b></a> <small>{{ .Summary | plainify | truncate 50 | strings.TrimSpace }}</small></p>
+    <section>
       <p>
-        {{ with .Date }}
-          {{ $dateMachine := .Format "2006-01-02T15:04:05-07:00" }}
-          <time datetime="{{ $dateMachine }}">{{ .Format "2006/01/02" }}</time>
-        {{ end }}
-        <span>{{ .WordCount  }}字 {{ .ReadingTime  }}分钟</span>
-        {{ $cc := (default "nc-sa" (default .Site.Params.copyright .Params.copyright)) }}
-        {{ with .Params.status }}
-          <i>{{ . }}</i>
-        {{ end }}
+        <a href="{{ .Permalink }}"><b>{{ .Title }}</b></a>
+        <small>
+          {{ with .Date }}
+            {{ $dateMachine := .Format "2006-01-02T15:04:05-07:00" }}
+            <time datetime="{{ $dateMachine }}">{{ .Format "2006/01/02" }}</time>
+          {{ end }}
+          <span>{{ .WordCount  }}字 {{ .ReadingTime  }}分钟</span>
+          {{ $cc := (default "nc-sa" (default .Site.Params.copyright .Params.copyright)) }}
+          {{ with .Params.status }}
+            <i>{{ . }}</i>
+          {{ end }}
+        </small>
       </p>
+      <p> {{ .Summary | plainify | truncate 50 | strings.TrimSpace }} </p>
     </section>
   {{ end }}
 {{ end }}

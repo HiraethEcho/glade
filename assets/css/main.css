@@ -7,6 +7,7 @@
 }
 
 body {
+  position: relative;
   display: grid;
   grid-template-areas:
     "banner banner"
@@ -30,30 +31,64 @@ body > header {
   align-items: center;
 }
 
+body > header > menu ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+body > header > menu ul li {
+  position: relative;
+}
+
 body > header > menu select {
   display: flex;
   list-style: none;
   border: none;
   background: none;
   font-size: 1rem;
+  color: var(--text-color);
+}
+body > header > menu details {
+  margin: 0rem;
 }
 
-body > header > menu > ul {
+body > header > menu details ul {
   display: flex;
-  list-style: none;
-  margin: 0rem 1rem;
-  font-size: 1rem;
+  position: absolute;
+  min-width: 6rem;
 }
-body > header > menu > ul li {
-  margin-left: 0.5rem;
-}
+
 body > header > label {
   display: none;
 }
 
+body > header > menu input ~ ul {
+  display: none;
+  position: absolute;
+  min-width: 8rem;
+  top: 100%;
+  left: -100%;
+  margin: 0;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  z-index: 1000;
+  text-align: center;
+}
+
+body > header > menu input:checked ~ ul {
+  display: block;
+}
+
+body > header > menu input:checked ~ ul li {
+  display: flex;
+  margin: 0;
+  padding: 1rem;
+  flex-direction: column;
+}
+
 body > main {
   grid-area: post;
-  position: sticky;
   overflow-wrap: break-word;
   word-wrap: break-word;
   overflow-y: auto;
@@ -110,7 +145,6 @@ footer {
   header > menu > ul {
     list-style: none;
     flex-direction: column;
-    text-align: center;
   }
   header > menu > ul li {
     margin: 0rem;

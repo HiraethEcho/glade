@@ -29,12 +29,17 @@ a:hover {
 }
 
 pre,
+section,
 code,
 ul,
 dd,
 ol,
 p {
   margin: 0.5rem;
+}
+
+section {
+  border: 1px solid var(--line);
 }
 
 ul > li {
