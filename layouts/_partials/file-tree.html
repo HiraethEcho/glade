@@ -20,7 +20,7 @@
     {{ $displayroottitle = $root.File.BaseFileName | humanize | title }}
   {{ end }}
 
-  <details open><summary>{{print $displayroottitle }}</summary>
+  <details open><summary><b>{{print $displayroottitle }}</b></summary>
     {{ partial "file-tree-walk.html" (dict "context" $root "depth" 1) }}
   </details>
 {{ end }}
@@ -45,7 +45,7 @@
         {{ if .IsSection }}
           <details>
             <summary>
-              <a href="{{ .RelPermalink }}">{{ $displaytitle }}</a>
+              <b><a href="{{ .RelPermalink }}">{{ $displaytitle }}</a></b>
             </summary>
             {{ partial "file-tree-walk.html" (dict "context" . "depth" (add $depth 1)) }}
           </details>

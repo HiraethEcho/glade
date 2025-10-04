@@ -133,7 +133,6 @@ th {
 
 details {
   margin: 0.3rem;
-  padding: 0 0 0.3rem 0;
   position: relative;
   border: 1px solid var(--g-b-bg);
   background-color: var(--g-i-bg);
@@ -167,7 +166,15 @@ body > nav::-moz-scrollbar {
 body > nav::-webkit-scrollbar {
   display: none;
 }
+
 body > nav details {
+  background-color: var(--g-i-bg);
+  border: none;
+  border-radius: var(--g-radius);
+}
+body > nav summary {
+  background-color: var(--g-i-bg);
+  border-radius: var(--g-radius);
 }
 
 body > nav ul {

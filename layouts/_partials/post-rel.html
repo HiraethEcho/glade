@@ -7,13 +7,16 @@
         <summary>{{ $taxonomyName }}</summary>
         <ul>
           {{- range . }} 
-            <li><details>
-              <summary><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></summary>
-              <ul>
-                {{ range .RegularPages }}
-                  <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
-                {{- end }}
-              </ul>
+            <li>
+              <details>
+                <summary><b>
+                  <a href="{{ .RelPermalink }}">{{ .LinkTitle }}
+                </a></b></summary>
+                <ul>
+                  {{ range .RegularPages }}
+                    <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+                  {{- end }}
+                </ul>
             </details></li>
           {{ end }} 
         </ul>
