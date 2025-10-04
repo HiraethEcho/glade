@@ -1,14 +1,14 @@
-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
-
 body > main {
-  background-color: var(--main-bg);
+  background-color: var(--g-bg);
+  padding: 0.5rem;
 }
 
 body > nav {
-  background-color: var(--main-bg);
+  background-color: var(--g-bg);
+}
+
+article {
+  padding: 0.5rem;
 }
 
 h1,
@@ -21,7 +21,7 @@ h6 {
 }
 
 a {
-  color: var(--link-color);
+  color: var(--g-link);
   text-decoration: none;
 }
 a:hover {
@@ -37,12 +37,23 @@ p {
   margin: 0.5rem;
 }
 
+code {
+  padding: 0.1rem 0.2rem;
+  font-size: 0.8rem;
+}
+pre {
+  padding: 0.5rem
+}
+pre code {
+  padding: 0;
+}
+
 section {
-  border: 1px solid var(--line);
+  border: 1px solid var(--g-line);
 }
 
 ul > li {
-  margin-left: 0.5rem;
+  margin-left: 0.8rem;
 }
 
 ol > li {
@@ -54,9 +65,10 @@ code,
 kbd,
 samp,
 var {
-  background-color: var(--code-bg);
-  font-family: var(--b-font-mono);
+  background-color: var(--g-i-bg);
+  font-family: var(--g-font-mono);
 }
+
 pre {
   overflow: auto;
   max-height: 600px;
@@ -87,9 +99,9 @@ svg,
 embed,
 iframe,
 object {
-  max-width: 80%;
+  max-width: 70%;
+  margin: 0 auto;
   height: auto;
-  max-width: 100%;
   border-style: none;
 }
 
@@ -102,7 +114,7 @@ table caption {
   margin-bottom: 0.5rem;
 }
 tr {
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--g-line);
 }
 td,
 th {
@@ -120,16 +132,17 @@ th {
 details {
   margin: 0.3rem;
   position: relative;
-  border: 1px solid var(--summary-bg);
-  background-color: var(--code-bg);
+  border: 1px solid var(--g-b-bg);
+  background-color: var(--g-i-bg);
+  border-radius: var(--g-radius);
 }
 
 details > summary {
   list-style: none;
-  padding: 0rem 1rem 0rem 0.5rem;
+  padding: 0.1rem 1rem 0.1rem 0.5rem;
   cursor: pointer;
   position: relative;
-  background-color: var(--summary-bg);
+  background-color: var(--g-b-bg);
 }
 
 details > summary::after {
@@ -181,7 +194,7 @@ body> nav li {
   text-align: right;
 }
 .post-end > div:hover {
-  background-color: var(--summary-bg);
+  background-color: var(--g-b-bg);
 }
 
 #searchbox input {
@@ -202,7 +215,7 @@ body> nav li {
   width: 100%;
 }
 #searchResults .focus {
-  background-color: var(--code-bg);
+  background-color: var(--g-i-bg);
 }
 
 label {
@@ -211,4 +224,13 @@ label {
 }
 progress {
   vertical-align: baseline;
+}
+hr {
+  color: var(--g-line)
+}
+
+figure {
+  margin: 0;
+  padding: 0.5rem;
+  text-align: center;
 }

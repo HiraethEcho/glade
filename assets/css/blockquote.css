@@ -1,8 +1,9 @@
 blockquote {
   margin: 0.3rem 0.5rem;
   padding: 0.2rem;
-  border-left: 0.3rem solid var(--blockquote-border);
+  border-left: 0.25rem solid var(--blockquote-border);
   background-color: var(--blockquote-bg);
+  border-radius: var(--g-radius);
 }
 
 blockquote.alert-note {
