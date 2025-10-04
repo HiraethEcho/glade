@@ -14,8 +14,59 @@
 <label for="nav-checkbox" id="nav-btn"><h1>☰</h1></label>
 <menu><ul>
   <li><button id="themetoggle" onclick="toggleTheme()">🌓</button></li>
-  <!-- <li><button id="theme-toggle"> <span id="theme-icon">🌙</span> </button></li> -->
-  {{ range .Site.Menus.main }}
-    <li><a tabindex="-1" href="{{ .URL | relURL }}">{{ safeHTML .Name }}</a></li>
-  {{ end }}
+  {{- range site.Menus.main }}
+    {{ if .HasChildren }}
+      <li><select onchange="location = this.value;"><option value="" disabled>{{ .Name }}</option>
+        {{- range .Children }}
+        <option value="{{.URL}}">{{ .Name }}</option>
+        {{- end }}
+      </select></li>
+    {{ else }}
+      <li><a href="{{.URL}}">{{ .Name }}</a></li>
+    {{ end }}
+  {{- end }}
 </ul></menu>
+
+{{- define "_partials/menu-select.html" -}}
+  {{- range site.Menus.main }}
+    {{ if .HasChildren }}
+      <li><select onchange="location = this.value;"><option value="" disabled>{{ .Name }}</option>
+        {{- range .Children }}
+        <option value="{{.URL}}">{{ .Name }}</option>
+        {{- end }}
+      </select></li>
+    {{ else }}
+      <li><a href="{{.URL}}">{{ .Name }}</a></li>
+    {{ end }}
+  {{- end }}
+{{end}}
+
+{{- define "_partials/menu-list.html" -}}
+  {{- range .menuEntries }}
+    {{ if .HasChildren }}
+      <li><details><summary>{{ .Name }}</summary><div class="submenu">
+        <ul>
+          {{- with .Children }}
+              {{- partial "menu-list.html" (dict "menuEntries" .) }}
+          {{- end }}
+        </ul></div>
+      </details></li>
+    {{ else }}
+      <li><a href="{{.URL}}">{{ .Name }}</a></li>
+    {{ end }}
+  {{- end }}
+{{- end}}
+
+{{- define "_partials/menu-walk.html" -}}
+  {{- range .menuEntries }}
+    {{ if .HasChildren }}
+      <option><select onchange="location = this.value;"><option>{{ .Name }}</option>
+          {{- with .Children }}
+              {{- partial "menu-list.html" (dict "menuEntries" .) }}
+          {{- end }}
+      </select></option>
+    {{ else }}
+      <option value="{{.URL}}">{{ .Name }}</option>
+    {{ end }}
+  {{- end }}
+{{- end}}

@@ -1,5 +1,7 @@
-<h2><a href="{{ .RelPermalink }}">{{ .Title | default .File.BaseFileName }}</a></h2>
+<section>
+<h3><a href="{{ .RelPermalink }}">{{ .Title | default .File.BaseFileName }}</a></h3>
 {{ partial "post-info.html" . }}
 <p>
 {{ .Summary | plainify | truncate 50 | strings.TrimSpace }}
 </p>
+</section>
