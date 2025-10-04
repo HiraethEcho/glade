@@ -1,5 +1,6 @@
 <details open><summary>Site Info</summary>
   {{ with .Site.Params.description }}<p>{{ . }}</p>{{ end }}
+
   {{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
   {{- range $taxonomyName, $taxonomy := .Site.Taxonomies }} 
     <ul>
@@ -22,6 +23,7 @@
     {{- end }} 
     </ul>
   {{- end }}
+
   {{$scratch := newScratch}}
   {{ range (where .Site.Pages "Kind" "page" )}}
       {{$scratch.Add "total" .WordCount}}
@@ -29,11 +31,13 @@
   <p>
   {{$scratch.Get "total" }} words in <a href="/archive">{{ len .Site.RegularPages }}</a> posts.
   </p>
+
   {{ with .Site.Params.social }}
   <ul>
   {{ range . }}
     <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a></li>
   {{ end }}
   </ul>
-{{ end }}
+  {{ end }}
+
 </details>

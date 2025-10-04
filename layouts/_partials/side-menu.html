@@ -1,0 +1,21 @@
+{{- with site.Menus.side }}
+<details><summary>sidemenu</summary>
+{{ partial "menu-side.html" . }}
+</details>
+{{- end }}
+
+{{- define "_partials/menu-side.html" -}}
+  {{- range . }}
+    {{ if .HasChildren }}
+      <li><details><summary>{{ .Name }}</summary>
+        <ul>
+          {{- with .Children }}
+              {{- partial "menu-side.html" . }}
+          {{- end }}
+        </ul>
+      </details></li>
+    {{ else }}
+      <li><a href="{{.URL}}">{{ .Name }}</a></li>
+    {{ end }}
+  {{- end }}
+{{- end}}

@@ -37,7 +37,11 @@ p {
   margin: 0.5rem;
 }
 
-li {
+ul > li {
+  margin-left: 0.5rem;
+}
+
+ol > li {
   margin-left: 1rem;
 }
 
@@ -48,7 +52,6 @@ samp,
 tt,
 var {
   background-color: var(--code-bg);
-  border-radius: var(--radius);
   padding: 0.125rem 0.25rem;
   font-family: var(--b-font-mono);
   font-size: 0.875em;
@@ -124,16 +127,14 @@ details {
   position: relative;
   border: 1px solid var(--summary-bg);
   background-color: var(--code-bg);
-  border-radius: var(--radius);
 }
 
 details > summary {
   list-style: none;
-  padding: 0.5rem 1rem 0.5rem 0.5rem;
+  padding: 0rem 1rem 0rem 0.5rem;
   cursor: pointer;
   position: relative;
   background-color: var(--summary-bg);
-  border-radius: var(--radius);
 }
 
 details > summary::after {
@@ -169,6 +170,7 @@ body > nav ul {
 }
 body> nav li {
   margin-left: 0.5rem;
+  list-style: none;
 }
 
 .post-end {
@@ -177,12 +179,10 @@ body> nav li {
 }
 .post-end .post-prev {
   flex: 1;
-  border-radius: var(--radius);
   text-align: left;
 }
 .post-end .post-next {
   flex: 1;
-  border-radius: var(--radius);
   text-align: right;
 }
 .post-end > div:hover {
@@ -192,7 +192,6 @@ body> nav li {
 #searchbox input {
   padding: 0.5rem;
   font-weight: bold;
-  border-radius: var(--radius);
 }
 #searchResults {
   margin: 0 0.5rem;
