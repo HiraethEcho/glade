@@ -1,6 +1,6 @@
 body > main {
   background-color: var(--g-bg);
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
 }
 
 body > nav {
@@ -8,7 +8,7 @@ body > nav {
 }
 
 article {
-  padding: 0.5rem;
+  padding: 0.5rem 2rem;
 }
 
 h1,
@@ -43,6 +43,7 @@ code {
 }
 pre {
   padding: 0.5rem
+  border-radius: var(--g-radius);
 }
 pre code {
   padding: 0;
@@ -50,6 +51,7 @@ pre code {
 
 section {
   border: 1px solid var(--g-line);
+  border-radius: var(--g-radius);
 }
 
 ul > li {
@@ -99,7 +101,7 @@ svg,
 embed,
 iframe,
 object {
-  max-width: 70%;
+  max-width: 80%;
   margin: 0 auto;
   height: auto;
   border-style: none;
@@ -131,6 +133,7 @@ th {
 
 details {
   margin: 0.3rem;
+  padding: 0 0 0.3rem 0;
   position: relative;
   border: 1px solid var(--g-b-bg);
   background-color: var(--g-i-bg);
@@ -165,7 +168,6 @@ body > nav::-webkit-scrollbar {
   display: none;
 }
 body > nav details {
-  padding: 0;
 }
 
 body > nav ul {

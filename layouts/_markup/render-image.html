@@ -6,5 +6,5 @@
     <figcaption>{{ . }}</figcaption>
   </figure>
 {{- else -}}
-  <img src="{{ $dest | safeURL }}" alt="{{ . }}" loading="lazy" />
+  <figure><img src="{{ $dest | safeURL }}" loading="lazy" /></figure>
 {{- end -}}
