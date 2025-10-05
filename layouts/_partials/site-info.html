@@ -1,7 +1,6 @@
 {{ $show := default true (default .Site.Params.ShowSiteInfo .Params.ShowSiteInfo) }}
 {{ if $show }}
-<hr>
-<details open><summary>Site Info</summary>
+  <hr>
   {{ with .Site.Params.description }}<p>{{ . }}</p>{{ end }}
 
   {{$scratch := newScratch}}
@@ -17,7 +16,7 @@
   {{ range .Site.Taxonomies }}
       {{ $scratch2.Add "total" (len .)}}
   {{ end }}
-  <p>{{ $scratch2.Get "total" }} terms in {{ $num }} taxonomies </p>
+  <p>{{ $scratch2.Get "total" }} terms in {{ $num }} taxonomies.</p>
 
   {{ with .Site.Params.social }}
   <ul>
@@ -27,5 +26,4 @@
   </ul>
   {{ end }}
 
-</details>
 {{ end }}

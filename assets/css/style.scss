@@ -229,6 +229,7 @@ body {
       display: flex;
       > div {
         margin: 0.5rem;
+        padding: 0.5rem;
         flex: 1;
         border: 1px solid var(--g-line);
         border-radius: var(--g-radius);
