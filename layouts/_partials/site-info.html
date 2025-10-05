@@ -1,28 +1,8 @@
+{{ $show := default true (default .Site.Params.ShowSiteInfo .Params.ShowSiteInfo) }}
+{{ if $show }}
+<hr>
 <details open><summary>Site Info</summary>
   {{ with .Site.Params.description }}<p>{{ . }}</p>{{ end }}
-
-  {{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
-  {{- range $taxonomyName, $taxonomy := .Site.Taxonomies }} 
-    <ul>
-    {{- $taxonomyTitle := index $taxonomyTitles $taxonomyName | default $taxonomyName }} 
-    {{- with $taxonomy }}
-      <li><details>
-        <summary><b>
-          <a href="/{{ $taxonomyName }}">{{ $taxonomyTitle }} </a> <sup>{{ len $taxonomy }}</sup>
-        </b></summary>
-        {{- range $name, $value := $taxonomy }}
-          {{- $count := $value.Count }}
-          {{- $page := site.GetPage (printf "/%s/%s" $taxonomyName $name) }}
-          <ul>
-            {{- with $page }}
-              <li><a href="{{ .Permalink }}">{{ .Name }}</a> <sup>{{ $count }}</sup></li>
-            {{- end }}
-          </ul>
-        {{- end }}
-      </details></li>
-    {{- end }} 
-    </ul>
-  {{- end }}
 
   {{$scratch := newScratch}}
   {{ range (where .Site.Pages "Kind" "page" )}}
@@ -41,3 +21,4 @@
   {{ end }}
 
 </details>
+{{ end }}

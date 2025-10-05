@@ -1,34 +1,36 @@
-body > main {
-  background-color: var(--g-bg);
-  padding: 0.5rem 1rem;
-}
-
-body > nav {
-  background-color: var(--g-bg);
+details {
+  margin: 0.3rem;
+  border: 1px solid var(--g-b-bg);
+  background-color: var(--g-i-bg);
+  border-radius: var(--g-radius);
+  > summary {
+    list-style: none;
+    padding: 0.1rem 1rem 0.1rem 0.5rem;
+    cursor: pointer;
+    position: relative;
+    background-color: var(--g-b-bg);
+    &::after {
+      content: "◂";
+      position: absolute;
+      right: 0.5rem;
+    }
+  }
+  &[open] > summary::after {
+    transform: rotate(-90deg);
+  }
 }
 
 article {
-  padding: 0.5rem 2rem;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    padding: 0.5rem;
+  }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  padding: 0.5rem;
-}
-
-a {
-  color: var(--g-link);
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-
-pre,
 section,
 ul,
 dd,
@@ -41,15 +43,27 @@ code {
   padding: 0.1rem 0.2rem;
   font-size: 0.8rem;
 }
+
 pre {
-  padding: 0.5rem
+  margin: 0.5rem;
+  padding: 0.5rem;
   border-radius: var(--g-radius);
-}
-pre code {
-  padding: 0;
+  overflow: auto;
+  max-height: 600px;
+  position: relative;
+  code {
+    padding: 0;
+    margin: 0;
+  }
+  button {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
 }
 
 section {
+  padding: 1rem;
   border: 1px solid var(--g-line);
   border-radius: var(--g-radius);
 }
@@ -71,23 +85,12 @@ var {
   font-family: var(--g-font-mono);
 }
 
-pre {
-  overflow: auto;
-  max-height: 600px;
-}
-.codeblock {
-  position: relative;
-  padding: 0.5rem
-}
-.codeblock .code-lang {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.codeblock .code-copy-btn {
-  position: absolute;
-  top: 0;
-  right: 0;
+a {
+  color: var(--g-link);
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 button {
@@ -131,62 +134,7 @@ th {
   text-align: left;
 }
 
-details {
-  margin: 0.3rem;
-  position: relative;
-  border: 1px solid var(--g-b-bg);
-  background-color: var(--g-i-bg);
-  border-radius: var(--g-radius);
-}
-
-details > summary {
-  list-style: none;
-  padding: 0.1rem 1rem 0.1rem 0.5rem;
-  cursor: pointer;
-  position: relative;
-  background-color: var(--g-b-bg);
-}
-
-details > summary::after {
-  content: "◂";
-  position: absolute;
-  right: 0.5rem;
-}
-
-details[open] > summary::after {
-  transform: rotate(-90deg);
-}
-
-body > nav {
-  scrollbar-width: none;
-}
-body > nav::-moz-scrollbar {
-  display: none;
-}
-body > nav::-webkit-scrollbar {
-  display: none;
-}
-
-body > nav details {
-  background-color: var(--g-i-bg);
-  border: none;
-  border-radius: var(--g-radius);
-}
-body > nav summary {
-  background-color: var(--g-i-bg);
-  border-radius: var(--g-radius);
-}
-
-body > nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
 #TableOfContents ul {
-  list-style: none;
-}
-body> nav li {
-  margin-left: 0.5rem;
   list-style: none;
 }
 
@@ -210,9 +158,11 @@ body> nav li {
   padding: 0.5rem;
   font-weight: bold;
 }
+
 #searchResults {
   margin: 0 0.5rem;
 }
+
 #searchResults li {
   list-style: none;
   padding: 0 0.5rem;
@@ -220,6 +170,7 @@ body> nav li {
   position: relative;
   font-weight: 500;
 }
+
 #searchResults {
   width: 100%;
 }
@@ -229,17 +180,47 @@ body> nav li {
 
 label {
   cursor: pointer;
-  display: block;
 }
+
 progress {
   vertical-align: baseline;
 }
+
 hr {
-  color: var(--g-line)
+  background-color: var(--g-line);
 }
 
 figure {
   margin: 0;
   padding: 0.5rem;
   text-align: center;
+}
+
+body {
+  > main {
+    background-color: var(--g-bg);
+    padding: 0.5rem 1rem;
+  }
+  > article {
+    padding: 0.5rem 2rem;
+  }
+  > nav {
+    background-color: inherit;
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    details {
+      padding: 0;
+      margin: 0.2rem 0;
+      background-color: inherit;
+      border: none;
+      summary {
+        padding: 0rem;
+        font-weight: bold;
+        background-color: inherit;
+      }
+    }
+  }
 }

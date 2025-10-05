@@ -1,8 +1,14 @@
-{{- with site.Menus.side }}
-<details><summary>sidemenu</summary>
-{{ partial "menu-side.html" . }}
-</details>
-{{- end }}
+{{ $show := default true (default .Site.Params.ShowSideMenu .Params.ShowSideMenu) }}
+{{ if $show }}
+  <hr>
+  {{- with site.Menus.side }}
+  <details open><summary>sidemenu</summary>
+    <ul>
+      {{ partial "menu-side.html" . }}
+    </ul>
+  </details>
+  {{- end }}
+{{- end}}
 
 {{- define "_partials/menu-side.html" -}}
   {{- range . }}

@@ -1,5 +1,6 @@
-{{ $show := default true (default .Site.Params.showFileTree .Params.showFileTree) }}
+{{ $show := default true (default .Site.Params.ShowFileTree .Params.ShowFileTree) }}
 {{ if $show }}
+  <hr>
   {{ $root := .FirstSection }}
 
   {{ with .Params.fileTreeRoot }}
@@ -20,10 +21,10 @@
     {{ $displayroottitle = $root.File.BaseFileName | humanize | title }}
   {{ end }}
 
-  <details open><summary><b>{{print $displayroottitle }}</b></summary>
+  <details open><summary>{{print $displayroottitle }}</summary>
     {{ partial "file-tree-walk.html" (dict "context" $root "depth" 1) }}
   </details>
-{{ end }}
+{{- end }}
 
 {{- define "_partials/file-tree-walk.html" -}}
   {{ $context := .context }}

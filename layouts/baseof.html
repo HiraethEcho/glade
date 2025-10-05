@@ -9,7 +9,10 @@
   </header>
   <input type="checkbox" id="nav-checkbox" style="display: none;">
   <nav>
-    {{ block "nav" . }}{{ end }}
+{{ partial "site-info.html" . }}
+{{ partial "taxonomy-tree.html" . }}
+{{ partial "side-menu.html" . }}
+{{ partial "file-tree.html" . }} 
   </nav>
   <main>
   {{ block "main" . }}{{ end }}

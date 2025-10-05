@@ -1,5 +1,6 @@
 {{ $toc := default true (default .Site.Params.toc .Params.toc) }}
 {{ if $toc }}
+<hr>
 <details open><summary>TOC</summary>
     {{ .TableOfContents }}
 </details>

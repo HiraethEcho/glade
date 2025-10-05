@@ -12,24 +12,24 @@
 <input type="checkbox" id="menu-checkbox" style="display: none;">
 <label for="menu-checkbox" id="menu-btn"><h1>«</h1></label>
 <label for="nav-checkbox" id="nav-btn"><h1>☰</h1></label>
-<menu><ul>
+<menu>
   <li><button id="themetoggle">🌓</button></li>
   {{- range site.Menus.main }}
-    {{ partial "menu-select.html" . }}
+    {{ partial "menu-button.html" . }}
   {{ end }}
-</ul></menu>
+</menu>
 
 
 {{- define "_partials/menu-button.html" -}}
   {{ if .HasChildren }}
     <li>
-      <label for="menu-{{ .Identifier }}">{{ .Name }}</label>
       <input type="checkbox" id="menu-{{ .Identifier }}" style="display: none;">
-      <ul>
+      <label for="menu-{{ .Identifier }}">{{ .Name }}</label>
+      <menu>
         {{ range .Children }}
           {{ partial "menu-button.html" . }}
         {{ end }}
-      </ul>
+      </menu>
     </li>
   {{ else }}
     <li><a href="{{.URL | relURL}}">{{ .Name }}</a></li>

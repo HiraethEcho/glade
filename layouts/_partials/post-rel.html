@@ -1,3 +1,6 @@
+{{ $show := default true (default .Site.Params.ShowRelPost .Params.ShowRelPost) }}
+{{ if $show }}
+<hr>
 <details open><summary>related</summary>
 {{ $page := . }}
 {{ range $taxonomyName, $taxonomy := .Site.Taxonomies }}
@@ -9,9 +12,9 @@
           {{- range . }} 
             <li>
               <details>
-                <summary><b>
+                <summary>
                   <a href="{{ .RelPermalink }}">{{ .LinkTitle }}
-                </a></b></summary>
+                </a></summary>
                 <ul>
                   {{ range .RegularPages }}
                     <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
@@ -24,3 +27,4 @@
   {{ end }}</ul>
 {{ end }}
 </details>
+{{- end}}
