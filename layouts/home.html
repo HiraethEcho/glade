@@ -1,6 +1,24 @@
 {{ define "main" }} 
-  <h1>{{.Title}}</h1>
+
+  <h1>{{ .Title }}<small><a href="/index.xml">rss</a></small></h1>
   <article class="home">
     {{ .Content }} 
   </article>
+  <h2>Taxonomies</h2>
+  {{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
+  {{- range $taxonomyName, $taxonomy := .Site.Taxonomies }} 
+    {{- $taxonomyTitle := index $taxonomyTitles $taxonomyName | default $taxonomyName }} 
+    {{- with $taxonomy }}
+      <p>
+        <a style="font-weight: bold;" href="/{{ $taxonomyName }}">{{ $taxonomyTitle }} </a><sup>{{ len $taxonomy }}</sup>
+        {{- range $name, $value := $taxonomy }}
+          {{- $count := $value.Count }}
+          {{- $page := site.GetPage (printf "/%s/%s" $taxonomyName $name) }}
+            {{- with $page }}
+              <code><a href="{{ .Permalink }}">{{ .Name }}</a><sup>{{ $count }}</sup></code>
+            {{- end }}
+          {{- end }}
+      </p>
+    {{- end }} 
+  {{- end }}
 {{ end }} 

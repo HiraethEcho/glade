@@ -3,11 +3,8 @@
   <h1>{{.Title}}</h1>
   <article class="taxonomy">
   {{ .Content }}
-  </article>
   {{ range .Data.Terms.Alphabetical }}
-    <h2><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a><sup>{{ .Count }}</sup></h2>
-    {{ range .Pages.ByDate.Reverse }}
-      {{ partial "post-section.html" . }}
-    {{ end }}
+    <code style="font-size:1.5rem;"><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a><sup>{{ .Count }}</sup></code>
   {{ end }}
+  </article>
 {{ end }}

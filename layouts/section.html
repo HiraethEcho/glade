@@ -4,7 +4,5 @@
   <article class="section">
     {{ .Content }} 
   </article>
-  {{ range .RegularPagesRecursive }}
-    {{ partial "post-section.html" . }}
-  {{ end }} 
+  {{ partial "pagination.html" . }}
 {{ end }}

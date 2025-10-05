@@ -9,6 +9,7 @@
   </header>
   <input type="checkbox" id="nav-checkbox" style="display: none;">
   <nav>
+    {{ partial "search.html" . }}
     {{ partial "toc.html" . }}
     {{ partial "site-info.html" . }}
     {{ partial "taxonomy-tree.html" . }}

@@ -107,8 +107,9 @@ var {
 }
 
 code {
-  padding: 0.1rem 0.2rem;
+  padding: 0.1rem 0.5rem;
   font-size: 0.8rem;
+  border-radius: var(--g-radius);
 }
 
 pre {
@@ -186,6 +187,25 @@ body {
         border-radius: var(--g-radius);
         summary {
           background-color: var(--g-b-bg);
+        }
+      }
+    }
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      padding: 0;
+      list-style: none;
+      gap: 2rem;
+      li {
+        a {
+          border-radius: var(--g-radius);
+          &:hover {
+            background-color: var(--g-i-bg);
+          }
+        }
+        &.active a {
+          font-weight: bold;
         }
       }
     }
