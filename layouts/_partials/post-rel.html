@@ -1,20 +1,21 @@
 {{ $show := default true (default .Site.Params.ShowRelPost .Params.ShowRelPost) }}
-{{ if $show }}
-<hr>
-<details open><summary>related</summary>
-{{ $page := . }}
-{{ range $taxonomyName, $taxonomy := .Site.Taxonomies }}
-  {{ $terms := ($page.GetTerms $taxonomyName) }}
-  <ul>{{ with $terms }}
-    <li><details open>
-        <summary>{{ $taxonomyName }}</summary>
+{{ if and $show .IsPage }}
+  <hr>
+  {{ $page := . }}
+  {{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
+  {{ range $taxonomyName, $taxonomy := .Site.Taxonomies }}
+    {{ $terms := ($page.GetTerms $taxonomyName) }}
+    {{ with $terms }}
+      <details open>
+        {{- $taxonomyTitle := index $taxonomyTitles $taxonomyName | default $taxonomyName }} 
+        <summary>{{ $taxonomyTitle }}</summary>
         <ul>
           {{- range . }} 
             <li>
-              <details>
+              <details open>
                 <summary>
-                  <a href="{{ .RelPermalink }}">{{ .LinkTitle }}
-                </a></summary>
+                  <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+                </summary>
                 <ul>
                   {{ range .RegularPages }}
                     <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
@@ -23,8 +24,7 @@
             </details></li>
           {{ end }} 
         </ul>
-      </details></li>
-  {{ end }}</ul>
-{{ end }}
-</details>
+      </details>
+    {{ end }}
+  {{ end }}
 {{- end}}

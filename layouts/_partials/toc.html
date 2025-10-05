@@ -1,5 +1,5 @@
-{{ $toc := default true (default .Site.Params.toc .Params.toc) }}
-{{ if $toc }}
+{{ $show := default true .Params.ShowToc }}
+{{ if and $show .IsPage }}
 <hr>
 <details open><summary>TOC</summary>
     {{ .TableOfContents }}

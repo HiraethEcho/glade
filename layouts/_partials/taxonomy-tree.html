@@ -1,29 +1,28 @@
 {{ $show := default true (default .Site.Params.ShowTaxonomyTree .Params.ShowTaxonomyTree) }}
 {{ if $show }}
-<hr>
-<details open>
-  <summary>Taxonomy Tree</summary>
-  {{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
-  {{- range $taxonomyName, $taxonomy := .Site.Taxonomies }} 
-    <ul>
-    {{- $taxonomyTitle := index $taxonomyTitles $taxonomyName | default $taxonomyName }} 
-    {{- with $taxonomy }}
-      <li><details>
-        <summary>
-          <a href="/{{ $taxonomyName }}">{{ $taxonomyTitle }} </a> <sup>{{ len $taxonomy }}</sup>
-        </summary>
-        {{- range $name, $value := $taxonomy }}
-          {{- $count := $value.Count }}
-          {{- $page := site.GetPage (printf "/%s/%s" $taxonomyName $name) }}
-          <ul>
-            {{- with $page }}
-              <li><a href="{{ .Permalink }}">{{ .Name }}</a> <sup>{{ $count }}</sup></li>
+  <hr>
+  <ul>
+    {{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
+    {{- range $taxonomyName, $taxonomy := .Site.Taxonomies }} 
+      {{- $taxonomyTitle := index $taxonomyTitles $taxonomyName | default $taxonomyName }} 
+      {{- with $taxonomy }}
+        <li>
+          <details>
+            <summary>
+              <a href="/{{ $taxonomyName }}">{{ $taxonomyTitle }} </a> <sup>{{ len $taxonomy }}</sup>
+            </summary>
+            {{- range $name, $value := $taxonomy }}
+              {{- $count := $value.Count }}
+              {{- $page := site.GetPage (printf "/%s/%s" $taxonomyName $name) }}
+              <ul>
+                {{- with $page }}
+                  <li><a href="{{ .Permalink }}">{{ .Name }}</a> <sup>{{ $count }}</sup></li>
+                {{- end }}
+              </ul>
             {{- end }}
-          </ul>
-        {{- end }}
-      </details></li>
-    {{- end }} 
-    </ul>
-  {{- end }}
-</details>
+          </details>
+        </li>
+      {{- end }} 
+    {{- end }}
+  </ul>
 {{- end}}

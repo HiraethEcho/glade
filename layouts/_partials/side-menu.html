@@ -1,27 +1,27 @@
 {{ $show := default true (default .Site.Params.ShowSideMenu .Params.ShowSideMenu) }}
 {{ if $show }}
   <hr>
-  {{- with site.Menus.side }}
-  <details open><summary>sidemenu</summary>
-    <ul>
+  <menu>
+    {{- with site.Menus.side }}
       {{ partial "menu-side.html" . }}
-    </ul>
-  </details>
-  {{- end }}
+    {{- end }}
+  </menu>
 {{- end}}
 
 {{- define "_partials/menu-side.html" -}}
   {{- range . }}
-    {{ if .HasChildren }}
-      <li><details><summary>{{ .Name }}</summary>
-        <ul>
-          {{- with .Children }}
-              {{- partial "menu-side.html" . }}
-          {{- end }}
-        </ul>
-      </details></li>
-    {{ else }}
-      <li><a href="{{.URL}}">{{ .Name }}</a></li>
-    {{ end }}
+    <li>
+      {{ if .HasChildren }}
+        <details><summary>{{ .Name }}</summary>
+          <menu>
+            {{- with .Children }}
+                {{- partial "menu-side.html" . }}
+            {{- end }}
+          </menu>
+        </details>
+      {{ else }}
+        <a href="{{.URL}}">{{ .Name }}</a>
+      {{ end }}
+    </li>
   {{- end }}
 {{- end}}
