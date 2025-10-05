@@ -1,14 +1,14 @@
-/* basix */
+/* basic */
 section,
 ul,
+ol,
 menu,
 dd,
-ol,
 p {
   margin: 0.5rem;
 }
 ul > li {
-  margin-left: 0.8rem;
+  margin-left: 1rem;
 }
 ol > li {
   margin-left: 1rem;
@@ -52,6 +52,11 @@ button {
 }
 label {
   cursor: pointer;
+  padding: 0 0.2rem;
+  border-radius: var(--g-radius);
+  &:hover {
+    background-color: var(--g-i-bg);
+  }
 }
 progress {
   vertical-align: baseline;
@@ -150,9 +155,6 @@ body {
       margin: 0;
       padding: 0;
     }
-    li {
-      margin-left: 0.5rem;
-    }
     details {
       margin: 0.2rem 0;
       background-color: inherit;
@@ -186,23 +188,31 @@ body {
           background-color: var(--g-b-bg);
         }
       }
-      .post-end {
-        padding: 0 !important;
-        display: flex;
-        > .post-prev {
-          flex: 1;
-          text-align: left;
-          &:hover {
-            background-color: var(--g-i-bg);
-          }
+    }
+    .post-end {
+      display: flex;
+      > div {
+        flex: 1;
+        padding: 1rem;
+        &:hover {
+          background-color: var(--g-i-bg);
         }
-        > .post-next {
-          flex: 1;
-          text-align: right;
-          &:hover {
-            background-color: var(--g-i-bg);
-          }
-        }
+      }
+      > .post-prev {
+        text-align: left;
+      }
+      > .post-next {
+        text-align: right;
+      }
+    }
+    .post-rel {
+      display: flex;
+      > div {
+        margin: 0.5rem;
+        flex: 1;
+        border: 1px solid var(--g-line);
+        border-radius: var(--g-radius);
+        background-color: var(--g-i-bg);
       }
     }
   }

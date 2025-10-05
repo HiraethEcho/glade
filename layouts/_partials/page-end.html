@@ -1,3 +1,12 @@
+{{- $date := (.Lastmod.Format .Site.Params.DateFormat) -}}
+{{ if and .GitInfo .Site.Params.LastChangeLink }}
+  <a href="{{ .Site.Params.LastChangeLink }}/{{.GitInfo.Hash}}" title='Last modified by' target="_blank" rel="noopener">
+    Last modified on {{ $date }}
+  </a>
+{{ else }}
+  Last modified on {{ $date }}
+{{ end }}
+
 <section class="post-end">
   <div class="post-prev">
     {{- with .Prev }}
@@ -10,3 +19,27 @@
   {{- end }}
   </div>
 </section>
+
+{{ $show := default false (default .Site.Params.ShowRelPost .Params.ShowRelPost) }}
+{{ if and $show .IsPage }}
+<section class="post-rel">
+{{ $page := . }}
+{{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
+{{ range $taxonomyName, $taxonomy := .Site.Taxonomies }}
+  {{ $terms := ($page.GetTerms $taxonomyName) }}
+  {{ with $terms }}
+    <div>
+      {{- $taxonomyTitle := index $taxonomyTitles $taxonomyName | default $taxonomyName }} 
+      {{ $taxonomyTitle }}<br>
+      {{- range . }} 
+        <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>:
+          {{ range .RegularPages }}
+            <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+          {{- end }}
+        <br>
+      {{ end }} 
+    </div>
+  {{ end }}
+{{ end }}
+</section>
+{{ end }}
