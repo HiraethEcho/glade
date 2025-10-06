@@ -1,8 +1,8 @@
-{{ define "main" }} 
+{{ define "mainstart" }} 
   {{ partial "breadcrumbs" . }}
-  <article class="home">
+{{- end }}
+{{ define "mainarticle" }} 
     {{ .Content }} 
-  </article>
   <h2>Taxonomies</h2>
   {{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
   {{- range $taxonomyName, $taxonomy := .Site.Taxonomies }} 

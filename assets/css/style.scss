@@ -2,7 +2,6 @@
 section,
 ul,
 ol,
-menu,
 dd,
 p {
   margin: 0.5rem;
@@ -14,10 +13,12 @@ ol > li {
   margin-left: 1rem;
 }
 a {
+  border-radius: var(--g-radius);
   color: var(--g-link);
   text-decoration: none;
   &:hover {
     text-decoration: underline;
+    background-color: var(--g-i-bg);
   }
 }
 details {
@@ -26,6 +27,7 @@ details {
     padding: 0.1rem 1rem 0.1rem 0.5rem;
     cursor: pointer;
     position: relative;
+    font-weight: bold;
     &::after {
       content: "◂";
       position: absolute;
@@ -133,14 +135,11 @@ pre {
 body {
   max-width: 1000px;
   > header {
-    margin: 0.5rem 1rem 0;
-    menu,
-    li {
+    margin: 0.5rem 1rem;
+    menu {
       label {
         font-weight: bold;
       }
-      padding: 0;
-      margin: 0 0.2rem;
       input:checked ~ label::after {
         content: "»";
         margin-left: 0.2rem;
@@ -150,29 +149,16 @@ body {
   > nav {
     padding: 0 1rem;
     background-color: inherit;
-    menu,
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    li {
-      margin-left: 0.5rem;
-    }
-    details {
-      margin: 0.2rem 0;
-      background-color: inherit;
-      border: none;
-      summary {
-        padding: 0rem;
-        font-weight: bold;
-        background-color: inherit;
-      }
-    }
   }
   > main {
     background-color: var(--g-bg);
     padding: 1rem;
+    > header {
+      border-bottom: 1px solid var(--g-line);
+    }
+    > aside {
+      padding: 1rem 0;
+    }
     > article {
       padding: 1rem;
       details {
@@ -192,49 +178,52 @@ body {
       padding: 0;
       list-style: none;
       gap: 2rem;
-      li {
-        a {
-          border-radius: var(--g-radius);
+    }
+    > footer {
+      text-align: center;
+      border-top: 1px solid var(--g-line);
+      .post-end {
+        display: flex;
+        > div {
+          flex: 1;
+          padding: 1rem;
           &:hover {
             background-color: var(--g-i-bg);
           }
         }
-        &.active a {
-          font-weight: bold;
+        > .post-prev {
+          text-align: left;
         }
-      }
-    }
-    .post-end {
-      display: flex;
-      > div {
-        flex: 1;
-        padding: 1rem;
-        &:hover {
-          background-color: var(--g-i-bg);
+        > .post-next {
+          text-align: right;
         }
-      }
-      > .post-prev {
-        text-align: left;
-      }
-      > .post-next {
-        text-align: right;
-      }
-    }
-    .post-rel {
-      display: flex;
-      > div {
-        margin: 0.5rem;
-        padding: 0.5rem;
-        flex: 1;
-        border: 1px solid var(--g-line);
-        border-radius: var(--g-radius);
-        background-color: var(--g-i-bg);
       }
     }
   }
 }
 
 /* special */
+
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  ul {
+    list-style: none;
+    margin: 0;
+  }
+  li {
+    margin-left: 0.5rem;
+  }
+  details {
+    margin: 0.2rem 0;
+    border: none;
+    summary {
+      padding: 0rem;
+      background-color: inherit;
+    }
+  }
+}
 #TableOfContents ul {
   list-style: none;
 }

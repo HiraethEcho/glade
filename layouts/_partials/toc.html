@@ -1,7 +1,6 @@
-{{ $show := default true .Params.ShowToc }}
+{{ $show := default true (default .Site.Params.ShowToc .Params.ShowToc) }}
 {{ if and $show .IsPage }}
-<hr>
-<details open><summary>TOC</summary>
-    {{ .TableOfContents }}
-</details>
+    <details open><summary>TOC</summary>
+      {{ .TableOfContents }}
+    </details>
 {{ end }}

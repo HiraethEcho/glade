@@ -1,7 +1,7 @@
 {{ $show := default true (default .Site.Params.ShowTaxonomyTree .Params.ShowTaxonomyTree) }}
 {{ if $show }}
   <hr>
-  <ul>
+  <menu>
     {{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
     {{- range $taxonomyName, $taxonomy := .Site.Taxonomies }} 
       {{- $taxonomyTitle := index $taxonomyTitles $taxonomyName | default $taxonomyName }} 
@@ -14,15 +14,15 @@
             {{- range $name, $value := $taxonomy }}
               {{- $count := $value.Count }}
               {{- $page := site.GetPage (printf "/%s/%s" $taxonomyName $name) }}
-              <ul>
+              <menu>
                 {{- with $page }}
                   <li><a href="{{ .Permalink }}">{{ .Name }}</a> <sup>{{ $count }}</sup></li>
                 {{- end }}
-              </ul>
+              </menu>
             {{- end }}
           </details>
         </li>
       {{- end }} 
     {{- end }}
-  </ul>
+  </menu>
 {{- end}}

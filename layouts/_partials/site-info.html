@@ -19,11 +19,11 @@
   <p>{{ $scratch2.Get "total" }} terms in {{ $num }} taxonomies.</p>
 
   {{ with .Site.Params.social }}
-  <ul>
+  <menu>
   {{ range . }}
     <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a></li>
   {{ end }}
-  </ul>
+  </menu>
   {{ end }}
 
 {{ end }}

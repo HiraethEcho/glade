@@ -21,6 +21,7 @@
   {{ end }}
 </menu>
 
+
 {{- define "_partials/menu-button.html" -}}
   {{ if .HasChildren }}
     <li>
@@ -36,3 +37,32 @@
     <li><a href="{{.URL | relURL}}">{{ .Name }}</a></li>
   {{ end }}
 {{end}}
+
+{{- define "_partials/menu-select.html" -}}
+  {{ if .HasChildren }}
+    <li>
+      <select onchange="location = this.value;">
+        <option>{{ .Name }}</option>
+        {{- range .Children }}
+          <option value="{{ .URL | relURL }}">{{ .Name }}</option>
+        {{- end }}
+      </select>
+    </li>
+  {{ else }}
+    <li><a href="{{.URL}}">{{ .Name }}</a></li>
+  {{ end }}
+{{end}}
+
+{{- define "_partials/menu-details.html" -}}
+  {{ if .HasChildren }}
+    <li><details><summary>{{ .Name }}</summary>
+      <ul>
+        {{- range .Children }}
+          {{- partial "menu-details.html" . }}
+        {{- end }}
+      </ul>
+    </details></li>
+  {{ else }}
+    <li><a href="{{.URL}}">{{ .Name }}</a></li>
+  {{ end }}
+{{- end}}

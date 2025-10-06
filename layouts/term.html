@@ -1,8 +1,8 @@
-{{ define "main" }}
-  {{ partial "breadcrumbs.html" . }}
-  <h1>{{ .Title }}{{ partial "rss-link.html" . }}</h1>
-  <article class="term">
+{{ define "mainstart" }} 
+  {{ partial "breadcrumbs" . }}
+  <h1>{{ .Title }}</h1>
+{{- end }}
+{{ define "mainarticle" }} 
   {{ .Content }}
-  </article>
   {{ partial "pagination.html" . }}
 {{ end }}

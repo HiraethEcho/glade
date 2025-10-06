@@ -1,10 +1,26 @@
-{{ define "main" }}
+{{ define "mainstart" }}
   {{ partial "breadcrumbs.html" . }}
-  <h1>{{ .Title }}</h1>
   {{ partial "post-info.html" . }}
-  <article class="page">
-    {{ .Content }} 
-  </article>
+{{ end }}
+
+{{ define "mainaside" }}
+  {{ $showrel := default true (default .Site.Params.ShowRelPost .Params.ShowRelPost) }}
+  {{ $showtoc := default true (default .Site.Params.ShowToc .Params.ShowToc) }}
+  {{ if or $showrel $showtoc }}
+    <label for="aside-checkbox" id="aside-btn">☰</label>
+  {{ end }}
+  <input type="checkbox" id="aside-checkbox" style="display: none;">
+  <menu>
+  <li>{{ partial "toc.html" . }}</li>
+  <li>{{ partial "post-rel.html" . }}</li>
+  </menu>
+{{ end }}
+
+{{ define "mainarticle" }}
+  {{ .Content }} 
+{{ end }}
+
+{{ define "mainfooter" }}
   {{ partial "page-end.html" . }}
   {{ partial "comment.html" . }}
 {{ end }}

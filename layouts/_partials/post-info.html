@@ -11,10 +11,9 @@
     <img alt="CC {{ $cc | upper }}" style="height: 1.2em; width: auto; vertical-align: middle;" src="https://i.creativecommons.org/l/by-{{$cc}}/4.0/80x15.png">
   */ -}}
 {{ with .Params.status }}
-  <i>{{ . }}</i>
+  <em>{{ . }}</em>
 {{ end }}
 </p>
-
 <p>
 {{ $page := . }}
 {{ range $taxonomyName, $taxonomy := .Site.Taxonomies }}
@@ -22,9 +21,8 @@
   {{ with $terms }}
     {{ $taxonomyName }}:
     {{- range . }}
-    <b><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></b>
+    <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
     {{ end }}
-    <br>
   {{ end }}
 {{ end }}
 </p>

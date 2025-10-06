@@ -22,12 +22,63 @@ body {
     height: auto;
     position: sticky;
     top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    > label {
+      display: none;
+    }
+    menu,
+    li {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      input ~ menu {
+        display: none;
+      }
+      input:checked ~ menu {
+        display: flex;
+      }
+    }
   }
   > main {
     grid-area: post;
     overflow-wrap: break-word;
     word-wrap: break-word;
     overflow-y: auto;
+    display: grid;
+    grid-template-areas:
+      "page-start page-start"
+      "main-content aside-bar"
+      "page-end page-end";
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr auto;
+    > header {
+      grid-area: page-start;
+    }
+    > aside {
+      width: auto;
+      grid-area: aside-bar;
+      > menu {
+        display: none;
+        flex-direction: column;
+      }
+      #aside-btn {
+        display: block;
+        text-align: right;
+      }
+    }
+    > article {
+      grid-area: main-content;
+      padding: 1rem;
+      position: relative;
+    }
+    #aside-checkbox:checked ~ menu {
+      display: flex;
+    }
+    > footer {
+      grid-area: page-end;
+    }
   }
   > nav {
     width: 250px;
@@ -35,33 +86,12 @@ body {
     position: sticky;
     overflow-y: auto;
   }
-  footer {
+  > footer {
     grid-area: footer;
     height: auto;
     position: sticky;
     bottom: 0;
     text-align: center;
-  }
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  > label {
-    display: none;
-  }
-  menu,
-  li {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    input ~ menu {
-      display: none;
-    }
-    input:checked ~ menu {
-      display: flex;
-    }
   }
 }
 
@@ -83,16 +113,15 @@ header {
     > nav {
       width: 70vw;
     }
-  }
-
-  header {
-    flex-direction: column;
-    > label {
-      display: none;
-    }
-    menu {
-      display: none;
+    > header {
       flex-direction: column;
+      > label {
+        display: none;
+      }
+      menu {
+        display: none;
+        flex-direction: column;
+      }
     }
   }
 
@@ -105,7 +134,8 @@ header {
     display: flex;
     flex-direction: column;
     position: relative;
-    menu, li {
+    menu,
+    li {
       flex-direction: column;
     }
   }

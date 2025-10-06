@@ -19,32 +19,3 @@
   {{- end }}
   </div>
 </section>
-
-{{ $show := default true (default .Site.Params.ShowRelPost .Params.ShowRelPost) }}
-{{ if $show }}
-<section class="post-rel">
-{{ $page := . }}
-{{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
-{{ range $taxonomyName, $taxonomy := .Site.Taxonomies }}
-  {{ $terms := ($page.GetTerms $taxonomyName) }}
-  {{ with $terms }}
-    <div>
-      {{- $taxonomyTitle := index $taxonomyTitles $taxonomyName | default $taxonomyName }} 
-      <details>
-        <summary>{{ $taxonomyTitle }}</summary>
-        {{- range . }} 
-      <details open><summary>
-        <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></summary>
-        <ul>
-          {{ range .RegularPages }}
-            <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
-          {{- end }}
-        </ul>
-      </details>
-        {{ end }} 
-      </details>
-    </div>
-  {{ end }}
-{{ end }}
-</section>
-{{ end }}

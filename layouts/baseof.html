@@ -10,14 +10,16 @@
   <input type="checkbox" id="nav-checkbox" style="display: none;">
   <nav>
     {{ partial "search.html" . }}
-    {{ partial "toc.html" . }}
     {{ partial "site-info.html" . }}
     {{ partial "taxonomy-tree.html" . }}
-    {{ partial "side-menu.html" . }}
     {{ partial "file-tree.html" . }} 
+    {{ partial "side-menu.html" . }}
   </nav>
   <main>
-  {{ block "main" . }}{{ end }}
+    <header>{{ block "mainstart" . }}{{ end }}</header>
+    <aside>{{ block "mainaside" . }}{{ end }}</aside>
+    <article>{{ block "mainarticle" . }}{{ end }}</article>
+    <footer>{{ block "mainfooter" . }}{{ end }}</footer>
   </main>
   <footer>
     {{ partial "footer.html" . }}
