@@ -2,28 +2,15 @@
 {{ if $show }}
   <hr>
   {{ $root := .FirstSection }}
-
-  {{ with .Params.fileTreeRoot }}
+  {{ with .Params.FileTreeRoot }}
     {{ $page := site.GetPage (printf "%s" .) }}
     {{ if $page }}
       {{ $root = $page }}
     {{ end }}
   {{ end }}
 
-  {{- $displayroottitle := "" }}
-  {{ if $root.LinkTitle }}
-    {{ $displayroottitle = $root.LinkTitle }}
-  {{ else if $root.Title }}
-    {{ $displayroottitle = $root.Title }}
-  {{ else if and .IsSection .File }}
-    {{ $displayroottitle = path.Base $root.File.Dir | humanize | title }}
-  {{ else if and .IsPage .File }}
-    {{ $displayroottitle = $root.File.BaseFileName | humanize | title }}
-  {{ end }}
-
-  <details open><summary>{{print $displayroottitle }}</summary>
-    {{ partial "file-tree-walk.html" (dict "context" $root "depth" 1) }}
-  </details>
+  <b>{{ $root.Title }}</b>
+  {{ partial "file-tree-walk.html" (dict "context" $root "depth" 1) }}
 {{- end }}
 
 {{- define "_partials/file-tree-walk.html" -}}
@@ -32,26 +19,15 @@
   <ul>
     {{ range $context.Pages }}
       <li>
-        {{- $displaytitle := "" }}
-        {{ if .LinkTitle }}
-          {{ $displaytitle = .LinkTitle }}
-        {{ else if .Title }}
-          {{ $displaytitle = .Title }}
-        {{ else if and .IsSection .File }}
-          {{ $displaytitle = path.Base .File.Dir | humanize | title }}
-        {{ else if and .IsPage .File }}
-          {{ $displaytitle = .File.BaseFileName | humanize | title }}
-        {{ end }}
-
         {{ if .IsSection }}
           <details>
             <summary>
-              <b><a href="{{ .RelPermalink }}">{{ $displaytitle }}</a></b>
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
             </summary>
             {{ partial "file-tree-walk.html" (dict "context" . "depth" (add $depth 1)) }}
           </details>
         {{ else }}
-          <a href="{{ .RelPermalink }}">{{ $displaytitle }}</a>
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
         {{ end }}
       </li>
     {{ end }}

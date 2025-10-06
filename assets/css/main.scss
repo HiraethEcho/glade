@@ -90,7 +90,7 @@ header {
     > label {
       display: none;
     }
-    > menu {
+    menu {
       display: none;
       flex-direction: column;
     }
@@ -105,6 +105,9 @@ header {
     display: flex;
     flex-direction: column;
     position: relative;
+    menu, li {
+      flex-direction: column;
+    }
   }
   #menu-checkbox:checked ~ #menu-btn > h1 {
     transform: rotate(-90deg);

@@ -1,6 +1,5 @@
 {{ define "main" }} 
-
-  <h1>{{ .Title }}<small><a href="/index.xml">rss</a></small></h1>
+  {{ partial "breadcrumbs" . }}
   <article class="home">
     {{ .Content }} 
   </article>

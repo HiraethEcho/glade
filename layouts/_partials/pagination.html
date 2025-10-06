@@ -1,5 +1,5 @@
 {{ $pages := .RegularPagesRecursive  }}
-{{ range (.Paginate $pages 6).Pages }}
+{{ range (.Paginate $pages).Pages }}
   {{ partial "post-section.html" . }}
 {{ end }}
 

@@ -156,6 +156,9 @@ body {
       margin: 0;
       padding: 0;
     }
+    li {
+      margin-left: 0.5rem;
+    }
     details {
       margin: 0.2rem 0;
       background-color: inherit;
@@ -171,14 +174,6 @@ body {
     background-color: var(--g-bg);
     padding: 1rem;
     > article {
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        padding: 0.5rem;
-      }
       padding: 1rem;
       details {
         margin: 0.5rem;

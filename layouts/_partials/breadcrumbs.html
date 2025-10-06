@@ -1,16 +1,6 @@
-<p>
 {{- range .Ancestors.Reverse }}
-  {{- $breadcrumbstitle := "" }}
-  {{ if .LinkTitle }}
-    {{ $breadcrumbstitle = .LinkTitle }}
-  {{ else if .Title }}
-    {{ $breadcrumbstitle = .Title }}
-  {{ else if and .IsSection .File }}
-    {{ $breadcrumbstitle = path.Base .File.Dir | humanize | title }}
-  {{ else if and .IsPage .File }}
-    {{ $breadcrumbstitle = .File.BaseFileName | humanize | title }}
-  {{ end }}
-  <a href="{{ .RelPermalink }}">{{ $breadcrumbstitle }}</a>
+  <a href="{{ .RelPermalink }}">{{ .Title }}</a>
   <span>»</span>
 {{- end }}
-</p>
+{{ .Title }}
+{{ partial "rss-link" . }}
