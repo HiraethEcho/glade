@@ -135,7 +135,7 @@ pre {
 body {
   max-width: 1000px;
   > header {
-    margin: 0.5rem 1rem 0;
+    margin: 0 1rem;
     menu {
       label {
         font-weight: bold;
@@ -154,7 +154,6 @@ body {
     background-color: var(--g-bg);
     padding: 1rem;
     > header {
-      font-size: small;
       border-bottom: 1px solid var(--g-line);
     }
     > aside {
@@ -182,17 +181,13 @@ body {
       gap: 2rem;
     }
     > footer {
-      font-size: small;
       text-align: center;
-      border-top: 1px solid var(--g-line);
       .post-end {
         display: flex;
         > div {
           flex: 1;
+          position: relative;
           padding: 0.5rem;
-          &:hover {
-            background-color: var(--g-i-bg);
-          }
         }
         > .post-prev {
           text-align: left;
@@ -202,6 +197,10 @@ body {
         }
       }
     }
+  }
+  > footer {
+    text-align: center;
+    font-size: small;
   }
 }
 
