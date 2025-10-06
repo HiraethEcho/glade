@@ -57,23 +57,24 @@ body {
       grid-area: page-start;
     }
     > aside {
+      display: none;
       width: auto;
       grid-area: aside-bar;
       > menu {
-        display: none;
         flex-direction: column;
-      }
-      #aside-btn {
-        display: block;
-        text-align: right;
       }
     }
     > article {
       grid-area: main-content;
       padding: 1rem;
       position: relative;
+      #aside-btn {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+      }
     }
-    #aside-checkbox:checked ~ menu {
+    #aside-checkbox:checked ~ aside {
       display: flex;
     }
     > footer {

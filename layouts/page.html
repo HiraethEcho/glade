@@ -4,12 +4,6 @@
 {{ end }}
 
 {{ define "mainaside" }}
-  {{ $showrel := default true (default .Site.Params.ShowRelPost .Params.ShowRelPost) }}
-  {{ $showtoc := default true (default .Site.Params.ShowToc .Params.ShowToc) }}
-  {{ if or $showrel $showtoc }}
-    <label for="aside-checkbox" id="aside-btn">☰</label>
-  {{ end }}
-  <input type="checkbox" id="aside-checkbox" style="display: none;">
   <menu>
   <li>{{ partial "toc.html" . }}</li>
   <li>{{ partial "post-rel.html" . }}</li>
@@ -17,6 +11,11 @@
 {{ end }}
 
 {{ define "mainarticle" }}
+  {{ $showrel := default true (default .Site.Params.ShowRelPost .Params.ShowRelPost) }}
+  {{ $showtoc := default true (default .Site.Params.ShowToc .Params.ShowToc) }}
+  {{ if or $showrel $showtoc }}
+    <label for="aside-checkbox" id="aside-btn">☰</label>
+  {{ end }}
   {{ .Content }} 
 {{ end }}
 
