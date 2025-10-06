@@ -9,7 +9,6 @@
     {{ end }}
   {{ end }}
 
-  <b>{{ $root.Title }}</b>
   {{ partial "file-tree-walk.html" (dict "context" $root "depth" 1) }}
 {{- end }}
 

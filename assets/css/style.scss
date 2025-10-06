@@ -161,7 +161,7 @@ body {
       padding: 1rem 0;
     }
     > article {
-      padding: 1rem 0 1rem 1rem;
+      padding: 1rem;
       details {
         margin: 0.5rem;
         border: 1px solid var(--g-b-bg);
@@ -210,8 +210,10 @@ menu {
   list-style: none;
   margin: 0;
   padding: 0;
-  ul {
+  ul,
+  menu {
     list-style: none;
+    border-left: 0.2rem solid color-mix(in srgb, var(--g-line) 30%, transparent);
     margin: 0;
   }
   li {
