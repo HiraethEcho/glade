@@ -58,7 +58,6 @@ body {
     }
     > aside {
       display: none;
-      width: auto;
       grid-area: aside-bar;
       > menu {
         flex-direction: column;
@@ -66,16 +65,15 @@ body {
     }
     > article {
       grid-area: main-content;
-      padding: 1rem;
       position: relative;
       #aside-btn {
         position: absolute;
-        right: 1rem;
+        right: 0;
         top: 1rem;
       }
     }
     #aside-checkbox:checked ~ aside {
-      display: flex;
+      display: block;
     }
     > footer {
       grid-area: page-end;
