@@ -12,12 +12,12 @@
   <label for="nav-checkbox" id="nav-btn">☰</label>
 <!-- ☰ -->
   <a href="{{ .Site.Home.RelPermalink }}">{{ site.Title }}</a>
-  <!-- <label id="themetoggle">◐</button> -->
+  <label id="themetoggle"></label>
 </div>
 <input type="checkbox" id="menu-checkbox" style="display: none;">
 <label for="menu-checkbox" id="menu-btn">❮</label>
 <menu>
-  <li><label id="themetoggle">◐</button></li>
+  <li><label id="themetoggle"></label></li>
   {{- range site.Menus.main }}
     {{ partial "menu-button.html" . }}
   {{ end }}

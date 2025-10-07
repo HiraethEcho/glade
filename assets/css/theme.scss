@@ -41,6 +41,11 @@ body {
 
   word-break: break-word;
   overflow-wrap: break-word;
+  #themetoggle::after {
+    content: "☼";
+    color: #af8f00;
+    /* content: "🔆☀"; */
+  }
 }
 
 body.dark {
@@ -74,4 +79,8 @@ body.dark {
   --waline-bq-color: #272727;
   --waline-info-bgcolor: #272727;
   --waline-info-color: #666;
+  #themetoggle::after {
+    content: "☽";
+    /* content: "🌙"; */
+  }
 }
