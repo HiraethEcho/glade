@@ -17,18 +17,20 @@
   {{ $depth := .depth }}
   <menu class="indentline">
     {{ range $context.Pages }}
-      <li>
-        {{ if .IsSection }}
-          <details>
-            <summary>
+      {{ if not .Params.HideInFileTree }}
+        <li>
+          {{ if .IsSection }}
+            <details>
+              <summary>
+                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+              </summary>
+              {{ partial "file-tree-walk.html" (dict "context" . "depth" (add $depth 1)) }}
+            </details>
+          {{ else }}
               <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-            </summary>
-            {{ partial "file-tree-walk.html" (dict "context" . "depth" (add $depth 1)) }}
-          </details>
-        {{ else }}
-          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-        {{ end }}
-      </li>
+          {{ end }}
+        </li>
+      {{ end }}
     {{ end }}
   </menu>
 {{- end }}
