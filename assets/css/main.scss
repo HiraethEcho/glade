@@ -57,30 +57,17 @@ body {
       grid-area: page-start;
     }
     > aside {
-      display: none;
       grid-area: aside-bar;
-      > menu {
-        flex-direction: column;
-      }
     }
     > article {
       grid-area: main-content;
       position: relative;
-      #aside-btn {
-        position: absolute;
-        right: 0;
-        top: 1rem;
-      }
-    }
-    #aside-checkbox:checked ~ aside {
-      display: block;
     }
     > footer {
       grid-area: page-end;
     }
   }
   > nav {
-    width: 250px;
     grid-area: sidebar;
     position: sticky;
     overflow-y: auto;
@@ -107,7 +94,7 @@ body {
     grid-template-columns: 70vw 100vw;
     width: 170vw;
     left: -70vw;
-    overflow-x: auto;
+    overflow-y: auto;
     > nav {
       width: 70vw;
     }
@@ -119,6 +106,21 @@ body {
       menu {
         display: none;
         flex-direction: column;
+      }
+    }
+    > main {
+      position: relative;
+      /* overflow-y: visible; */
+      grid-template-areas:
+        "page-start"
+        "aside-bar"
+        "main-content"
+        "page-end";
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto 1fr auto;
+      > aside {
+        display: block;
+        grid-area: aside-bar;
       }
     }
   }

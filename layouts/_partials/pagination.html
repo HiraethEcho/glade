@@ -1,13 +1,17 @@
-{{ $pages := .RegularPagesRecursive  }}
-{{ range (.Paginate $pages).Pages }}
-  {{ partial "post-section.html" . }}
+{{ $show := default true (default .Site.Params.ShowList .Params.ShowList) }}
+{{ if $show }}
+  {{ $pages := .RegularPagesRecursive  }}
+  {{ range (.Paginate $pages).Pages }}
+    {{ partial "post-section.html" . }}
+  {{ end }}
+
+  {{ $paginator := .Paginate $pages }}
+  {{ with $paginator }}
+    <ul class="pagination">
+      {{ range .Pagers }}
+        <li><a href="{{ .URL }}">{{ .PageNumber }}</a></li>
+      {{ end }}
+    </ul>
+  {{ end }}
 {{ end }}
 
-{{ $paginator := .Paginate $pages }}
-{{ with $paginator }}
-  <ul class="pagination">
-    {{ range .Pagers }}
-      <li><a href="{{ .URL }}">{{ .PageNumber }}</a></li>
-    {{ end }}
-  </ul>
-{{ end }}

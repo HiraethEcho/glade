@@ -13,7 +13,7 @@
     <li>
       {{ if .HasChildren }}
         <details><summary>{{ .Name }}</summary>
-          <menu>
+          <menu class="indentline">
             {{- with .Children }}
                 {{- partial "menu-side.html" . }}
             {{- end }}

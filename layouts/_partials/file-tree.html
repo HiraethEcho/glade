@@ -15,7 +15,7 @@
 {{- define "_partials/file-tree-walk.html" -}}
   {{ $context := .context }}
   {{ $depth := .depth }}
-  <menu>
+  <menu class="indentline">
     {{ range $context.Pages }}
       <li>
         {{ if .IsSection }}

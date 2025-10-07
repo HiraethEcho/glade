@@ -3,7 +3,7 @@
   {{ $page := . }}
   {{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
   <details><summary>Related</summary>
-    <menu>
+    <menu class="indentline">
     {{ range $taxonomyName, $taxonomy := .Site.Taxonomies }}
       {{ $terms := ($page.GetTerms $taxonomyName) }}
       {{ with $terms }}
@@ -11,14 +11,14 @@
           <details open>
             {{- $taxonomyTitle := index $taxonomyTitles $taxonomyName | default $taxonomyName }} 
             <summary>{{ $taxonomyTitle }}</summary>
-            <menu>
+            <menu class="indentline">
               {{- range . }} 
                 <li>
                   <details open>
                     <summary>
                       <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
                     </summary>
-                    <menu>
+                    <menu class="indentline">
                       {{ range .RegularPages }}
                         <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
                       {{- end }}

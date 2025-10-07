@@ -13,7 +13,6 @@ ol > li {
   margin-left: 1rem;
 }
 a {
-  border-radius: var(--g-radius);
   color: var(--g-link);
   text-decoration: none;
   &:hover {
@@ -22,16 +21,17 @@ a {
   }
 }
 details {
+  margin-bottom: 0.2rem;
   > summary {
     list-style: none;
-    padding: 0.1rem 1rem 0.1rem 0.5rem;
+    padding: 0.2rem 1rem 0.2rem 0.5rem;
     cursor: pointer;
     position: relative;
     font-weight: bold;
     &::after {
       content: "◂";
       position: absolute;
-      right: 0.5rem;
+      right: 0.2rem;
     }
   }
   &[open] > summary::after {
@@ -42,11 +42,7 @@ details {
 /* table */
 table {
   border-collapse: collapse;
-  width: 100%;
   text-indent: 0;
-  caption {
-    margin-bottom: 0.5rem;
-  }
 }
 tr {
   border-bottom: 1px solid var(--g-line);
@@ -147,6 +143,7 @@ body {
     }
   }
   > nav {
+    width: 250px;
     padding: 0 1rem;
     background-color: inherit;
   }
@@ -158,6 +155,7 @@ body {
     }
     > aside {
       font-size: small;
+      width: auto;
       padding: 1rem 0;
     }
     > article {
@@ -211,23 +209,18 @@ menu {
   margin: 0;
   padding: 0;
   ul,
-  menu {
-    list-style: none;
-    border-left: 0.2rem solid color-mix(in srgb, var(--g-line) 30%, transparent);
-    margin: 0;
+  .indentline {
+    border-left: 0.1rem solid color-mix(in srgb, var(--g-line) 30%, transparent);
+    border-bottom: 0.1rem solid color-mix(in srgb, var(--g-line) 30%, transparent);
   }
   li {
     margin-left: 0.5rem;
   }
-  details {
-    margin: 0.2rem 0;
-    border: none;
-    summary {
-      padding: 0rem;
-      background-color: inherit;
-    }
+  summary {
+    padding-left: 0;
   }
 }
+
 #TableOfContents ul {
   list-style: none;
 }
@@ -239,20 +232,24 @@ menu {
 }
 
 #searchbox input {
-  margin: 0 auto;
+  height: 2rem;
   width: 100%;
   background-color: var(--g-i-bg);
 }
 #searchResults {
-  margin: 0 0.5rem;
+  > li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+  > .focus {
+    background-color: var(--g-b-bg);
+  }
 }
-#searchResults li {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  position: relative;
-}
-
-#searchResults .focus {
-  background-color: var(--g-b-bg);
+.archive-month {
+  display: flex;
+  > .archive-month-header {
+    flex: 0 0 3rem;
+  }
 }

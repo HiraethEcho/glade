@@ -11,11 +11,6 @@
 {{ end }}
 
 {{ define "mainarticle" }}
-  {{ $showrel := default true (default .Site.Params.ShowRelPost .Params.ShowRelPost) }}
-  {{ $showtoc := default true (default .Site.Params.ShowToc .Params.ShowToc) }}
-  {{ if or $showrel $showtoc }}
-    <label for="aside-checkbox" id="aside-btn">☰</label>
-  {{ end }}
   {{ .Content }} 
 {{ end }}
 
