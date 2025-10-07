@@ -14,7 +14,7 @@ body {
     "footer footer";
   grid-template-rows: auto 1fr auto;
   grid-template-columns: auto 1fr;
-  margin: 0rem auto;
+  margin: 0 auto;
   min-height: 100vh;
   > header {
     grid-area: banner;
@@ -76,7 +76,6 @@ body {
   }
   > footer {
     grid-area: footer;
-    height: auto;
   }
 }
 

@@ -45,7 +45,7 @@ table {
   text-indent: 0;
 }
 tr {
-  border-bottom: 1px solid var(--g-line);
+  border-bottom: 0.1rem solid var(--g-line);
 }
 td,
 th {
@@ -133,7 +133,6 @@ body {
   max-width: 1000px;
   > header {
     padding: 0 1rem;
-    font-size: 1.5rem;
     menu {
       label {
         font-weight: bold;
@@ -146,6 +145,7 @@ body {
   }
   > nav {
     width: 250px;
+    max-height: calc(100vh - 4rem);
     padding: 0 1rem;
     background-color: inherit;
   }
@@ -153,7 +153,7 @@ body {
     background-color: var(--g-bg);
     padding: 1rem;
     > header {
-      border-bottom: 1px solid var(--g-line);
+      border-bottom: 0.1rem solid var(--g-line);
     }
     > aside {
       font-size: small;
@@ -164,7 +164,7 @@ body {
       padding: 1rem;
       details {
         margin: 0.5rem;
-        border: 1px solid var(--g-b-bg);
+        border: 0.1rem solid var(--g-b-bg);
         background-color: var(--g-i-bg);
         border-radius: var(--g-radius);
         summary {
@@ -268,8 +268,13 @@ menu {
 #themetoggle {
   font-size: 1rem;
 }
+#menu-btn {
+  font-size: 2rem;
+}
+
 .site-title {
   display: flex;
+  font-size: 2rem;
   gap: 1rem;
   align-items: center;
 }
