@@ -3,9 +3,9 @@
 
 <details open><summary>{{ $lang | default "TEXT" }}</summary>
 {{- if transform.CanHighlight .Type -}}
-<pre class="chroma"><code class="language-{{ .Type }}" data-lang="{{ .Type }}">{{- with transform.HighlightCodeBlock . -}}{{ .Inner }}{{- end -}}</code><button onclick="copyCode(this)">copy</button></pre>
+<div class="chroma codeblock"><code class="language-{{ .Type }}" data-lang="{{ .Type }}">{{- with transform.HighlightCodeBlock . -}}{{ .Inner }}{{- end -}}</code><button onclick="copyCode(this)">copy</button></div>
 {{- else -}}
-<pre><code class="language-{{ .Type }}" data-lang="{{ .Type }}">{{ .Inner }}</code><button onclick="copyCode(this)">copy</button></pre>
+<pre class="codeblock"><code class="language-{{ .Type }}" data-lang="{{ .Type }}">{{ .Inner }}</code><button onclick="copyCode(this)">copy</button></pre>
 {{- end -}}
 </details>
 

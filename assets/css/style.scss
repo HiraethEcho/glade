@@ -31,7 +31,7 @@ details {
     &::after {
       content: "◂";
       position: absolute;
-      right: 0.2rem;
+      right: 0.5rem;
     }
   }
   &[open] > summary::after {
@@ -111,21 +111,26 @@ code {
   border-radius: var(--g-radius);
 }
 
-pre {
-  margin: 0.5rem;
-  padding: 0.5rem;
+.codeblock {
+  padding: 1rem;
   border-radius: var(--g-radius);
   overflow: auto;
   max-height: 600px;
   position: relative;
-  code {
-    padding: 0;
-    margin: 0;
-  }
   button {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 0.5rem;
+  }
+}
+.codeblock,
+pre {
+  padding: 1rem;
+  border-radius: var(--g-radius);
+  > code {
+  border-radius: var(--g-radius);
+    padding: 0;
+    margin: 0;
   }
 }
 
@@ -163,7 +168,6 @@ body {
     > article {
       padding: 1rem;
       details {
-        margin: 0.5rem;
         border: 0.1rem solid var(--g-b-bg);
         background-color: var(--g-i-bg);
         border-radius: var(--g-radius);
