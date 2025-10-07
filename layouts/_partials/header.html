@@ -8,14 +8,16 @@
   }
 </script>
 
-<h1>
-  <label for="nav-checkbox" id="nav-btn">≡</label>
+<div class="site-title">
+  <label for="nav-checkbox" id="nav-btn">☰</label>
+<!-- ☰ -->
   <a href="{{ .Site.Home.RelPermalink }}">{{ site.Title }}</a>
-</h1>
+  <!-- <label id="themetoggle">◐</button> -->
+</div>
 <input type="checkbox" id="menu-checkbox" style="display: none;">
-<label for="menu-checkbox" id="menu-btn"><h1>➤</h1></label>
+<label for="menu-checkbox" id="menu-btn">❮</label>
 <menu>
-  <li><button id="themetoggle">🌓</button></li>
+  <li><label id="themetoggle">◐</button></li>
   {{- range site.Menus.main }}
     {{ partial "menu-button.html" . }}
   {{ end }}

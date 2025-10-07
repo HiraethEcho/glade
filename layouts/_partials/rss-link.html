@@ -3,5 +3,5 @@
 {{- $rss = (.Parent.OutputFormats.Get "rss") }}
 {{- end }}
 {{- with $rss }}
-<small><a href="{{ .RelPermalink }}" title="RSS" aria-label="RSS">rss</a></small>
+<a href="{{ .RelPermalink }}" title="RSS" aria-label="RSS">📶rss</a>
 {{- end }}

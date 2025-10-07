@@ -14,9 +14,9 @@
   {{ $num := (len .Site.Params.taxonomyTitles)}}
   {{$scratch2 := newScratch}}
   {{ range .Site.Taxonomies }}
-      {{ $scratch2.Add "total" (len .)}}
+    {{ $scratch2.Add "total" (len .)}}
   {{ end }}
-  <p>{{ $scratch2.Get "total" }} terms in {{ $num }} taxonomies.</p>
+  <p>{{ $scratch2.Get "total" }} terms in {{ $num }} <a href="taxonomies">taxonomies</a>.</p>
 
   {{ with .Site.Params.social }}
   <menu>

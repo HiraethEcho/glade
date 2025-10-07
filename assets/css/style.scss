@@ -63,6 +63,7 @@ th {
 button {
   border: none;
   background-color: inherit;
+  cursor: pointer;
 }
 label {
   cursor: pointer;
@@ -131,7 +132,8 @@ pre {
 body {
   max-width: 1000px;
   > header {
-    margin: 0 1rem;
+    padding: 0 1rem;
+    font-size: 1.5rem;
     menu {
       label {
         font-weight: bold;
@@ -211,7 +213,8 @@ menu {
   ul,
   .indentline {
     border-left: 0.1rem solid color-mix(in srgb, var(--g-line) 30%, transparent);
-    border-bottom: 0.1rem solid color-mix(in srgb, var(--g-line) 30%, transparent);
+    border-bottom: 0.1rem solid
+      color-mix(in srgb, var(--g-line) 30%, transparent);
   }
   li {
     margin-left: 0.5rem;
@@ -227,12 +230,12 @@ menu {
 
 #searchbox {
   position: relative;
-  margin: 0 0 0.5rem;
+  padding: 0.2rem 0;
   width: 100%;
 }
 
 #searchbox input {
-  height: 2rem;
+  height: 1.5rem;
   width: 100%;
   background-color: var(--g-i-bg);
 }
@@ -252,4 +255,21 @@ menu {
   > .archive-month-header {
     flex: 0 0 3rem;
   }
+}
+
+.top {
+  position: fixed;
+  background-color: inherit;
+  padding: 0 0.5rem;
+  border-radius: var(--g-radius);
+  right: 2rem;
+  top: calc(100vh - 2rem);
+}
+#themetoggle {
+  font-size: 1rem;
+}
+.site-title {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }

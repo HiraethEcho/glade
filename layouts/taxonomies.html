@@ -1,0 +1,23 @@
+{{ define "mainstart" }} 
+  {{ partial "breadcrumbs" . }}
+{{- end }}
+
+{{ define "mainarticle" }} 
+  {{ .Content }} 
+  {{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
+  {{- range $taxonomyName, $taxonomy := .Site.Taxonomies }} 
+    {{- $taxonomyTitle := index $taxonomyTitles $taxonomyName | default $taxonomyName }} 
+    {{- with $taxonomy }}
+      <h2>
+        <a href="/{{ $taxonomyName }}">{{ $taxonomyTitle }} </a><sup>{{ len $taxonomy }}</sup>
+      </h2>
+      {{- range $name, $value := $taxonomy }}
+        {{- $count := $value.Count }}
+        {{- $page := site.GetPage (printf "/%s/%s" $taxonomyName $name) }}
+        {{- with $page }}
+          <code><a href="{{ .Permalink }}">{{ .Name }}</a><sup>{{ $count }}</sup></code>
+        {{- end }}
+      {{- end }}
+    {{- end }} 
+  {{- end }}
+{{ end }} 

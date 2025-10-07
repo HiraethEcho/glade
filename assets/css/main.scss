@@ -15,10 +15,11 @@ body {
   grid-template-rows: auto 1fr auto;
   grid-template-columns: auto 1fr;
   margin: 0rem auto;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
   > header {
     grid-area: banner;
+    background: inherit;
+    z-index: 2;
     height: auto;
     position: sticky;
     top: 0;
@@ -70,13 +71,12 @@ body {
   > nav {
     grid-area: sidebar;
     position: sticky;
+    top: 0;
     overflow-y: auto;
   }
   > footer {
     grid-area: footer;
     height: auto;
-    position: sticky;
-    bottom: 0;
   }
 }
 
@@ -106,6 +106,9 @@ body {
       menu {
         display: none;
         flex-direction: column;
+        li {
+          margin: 0;
+        }
       }
     }
     > main {
@@ -128,10 +131,7 @@ body {
   #menu-btn {
     display: block;
     position: absolute;
-    right: 0rem;
-    > h1 {
-      transform: rotate(180deg);
-    }
+    right: 1rem;
   }
   #menu-checkbox:checked ~ menu {
     display: flex;
@@ -142,13 +142,13 @@ body {
       flex-direction: column;
     }
   }
-  #menu-checkbox:checked ~ #menu-btn > h1 {
-    transform: rotate(90deg);
+  #menu-checkbox:checked ~ #menu-btn {
+    transform: rotate(-90deg);
   }
   #nav-btn {
     display: block;
     position: absolute;
-    left: 0rem;
+    left: 1rem;
   }
   #nav-checkbox:checked ~ nav {
     display: block;
