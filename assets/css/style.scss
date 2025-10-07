@@ -150,8 +150,9 @@ body {
   }
   > nav {
     width: 250px;
-    max-height: calc(100vh - 4rem);
-    padding: 0 1rem;
+    max-height: 100vh;
+    padding: 3rem 1rem 1rem;
+    margin-top: -3rem;
     background-color: inherit;
   }
   > main {
@@ -204,7 +205,6 @@ body {
   }
   > footer {
     text-align: center;
-    font-size: small;
   }
 }
 
@@ -263,7 +263,7 @@ menu {
 
 .top {
   position: fixed;
-  background-color: inherit;
+  background-color: var(--g-b-bg);
   padding: 0 0.5rem;
   border-radius: var(--g-radius);
   right: 2rem;
