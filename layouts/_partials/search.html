@@ -1,4 +1,4 @@
-{{ $show := default true (default .Site.Params.Search .Params.Search) }}
+{{ $show := default true (default .Site.Params.ShowSearch .Params.ShowSearch) }}
 {{ if $show }}
   <div id="searchbox">
     <input id="searchInput" autofocus placeholder="{{ .Site.Params.SearchPlaceHolder | default (printf "search ↵") }}"
