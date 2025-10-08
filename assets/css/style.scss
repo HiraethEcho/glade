@@ -204,7 +204,9 @@ body {
     }
   }
   > footer {
-    text-align: center;
+    display: flex;
+    align-items: middle;
+    justify-content: space-between;
   }
 }
 
@@ -262,12 +264,9 @@ menu {
 }
 
 .top {
-  position: fixed;
   background-color: var(--g-b-bg);
   padding: 0 0.5rem;
   border-radius: var(--g-radius);
-  right: 2rem;
-  top: calc(100vh - 2rem);
 }
 #themetoggle {
   font-size: 1rem;
