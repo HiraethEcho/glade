@@ -43,13 +43,14 @@ body {
     }
   }
   > main {
+    position: relative;
     grid-area: post;
     overflow-wrap: break-word;
     word-wrap: break-word;
     overflow-y: auto;
     display: grid;
     grid-template-areas:
-      "main-content aside-bar"
+      "page-start aside-bar"
       "main-content aside-bar"
       "page-end page-end";
     grid-template-columns: 1fr auto;
@@ -85,6 +86,19 @@ body {
 }
 
 #nav-checkbox:checked ~ nav {
+  display: none;
+}
+
+#aside-btn {
+  display: block;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+#aside-checkbox:checked ~ #aside-btn {
+  transform: rotate(180deg);
+}
+#aside-checkbox:checked ~ aside {
   display: none;
 }
 
@@ -125,8 +139,7 @@ body {
       grid-template-columns: 1fr;
       grid-template-rows: auto auto 1fr auto;
       > aside {
-        display: block;
-        grid-area: aside-bar;
+        display: none;
       }
     }
   }
@@ -148,6 +161,7 @@ body {
   #menu-checkbox:checked ~ #menu-btn {
     transform: rotate(-90deg);
   }
+
   #nav-btn {
     display: block;
     position: absolute;
@@ -157,5 +171,9 @@ body {
     display: block;
     left: 0;
     z-index: 1;
+  }
+
+  #aside-checkbox:checked ~ aside {
+    display: block;
   }
 }

@@ -1,3 +1,8 @@
+{{ define "mainstart" }}
+  {{ partial "breadcrumbs.html" . }}
+  {{ partial "post-info.html" . }}
+{{ end }}
+
 {{ define "mainaside" }}
 <menu>
   {{ partial "toc.html" . }}
@@ -6,8 +11,6 @@
 {{ end }}
 
 {{ define "mainarticle" }}
-  {{ partial "breadcrumbs.html" . }}
-  {{ partial "post-info.html" . }}
   {{ .Content }} 
 {{ end }}
 
