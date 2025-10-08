@@ -1,4 +1,10 @@
 /* basic */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 section,
 ul,
 ol,
@@ -6,10 +12,7 @@ dd,
 p {
   margin: 0.5rem;
 }
-ul > li {
-  margin-left: 1rem;
-}
-ol > li {
+li {
   margin-left: 1rem;
 }
 a {
@@ -24,14 +27,14 @@ details {
   margin-bottom: 0.2rem;
   > summary {
     list-style: none;
-    padding: 0.2rem 1rem 0.2rem 0.5rem;
+    padding: 0.2rem 1.5rem 0.2rem 0.5rem;
     cursor: pointer;
     position: relative;
     font-weight: bold;
     &::after {
       content: "◂";
       position: absolute;
-      right: 0.5rem;
+      right: 0.2rem;
     }
   }
   &[open] > summary::after {
@@ -66,8 +69,8 @@ button {
   cursor: pointer;
 }
 label {
+  font-weight: bold;
   cursor: pointer;
-  padding: 0 0.2rem;
   border-radius: var(--g-radius);
   &:hover {
     background-color: var(--g-i-bg);
@@ -104,7 +107,6 @@ var {
   background-color: var(--g-i-bg);
   font-family: var(--g-font-mono);
 }
-
 code {
   padding: 0.1rem 0.5rem;
   font-size: 0.8rem;
@@ -128,7 +130,7 @@ pre {
   padding: 1rem;
   border-radius: var(--g-radius);
   > code {
-  border-radius: var(--g-radius);
+    border-radius: var(--g-radius);
     padding: 0;
     margin: 0;
   }
@@ -137,11 +139,9 @@ pre {
 body {
   max-width: 1000px;
   > header {
+    height: 3rem;
     padding: 0 1rem;
     menu {
-      label {
-        font-weight: bold;
-      }
       input:checked ~ label::after {
         content: "»";
         margin-left: 0.2rem;
@@ -157,7 +157,7 @@ body {
   }
   > main {
     background-color: var(--g-bg);
-    padding: 1rem;
+    padding: 0 1rem;
     > header {
       padding-right: 1rem;
       border-bottom: 0.1rem solid var(--g-line);
@@ -167,7 +167,6 @@ body {
       max-width: 200px;
     }
     > article {
-      padding: 1rem;
       details {
         border: 0.1rem solid var(--g-b-bg);
         background-color: var(--g-i-bg);
@@ -176,14 +175,6 @@ body {
           background-color: var(--g-b-bg);
         }
       }
-    }
-    .pagination {
-      display: flex;
-      justify-content: center;
-      margin-top: 1rem;
-      padding: 0;
-      list-style: none;
-      gap: 2rem;
     }
     > footer {
       text-align: center;
@@ -256,6 +247,17 @@ menu {
     background-color: var(--g-b-bg);
   }
 }
+#themetoggle {
+  font-size: 1rem;
+}
+#menu-btn {
+  font-size: 2rem;
+}
+#aside-btn {
+  right: 1rem;
+  top: 0.5rem;
+}
+
 .archive-month {
   display: flex;
   > .archive-month-header {
@@ -268,20 +270,19 @@ menu {
   padding: 0 0.5rem;
   border-radius: var(--g-radius);
 }
-#themetoggle {
-  font-size: 1rem;
-}
-#menu-btn {
-  font-size: 2rem;
-}
-#aside-btn {
-  right: 1rem;
-  top: 1.5rem;
-}
 
 .site-title {
   display: flex;
   font-size: 2rem;
   gap: 1rem;
   align-items: center;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  padding: 0;
+  list-style: none;
+  gap: 2rem;
 }

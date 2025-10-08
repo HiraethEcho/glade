@@ -15,9 +15,7 @@
               {{- range . }} 
                 <li>
                   <details open>
-                    <summary>
-                      <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-                    </summary>
+                    <summary>{{.Title}}</summary>
                     <menu class="indentline">
                       {{ range .RegularPages }}
                         <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
