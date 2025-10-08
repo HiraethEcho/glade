@@ -60,6 +60,7 @@ body {
     }
     > aside {
       grid-area: aside-bar;
+      padding: 1.5rem 0 0;
     }
     > article {
       grid-area: main-content;
@@ -92,11 +93,6 @@ body {
 #aside-btn {
   display: block;
   position: absolute;
-  right: 1rem;
-  top: 1rem;
-}
-#aside-checkbox:checked ~ #aside-btn {
-  transform: rotate(180deg);
 }
 #aside-checkbox:checked ~ aside {
   display: none;
@@ -140,6 +136,9 @@ body {
       grid-template-rows: auto auto 1fr auto;
       > aside {
         display: none;
+        max-width: none;
+        padding: 0;
+        border-bottom: 0.1rem solid var(--g-line);
       }
     }
   }
@@ -173,6 +172,9 @@ body {
     z-index: 1;
   }
 
+  #aside-btn {
+    transform: rotate(90deg);
+  }
   #aside-checkbox:checked ~ aside {
     display: block;
   }

@@ -159,12 +159,12 @@ body {
     background-color: var(--g-bg);
     padding: 1rem;
     > header {
+      padding-right: 1rem;
       border-bottom: 0.1rem solid var(--g-line);
     }
     > aside {
-      font-size: small;
       width: auto;
-      padding: 1rem 0;
+      max-width: 200px;
     }
     > article {
       padding: 1rem;
@@ -273,6 +273,10 @@ menu {
 }
 #menu-btn {
   font-size: 2rem;
+}
+#aside-btn {
+  right: 1rem;
+  top: 1.5rem;
 }
 
 .site-title {

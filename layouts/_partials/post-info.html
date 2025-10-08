@@ -7,13 +7,11 @@
 <a href="https://creativecommons.org/licenses/by-{{ $cc }}/4.0">
   CC BY-{{$cc | upper}}
 </a>
-  {{- /*
-    <img alt="CC {{ $cc | upper }}" style="height: 1.2em; width: auto; vertical-align: middle;" src="https://i.creativecommons.org/l/by-{{$cc}}/4.0/80x15.png">
-  */ -}}
 {{ with .Params.status }}
   <em>{{ . }}</em>
 {{ end }}
 </p>
+
 <p>
 {{ $page := . }}
 {{ range $taxonomyName, $taxonomy := .Site.Taxonomies }}
