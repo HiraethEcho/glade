@@ -1,20 +1,21 @@
-{{ define "mainstart" }}
-  {{ partial "breadcrumbs.html" . }}
-  {{ partial "post-info.html" . }}
-{{ end }}
-
-{{ define "mainaside" }}
-<menu>
-  {{ partial "toc.html" . }}
-  {{ partial "post-rel.html" . }}
-</menu>
-{{ end }}
-
-{{ define "mainarticle" }}
-  {{ .Content }} 
-{{ end }}
-
-{{ define "mainfooter" }}
-  {{ partial "page-end.html" . }}
-  {{ partial "comment.html" . }}
+{{ define "main" }}
+  <header>
+    {{ partial "breadcrumbs.html" . }}
+    {{ partial "post-info.html" . }}
+  </header>
+  <input type="checkbox" id="aside-checkbox" style="display: none;">
+  <label for="aside-checkbox" id="aside-btn">⇄</label>
+  <aside>
+    <menu>
+      {{ partial "toc.html" . }}
+      {{ partial "post-rel.html" . }}
+    </menu>
+  </aside>
+  <article>
+    {{ .Content }} 
+  </article>
+  <footer>
+    {{ partial "page-end.html" . }}
+    {{ partial "comment.html" . }}
+  </footer>
 {{ end }}

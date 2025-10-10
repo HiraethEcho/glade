@@ -1,12 +1,13 @@
-{{- define "mainstart" }}
-  {{ partial "breadcrumbs" . }}
-{{- end }}
-
-{{- define "mainarticle" }}
-  {{ .Content }}
-  {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
-  {{- if site.Params.ShowAllPagesInArchives }}
-    {{- $pages = site.RegularPages }}
-  {{- end }}
-  {{ partial "post-list.html" (dict "pages" $pages ) }}
+{{- define "main" }}
+  <header>
+    {{ partial "breadcrumbs" . }}
+  </header>
+  <article>
+    {{ .Content }}
+    {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+    {{- if site.Params.ShowAllPagesInArchives }}
+      {{- $pages = site.RegularPages }}
+    {{- end }}
+    {{ partial "post-list.html" (dict "pages" $pages ) }}
+  </article>
 {{- end }}

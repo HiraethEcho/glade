@@ -7,11 +7,8 @@
   {{ range (where .Site.Pages "Kind" "page" )}}
       {{$scratch.Add "total" .WordCount}}
   {{ end }}
-  <p>
-  {{$scratch.Get "total" }} words in <a href="/archive">{{ len .Site.RegularPages }}</a> posts.
-  </p>
+  <p>{{$scratch.Get "total" }} words in <a href="/archive">{{ len .Site.RegularPages }}</a> posts.</p>
 
-  <!-- {{ $num := (len .Site.Taxonomies )}} -->
   {{ $num := (len .Site.Taxonomies )}}
   {{$scratch2 := newScratch}}
   {{ range .Site.Taxonomies }}
@@ -20,11 +17,13 @@
   <p>{{ $scratch2.Get "total" }} terms in {{ $num }} <a href="/taxonomies">taxonomies</a>.</p>
 
   {{ with .Site.Params.social }}
-  <menu>
-  {{ range . }}
-    <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a></li>
-  {{ end }}
-  </menu>
+      <p>
+      <b>contact:</b>
+      {{ range . }}
+        <a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a>
+      {{ end }}
+      </p>
+    </details>
   {{ end }}
 
 {{ end }}

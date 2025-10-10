@@ -1,8 +1,10 @@
-{{ define "mainstart" }}
-  {{ partial "breadcrumbs.html" . }}
-  <h1>{{ .Title }}</h1>
-{{ end }}
-{{ define "mainarticle" }}
-  {{ .Content }} 
-  {{ partial "pagination.html" . }}
+{{ define "main" }}
+  <header>
+    {{ partial "breadcrumbs.html" . }}
+    <h1>{{ .Title }}</h1>
+  </header>
+  <article class="section">
+    {{ .Content }} 
+    {{ partial "pagination.html" . }}
+  </article>
 {{ end }}

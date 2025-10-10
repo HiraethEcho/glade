@@ -1,8 +1,9 @@
+<small>
 <p>
   {{ $page := . }}
-  {{ if .Date }}
-    {{ $dateMachine := .Date.Format "2006-01-02T15:04:05-07:00" }}
-    <time datetime="{{ $dateMachine }}">{{ .Date.Format .Site.Params.DateFormat }}</time>
+  {{ with .Date }}
+    {{ $dateMachine := .Format "2006-01-02T15:04:05-07:00" }}
+    <time datetime="{{ $dateMachine }}">{{ .Format "2006/01/02" }}</time>
   {{ end }}
   <span>{{ .WordCount  }}字 {{ .ReadingTime  }}分钟</span>
   {{ $cc := (default "nc-sa" (default .Site.Params.copyright .Params.copyright)) }}
@@ -13,7 +14,6 @@
     <code>{{ . }}</code>
   {{ end }}
 </p>
-
 <p>
 {{ $page := . }}
 {{ range $taxonomyName, $taxonomy := .Site.Taxonomies }}
@@ -26,3 +26,7 @@
   {{ end }}
 {{ end }}
 </p>
+{{ with .Params.summary }}
+  <p>{{ . }}</p>
+{{ end }}
+</small>

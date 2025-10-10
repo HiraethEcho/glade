@@ -18,13 +18,7 @@
         </h3>
         <section style="border-left: 1px solid var(--g-line); padding-left: 0.5rem;">
           {{- range .Pages }}
-            {{- if eq .Kind "page" }}
-              <h4 class="archive-entry-title entry-hint-parent">
-              <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}">
-              {{- .Title | markdownify }}</a>
-              </h4>
-              {{ partial "post-info" . }}
-            {{- end }}
+            {{ partial "post-section.html" . }}
           {{- end }}
         </section>
       </section>
