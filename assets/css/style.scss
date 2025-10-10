@@ -137,10 +137,7 @@ pre {
 }
 
 body {
-  max-width: 1000px;
   > header {
-    height: 3rem;
-    padding: 0 1rem;
     menu {
       input:checked ~ label::after {
         content: "»";
@@ -149,22 +146,12 @@ body {
     }
   }
   > nav {
-    width: 250px;
-    max-height: 100vh;
-    padding: 3rem 1rem 1rem;
-    margin-top: -3rem;
     background-color: inherit;
   }
   > main {
     background-color: var(--g-bg);
-    padding: 0 1rem;
     > header {
-      padding-right: 1rem;
       border-bottom: 0.1rem solid var(--g-line);
-    }
-    > aside {
-      width: auto;
-      max-width: 200px;
     }
     > article {
       details {
@@ -176,28 +163,9 @@ body {
         }
       }
     }
-    > footer {
-      text-align: center;
-      .post-end {
-        display: flex;
-        > div {
-          flex: 1;
-          position: relative;
-          padding: 0.5rem;
-        }
-        > .post-prev {
-          text-align: left;
-        }
-        > .post-next {
-          text-align: right;
-        }
-      }
-    }
   }
   > footer {
-    display: flex;
-    align-items: middle;
-    justify-content: space-between;
+    background: inherit;
   }
 }
 

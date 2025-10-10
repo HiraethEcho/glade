@@ -14,13 +14,15 @@ body {
     "sidebar footer";
   grid-template-rows: auto 1fr auto;
   grid-template-columns: auto 1fr;
+  max-width: 1200px;
   margin: 0 auto;
   min-height: 100vh;
   > header {
     grid-area: banner;
     background: inherit;
     z-index: 2;
-    height: auto;
+    height: 3rem;
+    padding: 0 1rem;
     position: sticky;
     top: 0;
     display: flex;
@@ -42,9 +44,16 @@ body {
       }
     }
   }
+  > nav {
+    width: 250px;
+    max-height: 100vh;
+    padding: 3rem 1rem 1rem;
+    margin-top: -3rem;
+  }
   > main {
     position: relative;
     grid-area: post;
+    padding: 0 1rem;
     overflow-wrap: break-word;
     word-wrap: break-word;
     overflow-y: auto;
@@ -57,22 +66,44 @@ body {
     grid-template-rows: auto 1fr auto;
     > header {
       grid-area: page-start;
+      padding-right: 1rem;
     }
     > aside {
       grid-area: aside-bar;
-      padding: 1.5rem 0 0 0.5rem;
+      padding: 2rem 0.5rem 0 0.5rem;
+      width: auto;
+      max-width: 200px;
     }
     > article {
+      max-width: 750px;
+      margin: 0 auto;
       grid-area: main-content;
       position: relative;
     }
     > footer {
       grid-area: page-end;
+      text-align: center;
+      .post-end {
+        display: flex;
+        > div {
+          flex: 1;
+          position: relative;
+          padding: 0.5rem;
+        }
+        > .post-prev {
+          text-align: left;
+        }
+        > .post-next {
+          text-align: right;
+        }
+      }
     }
   }
   > footer {
-    background: inherit;
     position: sticky;
+    display: flex;
+    align-items: middle;
+    justify-content: space-between;
     bottom: 0;
   }
   > nav {
