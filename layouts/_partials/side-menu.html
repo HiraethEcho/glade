@@ -1,7 +1,7 @@
 {{ $show := default true (default .Site.Params.ShowSideMenu .Params.ShowSideMenu) }}
 {{ if $show }}
   <hr>
-  <menu>
+  <menu class="sideblock">
     {{- with site.Menus.side }}
       {{ partial "menu-side.html" . }}
     {{- end }}
@@ -12,7 +12,8 @@
   {{- range . }}
     <li>
       {{ if .HasChildren }}
-        <details><summary>{{ .Name }}</summary>
+        <details class="menu-fold">
+          <summary>{{ .Name }}</summary>
           <menu class="indentline">
             {{- with .Children }}
                 {{- partial "menu-side.html" . }}

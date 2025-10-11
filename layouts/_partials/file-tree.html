@@ -9,28 +9,30 @@
     {{ end }}
   {{ end }}
 
+  <menu class="sideblock">
   {{ partial "file-tree-walk.html" (dict "context" $root "depth" 1) }}
+  </menu>
 {{- end }}
 
 {{- define "_partials/file-tree-walk.html" -}}
   {{ $context := .context }}
   {{ $depth := .depth }}
-  <menu class="indentline">
-    {{ range $context.Pages }}
-      {{ if not .Params.HideInFileTree }}
-        <li>
-          {{ if .IsSection }}
-            <details>
-              <summary>
-                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-              </summary>
-              {{ partial "file-tree-walk.html" (dict "context" . "depth" (add $depth 1)) }}
-            </details>
-          {{ else }}
+  {{ range $context.Pages }}
+    {{ if not .Params.HideInFileTree }}
+      <li>
+        {{ if .IsSection }}
+          <details class="menu-fold">
+            <summary>
               <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-          {{ end }}
-        </li>
-      {{ end }}
+            </summary>
+            <menu class="indentline">
+              {{ partial "file-tree-walk.html" (dict "context" . "depth" (add $depth 1)) }}
+            </menu>
+          </details>
+        {{ else }}
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        {{ end }}
+      </li>
     {{ end }}
-  </menu>
+  {{ end }}
 {{- end }}

@@ -1,18 +1,14 @@
 /* basic */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
 section,
-ul,
-ol,
+select,
+blockquote,
 dd,
+li,
 p {
   margin: 0.5rem;
 }
-li {
+ul,
+ol {
   margin-left: 1rem;
 }
 a {
@@ -20,21 +16,18 @@ a {
   text-decoration: none;
   &:hover {
     text-decoration: underline;
-    background-color: var(--g-i-bg);
   }
 }
 details {
-  margin-bottom: 0.2rem;
   > summary {
     list-style: none;
-    padding: 0.2rem 1.5rem 0.2rem 0.5rem;
     cursor: pointer;
     position: relative;
     font-weight: bold;
     &::after {
       content: "◂";
       position: absolute;
-      right: 0.2rem;
+      right: 0.5rem;
     }
   }
   &[open] > summary::after {
@@ -80,7 +73,7 @@ progress {
   vertical-align: baseline;
 }
 hr {
-  background-color: var(--g-line);
+  color: var(--g-line);
 }
 
 /* insert */
@@ -112,39 +105,27 @@ code {
   font-size: 0.8rem;
   border-radius: var(--g-radius);
 }
-
-.codeblock {
-  padding: 1rem;
-  border-radius: var(--g-radius);
+.codeblock,
+pre {
   overflow: auto;
   max-height: 600px;
   position: relative;
-  button {
-    position: absolute;
-    top: 0;
-    right: 0.5rem;
-  }
-}
-.codeblock,
-pre {
   padding: 1rem;
   border-radius: var(--g-radius);
   > code {
     border-radius: var(--g-radius);
     padding: 0;
     margin: 0;
+    font-size: 1rem;
   }
+}
+.copybtn {
+  position: absolute;
+  top: 0;
+  right: 0.5rem;
 }
 
 body {
-  > header {
-    menu {
-      input:checked ~ label::after {
-        content: "»";
-        margin-left: 0.2rem;
-      }
-    }
-  }
   > nav {
     background-color: inherit;
   }
@@ -156,10 +137,13 @@ body {
     > article {
       details {
         border: 0.1rem solid var(--g-b-bg);
+        margin: 0.5rem;
         background-color: var(--g-i-bg);
         border-radius: var(--g-radius);
-        summary {
+        > summary {
+          padding: 0.5rem 1rem 0.5rem 0.5rem;
           background-color: var(--g-b-bg);
+          border-radius: var(--g-radius);
         }
       }
     }
@@ -171,26 +155,30 @@ body {
 
 /* special */
 
-menu {
+#TableOfContents ul {
   list-style: none;
   margin: 0;
-  padding: 0;
-  ul,
-  .indentline {
-    border-left: 0.1rem solid color-mix(in srgb, var(--g-line) 30%, transparent);
-    border-bottom: 0.1rem solid
-      color-mix(in srgb, var(--g-line) 30%, transparent);
-  }
+  border-left: 0.1rem solid color-mix(in srgb, var(--g-line) 30%, transparent);
+  border-bottom: 0.1rem solid color-mix(in srgb, var(--g-line) 30%, transparent);
+}
+
+.sideblock {
+  list-style: none;
   li {
-    margin-left: 0.5rem;
-  }
-  summary {
-    padding-left: 0;
+    margin: 0.25rem 0 0.25rem 0.5rem;
   }
 }
 
-#TableOfContents ul {
+.menu-fold {
+  > summary {
+    padding-right: 1.5rem;
+  }
+}
+
+.indentline {
   list-style: none;
+  border-left: 0.1rem solid color-mix(in srgb, var(--g-line) 30%, transparent);
+  border-bottom: 0.1rem solid color-mix(in srgb, var(--g-line) 30%, transparent);
 }
 
 #searchbox {
@@ -253,4 +241,29 @@ menu {
   padding: 0;
   list-style: none;
   gap: 2rem;
+}
+
+.mainmenu {
+  background-color: inherit;
+  li {
+    margin: 0.1rem 0.25rem;
+    > input ~ label::after {
+      content: "»";
+      margin-left: 0.2rem;
+    }
+    > input:checked ~ menu {
+      border-bottom: 0.1rem solid var(--g-line);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .mainmenu li {
+    margin: 0.25rem 0.5rem;
+    > input:checked ~ menu {
+      border-left: 0.2rem solid
+        color-mix(in srgb, var(--g-line) 30%, transparent);
+      border-bottom: none;
+    }
+  }
 }

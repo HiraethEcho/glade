@@ -16,8 +16,8 @@
 </div>
 <input type="checkbox" id="menu-checkbox" style="display: none;">
 <label for="menu-checkbox" id="menu-btn">❮</label>
-<menu>
   <!-- <li><label id="themetoggle"></label></li> -->
+<menu class=mainmenu>
   {{- range site.Menus.main }}
     {{ partial "menu-button.html" . }}
   {{ end }}
@@ -28,7 +28,7 @@
     <li>
       <input type="checkbox" id="menu-{{ .Identifier }}" style="display: none;">
       <label for="menu-{{ .Identifier }}">{{ .Name }}</label>
-      <menu>
+      <menu class=mainmenu>
         {{ range .Children }}
           {{ partial "menu-button.html" . }}
         {{ end }}

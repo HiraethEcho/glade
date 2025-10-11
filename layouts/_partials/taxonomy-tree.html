@@ -1,13 +1,13 @@
 {{ $show := default true (default .Site.Params.ShowTaxonomyTree .Params.ShowTaxonomyTree) }}
 {{ if $show }}
   <hr>
-  <menu>
+  <menu class="sideblock">
     {{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
     {{- range $taxonomyName, $taxonomy := .Site.Taxonomies }} 
       {{- $taxonomyTitle := index $taxonomyTitles $taxonomyName | default $taxonomyName }} 
       {{- with $taxonomy }}
         <li>
-          <details>
+          <details class="menu-fold">
             <summary>
               <a href="/{{ $taxonomyName }}">{{ $taxonomyTitle }} </a> <sup>{{ len $taxonomy }}</sup>
             </summary>
