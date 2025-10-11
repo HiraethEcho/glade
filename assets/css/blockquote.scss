@@ -1,5 +1,7 @@
 blockquote {
-  border-left: 0.2rem solid var(--blockquote-border);
+  margin: 0.5rem;
+  border: 0.1rem solid var(--blockquote-border);
+  border-left: 0.25rem solid var(--blockquote-border);
   background-color: var(--blockquote-bg);
   > .alert-heading {
     font-weight: bold;
@@ -7,6 +9,7 @@ blockquote {
 }
 
 blockquote.alert-note {
+  border-color: var(--alert-note-border);
   border-left-color: var(--alert-note-border);
   background-color: var(--alert-note-bg);
   > .alert-heading {
@@ -14,6 +17,7 @@ blockquote.alert-note {
   }
 }
 blockquote.alert-tip {
+  border-color: var(--alert-tip-border);
   border-left-color: var(--alert-tip-border);
   background-color: var(--alert-tip-bg);
   > .alert-heading {
@@ -21,6 +25,7 @@ blockquote.alert-tip {
   }
 }
 blockquote.alert-important {
+  border-color: var(--alert-important-border);
   border-left-color: var(--alert-important-border);
   background-color: var(--alert-important-bg);
   > .alert-heading {
@@ -28,6 +33,7 @@ blockquote.alert-important {
   }
 }
 blockquote.alert-caution {
+  border-color: var(--alert-caution-border);
   border-left-color: var(--alert-caution-border);
   background-color: var(--alert-caution-bg);
   > .alert-heading {
@@ -35,6 +41,7 @@ blockquote.alert-caution {
   }
 }
 blockquote.alert-warning {
+  border-color: var(--alert-warning-border);
   border-left-color: var(--alert-warning-border);
   background-color: var(--alert-warning-bg);
   > .alert-heading {
