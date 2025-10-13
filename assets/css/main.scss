@@ -170,6 +170,11 @@ body {
         padding: 0;
         border-bottom: 0.1rem solid var(--g-line);
       }
+      > article {
+        max-width: none;
+        min-width: none;
+        width: auto;
+      }
     }
   }
 
