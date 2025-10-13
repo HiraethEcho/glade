@@ -247,6 +247,11 @@ body {
   gap: 2rem;
 }
 
+.post-section {
+  margin: 0 0 0.5rem;
+  border-bottom: 0.1rem solid var(--g-line);
+}
+
 .mainmenu {
   background-color: inherit;
   li {
