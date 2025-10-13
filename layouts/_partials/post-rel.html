@@ -2,34 +2,29 @@
 {{ if $show}}
   {{ $page := . }}
   {{ $taxonomyTitles := .Site.Params.taxonomyTitles}}
-  <details class="menu-fold">
-    <summary>Related</summary>
-    <menu class="indentline">
-    {{ range $taxonomyName, $taxonomy := .Site.Taxonomies }}
-      {{ $terms := ($page.GetTerms $taxonomyName) }}
-      {{ with $terms }}
-        <li>
-          <details open class="menu-fold">
-            {{- $taxonomyTitle := index $taxonomyTitles $taxonomyName | default $taxonomyName }} 
-            <summary>{{ $taxonomyTitle }}</summary>
-            <menu class="indentline">
-              {{- range . }} 
-                <li>
-                  <details open>
-                    <summary>{{.Title}}</summary>
-                    <menu class="indentline">
-                      {{ range .RegularPages }}
-                        <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
-                      {{- end }}
-                    </menu>
-                  </details>
-                </li>
-              {{ end }} 
-            </menu>
-          </details>
-        </li>
+      {{ range $taxonomyName, $taxonomy := .Site.Taxonomies }}
+        {{ $terms := ($page.GetTerms $taxonomyName) }}
+        {{ with $terms }}
+          <li>
+            <details open class="menu-fold">
+              {{- $taxonomyTitle := index $taxonomyTitles $taxonomyName | default $taxonomyName }} 
+              <summary>{{ $taxonomyTitle }}</summary>
+              <menu class="indentline">
+                {{- range . }} 
+                  <li>
+                    <details open>
+                      <summary>{{.Title}}</summary>
+                      <menu class="indentline">
+                        {{ range .RegularPages }}
+                          <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+                        {{- end }}
+                      </menu>
+                    </details>
+                  </li>
+                {{ end }} 
+              </menu>
+            </details>
+          </li>
+        {{ end }}
       {{ end }}
-    {{ end }}
-    </menu>
-  </details>
 {{- end}}

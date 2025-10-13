@@ -1,29 +1,29 @@
 {{ $show := default true (default .Site.Params.ShowSiteInfo .Params.ShowSiteInfo) }}
 {{ if $show }}
-  <hr>
-  {{ with .Site.Params.description }}<p>{{ . }}</p>{{ end }}
+  <div class="sideblock">
+    {{ with .Site.Params.description }}<p>{{ . }}</p>{{ end }}
 
-  {{$scratch := newScratch}}
-  {{ range (where .Site.Pages "Kind" "page" )}}
-      {{$scratch.Add "total" .WordCount}}
-  {{ end }}
-  <p>{{$scratch.Get "total" }} words in <a href="/archive">{{ len .Site.RegularPages }}</a> posts.</p>
+    {{$scratch := newScratch}}
+    {{ range (where .Site.Pages "Kind" "page" )}}
+        {{$scratch.Add "total" .WordCount}}
+    {{ end }}
+    <p>{{$scratch.Get "total" }} words in <a href="/archive">{{ len .Site.RegularPages }}</a> posts.</p>
 
-  {{ $num := (len .Site.Taxonomies )}}
-  {{$scratch2 := newScratch}}
-  {{ range .Site.Taxonomies }}
-    {{ $scratch2.Add "total" (len .)}}
-  {{ end }}
-  <p>{{ $scratch2.Get "total" }} terms in {{ $num }} <a href="/taxonomies">taxonomies</a>.</p>
+    {{ $num := (len .Site.Taxonomies )}}
+    {{$scratch2 := newScratch}}
+    {{ range .Site.Taxonomies }}
+      {{ $scratch2.Add "total" (len .)}}
+    {{ end }}
+    <p>{{ $scratch2.Get "total" }} terms in {{ $num }} <a href="/taxonomies">taxonomies</a>.</p>
 
-  {{ with .Site.Params.social }}
-      <p>
-      contact:
-      {{ range . }}
-        <a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a>
-      {{ end }}
-      </p>
-    </details>
-  {{ end }}
-
+    {{ with .Site.Params.social }}
+        <p>
+        contact:
+        {{ range . }}
+          <a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a>
+        {{ end }}
+        </p>
+      </details>
+    {{ end }}
+  </div>
 {{ end }}

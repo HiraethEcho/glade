@@ -31,18 +31,6 @@ body {
     > label {
       display: none;
     }
-    menu,
-    li {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      input ~ menu {
-        display: none;
-      }
-      input:checked ~ menu {
-        display: flex;
-      }
-    }
   }
   > nav {
     width: 250px;
@@ -76,6 +64,7 @@ body {
     }
     > article {
       max-width: 750px;
+      min-width: 450px;
       margin: 0 auto;
       grid-area: main-content;
       position: relative;
@@ -117,6 +106,22 @@ body {
   }
 }
 
+.mainmenu {
+  display: flex;
+  align-items: center;
+  li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    input ~ menu {
+      display: none;
+    }
+    input:checked ~ menu {
+      display: flex;
+    }
+  }
+}
+
 #nav-checkbox:checked ~ nav {
   display: none;
 }
@@ -149,13 +154,6 @@ body {
       > label {
         display: none;
       }
-      menu {
-        display: none;
-        flex-direction: column;
-        li {
-          margin: 0;
-        }
-      }
     }
     > main {
       position: relative;
@@ -175,6 +173,10 @@ body {
     }
   }
 
+  .mainmenu {
+    display: none;
+    flex-direction: column;
+  }
   #menu-btn {
     display: block;
     position: absolute;
