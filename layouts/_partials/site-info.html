@@ -5,23 +5,31 @@
 
     {{- $scratch := newScratch -}}
     {{- range (where .Site.Pages "Kind" "page" ) -}}
-        {{- $scratch.Add "total" .WordCount -}}
+      {{- $scratch.Add "total" .WordCount -}}
     {{- end -}}
-    <p>{{- $scratch.Get "total" -}} words in <a href="/archive">{{- len .Site.RegularPages -}}</a> posts.</p>
+    <p>
+      {{- $scratch.Get "total" -}} words in
+      <a href="/archive">{{- len .Site.RegularPages -}}</a> posts.
+    </p>
 
     {{- $num := (len .Site.Taxonomies ) -}}
     {{- $scratch2 := newScratch -}}
     {{- range .Site.Taxonomies -}}
       {{- $scratch2.Add "total" (len .) -}}
     {{- end -}}
-    <p>{{- $scratch2.Get "total" -}} terms in {{- $num -}} <a href="/taxonomies">taxonomies</a>.</p>
+    <p>
+      {{- $scratch2.Get "total" -}} terms in {{- $num -}}
+      <a href="/taxonomies">taxonomies</a>.
+    </p>
 
     {{- with .Site.Params.social -}}
       <p>
-      contact:
-      {{- range . -}}
-        <a href="{{- .url -}}" target="_blank" rel="noopener">{{- .name -}}</a>
-      {{- end -}}
+        contact:
+        {{- range . -}}
+          <a href="{{- .url -}}" target="_blank" rel="noopener"
+            >{{- .name -}}</a
+          >
+        {{- end -}}
       </p>
     {{- end -}}
   </div>

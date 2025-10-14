@@ -1,13 +1,21 @@
 {{- if .Lastmod -}}
   {{- $date := (.Lastmod.Format .Site.Params.DateFormat) -}}
   {{- if and .GitInfo .Site.Params.LastChangeLink -}}
-    <a href="{{- .Site.Params.LastChangeLink -}}/{{- .GitInfo.Hash -}}" title='Last modified by' target="_blank" rel="noopener">
-      Last modified on {{- $date -}}
+    <a
+      href="{{- .Site.Params.LastChangeLink -}}/{{- .GitInfo.Hash -}}"
+      title="Last modified by"
+      target="_blank"
+      rel="noopener"
+    >
+      Last modified on
+      {{- $date -}}
     </a>
   {{- else -}}
-    Last modified on {{- $date -}}
+    Last modified on
+    {{- $date -}}
   {{- end -}}
 {{- end -}}
+
 
 <section class="post-end">
   <div class="post-prev">
@@ -17,7 +25,7 @@
   </div>
   <div class="post-next">
     {{- with .Next -}}
-    <a href="{{- .Permalink -}}">{{- .Name -}} »</a>
-  {{- end -}}
+      <a href="{{- .Permalink -}}">{{- .Name -}} »</a>
+    {{- end -}}
   </div>
 </section>

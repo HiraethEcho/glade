@@ -1,17 +1,17 @@
 {{- /*
-Renders a menu for the given menu ID.
+  Renders a menu for the given menu ID.
 
-@context {page} page The current page.
-@context {string} menuID The menu ID.
+  @context {page} page The current page.
+  @context {string} menuID The menu ID.
 
-@example: {{- partial "menu.html" (dict "menuID" "main" "page" .) -}}
+  @example: {{- partial "menu.html" (dict "menuID" "main" "page" .)
+-}}
 */ -}}
-
 {{- $page := .page -}}
 {{- $menuID := .menuID -}}
 
 {{- with index site.Menus $menuID -}}
-      {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) -}}
+  {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) -}}
 {{- end -}}
 
 {{- define "_partials/inline/menu/walk.html" -}}
@@ -30,22 +30,27 @@ Renders a menu for the given menu ID.
       {{- end -}}
     {{- end -}}
     {{- if .HasChildren -}}
-    <li><details><summary>{{- $name -}}</summary>
-      <ul>
-        {{- with .Children -}}
-            {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) -}}
-        {{- end -}}
-      </ul>
-      </details></li>
+      <li>
+        <details>
+          <summary>{{- $name -}}</summary>
+          <ul>
+            {{- with .Children -}}
+              {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) -}}
+            {{- end -}}
+          </ul>
+        </details>
+      </li>
     {{- else -}}
-      <li><a
+      <li>
+        <a
           {{- range $k, $v := $attrs -}}
             {{- with $v -}}
               {{- printf " %s=%q" $k $v | safeHTMLAttr -}}
             {{- end -}}
           {{- end -}}
-        >{{- $name -}}</a>
-          </li>
+          >{{- $name -}}</a
+        >
+      </li>
     {{- end -}}
   {{- end -}}
 {{- end -}}

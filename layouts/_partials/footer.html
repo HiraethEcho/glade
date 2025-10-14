@@ -1,28 +1,29 @@
 <p>
-Copyright {{- now.Year -}}. 
-{{- $cc := default "nc-sa" .Site.Params.copyright -}}
-<a href="https://creativecommons.org/licenses/by-{{- $cc -}}/4.0">
-  CC BY-{{- $cc | upper -}}
-</a>
-{{- with .Site.Params.footer -}}
-{{- . -}}
-{{- end -}}
+  Copyright {{- now.Year -}}.
+  {{- $cc := default "nc-sa" .Site.Params.copyright -}}
+  <a href="https://creativecommons.org/licenses/by-{{- $cc -}}/4.0">
+    CC
+    BY-{{- $cc | upper -}}
+  </a>
+  {{- with .Site.Params.footer -}}
+    {{- . -}}
+  {{- end -}}
 </p>
 <p><a href="#top" class="top">TOP</a></p>
 <script>
-    document.getElementById("themetoggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
+  document.getElementById("themetoggle").addEventListener("click", () => {
+    if (document.body.className.includes("dark")) {
+      document.body.classList.remove("dark");
+      localStorage.setItem("pref-theme", "light");
+    } else {
+      document.body.classList.add("dark");
+      localStorage.setItem("pref-theme", "dark");
+    }
+  });
 </script>
 {{- if .Store.Get "hasMermaid" -}}
   <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs";
     mermaid.initialize({ startOnLoad: true });
   </script>
 {{- end -}}

@@ -1,9 +1,14 @@
 {{- if eq .Kind "page" -}}
-<section class="post-section">
-  <h4 class="archive-entry-title entry-hint-parent">
-  <a class="entry-link" aria-label="post link to {{ .Title | plainify -}}" href="{{- .Permalink -}}">
-  {{- .Title | markdownify -}}</a>
-  </h4>
-  {{- partial "post-info" . -}}
-</section>
+  <section class="post-section">
+    <h4 class="archive-entry-title entry-hint-parent">
+      <a
+        class="entry-link"
+        aria-label="post link to {{ .Title | plainify -}}"
+        href="{{- .Permalink -}}"
+      >
+        {{- .Title | markdownify -}}</a
+      >
+    </h4>
+    {{- partial "post-info" . -}}
+  </section>
 {{- end -}}

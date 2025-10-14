@@ -16,7 +16,9 @@
           </a>
           <sup class="archive-count">{{- len .Pages -}}</sup>
         </h3>
-        <section style="border-left: 1px solid var(--g-line); padding-left: 0.5rem;">
+        <section
+          style="border-left: 1px solid var(--g-line); padding-left: 0.5rem;"
+        >
           {{- range .Pages -}}
             {{- partial "post-section.html" . -}}
           {{- end -}}

@@ -1,8 +1,7 @@
 {{- /* Define an array of JavaScript file paths */ -}}
-{{- 
-$jsFiles := slice 
-"js/main.js" 
- -}}
+{{- $jsFiles := slice
+  "js/main.js"
+-}}
 
 {{- range $jsFile := $jsFiles -}}
   {{- with resources.Get $jsFile -}}
@@ -16,7 +15,11 @@ $jsFiles := slice
         <script src="{{- .RelPermalink -}}"></script>
       {{- else -}}
         {{- with . | fingerprint -}}
-          <script src="{{- .RelPermalink -}}" integrity="{{- .Data.Integrity -}}" crossorigin="anonymous"></script>
+          <script
+            src="{{- .RelPermalink -}}"
+            integrity="{{- .Data.Integrity -}}"
+            crossorigin="anonymous"
+          ></script>
         {{- end -}}
       {{- end -}}
     {{- end -}}
