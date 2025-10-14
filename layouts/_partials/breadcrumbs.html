@@ -1,8 +1,8 @@
 <p>
-  {{- range .Ancestors.Reverse -}}
+  {{- range .Ancestors.Reverse }}
     <a href="{{- .RelPermalink -}}">{{- .Title -}}</a>
     <span>»</span>
-  {{- end }}
+  {{ end }}
   {{ .Title -}}
   {{- partial "rss-link" . -}}
 </p>

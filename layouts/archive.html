@@ -9,16 +9,18 @@
   <input type="checkbox" id="aside-checkbox" style="display: none;" />
   <label for="aside-checkbox" id="aside-btn">⇄</label>
   <aside>
-    <nav id="TableOfContents">
-      <ul>
-        {{- range $pages.GroupByPublishDate "2006" -}}
-          {{- if ne .Key "0001" -}}
-            {{- $year := replace .Key "0001" "" -}}
-            <li>
-              <a class="archive-header-link" href="#{{- $year -}}">
-                {{- $year -}}
-              </a>
-              <ul>
+    <menu class="sideblock" id="TableOfContents">
+      {{- range $pages.GroupByPublishDate "2006" -}}
+        {{- if ne .Key "0001" -}}
+          {{- $year := replace .Key "0001" "" -}}
+          <li>
+            <details class="menu-fold">
+              <summary>
+                <a class="archive-header-link" href="#{{- $year -}}">
+                  {{- $year -}}
+                </a>
+              </summary>
+              <ul class="indentline">
                 {{- range .GroupByDate "01" -}}
                   <li>
                     <a
@@ -30,11 +32,12 @@
                   </li>
                 {{- end -}}
               </ul>
-            </li>
-          {{- end -}}
+            </details>
+          </li>
         {{- end -}}
-      </ul>
-    </nav>
+      {{- end -}}
+
+    </menu>
   </aside>
   <article>
     {{- .Content -}}
