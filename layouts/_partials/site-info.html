@@ -26,11 +26,11 @@
     {{- with .Site.Params.social -}}
       <p>
         contact:
-        {{- range . -}}
+        {{- range . }}
           <a href="{{- .url -}}" target="_blank" rel="noopener"
             >{{- .name -}}</a
           >
-        {{- end -}}
+        {{ end -}}
       </p>
     {{- end -}}
   </div>

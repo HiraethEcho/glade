@@ -8,7 +8,7 @@
       </a>
       <sup class="archive-count">{{- len .Pages -}}</sup>
     </h2>
-    {{- range $pages.GroupByDate "01" -}}
+    {{- range .GroupByDate "01" -}}
       <section class="archive-month">
         <h3 class="archive-month-header" id="{{- $year -}}-{{- .Key -}}">
           <a class="archive-header-link" href="#{{- $year -}}-{{- .Key -}}">

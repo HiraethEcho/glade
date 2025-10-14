@@ -19,7 +19,7 @@
                 {{- $year -}}
               </a>
               <ul>
-                {{- range $pages.GroupByDate "01" -}}
+                {{- range .GroupByDate "01" -}}
                   <li>
                     <a
                       class="archive-header-link"
