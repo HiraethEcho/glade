@@ -7,8 +7,7 @@
       target="_blank"
       rel="noopener"
     >
-      Last modified on
-      {{- $date -}}
+      Last modified on {{ $date -}}
     </a>
   {{- else -}}
     Last modified on
@@ -20,12 +19,12 @@
 <section class="post-end">
   <div class="post-prev">
     {{- with .Prev -}}
-      <a href="{{- .Permalink -}}">« {{- .Name -}}</a>
+      <a href="{{- .Permalink -}}">« {{ .Name }}</a>
     {{- end -}}
   </div>
   <div class="post-next">
     {{- with .Next -}}
-      <a href="{{- .Permalink -}}">{{- .Name -}} »</a>
+      <a href="{{- .Permalink -}}">{{ .Name }} »</a>
     {{- end -}}
   </div>
 </section>

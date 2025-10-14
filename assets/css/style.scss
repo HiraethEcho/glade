@@ -13,9 +13,13 @@ ol {
 a {
   color: var(--g-link);
   text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
+}
+a:hover {
+  text-decoration: underline;
+  background-color: var(--g-i-bg);
+}
+a:active {
+  color: var(--g-line);
 }
 
 .external-link::after {
@@ -154,7 +158,10 @@ body {
     }
   }
   > footer {
+    font-size: small;
     background: inherit;
+    padding: 0 2rem;
+    text-align: center;
   }
 }
 
@@ -227,6 +234,8 @@ body {
 }
 
 .top {
+  position: absolute;
+  right: 1rem;
   background-color: var(--g-b-bg);
   padding: 0 0.5rem;
   border-radius: var(--g-radius);
