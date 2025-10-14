@@ -64,6 +64,7 @@ body {
     }
     > article {
       max-width: 750px;
+      margin: 0 auto;
       grid-area: main-content;
       position: relative;
     }
