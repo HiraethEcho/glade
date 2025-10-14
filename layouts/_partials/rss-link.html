@@ -2,8 +2,8 @@
 {{- if (eq .Kind `page`) -}}
   {{- $rss = (.Parent.OutputFormats.Get "rss") -}}
 {{- end -}}
-{{- with $rss -}}
+{{- with $rss }}
   <a href="{{- .RelPermalink -}}" title="RSS" aria-label="RSS"
     >{{- site.Params.RssIcon -}}</a
   >
-{{- end -}}
+{{ end -}}

@@ -2,7 +2,7 @@
   {{- range .Ancestors.Reverse -}}
     <a href="{{- .RelPermalink -}}">{{- .Title -}}</a>
     <span>»</span>
-  {{- end -}}
-  {{- .Title -}}
+  {{- end }}
+  {{ .Title -}}
   {{- partial "rss-link" . -}}
 </p>

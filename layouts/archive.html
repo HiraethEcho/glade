@@ -1,13 +1,43 @@
 {{- define "main" -}}
+  {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections -}}
+  {{- if site.Params.ShowAllPagesInArchives -}}
+    {{- $pages = site.RegularPages -}}
+  {{- end -}}
   <header>
     {{- partial "breadcrumbs" . -}}
   </header>
+  <input type="checkbox" id="aside-checkbox" style="display: none;" />
+  <label for="aside-checkbox" id="aside-btn">⇄</label>
+  <aside>
+    <nav id="TableOfContents">
+      <ul>
+        {{- range $pages.GroupByPublishDate "2006" -}}
+          {{- if ne .Key "0001" -}}
+            {{- $year := replace .Key "0001" "" -}}
+            <li>
+              <a class="archive-header-link" href="#{{- $year -}}">
+                {{- $year -}}
+              </a>
+              <ul>
+                {{- range $pages.GroupByDate "01" -}}
+                  <li>
+                    <a
+                      class="archive-header-link"
+                      href="#{{- $year -}}-{{- .Key -}}"
+                    >
+                      {{- .Key -}}
+                    </a>
+                  </li>
+                {{- end -}}
+              </ul>
+            </li>
+          {{- end -}}
+        {{- end -}}
+      </ul>
+    </nav>
+  </aside>
   <article>
     {{- .Content -}}
-    {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections -}}
-    {{- if site.Params.ShowAllPagesInArchives -}}
-      {{- $pages = site.RegularPages -}}
-    {{- end -}}
     {{- partial "post-list.html" (dict "pages" $pages ) -}}
   </article>
 {{- end -}}
