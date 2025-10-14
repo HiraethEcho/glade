@@ -61,7 +61,7 @@
     init({
         // options
         el: '#waline',
-        serverURL: '{{ .Site.Params.walineserver | safeJS }}',
+        serverURL: '{{- .Site.Params.walineserver | safeJS -}}',
         locale,
         emoji: false,     // 表情
         search: false,    // GIF 表情包

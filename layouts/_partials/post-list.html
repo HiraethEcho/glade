@@ -1,27 +1,27 @@
-{{ $pages := .pages }}
-{{- range $pages.GroupByPublishDate "2006" }}
-  {{- if ne .Key "0001" }}
-    {{- $year := replace .Key "0001" "" }}
-    <h2 class="archive-year-header" id="{{ $year }}">
-      <a class="archive-header-link" href="#{{ $year }}">
+{{- $pages := .pages -}}
+{{- range $pages.GroupByPublishDate "2006" -}}
+  {{- if ne .Key "0001" -}}
+    {{- $year := replace .Key "0001" "" -}}
+    <h2 class="archive-year-header" id="{{- $year -}}">
+      <a class="archive-header-link" href="#{{- $year -}}">
         {{- $year -}}
       </a>
-      <sup class="archive-count">{{ len .Pages }}</sup>
+      <sup class="archive-count">{{- len .Pages -}}</sup>
     </h2>
-    {{- range $pages.GroupByDate "01" }}
+    {{- range $pages.GroupByDate "01" -}}
       <section class="archive-month">
-        <h3 class="archive-month-header" id="{{ $year }}-{{ .Key }}">
-          <a class="archive-header-link" href="#{{ $year }}-{{ .Key }}">
+        <h3 class="archive-month-header" id="{{- $year -}}-{{- .Key -}}">
+          <a class="archive-header-link" href="#{{- $year -}}-{{- .Key -}}">
             {{- .Key -}}
           </a>
-          <sup class="archive-count">{{ len .Pages }}</sup>
+          <sup class="archive-count">{{- len .Pages -}}</sup>
         </h3>
         <section style="border-left: 1px solid var(--g-line); padding-left: 0.5rem;">
-          {{- range .Pages }}
-            {{ partial "post-section.html" . }}
-          {{- end }}
+          {{- range .Pages -}}
+            {{- partial "post-section.html" . -}}
+          {{- end -}}
         </section>
       </section>
-    {{- end }}
-  {{- end }}
-{{- end }}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}

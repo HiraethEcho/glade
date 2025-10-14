@@ -1,32 +1,32 @@
 <small>
 <p>
-  {{ $page := . }}
-  {{ with .Date }}
-    {{ $dateMachine := .Format "2006-01-02T15:04:05-07:00" }}
-    <time datetime="{{ $dateMachine }}">{{ .Format "2006/01/02" }}</time>
-  {{ end }}
-  <span>{{ .WordCount  }}字 {{ .ReadingTime  }}分钟</span>
-  {{ $cc := (default "nc-sa" (default .Site.Params.copyright .Params.copyright)) }}
-  <a href="https://creativecommons.org/licenses/by-{{ $cc }}/4.0">
-    CC BY-{{$cc | upper}}
+  {{- $page := . -}}
+  {{- with .Date -}}
+    {{- $dateMachine := .Format "2006-01-02T15:04:05-07:00" -}}
+    <time datetime="{{- $dateMachine -}}">{{- .Format "2006/01/02" -}}</time>
+  {{- end -}}
+  <span>{{- .WordCount  -}}字 {{- .ReadingTime  -}}分钟</span>
+  {{- $cc := (default "nc-sa" (default .Site.Params.copyright .Params.copyright)) -}}
+  <a href="https://creativecommons.org/licenses/by-{{- $cc -}}/4.0">
+    CC BY-{{- $cc | upper -}}
   </a>
-  {{ with .Params.status }}
-    <code>{{ . }}</code>
-  {{ end }}
+  {{- with .Params.status -}}
+    <code>{{- . -}}</code>
+  {{- end -}}
 </p>
 <p>
-{{ $page := . }}
-{{ range $taxonomyName, $taxonomy := .Site.Taxonomies }}
-  {{ $terms := ($page.GetTerms $taxonomyName) }}
-  {{ with $terms }}
-    {{ $taxonomyName }}:
-    {{- range . }}
-    <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-    {{ end }}
-  {{ end }}
-{{ end }}
+{{- $page := . -}}
+{{- range $taxonomyName, $taxonomy := .Site.Taxonomies -}}
+  {{- $terms := ($page.GetTerms $taxonomyName) -}}
+  {{- with $terms -}}
+    {{- $taxonomyName -}}:
+    {{- range . -}}
+    <a href="{{- .RelPermalink -}}">{{- .LinkTitle -}}</a>
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
 </p>
-{{ with .Params.summary }}
-  <p>{{ . }}</p>
-{{ end }}
+{{- with .Params.summary -}}
+  <p>{{- . -}}</p>
+{{- end -}}
 </small>

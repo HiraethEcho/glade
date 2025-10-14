@@ -11,30 +11,30 @@
 <div class="site-title">
   <!-- <label for="nav-checkbox" id="nav-btn">☰</label> -->
   <label for="nav-checkbox" id="nav-btn">≡</label>
-  <a href="{{ .Site.Home.RelPermalink }}">{{ site.Title }}</a>
+  <a href="{{- .Site.Home.RelPermalink -}}">{{- site.Title -}}</a>
   <label id="themetoggle"></label>
 </div>
 <input type="checkbox" id="menu-checkbox" style="display: none;">
 <label for="menu-checkbox" id="menu-btn">❮</label>
   <!-- <li><label id="themetoggle"></label></li> -->
 <menu class=mainmenu>
-  {{- range site.Menus.main }}
-    {{ partial "menu-button.html" . }}
-  {{ end }}
+  {{- range site.Menus.main -}}
+    {{- partial "menu-button.html" . -}}
+  {{- end -}}
 </menu>
 
 {{- define "_partials/menu-button.html" -}}
-  {{ if .HasChildren }}
+  {{- if .HasChildren -}}
     <li>
-      <input type="checkbox" id="menu-{{ .Identifier }}" style="display: none;">
-      <label for="menu-{{ .Identifier }}">{{ .Name }}</label>
+      <input type="checkbox" id="menu-{{- .Identifier -}}" style="display: none;">
+      <label for="menu-{{- .Identifier -}}">{{- .Name -}}</label>
       <menu class=mainmenu>
-        {{ range .Children }}
-          {{ partial "menu-button.html" . }}
-        {{ end }}
+        {{- range .Children -}}
+          {{- partial "menu-button.html" . -}}
+        {{- end -}}
       </menu>
     </li>
-  {{ else }}
-    <li><a href="{{.URL | relURL}}">{{ .Name }}</a></li>
-  {{ end }}
-{{end}}
+  {{- else -}}
+    <li><a href="{{- .URL | relURL -}}">{{- .Name -}}</a></li>
+  {{- end -}}
+{{- end -}}

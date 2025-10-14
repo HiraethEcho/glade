@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+<html lang="{{- site.Language.LanguageCode -}}" dir="{{- or site.Language.LanguageDirection `ltr` -}}">
 <head>
-  {{ partial "head.html" . }}
+  {{- partial "head.html" . -}}
 </head>
 <body>
   <header>
-    {{ partial "header.html" . }}
+    {{- partial "header.html" . -}}
   </header>
   <input type="checkbox" id="nav-checkbox" style="display: none;">
   <nav>
-    {{ partial "search.html" . }}
-    {{ partial "site-info.html" . }}
-    {{ partial "taxonomy-tree.html" . }}
-    {{ partial "file-tree.html" . }} 
-    {{ partial "side-menu.html" . }}
+    {{- partial "search.html" . -}}
+    {{- partial "site-info.html" . -}}
+    {{- partial "taxonomy-tree.html" . -}}
+    {{- partial "file-tree.html" . -}} 
+    {{- partial "side-menu.html" . -}}
   </nav>
   <main>
-    {{ block "main" . }}{{ end }}
+    {{- block "main" . -}}{{- end -}}
   </main>
   <footer>
-    {{ partial "footer.html" . }}
+    {{- partial "footer.html" . -}}
   </footer>
 </body>
 </html>

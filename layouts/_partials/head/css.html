@@ -1,14 +1,14 @@
-{{
+{{- 
 $CSS := slice
 (resources.Get "css/theme.scss")
 (resources.Get "css/style.scss")
 (resources.Get "css/blockquote.scss")
 (resources.Get "css/main.scss")
-}}
-{{
+ -}}
+{{- 
 $combined := $CSS
 | resources.Concat "assets/combined.css"
 | minify
 | fingerprint
-}}
-<link rel="stylesheet" href="{{ $combined.RelPermalink }}">
+ -}}
+<link rel="stylesheet" href="{{- $combined.RelPermalink -}}">

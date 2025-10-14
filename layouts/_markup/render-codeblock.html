@@ -1,11 +1,11 @@
-{{ if ne .Type "mermaid" }}
+{{- if ne .Type "mermaid" -}}
 {{- $lang := .Attributes.lang | default .Type -}}
 
-<details open><summary>{{ $lang | default "TEXT" }}</summary>
+<details open><summary>{{- $lang | default "TEXT" -}}</summary>
 {{- if transform.CanHighlight .Type -}}
-<div class="chroma codeblock"><code class="language-{{ .Type }}" data-lang="{{ .Type }}">{{- with transform.HighlightCodeBlock . -}}{{ .Inner }}{{- end -}}</code><button onclick="copyCode(this)" class="copybtn">copy</button></div>
+<div class="chroma codeblock"><code class="language-{{- .Type -}}" data-lang="{{- .Type -}}">{{- with transform.HighlightCodeBlock . -}}{{- .Inner -}}{{- end -}}</code><button onclick="copyCode(this)" class="copybtn">copy</button></div>
 {{- else -}}
-<pre class="codeblock"><code class="language-{{ .Type }}" data-lang="{{ .Type }}">{{ .Inner }}</code><button onclick="copyCode(this)" class="copybtn">copy</button></pre>
+<pre class="codeblock"><code class="language-{{- .Type -}}" data-lang="{{- .Type -}}">{{- .Inner -}}</code><button onclick="copyCode(this)" class="copybtn">copy</button></pre>
 {{- end -}}
 </details>
 
@@ -18,5 +18,5 @@
     });
   }
 </script>
-{{ end }}
+{{- end -}}
 

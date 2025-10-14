@@ -1,27 +1,27 @@
-{{ $show := default true (default .Site.Params.ShowSideMenu .Params.ShowSideMenu) }}
-{{ if $show }}
+{{- $show := default true (default .Site.Params.ShowSideMenu .Params.ShowSideMenu) -}}
+{{- if $show -}}
   <menu class="sideblock">
-    {{- with site.Menus.side }}
-      {{ partial "menu-side.html" . }}
-    {{- end }}
+    {{- with site.Menus.side -}}
+      {{- partial "menu-side.html" . -}}
+    {{- end -}}
   </menu>
-{{- end}}
+{{- end -}}
 
 {{- define "_partials/menu-side.html" -}}
-  {{- range . }}
+  {{- range . -}}
     <li>
-      {{ if .HasChildren }}
+      {{- if .HasChildren -}}
         <details class="menu-fold">
-          <summary>{{ .Name }}</summary>
+          <summary>{{- .Name -}}</summary>
           <menu class="indentline">
-            {{- with .Children }}
-                {{- partial "menu-side.html" . }}
-            {{- end }}
+            {{- with .Children -}}
+                {{- partial "menu-side.html" . -}}
+            {{- end -}}
           </menu>
         </details>
-      {{ else }}
-        <a href="{{.URL}}">{{ .Name }}</a>
-      {{ end }}
+      {{- else -}}
+        <a href="{{- .URL -}}">{{- .Name -}}</a>
+      {{- end -}}
     </li>
-  {{- end }}
-{{- end}}
+  {{- end -}}
+{{- end -}}

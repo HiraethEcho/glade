@@ -1,8 +1,8 @@
-{{ $show := default true (default .Site.Params.ShowToc .Params.ShowToc) }}
-{{ if $show }}
+{{- $show := default true (default .Site.Params.ShowToc .Params.ShowToc) -}}
+{{- if $show -}}
   <li>
     <details open class="menu-fold"><summary>TOC</summary>
-      {{ .TableOfContents }}
+      {{- .TableOfContents -}}
     </details>
   </li>
-{{- end }}
+{{- end -}}

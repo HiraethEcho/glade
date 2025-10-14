@@ -1,15 +1,14 @@
 <p>
-Copyright {{ now.Year }}. 
-{{ $cc := default "nc-sa" .Site.Params.copyright }}
-<a href="https://creativecommons.org/licenses/by-{{ $cc }}/4.0">
-  CC BY-{{$cc | upper}}
+Copyright {{- now.Year -}}. 
+{{- $cc := default "nc-sa" .Site.Params.copyright -}}
+<a href="https://creativecommons.org/licenses/by-{{- $cc -}}/4.0">
+  CC BY-{{- $cc | upper -}}
 </a>
-{{ with .Site.Params.footer }}
-{{ . }}
-{{ end }}
+{{- with .Site.Params.footer -}}
+{{- . -}}
+{{- end -}}
 </p>
 <p><a href="#top" class="top">TOP</a></p>
-
 <script>
     document.getElementById("themetoggle").addEventListener("click", () => {
         if (document.body.className.includes("dark")) {
@@ -21,9 +20,9 @@ Copyright {{ now.Year }}.
         }
     })
 </script>
-{{ if .Store.Get "hasMermaid" }}
+{{- if .Store.Get "hasMermaid" -}}
   <script type="module">
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
     mermaid.initialize({ startOnLoad: true });
   </script>
-{{ end }}
+{{- end -}}

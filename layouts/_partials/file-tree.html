@@ -1,37 +1,37 @@
-{{ $show := default true (default .Site.Params.ShowFileTree .Params.ShowFileTree) }}
-{{ if $show }}
-  {{ $root := .FirstSection }}
-  {{ with .Params.FileTreeRoot }}
-    {{ $page := site.GetPage (printf "%s" .) }}
-    {{ if $page }}
-      {{ $root = $page }}
-    {{ end }}
-  {{ end }}
+{{- $show := default true (default .Site.Params.ShowFileTree .Params.ShowFileTree) -}}
+{{- if $show -}}
+  {{- $root := .FirstSection -}}
+  {{- with .Params.FileTreeRoot -}}
+    {{- $page := site.GetPage (printf "%s" .) -}}
+    {{- if $page -}}
+      {{- $root = $page -}}
+    {{- end -}}
+  {{- end -}}
 
   <menu class="sideblock">
-  {{ partial "file-tree-walk.html" (dict "context" $root "depth" 1) }}
+  {{- partial "file-tree-walk.html" (dict "context" $root "depth" 1) -}}
   </menu>
-{{- end }}
+{{- end -}}
 
 {{- define "_partials/file-tree-walk.html" -}}
-  {{ $context := .context }}
-  {{ $depth := .depth }}
-  {{ range $context.Pages }}
-    {{ if not .Params.HideInFileTree }}
+  {{- $context := .context -}}
+  {{- $depth := .depth -}}
+  {{- range $context.Pages -}}
+    {{- if not .Params.HideInFileTree -}}
       <li>
-        {{ if .IsSection }}
+        {{- if .IsSection -}}
           <details class="menu-fold">
             <summary>
-              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+              <a href="{{- .RelPermalink -}}">{{- .Title -}}</a>
             </summary>
             <menu class="indentline">
-              {{ partial "file-tree-walk.html" (dict "context" . "depth" (add $depth 1)) }}
+              {{- partial "file-tree-walk.html" (dict "context" . "depth" (add $depth 1)) -}}
             </menu>
           </details>
-        {{ else }}
-          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-        {{ end }}
+        {{- else -}}
+          <a href="{{- .RelPermalink -}}">{{- .Title -}}</a>
+        {{- end -}}
       </li>
-    {{ end }}
-  {{ end }}
-{{- end }}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}

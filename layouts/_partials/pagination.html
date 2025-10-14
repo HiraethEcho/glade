@@ -1,21 +1,21 @@
-{{ $show := default true (default .Site.Params.ShowList .Params.ShowList) }}
-{{ $split := default true (default .Site.Params.SplitList .Params.SplitList) }}
-{{ if $show }}
-  {{ $pages := .RegularPagesRecursive  }}
-  {{ if $split }}
-    {{ range (.Paginate $pages).Pages }}
-      {{ partial "post-section.html" . }}
-    {{ end }}
-    {{ $paginator := .Paginate $pages }}
-    {{ with $paginator }}
+{{- $show := default true (default .Site.Params.ShowList .Params.ShowList) -}}
+{{- $split := default true (default .Site.Params.SplitList .Params.SplitList) -}}
+{{- if $show -}}
+  {{- $pages := .RegularPagesRecursive  -}}
+  {{- if $split -}}
+    {{- range (.Paginate $pages).Pages -}}
+      {{- partial "post-section.html" . -}}
+    {{- end -}}
+    {{- $paginator := .Paginate $pages -}}
+    {{- with $paginator -}}
       <ul class="pagination">
-        {{ range .Pagers }}
-          <li><a href="{{ .URL }}">{{ .PageNumber }}</a></li>
-        {{ end }}
+        {{- range .Pagers -}}
+          <li><a href="{{- .URL -}}">{{- .PageNumber -}}</a></li>
+        {{- end -}}
       </ul>
-    {{ end }}
-  {{ else }}
-    {{ partial "post-list.html" (dict "pages" $pages ) }}
-  {{ end }}
-{{ end }}
+    {{- end -}}
+  {{- else -}}
+    {{- partial "post-list.html" (dict "pages" $pages ) -}}
+  {{- end -}}
+{{- end -}}
 

@@ -1,27 +1,27 @@
-{{ define "main" }}
+{{- define "main" -}}
   <header>
-    {{ partial "breadcrumbs.html" . }}
-    {{ partial "post-info.html" . }}
+    {{- partial "breadcrumbs.html" . -}}
+    {{- partial "post-info.html" . -}}
   </header>
-  {{ $showrelpost := default true (default .Site.Params.ShowRelPost .Params.ShowRelPost) }}
-  {{ $showtoc := default true (default .Site.Params.ShowToc .Params.ShowToc) }}
-    {{ if or $showtoc $showrelpost }}
+  {{- $showrelpost := default true (default .Site.Params.ShowRelPost .Params.ShowRelPost) -}}
+  {{- $showtoc := default true (default .Site.Params.ShowToc .Params.ShowToc) -}}
+    {{- if or $showtoc $showrelpost -}}
     <input type="checkbox" id="aside-checkbox" style="display: none;">
     <label for="aside-checkbox" id="aside-btn">⇄</label>
     <aside>
       <menu class="sideblock">
-        {{ partial "toc.html" . }}
+        {{- partial "toc.html" . -}}
       </menu>
       <menu class="sideblock">
-        {{ partial "post-rel.html" . }}
+        {{- partial "post-rel.html" . -}}
       </menu>
     </aside>
-  {{- end}}
+  {{- end -}}
   <article>
-    {{ .Content }} 
+    {{- .Content -}} 
   </article>
   <footer>
-    {{ partial "page-end.html" . }}
-    {{ partial "comment.html" . }}
+    {{- partial "page-end.html" . -}}
+    {{- partial "comment.html" . -}}
   </footer>
-{{ end }}
+{{- end -}}

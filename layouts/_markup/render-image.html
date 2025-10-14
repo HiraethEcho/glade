@@ -2,9 +2,9 @@
 
 {{- with .PlainText -}}
   <figure>
-    <img src="{{ $dest | safeURL }}"  alt="{{ . }}" loading="lazy"/>
-    <figcaption>{{ . }}</figcaption>
+    <img src="{{- $dest | safeURL -}}"  alt="{{- . -}}" loading="lazy"/>
+    <figcaption>{{- . -}}</figcaption>
   </figure>
 {{- else -}}
-  <figure><img src="{{ $dest | safeURL }}" loading="lazy" /></figure>
+  <figure><img src="{{- $dest | safeURL -}}" loading="lazy" /></figure>
 {{- end -}}
