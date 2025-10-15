@@ -33,6 +33,7 @@ details {
     cursor: pointer;
     position: relative;
     font-weight: bold;
+    padding-right: 1.5rem;
     &::after {
       content: "◂";
       position: absolute;
@@ -166,31 +167,31 @@ body {
 }
 
 /* special */
+#TableOfContents ul,
+.sideblock,
+.indentline {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  li {
+    list-style: none;
+    margin: 0 0 0.25rem 0;
+  }
+}
 
 #TableOfContents ul {
-  list-style: none;
   margin: 0;
+  padding-left: 0.5rem;
   border-left: 0.2rem solid color-mix(in srgb, var(--g-line) 30%, transparent);
 }
 
 .sideblock {
-  border: 0.1rem solid var(--g-line);
-  margin: 0.5rem 0;
-  padding: 0 0.25rem 0 0;
-  li {
-    list-style: none;
-    margin: 0.25rem 0 0.25rem 0.5rem;
-  }
-}
-
-.menu-fold {
-  > summary {
-    padding-right: 1.5rem;
-  }
+  margin: 0 0 0.5rem 0;
+  border-bottom: 0.2rem solid color-mix(in srgb, var(--g-line) 30%, transparent);
 }
 
 .indentline {
-  list-style: none;
+  padding-left: 0.5rem;
   border-left: 0.2rem solid color-mix(in srgb, var(--g-line) 30%, transparent);
 }
 

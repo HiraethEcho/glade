@@ -8,12 +8,10 @@
   </header>
   <input type="checkbox" id="aside-checkbox" style="display: none;" />
   <label for="aside-checkbox" id="aside-btn">⇄</label>
-  <aside>
-    <menu class="sideblock" id="TableOfContents">
+  <aside id="TableOfContents">
       {{- range $pages.GroupByPublishDate "2006" -}}
         {{- if ne .Key "0001" -}}
           {{- $year := replace .Key "0001" "" -}}
-          <li>
             <details class="menu-fold">
               <summary>
                 <a class="archive-header-link" href="#{{- $year -}}">
@@ -33,11 +31,8 @@
                 {{- end -}}
               </ul>
             </details>
-          </li>
         {{- end -}}
       {{- end -}}
-
-    </menu>
   </aside>
   <article>
     {{- .Content -}}
