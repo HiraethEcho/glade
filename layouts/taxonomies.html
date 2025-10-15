@@ -15,12 +15,12 @@
         {{- range $name, $value := $taxonomy -}}
           {{- $count := $value.Count -}}
           {{- $page := site.GetPage (printf "/%s/%s" $taxonomyName $name) -}}
-          {{- with $page -}}
+          {{- with $page }}
             <code
               ><a href="{{- .Permalink -}}">{{- .Name -}}</a
               ><sup>{{- $count -}}</sup></code
             >
-          {{- end -}}
+          {{ end -}}
         {{- end -}}
       {{- end -}}
     {{- end -}}

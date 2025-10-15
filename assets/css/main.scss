@@ -90,10 +90,8 @@ body {
     }
   }
   > footer {
-    position: sticky;
     display: flex;
-    align-items: middle;
-    justify-content: space-between;
+    position: sticky;
     bottom: 0;
   }
   > nav {
