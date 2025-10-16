@@ -149,6 +149,9 @@ code {
 }
 
 body {
+  > header {
+    backdrop-filter: blur(0.1rem);
+  }
   > nav {
     background-color: inherit;
   }
@@ -159,11 +162,9 @@ body {
         border: 0.1rem solid var(--g-b-bg);
         margin: 0.5rem;
         background-color: var(--g-i-bg);
-        border-radius: var(--g-radius);
         > summary {
-          padding: 0.5rem 1rem 0.5rem 0.5rem;
+          padding: 0 1rem 0 0.5rem;
           background-color: var(--g-b-bg);
-          border-radius: var(--g-radius);
         }
       }
     }
@@ -179,6 +180,7 @@ body {
 /* special */
 #TableOfContents ul,
 .sideblock,
+.asideblock,
 .indentline {
   display: flex;
   flex-direction: column;
@@ -192,21 +194,26 @@ body {
 #TableOfContents ul {
   margin: 0;
   padding-left: 0.5rem;
-  border-left: 0.2rem solid color-mix(in srgb, var(--g-line) 30%, transparent);
+  border-left: 0.15rem solid color-mix(in srgb, var(--g-line) 30%, transparent);
 }
 
 .sideblock {
-  padding: 0 0.5rem 0.25rem;
+  background-color: var(--g-bg);
+  padding: 0 0 0.25rem 0.5rem;
   margin: 0 0 0.5rem 0;
   p {
     margin: 0;
   }
   box-shadow: 0.2rem 0.2rem 0.5rem var(--g-shadow);
 }
+.asideblock {
+  padding: 0 0 0.25rem 0.5rem;
+  margin: 0 0 0.5rem 0;
+}
 
 .indentline {
   padding-left: 0.5rem;
-  border-left: 0.2rem solid color-mix(in srgb, var(--g-line) 30%, transparent);
+  border-left: 0.15rem solid color-mix(in srgb, var(--g-line) 30%, transparent);
 }
 
 #searchbox {
@@ -263,7 +270,7 @@ body {
 
 .top {
   position: absolute;
-  right: 1rem;
+  right: 0;
   background-color: var(--g-b-bg);
   padding: 0 0.5rem;
   border-radius: var(--g-radius);
