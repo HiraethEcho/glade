@@ -109,9 +109,19 @@ var {
   background-color: var(--g-i-bg);
   font-family: var(--g-font-mono);
 }
+
+kbd {
+  padding: 0.1rem 0.3rem;
+  font-size: 0.8rem;
+  border-radius: var(--g-radius);
+  border: 0.1rem solid var(--g-line);
+  box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.1);
+}
+
 pre {
   padding: 1rem;
 }
+
 code {
   padding: 0.1rem 0.3rem;
   font-size: 0.8rem;
@@ -186,8 +196,12 @@ body {
 }
 
 .sideblock {
+  padding: 0 0.5rem 0.25rem;
   margin: 0 0 0.5rem 0;
-  border-bottom: 0.2rem solid color-mix(in srgb, var(--g-line) 30%, transparent);
+  p {
+    margin: 0;
+  }
+  box-shadow: 0.2rem 0.2rem 0.5rem var(--g-shadow);
 }
 
 .indentline {
@@ -197,7 +211,7 @@ body {
 
 #searchbox {
   position: relative;
-  padding: 0.2rem 0;
+  padding: 0;
   width: 100%;
 }
 #searchbox input {
@@ -206,6 +220,7 @@ body {
   background-color: var(--g-i-bg);
 }
 #searchResults {
+  margin: 0;
   > li {
     list-style: none;
     margin: 0;
@@ -229,9 +244,21 @@ body {
 
 .archive-month {
   display: flex;
-  > .archive-month-header {
-    flex: 0 0 3rem;
-  }
+}
+.archive-month-header {
+  width: 4rem;
+  flex: none;
+}
+.archive-month-posts {
+  flex: 1;
+  border-left: 0.2rem solid color-mix(in srgb, var(--g-line) 40%, transparent);
+  padding-left: 0.5rem;
+  margin: 0;
+}
+.post-section {
+  margin: 0 0 0.5rem;
+  padding: 0 0.5rem 0.25rem;
+  box-shadow: 0.2rem 0.2rem 0.25rem var(--g-shadow);
 }
 
 .top {
@@ -256,11 +283,6 @@ body {
   padding: 0;
   list-style: none;
   gap: 2rem;
-}
-
-.post-section {
-  margin: 0 0 0.5rem;
-  border-bottom: 0.1rem solid var(--g-line);
 }
 
 .mainmenu {
