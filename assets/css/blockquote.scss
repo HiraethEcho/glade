@@ -1,5 +1,4 @@
 blockquote {
-  margin: 0.5rem;
   border: 0.1rem solid var(--blockquote-border);
   border-left: 0.25rem solid var(--blockquote-border);
   background-color: var(--blockquote-bg);
@@ -18,7 +17,6 @@ blockquote.alert-note {
 }
 blockquote.alert-tip {
   border-color: var(--alert-tip-border);
-  border-left-color: var(--alert-tip-border);
   background-color: var(--alert-tip-bg);
   > .alert-heading {
     color: var(--alert-tip-border);

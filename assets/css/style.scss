@@ -1,14 +1,17 @@
 /* basic */
+hr,
 pre,
 section,
+details,
 select,
 dd,
+blockquote,
 p {
-  margin: 0.5rem;
+  margin: 0.2rem 0.5rem;
 }
 ul,
 ol {
-  margin-left: 1.5rem;
+  margin-left: 2rem;
 }
 a {
   color: var(--g-link);
@@ -43,6 +46,10 @@ details {
   &[open] > summary::after {
     transform: rotate(-90deg);
   }
+}
+
+hr {
+  color: var(--g-line);
 }
 
 /* table */
@@ -82,9 +89,6 @@ label {
 progress {
   vertical-align: baseline;
 }
-hr {
-  color: var(--g-line);
-}
 
 /* insert */
 img,
@@ -117,23 +121,22 @@ kbd {
   border: 0.1rem solid var(--g-line);
   box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.1);
 }
-
-pre {
-  padding: 1rem;
-}
-
+/* inline code */
 code {
   padding: 0.1rem 0.3rem;
   font-size: 0.8rem;
   border-radius: var(--g-radius);
 }
+/* code fence */
+.codeblock {
+  position: relative;
+  margin: 0;
+}
+pre,
 .codeblock {
   overflow: auto;
   max-height: 600px;
-  position: relative;
   padding: 1rem;
-  margin: 0;
-  border-radius: var(--g-radius);
   > code {
     border-radius: var(--g-radius);
     padding: 0;
@@ -141,7 +144,6 @@ code {
     font-size: 1rem;
   }
 }
-
 .copybtn {
   position: absolute;
   top: 0;
@@ -150,17 +152,17 @@ code {
 
 body {
   > header {
-    backdrop-filter: blur(0.1rem);
+    backdrop-filter: blur(0.2rem);
   }
   > nav {
     background-color: inherit;
   }
   > main {
     background-color: var(--g-bg);
+    box-shadow: 0.2rem 0.2rem 0.5rem var(--g-shadow);
     > article {
       details {
         border: 0.1rem solid var(--g-b-bg);
-        margin: 0.5rem;
         background-color: var(--g-i-bg);
         > summary {
           padding: 0 1rem 0 0.5rem;
@@ -210,10 +212,12 @@ body {
   padding: 0 0 0.25rem 0.5rem;
   margin: 0 0 0.5rem 0;
 }
-
 .indentline {
   padding-left: 0.5rem;
   border-left: 0.15rem solid color-mix(in srgb, var(--g-line) 30%, transparent);
+}
+.menu-fold {
+  margin: 0;
 }
 
 #searchbox {
@@ -258,7 +262,6 @@ body {
 }
 .archive-month-posts {
   flex: 1;
-  border-left: 0.2rem solid color-mix(in srgb, var(--g-line) 40%, transparent);
   padding-left: 0.5rem;
   margin: 0;
 }
@@ -270,10 +273,13 @@ body {
 
 .top {
   position: absolute;
-  right: 0;
-  background-color: var(--g-b-bg);
+  right: 0.2rem;
+  background-color: var(--g-i-bg);
   padding: 0 0.5rem;
   border-radius: var(--g-radius);
+  &:hover {
+    background-color: var(--g-b-bg);
+  }
 }
 
 .site-title {

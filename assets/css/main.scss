@@ -34,7 +34,7 @@ body {
   > nav {
     width: 250px;
     max-height: 100vh;
-    padding: 3rem 1rem 1rem;
+    padding: 3rem 1rem 1rem; /* 3 = (font-size of site-title 2) x (line-height 1.5) */
     margin-top: -3rem;
   }
   > main {
