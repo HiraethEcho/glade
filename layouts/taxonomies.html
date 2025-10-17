@@ -17,7 +17,7 @@
           {{- $page := site.GetPage (printf "/%s/%s" $taxonomyName $name) -}}
           {{- with $page }}
             <code
-              ><a href="{{- .Permalink -}}">{{- .Name -}}</a
+              ><a href="{{- .RelPermalink -}}">{{- .Name -}}</a
               ><sup>{{- $count -}}</sup></code
             >
           {{ end -}}

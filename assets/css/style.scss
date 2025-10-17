@@ -7,7 +7,7 @@ select,
 dd,
 blockquote,
 p {
-  margin: 0.2rem 0.5rem;
+  margin: 0.25rem 0.5rem;
 }
 ul,
 ol {
@@ -100,7 +100,6 @@ object {
   margin: 0 auto;
   width: 80%;
   height: auto;
-  padding: 1rem;
   text-align: center;
 }
 
@@ -153,6 +152,7 @@ pre,
 body {
   > header {
     backdrop-filter: blur(0.2rem);
+    filter: drop-shadow(0.2rem 0.2rem 0.5rem var(--g-shadow));
   }
   > nav {
     background-color: inherit;
@@ -202,11 +202,11 @@ body {
 .sideblock {
   background-color: var(--g-bg);
   padding: 0 0 0.25rem 0.5rem;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 1rem 0;
   p {
     margin: 0;
   }
-  box-shadow: 0.2rem 0.2rem 0.5rem var(--g-shadow);
+  box-shadow: 0.2rem 0.2rem 0.4rem var(--g-shadow);
 }
 .asideblock {
   padding: 0 0 0.25rem 0.5rem;
@@ -222,7 +222,7 @@ body {
 
 #searchbox {
   position: relative;
-  padding: 0;
+  padding: 0.5rem;
   width: 100%;
 }
 #searchbox input {
@@ -235,7 +235,7 @@ body {
   > li {
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 0 0.5rem;
     position: relative;
   }
   > .focus {
