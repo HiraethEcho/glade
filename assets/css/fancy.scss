@@ -1,0 +1,26 @@
+kbd {
+  box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.1);
+}
+body {
+  > header {
+    backdrop-filter: blur(0.2rem);
+    filter: drop-shadow(0.2rem 0.2rem 0.5rem var(--g-shadow));
+  }
+  > main {
+    box-shadow: 0.2rem 0.2rem 0.5rem var(--g-shadow);
+  }
+}
+
+.sideblock {
+  box-shadow: 0.2rem 0.2rem 0.4rem var(--g-shadow);
+}
+.post-section {
+  box-shadow: 0.2rem 0.2rem 0.25rem var(--g-shadow);
+}
+
+.top {
+  border-radius: var(--g-radius);
+  &:hover {
+    background-color: var(--g-b-bg);
+  }
+}

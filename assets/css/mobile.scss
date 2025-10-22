@@ -1,0 +1,94 @@
+@media (max-width: 768px) {
+  body {
+    position: absolute;
+    grid-template-areas:
+      "n banner"
+      "sidebar post"
+      "n2 footer";
+    grid-template-columns: 70vw 100vw;
+    width: 170vw;
+    left: -70vw;
+    overflow-y: auto;
+    > nav {
+      width: 70vw;
+    }
+    > header {
+      height: auto;
+      flex-direction: column;
+    }
+    > nav {
+      margin-top: 0.5rem;
+      padding-top: 0;
+    }
+    > main {
+      position: relative;
+      grid-template-areas:
+        "page-start"
+        "aside-bar"
+        "main-content"
+        "page-end";
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto 1fr auto;
+      > aside {
+        display: none;
+        max-width: none;
+        padding: 0;
+        border-bottom: 0.1rem solid var(--g-line);
+      }
+      > article {
+        max-width: 100%;
+        min-width: 50%;
+        width: auto;
+      }
+    }
+  }
+  .mainmenu {
+    display: none;
+    flex-direction: column;
+    li {
+      margin: 0.25rem 0.5rem;
+      > input:checked ~ menu {
+        border-left: 0.2rem solid
+          color-mix(in srgb, var(--g-line) 30%, transparent);
+        border-bottom: none;
+      }
+    }
+  }
+  #menu-btn {
+    display: block;
+    position: absolute;
+    right: 1rem;
+  }
+  #menu-checkbox:checked ~ menu {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    menu,
+    li {
+      flex-direction: column;
+    }
+  }
+  #menu-checkbox:checked ~ #menu-btn {
+    transform: rotate(-90deg);
+  }
+  #nav-btn {
+    display: block;
+    position: absolute;
+    left: 1rem;
+  }
+  #nav-checkbox:checked ~ nav {
+    display: block;
+    left: 0;
+    z-index: 1;
+  }
+
+  #aside-btn {
+    transform: rotate(90deg);
+  }
+  #aside-checkbox:checked ~ aside {
+    display: block;
+  }
+  .site-subtitle {
+    display: none;
+  }
+}

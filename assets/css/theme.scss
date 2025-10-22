@@ -4,6 +4,18 @@
 }
 
 body {
+  --bg: #f5f5f5;
+  --bg-up: #ffffff;
+  --bg-upper: #ffffff;
+  --primary: #38984c;
+  --secondary: #945edd;
+  --link: #1070da;
+  --line: #8c8fa1;
+  --indent-line: rgba(140, 143, 161, 0.3);
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+body {
   em {
     color: #38984c;
   }
@@ -16,12 +28,12 @@ body {
   em > strong {
     color: #1070da;
   }
-  background: #f5f5f5;
-  --g-bg: #eeeeee;
+  background: #eeeeee;
+  --g-bg: #f5f5f5;
+  color: #4c4f69;
   --g-i-bg: #d8d8d8;
   --g-b-bg: #c8c8c8;
   --g-line: #8c8fa1;
-  color: #4c4f69;
   --g-link: #7287fd;
   --g-radius: 0.5rem;
   --g-shadow: rgba(0, 0, 0, 0.1);
