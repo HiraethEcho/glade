@@ -1,5 +1,5 @@
 {{- define "main" -}}
-  <header>
+  <header class="page-header">
     {{- partial "breadcrumbs.html" . -}}
     {{- partial "post-info.html" . -}}
   </header>
@@ -8,7 +8,7 @@
   {{- if or $showtoc $showrelpost -}}
     <input type="checkbox" id="aside-checkbox" style="display: none;" />
     <label for="aside-checkbox" id="aside-btn">⇄</label>
-    <aside>
+    <aside class="page-aside">
       <menu class="asideblock">
         {{- partial "toc.html" . -}}
       </menu>
@@ -18,7 +18,7 @@
     </aside>
   {{- end -}}
   <article>{{- .Content -}}</article>
-  <footer>
+  <footer class="page-footer">
     {{- partial "page-end.html" . -}}
     {{- partial "comment.html" . -}}
   </footer>

@@ -34,6 +34,7 @@ body {
   --g-i-bg: #d8d8d8;
   --g-b-bg: #c8c8c8;
   --g-line: #8c8fa1;
+  --border: #000000;
   --g-link: #7287fd;
   --g-radius: 0.5rem;
   --g-shadow: rgba(0, 0, 0, 0.1);
@@ -56,9 +57,9 @@ body {
   word-break: break-word;
   overflow-wrap: break-word;
   #themetoggle::after {
-    content: "☼";
+    content: "☀";
     color: #dabc00;
-    /* content: "🔆☀"; */
+    /* content: "🔆☀☼"; */
   }
 }
 

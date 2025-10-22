@@ -7,11 +7,11 @@
     {{- partial "head.html" . -}}
   </head>
   <body>
-    <header>
+    <header class="site-header">
       {{- partial "header.html" . -}}
     </header>
     <input type="checkbox" id="nav-checkbox" style="display: none;" />
-    <nav>
+    <nav class="site-nav">
       {{- partial "search.html" . -}}
       {{- partial "site-info.html" . -}}
       {{- partial "taxonomy-tree.html" . -}}
@@ -21,7 +21,7 @@
     <main>
       {{- block "main" . -}}{{- end -}}
     </main>
-    <footer>
+    <footer class="site-footer">
       {{- partial "footer.html" . -}}
     </footer>
   </body>
