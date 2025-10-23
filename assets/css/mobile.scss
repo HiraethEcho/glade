@@ -9,17 +9,6 @@
     width: 170vw;
     left: -70vw;
     overflow-y: auto;
-    > nav {
-      width: 70vw;
-    }
-    > header {
-      height: auto;
-      flex-direction: column;
-    }
-    > nav {
-      margin-top: 0.5rem;
-      padding-top: 0;
-    }
     > main {
       position: relative;
       grid-template-areas:
@@ -29,18 +18,24 @@
         "page-end";
       grid-template-columns: 1fr;
       grid-template-rows: auto auto 1fr auto;
-      > aside {
-        display: none;
-        max-width: none;
-        padding: 0;
-        border-bottom: 0.1rem solid var(--g-line);
-      }
       > article {
         max-width: 100%;
         min-width: 50%;
         width: auto;
       }
     }
+  }
+  .site-header {
+    height: auto;
+    flex-direction: column;
+  }
+  .site-subtitle {
+    display: none;
+  }
+  .site-nav {
+    width: 70vw;
+    margin-top: 0.5rem;
+    padding-top: 0;
   }
   .mainmenu {
     display: none;
@@ -88,7 +83,10 @@
   #aside-checkbox:checked ~ aside {
     display: block;
   }
-  .site-subtitle {
+  .page-aside {
     display: none;
+    max-width: none;
+    padding: 0;
+    border-bottom: 0.1rem solid var(--g-line);
   }
 }
