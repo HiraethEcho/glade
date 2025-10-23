@@ -72,8 +72,10 @@
     left: 1rem;
   }
   #nav-checkbox:checked ~ nav {
-    display: block;
-    left: 0;
+    padding: 0 0.5rem;
+    display: flex;
+    /* left: 0; */
+    transform: translateX(70vw);
     z-index: 1;
   }
 

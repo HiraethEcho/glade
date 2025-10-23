@@ -1,8 +1,43 @@
 {{- define "main" -}}
-  <header>
-    {{- partial "breadcrumbs" . -}}
+  <header class="page-header">
+    {{- partial "breadcrumbs.html" . -}}
     <h1>{{- .Title -}}</h1>
   </header>
+  {{- $pages := .RegularPages -}}
+  {{- $show := default true (default .Site.Params.ShowList .Params.ShowList) -}}
+  {{- $split := default true (default .Site.Params.SplitList .Params.SplitList) -}}
+  {{- if $show -}}
+    {{- if not $split -}}
+      <input type="checkbox" id="aside-checkbox" style="display: none;" />
+      <label for="aside-checkbox" id="aside-btn">⇄</label>
+      <aside class="page-aside" id="TableOfContents">
+        {{- range $pages.GroupByPublishDate "2006" -}}
+          {{- if ne .Key "0001" -}}
+            {{- $year := replace .Key "0001" "" -}}
+            <details class="menu-fold">
+              <summary>
+                <a class="archive-header-link" href="#{{- $year -}}">
+                  {{- $year -}}
+                </a>
+              </summary>
+              <ul class="indentline">
+                {{- range .GroupByDate "01" -}}
+                  <li>
+                    <a
+                      class="archive-header-link"
+                      href="#{{- $year -}}-{{- .Key -}}"
+                    >
+                      {{- .Key -}}
+                    </a>
+                  </li>
+                {{- end -}}
+              </ul>
+            </details>
+          {{- end -}}
+        {{- end -}}
+      </aside>
+    {{- end -}}
+  {{- end -}}
   <article class="term">
     {{- .Content -}}
     {{- partial "pagination.html" . -}}

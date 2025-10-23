@@ -3,7 +3,7 @@
   {{- if site.Params.ShowAllPagesInArchives -}}
     {{- $pages = site.RegularPages -}}
   {{- end -}}
-  <header>
+  <header class="page-header">
     {{- partial "breadcrumbs" . -}}
   </header>
   <input type="checkbox" id="aside-checkbox" style="display: none;" />

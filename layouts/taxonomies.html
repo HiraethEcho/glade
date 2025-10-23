@@ -4,12 +4,10 @@
   </header>
   <article>
     {{- .Content -}}
-    {{- $taxonomyTitles := .Site.Params.taxonomyTitles -}}
     {{- range $taxonomyName, $taxonomy := .Site.Taxonomies -}}
-      {{- $taxonomyTitle := index $taxonomyTitles $taxonomyName | default $taxonomyName -}}
       {{- with $taxonomy -}}
         <h2>
-          <a href="/{{- $taxonomyName -}}">{{- $taxonomyTitle -}} </a
+          <a href="/{{- $taxonomyName -}}">{{- $taxonomyName -}} </a
           ><sup>{{- len $taxonomy -}}</sup>
         </h2>
         {{- range $name, $value := $taxonomy -}}
