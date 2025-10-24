@@ -84,7 +84,8 @@ table img {
 }
 /* form */
 button {
-  border: none;
+  border: 0.1rem solid var(--g-line);
+  border-radius: var(--g-radius);
   background-color: inherit;
   cursor: pointer;
 }
@@ -114,24 +115,21 @@ object {
 /* code */
 pre,
 code,
+kbd,
 samp,
 var {
   background-color: var(--g-i-bg);
   font-family: var(--g-font-mono);
+  font-size: 0.8rem;
+  padding: 0.1rem 0.3rem;
 }
 kbd {
-  background-color: var(--bg);
-  font-family: var(--g-font-mono);
-  padding: 0.1rem 0.3rem;
-  font-size: 0.8rem;
   border-radius: var(--g-radius);
   border: 0.1rem solid var(--g-line);
   border-radius: var(--g-radius);
 }
 /* inline code */
 code {
-  padding: 0.1rem 0.3rem;
-  font-size: 0.8rem;
   border-radius: var(--g-radius);
   word-break: keep-all;
 }
@@ -180,7 +178,6 @@ body {
     background-color: var(--g-bg);
     position: relative;
     padding: 0.25rem 1rem;
-    margin-top: 0.5rem;
     overflow-wrap: break-word;
     word-wrap: break-word;
     overflow-y: auto;
@@ -214,6 +211,7 @@ body {
   height: 3rem;
   position: sticky;
   top: 0;
+  background: inherit;
   padding: 0 0.5rem 0 0;
   display: flex;
   justify-content: space-between;
@@ -224,14 +222,14 @@ body {
   background: inherit;
   position: sticky;
   top: 0;
-  padding: 3rem 0 1rem 0; /* 3.5 = (font-size of site-title 2) x (line-height 1.5) */
-  /* padding: 3.5rem 0 1rem 0; /* 3.5 = (font-size of site-title 2) x (line-height 1.5) + margin 0.5 */ */
+  padding: 3rem 0 1rem 0; 
+  /* 3.5 = (font-size of site-title 2) x (line-height 1.5) */
+  /* padding: 3.5rem 0 1rem 0;  */
+  /* 3.5 = (font-size of site-title 2) x (line-height 1.5) + margin 0.5 */
   margin: -3rem 0.5rem 0 0;
   width: 250px;
   max-height: 100vh;
   overflow-y: auto;
-  display: flex;
-  flex-direction: column;
 }
 .page-header {
   grid-area: page-start;

@@ -39,6 +39,17 @@
     {{- end -}}
   {{- end -}}
   <article class="term">
+    {{- $scratch := newScratch -}}
+    {{- range $pages -}}
+      {{- if not .Params.ai -}}
+        {{- $scratch.Add "total" .WordCount -}}
+      {{- end -}}
+    {{- end -}}
+    <p>
+      {{- $scratch.Get "total" }} words in
+      <a href="/archive">{{ len $pages -}}</a>
+      posts.
+    </p>
     {{- .Content -}}
     {{- partial "pagination.html" . -}}
   </article>

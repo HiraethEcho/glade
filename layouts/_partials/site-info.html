@@ -4,12 +4,22 @@
     {{- with .Site.Params.description -}}<p>{{- . -}}</p>{{- end -}}
 
     {{- $scratch := newScratch -}}
-    {{- range (where .Site.Pages "Kind" "page" ) -}}
-      {{- $scratch.Add "total" .WordCount -}}
+    {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections -}}
+    {{- if site.Params.CountAllPages -}}
+      {{- $pages = site.RegularPages -}}
+    {{- end -}}
+    {{- range $pages -}}
+      {{- if not .Params.ai -}}
+        {{- $scratch.Add "total" .WordCount -}}
+      {{- end -}}
     {{- end -}}
     <p>
       {{- $scratch.Get "total" }} words in
-      <a href="/archive">{{ len .Site.RegularPages -}}</a> posts.
+      <a href="/archive">{{ len $pages -}}</a>
+      {{- if not site.Params.CountAllPages }}
+        main
+      {{- end }}
+      posts.
     </p>
 
     {{- $num := (len .Site.Taxonomies ) -}}
