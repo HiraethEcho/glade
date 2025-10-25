@@ -29,3 +29,6 @@
     mermaid.initialize({ startOnLoad: true });
   </script>
 {{- end -}}
+{{- if .Param "math" -}}
+  {{- partialCached "math.html" . -}}
+{{- end -}}

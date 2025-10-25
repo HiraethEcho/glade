@@ -14,11 +14,8 @@
       {{- end -}}
     {{- end -}}
     <p>
-      {{- $scratch.Get "total" }} words in
-      <a href="/archive">{{ len $pages -}}</a>
-      {{- if not site.Params.CountAllPages }}
-        main
-      {{- end }}
+      {{- $scratch.Get "total" }} words in {{ len $pages }}
+      {{- if not site.Params.CountAllPages }} main {{- end }}
       posts.
     </p>
 
