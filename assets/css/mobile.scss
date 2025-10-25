@@ -34,7 +34,7 @@
   }
   .site-nav {
     width: 70vw;
-    margin-top: 0.5rem;
+    margin-top: 0;
     padding-top: 0;
   }
   .mainmenu {
@@ -71,24 +71,25 @@
     position: absolute;
     left: 1rem;
   }
-  #nav-checkbox:checked ~ nav {
+  #nav-checkbox:checked ~ .site-nav {
     padding: 0 0.5rem;
     display: flex;
-    /* left: 0; */
-    transform: translateX(70vw);
+    flex-direction: column;
+    left: 0;
+    /* transform: translateX(70vw); */
     z-index: 1;
   }
 
   #aside-btn {
     transform: rotate(90deg);
   }
-  #aside-checkbox:checked ~ aside {
-    display: block;
-  }
   .page-aside {
     display: none;
     max-width: none;
     padding: 0;
     border-bottom: 0.1rem solid var(--g-line);
+  }
+  #aside-checkbox:checked ~ aside {
+    display: block;
   }
 }

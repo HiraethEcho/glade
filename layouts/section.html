@@ -46,9 +46,7 @@
       {{- end -}}
     {{- end -}}
     <p>
-      {{- $scratch.Get "total" }} words in
-      <a href="/archive">{{ len $pages -}}</a>
-      posts.
+      {{- $scratch.Get "total" }} words in {{ len $pages }} posts.
     </p>
     {{- .Content -}}
     {{- partial "pagination.html" . -}}
