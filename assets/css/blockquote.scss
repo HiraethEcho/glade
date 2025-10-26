@@ -1,12 +1,3 @@
-blockquote {
-  border: 0.1rem solid var(--blockquote-border);
-  border-left: 0.25rem solid var(--blockquote-border);
-  background-color: var(--blockquote-bg);
-  > .alert-heading {
-    font-weight: bold;
-  }
-}
-
 blockquote.alert-note {
   border-color: var(--alert-note-border);
   border-left-color: var(--alert-note-border);

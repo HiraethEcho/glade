@@ -48,9 +48,20 @@ details {
       position: absolute;
       right: 0.5rem;
     }
+    /* &:hover {
+      background-color: ;
+    } */
   }
   &[open] > summary::after {
     transform: rotate(-90deg);
+  }
+}
+blockquote {
+  border-left: 0.25rem solid var(--blockquote-border);
+  background-color: var(--blockquote-bg);
+  padding: 0.25rem 0;
+  > .alert-heading {
+    font-weight: bold;
   }
 }
 mark {
@@ -341,12 +352,8 @@ body {
     background-color: var(--g-b-bg);
   }
 }
-.indentline {
-  padding-left: 0.5rem;
-  border-left: 0.15rem solid color-mix(in srgb, var(--g-line) 30%, transparent);
-}
 .menu-fold {
-  margin: 0 0 0.25rem 0;
+  margin: 0;
 }
 /* main */
 /* header */
@@ -370,24 +377,25 @@ body {
 .indentline {
   display: flex;
   flex-direction: column;
-  list-style: none;
   li {
     list-style: none;
   }
 }
+.indentline,
 #TableOfContents ul {
-  margin: 0;
   padding-left: 0.5rem;
   border-left: 0.15rem solid color-mix(in srgb, var(--g-line) 30%, transparent);
+  margin: 0 0 0.2rem;
 }
 /* article */
 .pagination {
   display: flex;
-  justify-content: center;
-  margin-top: 1rem;
+  justify-content: space-between;
+  margin: 1rem auto;
   padding: 0;
   list-style: none;
-  gap: 2rem;
+  width: auto;
+  max-width: 80%;
 }
 .archive-month {
   display: flex;

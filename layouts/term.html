@@ -5,38 +5,36 @@
   </header>
   {{- $pages := .RegularPages -}}
   {{- $show := default true (default .Site.Params.ShowList .Params.ShowList) -}}
-  {{- $split := default true (default .Site.Params.SplitList .Params.SplitList) -}}
-  {{- if $show -}}
-    {{- if not $split -}}
-      <input type="checkbox" id="aside-checkbox" style="display: none;" />
-      <label for="aside-checkbox" id="aside-btn">⇄</label>
-      <aside class="page-aside" id="TableOfContents">
-        {{- range $pages.GroupByPublishDate "2006" -}}
-          {{- if ne .Key "0001" -}}
-            {{- $year := replace .Key "0001" "" -}}
-            <details class="menu-fold">
-              <summary>
-                <a class="archive-header-link" href="#{{- $year -}}">
-                  {{- $year -}}
-                </a>
-              </summary>
-              <ul class="indentline">
-                {{- range .GroupByDate "01" -}}
-                  <li>
-                    <a
-                      class="archive-header-link"
-                      href="#{{- $year -}}-{{- .Key -}}"
-                    >
-                      {{- .Key -}}
-                    </a>
-                  </li>
-                {{- end -}}
-              </ul>
-            </details>
-          {{- end -}}
+  {{- $type := default "list" (default .Site.Params.ListType .Params.ListType) -}}
+  {{- if and $show (eq $type "date") -}}
+    <input type="checkbox" id="aside-checkbox" style="display: none;" />
+    <label for="aside-checkbox" id="aside-btn">⇄</label>
+    <aside class="page-aside" id="TableOfContents">
+      {{- range $pages.GroupByPublishDate "2006" -}}
+        {{- if ne .Key "0001" -}}
+          {{- $year := replace .Key "0001" "" -}}
+          <details class="menu-fold">
+            <summary>
+              <a class="archive-header-link" href="#{{- $year -}}">
+                {{- $year -}}
+              </a>
+            </summary>
+            <ul class="indentline">
+              {{- range .GroupByDate "01" -}}
+                <li>
+                  <a
+                    class="archive-header-link"
+                    href="#{{- $year -}}-{{- .Key -}}"
+                  >
+                    {{- .Key -}}
+                  </a>
+                </li>
+              {{- end -}}
+            </ul>
+          </details>
         {{- end -}}
-      </aside>
-    {{- end -}}
+      {{- end -}}
+    </aside>
   {{- end -}}
   <article class="term">
     {{- $scratch := newScratch -}}
@@ -47,6 +45,8 @@
     {{- end -}}
     <p>{{- $scratch.Get "total" }} words in {{ len $pages }} posts.</p>
     {{- .Content -}}
-    {{- partial "pagination.html" . -}}
+    {{ if $show }}
+      {{- partial "lists.html" (dict "type" $type "pages" $pages "page" .) -}}
+    {{- end -}}
   </article>
 {{- end -}}

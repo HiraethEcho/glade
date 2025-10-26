@@ -1,0 +1,4 @@
+{{- $pages := .RegularPagesRecursive -}}
+  {{- range .Pages -}}
+    {{- partial "post-section.html" . -}}
+  {{- end -}}

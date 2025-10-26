@@ -1,41 +1,44 @@
 {{- define "main" -}}
+  <header class="page-header">
+    {{- partial "breadcrumbs" . -}}
+  </header>
   {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections -}}
   {{- if site.Params.ShowAllPagesInArchives -}}
     {{- $pages = site.RegularPages -}}
   {{- end -}}
-  <header class="page-header">
-    {{- partial "breadcrumbs" . -}}
-  </header>
-  <input type="checkbox" id="aside-checkbox" style="display: none;" />
-  <label for="aside-checkbox" id="aside-btn">⇄</label>
-  <aside class="page-aside" id="TableOfContents">
+  {{- $type := default "date" (default .Site.Params.ListType .Params.ListType) -}}
+  {{- if eq $type "date" -}}
+    <input type="checkbox" id="aside-checkbox" style="display: none;" />
+    <label for="aside-checkbox" id="aside-btn">⇄</label>
+    <aside class="page-aside" id="TableOfContents">
       {{- range $pages.GroupByPublishDate "2006" -}}
         {{- if ne .Key "0001" -}}
           {{- $year := replace .Key "0001" "" -}}
-            <details class="menu-fold">
-              <summary>
-                <a class="archive-header-link" href="#{{- $year -}}">
-                  {{- $year -}}
-                </a>
-              </summary>
-              <ul class="indentline">
-                {{- range .GroupByDate "01" -}}
-                  <li>
-                    <a
-                      class="archive-header-link"
-                      href="#{{- $year -}}-{{- .Key -}}"
-                    >
-                      {{- .Key -}}
-                    </a>
-                  </li>
-                {{- end -}}
-              </ul>
-            </details>
+          <details class="menu-fold">
+            <summary>
+              <a class="archive-header-link" href="#{{- $year -}}">
+                {{- $year -}}
+              </a>
+            </summary>
+            <ul class="indentline">
+              {{- range .GroupByDate "01" -}}
+                <li>
+                  <a
+                    class="archive-header-link"
+                    href="#{{- $year -}}-{{- .Key -}}"
+                  >
+                    {{- .Key -}}
+                  </a>
+                </li>
+              {{- end -}}
+            </ul>
+          </details>
         {{- end -}}
       {{- end -}}
-  </aside>
+    </aside>
+  {{- end -}}
   <article>
     {{- .Content -}}
-    {{- partial "post-list.html" (dict "pages" $pages ) -}}
+    {{- partial "lists.html" (dict "pages" $pages "type" $type ) -}}
   </article>
 {{- end -}}

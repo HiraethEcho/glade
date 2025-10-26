@@ -1,0 +1,49 @@
+{{- $page := .page -}}
+{{- $pages := .pages -}}
+{{- $type := .type -}}
+{{- if eq $type "split" -}}
+  {{- range ($page.Paginate $pages).Pages -}}
+    {{- partial "post-section.html" . -}}
+  {{- end -}}
+  {{- $paginator := $page.Paginate $pages -}}
+  {{- with $paginator -}}
+    <ul class="pagination">
+      {{- range .Pagers -}}
+        <li><a href="{{- .URL -}}">{{- .PageNumber -}}</a></li>
+      {{- end -}}
+    </ul>
+  {{- end -}}
+{{- else if eq $type "date" -}}
+  {{- range $pages.GroupByPublishDate "2006" -}}
+    {{- if ne .Key "0001" -}}
+      {{- $year := replace .Key "0001" "" -}}
+      <h2 class="archive-year-header" id="{{- $year -}}">
+        <a class="archive-header-link" href="#{{- $year -}}">
+          {{- $year -}}
+        </a>
+        <sup class="archive-count">{{- len .Pages -}}</sup>
+      </h2>
+      {{- range .GroupByDate "01" -}}
+        <section class="archive-month">
+          <h3 class="archive-month-header" id="{{- $year -}}-{{- .Key -}}">
+            <a class="archive-header-link" href="#{{- $year -}}-{{- .Key -}}">
+              {{- .Key -}}
+            </a>
+            <sup class="archive-count">{{- len .Pages -}}</sup>
+          </h3>
+          <section class="archive-month-posts">
+            {{- range .Pages -}}
+              {{- partial "post-section.html" . -}}
+            {{- end -}}
+          </section>
+        </section>
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- else if eq $type "list" -}}
+  <ol>
+    {{- range $pages -}}
+      <li>{{- partial "post-section.html" . -}}</li>
+    {{- end -}}
+  </ol>
+{{- end -}}

@@ -1,4 +1,4 @@
-{{- $pages := .pages -}}
+{{- $pages := .RegularPagesRecursive -}}
 {{- range $pages.GroupByPublishDate "2006" -}}
   {{- if ne .Key "0001" -}}
     {{- $year := replace .Key "0001" "" -}}
