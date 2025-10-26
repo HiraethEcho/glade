@@ -45,9 +45,7 @@
         {{- $scratch.Add "total" .WordCount -}}
       {{- end -}}
     {{- end -}}
-    <p>
-      {{- $scratch.Get "total" }} words in {{ len $pages }} posts.
-    </p>
+    <p>{{- $scratch.Get "total" }} words in {{ len $pages }} posts.</p>
     {{- .Content -}}
     {{- partial "pagination.html" . -}}
   </article>

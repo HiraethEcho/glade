@@ -18,12 +18,12 @@
 
 <section class="post-end">
   <div class="post-prev">
-    {{- with .Prev -}}
+    {{- with .PrevInSection -}}
       <a href="{{- .RelPermalink -}}">« {{ .Name }}</a>
     {{- end -}}
   </div>
   <div class="post-next">
-    {{- with .Next -}}
+    {{- with .NextInSection -}}
       <a href="{{- .RelPermalink -}}">{{ .Name }} »</a>
     {{- end -}}
   </div>
