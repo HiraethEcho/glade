@@ -22,15 +22,12 @@ ol {
   margin-left: 2rem;
 }
 a {
-  color: var(--g-link);
+  color: var(--link);
   text-decoration: none;
   border-radius: 0.5rem;
 }
 a:hover {
-  background-color: var(--g-i-bg);
-}
-a:active {
-  color: var(--g-line);
+  color: oklch(0.65 0.2 10);
 }
 .external-link::after {
   content: "↗";
@@ -48,9 +45,9 @@ details {
       position: absolute;
       right: 0.5rem;
     }
-    /* &:hover {
-      background-color: ;
-    } */
+    &:hover {
+      background-color: var(--bg-tertiary);
+    }
   }
   &[open] > summary::after {
     transform: rotate(-90deg);
@@ -67,7 +64,7 @@ blockquote {
 mark {
   background-color: green;
   padding: 0.1rem 0.5rem;
-  border-radius: var(--g-radius);
+  border-radius: var(--radius);
   font-size: 0.8rem;
 }
 
@@ -82,7 +79,7 @@ table caption {
   margin-bottom: 0.5rem;
 }
 tr {
-  border-bottom: 0.1rem solid var(--g-line);
+  border-bottom: 0.1rem solid var(--line);
 }
 td,
 th {
@@ -91,7 +88,7 @@ th {
 }
 th:not(:last-child),
 td:not(:last-child) {
-  border-right: 0.1rem solid var(--g-line);
+  border-right: 0.1rem solid var(--line);
 }
 th {
   text-align: left;
@@ -105,9 +102,9 @@ button {
 label {
   font-weight: bold;
   cursor: pointer;
-  border-radius: var(--g-radius);
+  border-radius: var(--radius);
   &:hover {
-    background-color: var(--g-i-bg);
+    color: oklch(0.75 0.2 350);
   }
 }
 progress {
@@ -131,24 +128,20 @@ code,
 kbd,
 samp,
 var {
-  background-color: var(--g-i-bg);
+  background-color: var(--bg-code);
   font-family: var(--g-font-mono);
   font-size: 0.8rem;
   padding: 0.1rem 0.3rem;
 }
 kbd {
-  border-radius: var(--g-radius);
-  border: 0.1rem solid var(--g-line);
-  border-radius: var(--g-radius);
+  border-radius: var(--radius);
+  border: 0.1rem solid var(--line);
+  border-radius: var(--radius);
 }
 /* inline code */
 code {
-  border-radius: var(--g-radius);
+  border-radius: var(--radius);
   word-break: keep-all;
-  userselect: all;
-  &:focus {
-    animation: select 100ms step-end forwards;
-  }
 }
 /* code fence */
 .codeblock {
@@ -164,7 +157,7 @@ pre,
   padding: 1rem;
   > code {
     background-color: inherit;
-    border-radius: var(--g-radius);
+    border-radius: var(--radius);
     padding: 0;
     margin: 0;
     font-size: 1rem;
@@ -192,7 +185,8 @@ body {
   min-height: 100dvh;
   > main {
     grid-area: post;
-    background-color: var(--g-bg);
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
     position: relative;
     padding: 0.25rem 1rem;
     overflow-wrap: break-word;
@@ -215,10 +209,10 @@ body {
         margin: 0.5rem;
       }
       details {
-        background-color: var(--g-i-bg);
+        background-color: var(--bg-code);
         > summary {
           padding: 0.25rem 1rem 0.25rem 0.5rem;
-          background-color: var(--g-b-bg);
+          background-color: var(--bg-secondary);
         }
       }
     }
@@ -231,7 +225,8 @@ body {
   height: 3rem;
   position: sticky;
   top: 0;
-  background: inherit;
+  background: var(--bg-header);
+  backdrop-filter: blur(0.2rem);
   padding: 0 0.5rem 0 0;
   display: flex;
   justify-content: space-between;
@@ -316,16 +311,16 @@ body {
       display: none;
     }
     input:checked ~ menu {
-      border-bottom: 0.1rem solid var(--g-line);
+      border-bottom: 0.1rem solid var(--line);
       display: flex;
     }
   }
 }
 /* nav */
 .sideblock {
-  background-color: var(--g-bg);
+  background-color: var(--bg-secondary);
   padding: 0.5rem 0 0.25rem 0.5rem;
-  margin: 0 0 1rem 0;
+  margin: 0 0 0.5rem 0;
   p {
     margin: 0;
   }
@@ -338,7 +333,7 @@ body {
 #searchbox input {
   height: 1.5rem;
   width: 100%;
-  background-color: var(--g-i-bg);
+  background-color: var(--bg-code);
 }
 #searchResults {
   margin: 0;
@@ -349,7 +344,7 @@ body {
     position: relative;
   }
   > .focus {
-    background-color: var(--g-b-bg);
+    background-color: var(--bg-tertiary);
   }
 }
 .menu-fold {
@@ -384,7 +379,7 @@ body {
 .indentline,
 #TableOfContents ul {
   padding-left: 0.5rem;
-  border-left: 0.15rem solid color-mix(in srgb, var(--g-line) 30%, transparent);
+  border-left: 0.15rem solid color-mix(in srgb, var(--line) 30%, transparent);
   margin: 0 0 0.2rem;
 }
 /* article */
@@ -430,5 +425,8 @@ body {
   position: absolute;
   right: 0.5rem;
   padding: 0 0.25rem;
-  border-radius: var(--g-radius);
+  border-radius: var(--radius);
+}
+.tt {
+  color: var(--text-tertiary);
 }
