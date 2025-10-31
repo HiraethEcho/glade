@@ -34,22 +34,29 @@ ol {
   margin-left: 2rem;
 }
 a {
-  color: var(--text-secondary);
+  color: var(--link);
   text-decoration: none;
 }
-a:hover {
-  color: oklch(0.65 0.2 10);
+.site-header,
+.site-nav {
+  a {
+    color: var(--accent);
+  }
 }
 .external-link::after {
   content: "↗";
   font-size: 0.8rem;
 }
+a:hover {
+  color: var(--hover);
+  text-decoration: underline;
+}
+
 details {
   > summary {
     list-style: none;
     cursor: pointer;
     position: relative;
-    font-weight: bold;
     padding-right: 1.5rem;
     &::after {
       content: "◂";
@@ -202,9 +209,6 @@ body {
       "page-end page-end";
     grid-template-columns: 1fr auto;
     grid-template-rows: auto 1fr auto;
-    a {
-      color: var(--link);
-    }
     > article {
       max-width: min(750px, 100%);
       min-width: 50%;
@@ -226,12 +230,6 @@ body {
 }
 
 .site-header {
-  a {
-    color: var(--accent);
-  }
-  a:hover {
-    color: oklch(0.65 0.2 10);
-  }
   grid-area: banner;
   z-index: 2;
   height: 3rem;
@@ -336,12 +334,6 @@ body {
   p {
     margin: 0;
   }
-  a {
-    color: var(--accent);
-  }
-  a:hover {
-    color: oklch(0.65 0.2 10);
-  }
 }
 #searchbox {
   position: relative;
@@ -368,10 +360,13 @@ body {
 .menu-fold {
   margin: 0;
   > summary {
-    padding-left: 0.2rem;
     &:hover {
       transform: translateY(-0.1rem);
-      box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow);
+      background-color: var(--bg-tertiary);
+      box-shadow:
+        -0.2rem 0 0 var(--bg-tertiary),
+        0.2rem 0.2rem 0.2rem var(--shadow),
+        0 0.1rem 0.2rem var(--shadow);
     }
   }
 }
@@ -439,13 +434,6 @@ body {
   grid-area: footer;
   position: sticky;
   bottom: 0;
-  font-size: small;
-  a {
-    color: var(--accent);
-  }
-  a:hover {
-    color: oklch(0.65 0.2 10);
-  }
   color: var(--text-tertiary);
   background: inherit;
   padding: 0 2rem 0 0;
@@ -459,6 +447,10 @@ body {
   right: 0.5rem;
   padding: 0 0.25rem;
   border-radius: var(--radius);
+  &:hover {
+    transform: translateY(-0.1rem);
+    background-color: var(--bg-primary);
+  }
 }
 .ts {
   color: var(--text-secondary);
