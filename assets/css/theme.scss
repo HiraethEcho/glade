@@ -1,16 +1,17 @@
 body {
-  --g-font-mono: Monaco, Consolas, monospace;
-  --bg-primary: oklch(0.98 0 0);
-  --bg-secondary: oklch(0.95 0 0);
-  --bg-tertiary: oklch(0.92 0 0);
+  --font-mono: Monaco, Consolas, monospace;
+  --bg-primary: oklch(0.98 0.01 250);
+  --bg-secondary: oklch(0.95 0.01 250);
+  --bg-tertiary: oklch(0.92 0.01 250);
+  --bg-header: oklch(0.9 0.02 250 / 0.7);
   --bg-code: oklch(0.9 0 0);
-  --bg-header: oklch(0.9 0 0 / 0.7);
-  --text-primary: oklch(0.1 0 0);
-  --text-secondary: oklch(0.35 0 0);
-  --text-tertiary: oklch(0.5 0 0);
-  --link: oklch(0.6 0.25 300); /* #ad87ed */
+  --text-primary: oklch(0.3 0 0);
+  --text-secondary: oklch(0.4 0.1 260);
+  --text-tertiary: oklch(0.5 0.02 250);
+  --accent: oklch(0.6 0.25 300);
+  --link: oklch(0.5 0.2 160);
   --line: #8c8fa1;
-  --indent-line: oklch(0.5 0 0 / 0.5);
+  --indent-line: oklch(0.5 0.05 250 / 0.2);
   --shadow: rgba(0, 0, 0, 0.1);
   --radius: 0.5rem;
   --blockquote-bg: #e0e0e0;
@@ -26,41 +27,40 @@ body {
   --alert-warning-bg: #f7f0e0;
   --alert-warning-border: #9a6700;
   --waline-border: 1px solid #2a2;
-  em {
-    color: oklch(0.65 0.17 40);
-  }
-  strong {
-    color: oklch(0.5 0.2 240);
-  }
-  strong > em {
-    color: oklch(0.6 0.17 140);
-  }
-  em > strong {
-    color: oklch(0.6 0.17 140);
-  }
+
   background: var(--bg-tertiary);
   color: var(--text-primary);
-
-  word-break: break-word;
-  overflow-wrap: break-word;
   #themetoggle::after {
     content: "☀️";
     /* color: #dabc00; */
     font-size: 1rem;
     /* content: "🔆☀☼☀️"; */
   }
+
+  em {
+    color: var(--text-tertiary);
+  }
+  strong {
+    color: var(--text-secondary);
+  }
+  strong > em,
+  em > strong {
+    color: var(--text-secondary);
+  }
 }
 
 body.dark {
-  --bg-primary: oklch(0.32 0 0);
-  --bg-secondary: oklch(0.28 0 0);
-  --bg-tertiary: oklch(0.22 0 0);
+  --bg-primary: oklch(0.32 0.01 270);
+  --bg-secondary: oklch(0.3 0.01 270);
+  --bg-tertiary: oklch(0.28 0.01 270);
+  --bg-header: oklch(0.26 0.01 270 / 0.7);
   --bg-code: oklch(0.4 0 0);
-  --bg-header: oklch(0.22 0 0 / 0.7);
-  --text-primary: oklch(0.8 0 0);
-  --text-secondary: oklch(0.7 0 0);
-  --text-tertiary: oklch(0.6 0 0);
-  --link: oklch(0.8 0.15 300); /* #ad87ed */
+  --text-primary: oklch(0.9 0.01 0);
+  --text-secondary: oklch(0.9 0.03 60);
+  --text-tertiary: oklch(0.8 0.03 60);
+  --link: oklch(0.65 0.12 160);
+  --accent: oklch(0.7 0.15 130);
+  --shadow: oklch(0.2 0.05 250 / 0.7);
 
   --blockquote-bg: #424242;
   --blockquot-border: #121212;

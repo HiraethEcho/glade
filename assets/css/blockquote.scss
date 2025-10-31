@@ -1,3 +1,19 @@
+blockquote {
+  border-left: 0.25rem solid var(--blockquote-border);
+  color: var(--text-tertiary);
+  > .alert-heading {
+    font-weight: bold;
+  }
+  &.alert {
+    border-left: 0.25rem solid var(--blockquote-border);
+    padding: 0.1rem 0;
+    color: var(--text-primary);
+    .alert-heading {
+      margin: 0.15rem 0.5rem;
+    }
+  }
+}
+
 blockquote.alert-note {
   border-color: var(--alert-note-border);
   border-left-color: var(--alert-note-border);

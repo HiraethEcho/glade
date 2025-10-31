@@ -1,4 +1,7 @@
 /* init */
+:root {
+  font-size: 20px;
+}
 * {
   line-height: 1.5;
   box-sizing: border-box;
@@ -7,6 +10,15 @@
 }
 
 /* basic */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-secondary);
+  padding-left: 0.5rem;
+}
 hr,
 pre,
 section,
@@ -22,9 +34,8 @@ ol {
   margin-left: 2rem;
 }
 a {
-  color: var(--link);
+  color: var(--text-secondary);
   text-decoration: none;
-  border-radius: 0.5rem;
 }
 a:hover {
   color: oklch(0.65 0.2 10);
@@ -45,24 +56,14 @@ details {
       position: absolute;
       right: 0.5rem;
     }
-    &:hover {
-      background-color: var(--bg-tertiary);
-    }
   }
   &[open] > summary::after {
     transform: rotate(-90deg);
   }
 }
-blockquote {
-  border-left: 0.25rem solid var(--blockquote-border);
-  background-color: var(--blockquote-bg);
-  padding: 0.25rem 0;
-  > .alert-heading {
-    font-weight: bold;
-  }
-}
 mark {
-  background-color: green;
+  background-color: var(--bg-tertiary);
+  color: var(--text-tertiary);
   padding: 0.1rem 0.5rem;
   border-radius: var(--radius);
   font-size: 0.8rem;
@@ -104,7 +105,7 @@ label {
   cursor: pointer;
   border-radius: var(--radius);
   &:hover {
-    color: oklch(0.75 0.2 350);
+    color: oklch(0.75 0.2 320);
   }
 }
 progress {
@@ -129,7 +130,7 @@ kbd,
 samp,
 var {
   background-color: var(--bg-code);
-  font-family: var(--g-font-mono);
+  font-family: var(--font-mono);
   font-size: 0.8rem;
   padding: 0.1rem 0.3rem;
 }
@@ -165,7 +166,7 @@ pre,
 }
 .copybtn {
   position: absolute;
-  color: #ffffff;
+  color: oklch(0.7 0.2 220);
   top: 0;
   right: 0.5rem;
 }
@@ -183,10 +184,12 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   min-height: 100dvh;
+  overflow-wrap: break-word;
+  word-break: break-word;
   > main {
     grid-area: post;
     background-color: var(--bg-primary);
-    color: var(--text-secondary);
+    color: var(--text-primary);
     position: relative;
     padding: 0.25rem 1rem;
     overflow-wrap: break-word;
@@ -199,6 +202,9 @@ body {
       "page-end page-end";
     grid-template-columns: 1fr auto;
     grid-template-rows: auto 1fr auto;
+    a {
+      color: var(--link);
+    }
     > article {
       max-width: min(750px, 100%);
       min-width: 50%;
@@ -209,10 +215,10 @@ body {
         margin: 0.5rem;
       }
       details {
-        background-color: var(--bg-code);
+        background-color: var(--bg-secondary);
         > summary {
           padding: 0.25rem 1rem 0.25rem 0.5rem;
-          background-color: var(--bg-secondary);
+          background-color: var(--bg-tertiary);
         }
       }
     }
@@ -220,6 +226,12 @@ body {
 }
 
 .site-header {
+  a {
+    color: var(--accent);
+  }
+  a:hover {
+    color: oklch(0.65 0.2 10);
+  }
   grid-area: banner;
   z-index: 2;
   height: 3rem;
@@ -252,7 +264,7 @@ body {
 }
 .page-aside {
   grid-area: aside-bar;
-  padding: 2rem 0 0 0.5rem;
+  padding: 1.8rem 0 0 0.5rem;
   width: auto;
   max-width: 200px;
   min-width: 150px;
@@ -319,10 +331,16 @@ body {
 /* nav */
 .sideblock {
   background-color: var(--bg-secondary);
-  padding: 0.5rem 0 0.25rem 0.5rem;
+  padding: 0.5rem 0.1rem 0.25rem 0.5rem;
   margin: 0 0 0.5rem 0;
   p {
     margin: 0;
+  }
+  a {
+    color: var(--accent);
+  }
+  a:hover {
+    color: oklch(0.65 0.2 10);
   }
 }
 #searchbox {
@@ -349,6 +367,13 @@ body {
 }
 .menu-fold {
   margin: 0;
+  > summary {
+    padding-left: 0.2rem;
+    &:hover {
+      transform: translateY(-0.1rem);
+      box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow);
+    }
+  }
 }
 /* main */
 /* header */
@@ -363,7 +388,8 @@ body {
   display: none;
 }
 .asideblock {
-  padding: 0 0 0.25rem 0.5rem;
+  background-color: var(--bg-secondary);
+  padding-left: 0.5rem;
   margin: 0 0 0.5rem 0;
 }
 #TableOfContents ul,
@@ -379,7 +405,7 @@ body {
 .indentline,
 #TableOfContents ul {
   padding-left: 0.5rem;
-  border-left: 0.15rem solid color-mix(in srgb, var(--line) 30%, transparent);
+  border-left: 0.15rem solid var(--indent-line);
   margin: 0 0 0.2rem;
 }
 /* article */
@@ -414,6 +440,13 @@ body {
   position: sticky;
   bottom: 0;
   font-size: small;
+  a {
+    color: var(--accent);
+  }
+  a:hover {
+    color: oklch(0.65 0.2 10);
+  }
+  color: var(--text-tertiary);
   background: inherit;
   padding: 0 2rem 0 0;
   display: flex;
@@ -427,6 +460,6 @@ body {
   padding: 0 0.25rem;
   border-radius: var(--radius);
 }
-.tt {
-  color: var(--text-tertiary);
+.ts {
+  color: var(--text-secondary);
 }
