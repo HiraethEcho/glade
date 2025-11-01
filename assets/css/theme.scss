@@ -1,16 +1,19 @@
 body {
   --font-mono: Monaco, Consolas, monospace;
-  --bg-primary: oklch(0.98 0.01 80);
-  --bg-secondary: oklch(0.97 0.01 90);
-  --bg-tertiary: oklch(0.95 0.01 90);
-  --bg-header: oklch(0.95 0.01 100 / 0.7);
-  --bg-code: oklch(0.9 0 0);
+  --bg-primary: oklch(0.99 0.003 80);
+  --bg-secondary: oklch(0.97 0.003 90);
+  --bg-tertiary: oklch(0.95 0.003 90);
+  --bg-header: oklch(0.93 0.01 100 / 0.7);
+  --bg-code: oklch(0.92 0 0);
+  --bg-codeblock: oklch(0.4 0.01 270);
 
-  --text-primary: oklch(0.3 0 110);
-  --text-secondary: oklch(0.5 0.02 100);
-  --text-tertiary: oklch(0.5 0.04 280);
+  --text-primary: oklch(0.3 0.01 110);
+  --text-secondary: oklch(0.3 0.1 240);
+  --text-tertiary: oklch(0.4 0.04 280);
+  --text-codeblock: oklch(0.8 0.01 90);
   --accent: oklch(0.5 0.2 260);
-  --link: oklch(0.4 0.3 280);
+  /* --link: oklch(0.4 0.3 280); */
+  --link: oklch(0.6 0.2 135);
   --hover: oklch(0.6 0.2 20);
 
   --shadow: rgba(0, 0, 0, 0.1);
@@ -20,9 +23,9 @@ body {
   --waline-border: 1px solid #2a2;
 
   #themetoggle::after {
-    content: "☀️";
-    /* color: #dabc00; */
-    font-size: 1rem;
+    content: "☼";
+    color: oklch(0.6 0.2 90);
+    font-size: 1.5rem;
     /* content: "🔆☀☼☀️"; */
   }
 
@@ -41,18 +44,20 @@ body {
 }
 
 body.dark {
-  --bg-primary: oklch(0.31 0.01 250);
-  --bg-secondary: oklch(0.3 0.01 250);
-  --bg-tertiary: oklch(0.29 0.01 240);
-  --bg-header: oklch(0.28 0.01 230 / 0.7);
-  --bg-code: oklch(0.4 0 0);
+  --bg-primary: oklch(0.38 0.03 270);
+  --bg-secondary: oklch(0.36 0.029 265);
+  --bg-tertiary: oklch(0.32 0.023 263);
+  --bg-header: oklch(0.3 0.02 260 / 0.7);
+  --bg-code: oklch(0.35 0.01 270);
+  --bg-codeblock: oklch(0.35 0.01 270);
 
-  --text-primary: oklch(0.9 0.01 80);
-  --text-secondary: oklch(0.9 0.02 90);
-  --text-tertiary: oklch(0.9 0.03 100);
+  --text-primary: oklch(0.9 0.01 260);
+  --text-secondary: oklch(0.9 0.02 260);
+  --text-tertiary: oklch(0.9 0.03 260);
+  --text-codeblock: oklch(0.8 0.01 270);
   --link: oklch(0.75 0.1 130);
-  --hover: oklch(0.7 0.1 310);
-  --accent: oklch(0.7 0.1 40);
+  --hover: oklch(0.8 0.1 230);
+  --accent: oklch(0.65 0.05 250);
 
   --shadow: oklch(0.25 0.01 250 / 0.6);
 
@@ -70,8 +75,9 @@ body.dark {
   --waline-info-bgcolor: #272727;
   --waline-info-color: #666;
   #themetoggle::after {
-    content: "🌙";
-    font-size: 1rem;
+    content: "☽";
+    color: oklch(0.6 0.1 100);
+    font-size: 1.5rem;
     /* content: "☽🌙"; */
   }
 }

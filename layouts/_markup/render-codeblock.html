@@ -1,7 +1,5 @@
 {{- if ne .Type "mermaid" -}}
   {{- $lang := .Attributes.lang | default .Type -}}
-
-
   <details open>
     <summary>{{- $lang | default "TEXT" -}}</summary>
     {{- if transform.CanHighlight .Type -}}

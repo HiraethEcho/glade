@@ -18,6 +18,7 @@ h5,
 h6 {
   color: var(--text-secondary);
   padding-left: 0.5rem;
+  filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--shadow));
 }
 hr,
 pre,
@@ -153,8 +154,8 @@ code {
 }
 /* code fence */
 .codeblock {
-  background-color: #2e3440;
-  color: #a0a0a0;
+  background-color: var(--bg-codeblock);
+  color: var(--text-codeblock);
   position: relative;
   margin: 0;
 }
@@ -173,7 +174,7 @@ pre,
 }
 .copybtn {
   position: absolute;
-  color: oklch(0.7 0.2 220);
+  color: var(--hover);
   top: 0;
   right: 0.5rem;
 }
@@ -296,6 +297,7 @@ body {
   font-size: 2rem;
   gap: 1rem;
   align-items: center;
+  filter: drop-shadow(0.2rem 0.2rem 0.1rem var(--shadow));
 }
 #themetoggle {
   font-size: 1.5rem;
@@ -343,7 +345,8 @@ body {
 #searchbox input {
   height: 1.5rem;
   width: 100%;
-  background-color: var(--bg-code);
+  background-color: var(--bg-tertiary);
+  color: var(--text-secondary);
 }
 #searchResults {
   margin: 0;
