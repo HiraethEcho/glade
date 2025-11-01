@@ -237,7 +237,7 @@ body {
   position: sticky;
   top: 0;
   background: var(--bg-header);
-  backdrop-filter: blur(0.2rem);
+  backdrop-filter: blur(0.1rem);
   padding: 0 0.5rem 0 0;
   display: flex;
   justify-content: space-between;
@@ -260,6 +260,7 @@ body {
 .page-header {
   grid-area: page-start;
   padding-right: 1rem;
+  border-bottom: 0.1rem solid var(--indent-line);
 }
 .page-aside {
   grid-area: aside-bar;
@@ -297,7 +298,6 @@ body {
   font-size: 2rem;
   gap: 1rem;
   align-items: center;
-  filter: drop-shadow(0.2rem 0.2rem 0.1rem var(--shadow));
 }
 #themetoggle {
   font-size: 1.5rem;
@@ -307,7 +307,6 @@ body {
   font-size: 2rem;
 }
 .mainmenu {
-  background-color: inherit;
   display: flex;
   align-items: center;
   li {
