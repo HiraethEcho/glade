@@ -29,6 +29,12 @@
     height: auto;
     flex-direction: column;
   }
+  .site-title {
+    width: 100%;
+  }
+  #menu-btn {
+    display: block;
+  }
   .site-subtitle {
     display: none;
   }
@@ -49,11 +55,6 @@
       }
     }
   }
-  #menu-btn {
-    display: block;
-    position: absolute;
-    right: 1rem;
-  }
   #menu-checkbox:checked ~ menu {
     display: flex;
     flex-direction: column;
@@ -63,13 +64,11 @@
       flex-direction: column;
     }
   }
-  #menu-checkbox:checked ~ #menu-btn {
-    transform: rotate(-90deg);
-  }
-  #nav-btn {
+  #menu-checkbox:checked ~ .site-subtitle {
     display: block;
-    position: absolute;
-    left: 1rem;
+  }
+  #menu-checkbox:checked ~ .site-title > #menu-btn {
+    transform: rotate(-90deg);
   }
   #nav-checkbox:checked ~ .site-nav {
     padding: 0 0.5rem;
