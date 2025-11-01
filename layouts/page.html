@@ -2,12 +2,12 @@
   <header class="page-header">
     {{- partial "breadcrumbs.html" . -}}
     {{- partial "post-info.html" . -}}
+    <label for="aside-checkbox" id="aside-btn">⇄</label>
   </header>
   {{- $showrelpost := default true (default .Site.Params.ShowRelPost .Params.ShowRelPost) -}}
   {{- $showtoc := default true (default .Site.Params.ShowToc .Params.ShowToc) -}}
   {{- if or $showtoc $showrelpost -}}
     <input type="checkbox" id="aside-checkbox" style="display: none;" />
-    <label for="aside-checkbox" id="aside-btn">⇄</label>
     <aside class="page-aside">
       <menu class="asideblock">
         {{- partial "toc.html" . -}}
