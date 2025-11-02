@@ -8,7 +8,7 @@ body {
   --bg-codeblock: oklch(0.4 0.01 270);
 
   --text-primary: oklch(0.3 0.01 110);
-  --text-secondary: oklch(0.3 0.1 240);
+  --text-secondary: oklch(0.2 0.05 250);
   --text-tertiary: oklch(0.4 0.04 280);
   --text-codeblock: oklch(0.8 0.01 90);
   --accent: oklch(0.5 0.2 260);
@@ -31,14 +31,8 @@ body {
 
   background: var(--bg-tertiary);
   color: var(--text-tertiary);
-  em {
-    color: var(--text-tertiary);
-  }
+  em,
   strong {
-    color: var(--text-secondary);
-  }
-  strong > em,
-  em > strong {
     color: var(--text-secondary);
   }
 }
@@ -51,9 +45,9 @@ body.dark {
   --bg-code: oklch(0.35 0.01 270);
   --bg-codeblock: oklch(0.35 0.01 270);
 
-  --text-primary: oklch(0.9 0.01 260);
-  --text-secondary: oklch(0.9 0.02 260);
-  --text-tertiary: oklch(0.9 0.03 260);
+  --text-primary: oklch(0.9 0.02 260);
+  --text-secondary: oklch(0.95 0.1 260);
+  --text-tertiary: oklch(0.8 0.03 260);
   --text-codeblock: oklch(0.8 0.01 270);
   --link: oklch(0.75 0.1 130);
   --hover: oklch(0.8 0.1 230);
