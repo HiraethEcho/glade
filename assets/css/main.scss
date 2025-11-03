@@ -10,24 +10,13 @@
 }
 
 /* basic */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--text-secondary);
-  padding-left: 0.5rem;
-  filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--shadow));
-}
 hr,
 pre,
 section,
 details,
 select,
 dd,
-blockquote,
-p {
+blockquote {
   margin: 0.25rem 0.5rem;
 }
 ul,
@@ -218,7 +207,7 @@ body {
       grid-area: main-content;
       position: relative;
       p {
-        margin: 0.5rem;
+        margin: 0.5rem 0;
       }
       details {
         background-color: var(--bg-secondary);
@@ -335,7 +324,7 @@ body {
 .sideblock {
   /* box-shadow: 0.2rem 0.2rem 0.3rem var(--shadow); */
   background-color: var(--bg-secondary);
-  padding: 0.5rem 0.1rem 0.25rem 0.5rem;
+  padding: 0.5rem 0.1rem 0.5rem 0.5rem;
   margin: 0 0 0.5rem 0;
   p {
     margin: 0;

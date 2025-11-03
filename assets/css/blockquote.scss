@@ -23,16 +23,17 @@ body {
 }
 blockquote {
   border-left: 0.25rem solid var(--blockquote-border);
+  padding-left: 0.5rem;
   color: var(--text-tertiary);
   > .alert-heading {
     font-weight: bold;
   }
   &.alert {
     border-left: 0.25rem solid var(--blockquote-border);
-    padding: 0.1rem 0;
+    padding: 0.1rem 0.5rem;
     color: var(--text-primary);
     .alert-heading {
-      margin: 0.15rem 0.5rem;
+      margin: 0.15rem 0;
     }
   }
 }
