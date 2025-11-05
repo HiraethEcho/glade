@@ -2,7 +2,6 @@
 {{- if $show -}}
   <div class="sideblock">
     {{- with .Site.Params.description -}}<p>{{- . -}}</p>{{- end -}}
-
     {{- $scratch := newScratch -}}
     {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections -}}
     {{- if site.Params.CountAllPages -}}
@@ -14,11 +13,11 @@
       {{- end -}}
     {{- end -}}
     <p>
-      {{- $scratch.Get "total" }} words in {{ len $pages }}
-      {{- if not site.Params.CountAllPages }} main {{- end }}
+      {{- $scratch.Get "total" }} words in
+      {{ len $pages }}
+      {{ if not site.Params.CountAllPages }}main{{ end }}
       posts.
     </p>
-
     {{- $num := (len .Site.Taxonomies ) -}}
     {{- $scratch2 := newScratch -}}
     {{- range .Site.Taxonomies -}}
@@ -29,16 +28,13 @@
       {{ $num }}
       <a href="/taxonomies">taxonomies</a>.
     </p>
-
-    {{- with .Site.Params.social -}}
-      <p>
-        contact:
-        {{- range . }}
-          <a href="{{- .url -}}" target="_blank" rel="noopener"
-            >{{- .name -}}</a
-          >
-        {{ end -}}
-      </p>
-    {{- end -}}
+    <p>
+      {{- $cc := default "nc-sa" .Site.Params.copyright -}}
+      Copyright {{ now.Year }}.
+      <a href="https://creativecommons.org/licenses/by-{{- $cc -}}/4.0"
+        >CC
+        BY-{{- $cc | upper -}}
+      </a>
+    </p>
   </div>
 {{- end -}}

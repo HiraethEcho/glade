@@ -1,0 +1,19 @@
+{{- $show := default true (default .Site.Params.ShowLink .Params.ShowLink) -}}
+{{- if $show -}}
+  <div class="sideblock">
+    {{- with .Site.Params.links -}}
+      <menu>
+        {{- range . }}
+          <li>
+            <a href="{{- .url -}}" target="_blank" rel="noopener"
+              >{{- .name -}}</a
+            >
+            {{- with .description }}
+              {{ . -}}
+            {{ end -}}
+          </li>
+        {{ end -}}
+      </menu>
+    {{- end -}}
+  </div>
+{{- end -}}

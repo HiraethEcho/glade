@@ -9,12 +9,8 @@
   {{- if or $showtoc $showrelpost -}}
     <input type="checkbox" id="aside-checkbox" style="display: none;" />
     <aside class="page-aside">
-      <menu class="asideblock">
         {{- partial "toc.html" . -}}
-      </menu>
-      <div class="asideblock">
-        {{- partial "post-rel.html" . -}}
-      </div>
+      {{- partial "post-rel.html" . -}}
     </aside>
   {{- end -}}
   <article>{{- .Content -}}</article>

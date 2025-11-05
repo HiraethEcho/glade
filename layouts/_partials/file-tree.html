@@ -8,8 +8,8 @@
     {{- end -}}
   {{- end -}}
 
-
   <menu class="sideblock">
+  {{ $root.Title }}
     {{- partial "file-tree-walk.html" (dict "context" $root "depth" 1) -}}
   </menu>
 {{- end -}}

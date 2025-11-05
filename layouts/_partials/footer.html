@@ -1,12 +1,7 @@
 <p>
-  {{- $cc := default "nc-sa" .Site.Params.copyright -}}
-  Copyright {{ now.Year }}. Powered by
+  Powered by
   <a href="https://gohugo.io">Hugo</a> and
   <a href="https://github.com/hiraethecho/glade">Glade</a>.
-  <a href="https://creativecommons.org/licenses/by-{{- $cc -}}/4.0"
-    >CC
-    BY-{{- $cc | upper -}}
-  </a>
   {{- with .Site.Params.footer -}}
     {{- . -}}
   {{- end -}}
