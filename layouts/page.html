@@ -1,15 +1,17 @@
 {{- define "main" -}}
+  {{- $showrelpost := default true (default .Site.Params.ShowRelPost .Params.ShowRelPost) -}}
+  {{- $showtoc := default true (default .Site.Params.ShowToc .Params.ShowToc) -}}
   <header class="page-header">
     {{- partial "breadcrumbs.html" . -}}
     {{- partial "post-info.html" . -}}
-    <label for="aside-checkbox" id="aside-btn">⇄</label>
+    {{- if or $showtoc $showrelpost -}}
+      <label for="aside-checkbox" id="aside-btn">⇄</label>
+    {{- end -}}
   </header>
-  {{- $showrelpost := default true (default .Site.Params.ShowRelPost .Params.ShowRelPost) -}}
-  {{- $showtoc := default true (default .Site.Params.ShowToc .Params.ShowToc) -}}
   {{- if or $showtoc $showrelpost -}}
     <input type="checkbox" id="aside-checkbox" style="display: none;" />
     <aside class="page-aside">
-        {{- partial "toc.html" . -}}
+      {{- partial "toc.html" . -}}
       {{- partial "post-rel.html" . -}}
     </aside>
   {{- end -}}

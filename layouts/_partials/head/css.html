@@ -3,10 +3,9 @@
   (resources.Get "css/blockquote.scss")
   (resources.Get "css/main.scss")
   (resources.Get "css/mobile.scss")
-  (resources.Get "css/fancy.scss")
 -}}
-{{- $combined := $CSS
-  | resources.Concat "assets/combined.css"
-  | minify
-  | fingerprint
--}} <link rel="stylesheet" href="{{- $combined.RelPermalink -}}" />
+{{- $default := $CSS | resources.Concat "assets/default.css" | resources.Minify -}}
+{{- $custom := (resources.Match "css/custom/*.css") | resources.Concat "assets/css/custom.css" | resources.Minify }}
+{{- $customs := (resources.Match "css/custom/*.scss") | resources.Concat "assets/css/customs.css" | resources.Minify }}
+{{- $stylesheet := (slice $default $custom $customs) | resources.Concat "assets/css/stylesheet.css" | resources.Minify }}
+<link rel="stylesheet" href="{{- $stylesheet.RelPermalink -}}" />

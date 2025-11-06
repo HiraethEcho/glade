@@ -14,6 +14,7 @@ hr,
 pre,
 section,
 details,
+blockquote,
 select,
 dd {
   margin: 0.25rem 0.5rem;
@@ -206,7 +207,7 @@ body {
       grid-area: main-content;
       position: relative;
       p {
-        margin: 0.5rem 0;
+        margin: 0.25rem 0;
       }
       details {
         background-color: var(--bg-secondary);
@@ -401,9 +402,7 @@ body {
   > summary {
     &:hover {
       background-color: var(--bg-tertiary);
-      box-shadow:
-        -0.5rem 0 0 var(--bg-tertiary),
-        0 0.1rem 0.2rem var(--shadow);
+      box-shadow: -0.5rem 0 0 var(--bg-tertiary);
     }
   }
 }
@@ -421,8 +420,8 @@ body {
 }
 .asideblock {
   background-color: var(--bg-secondary);
-  padding: 0.5rem 0 0 0.5rem;
-  margin: 0 0 0.5rem 0;
+  padding-left: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 #TableOfContents ul,
 .sideblock,
