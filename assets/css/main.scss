@@ -33,16 +33,16 @@ a {
     color: var(--accent);
   }
 }
-.external-link::after {
-  content: "↗";
-  font-size: 0.8rem;
-}
 a:hover {
   color: var(--hover);
   text-decoration: underline;
-  transform: translateY(-0.05rem);
+  transform: translateY(-0.1rem);
 }
-
+a[target="_blank"]::after {
+  content: "↗";
+  font-size: 0.8em;
+  text-decoration: none;
+}
 details {
   > summary {
     list-style: none;

@@ -2,7 +2,7 @@
   href="{{- .Destination | safeURL -}}"
   {{- with .Title -}}title="{{- . -}}"{{- end -}}
   {{- if findRE "^(https?:)?//" (lower .Destination) -}}
-    class="external-link" target="_blank" rel="noopener"
+    target="_blank" rel="noopener"
   {{- end -}}
   >{{- .Text | safeHTML -}}</a
 >
