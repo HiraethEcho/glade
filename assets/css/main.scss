@@ -184,6 +184,12 @@ body {
   min-height: 100dvh;
   overflow-wrap: break-word;
   word-break: break-word;
+  background: var(--bg-tertiary);
+  color: var(--text-tertiary);
+  em,
+  strong {
+    color: var(--text-secondary);
+  }
   > main {
     grid-area: post;
     background-color: var(--bg-primary);
@@ -239,10 +245,8 @@ body {
   position: sticky;
   top: 0;
   padding: 3rem 0 1rem 0;
-  /* 3.5 = (font-size of site-title 2) x (line-height 1.5) */
-  /* padding: 3.5rem 0 1rem 0;  */
-  /* 3.5 = (font-size of site-title 2) x (line-height 1.5) + margin 0.5 */
   margin: -3rem 0.5rem 0 0;
+  /* 3 = (font-size of site-title 2) x (line-height 1.5) */
   width: 250px;
   max-height: 100vh;
   overflow-y: auto;
@@ -276,52 +280,26 @@ body {
       background-color: var(--bg-tertiary);
       color: var(--hover);
     }
+    > a {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 .post-prev {
   text-align: left;
   position: relative;
-  > a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    &:hover {
-      transform: translateY(-0.1rem);
-      box-shadow: -0.1rem 0 0.2rem var(--shadow);
-    }
-  }
 }
 .post-top {
   text-align: center;
   position: relative;
-  > a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    &:hover {
-      transform: translateY(-0.1rem);
-      box-shadow: 0 0 0.2rem var(--shadow);
-    }
-  }
 }
 .post-next {
   position: relative;
   text-align: right;
-  > a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    &:hover {
-      transform: translateY(-0.1rem);
-      box-shadow: 0.1rem 0 0.2rem var(--shadow);
-    }
-  }
 }
 
 /* special elements */
@@ -366,7 +344,6 @@ body {
 }
 /* nav */
 .sideblock {
-  /* box-shadow: 0.2rem 0.2rem 0.3rem var(--shadow); */
   background-color: var(--bg-secondary);
   padding-left: 0.5rem;
   margin: 0 0 0.5rem 0;
@@ -491,7 +468,4 @@ body {
     transform: translateY(-0.1rem);
     background-color: var(--bg-primary);
   }
-}
-.ts {
-  color: var(--text-secondary);
 }

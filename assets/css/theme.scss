@@ -28,13 +28,6 @@ body {
     font-size: 1.5rem;
     /* content: "🔆☀☼☀️"; */
   }
-
-  background: var(--bg-tertiary);
-  color: var(--text-tertiary);
-  em,
-  strong {
-    color: var(--text-secondary);
-  }
 }
 
 body.dark {
