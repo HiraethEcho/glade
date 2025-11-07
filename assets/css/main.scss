@@ -14,7 +14,6 @@ hr,
 pre,
 section,
 details,
-blockquote,
 select,
 dd {
   margin: 0.25rem 0.5rem;
@@ -23,15 +22,15 @@ ul,
 ol {
   margin-left: 2rem;
 }
-a {
-  color: var(--link);
-  text-decoration: none;
-}
 .site-header,
 .site-nav {
   a {
     color: var(--accent);
   }
+}
+a {
+  color: var(--link);
+  text-decoration: none;
 }
 a:hover {
   color: var(--hover);

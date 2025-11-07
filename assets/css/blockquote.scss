@@ -22,14 +22,14 @@ body {
   }
 }
 blockquote {
-  border-left: 0.15rem solid var(--blockquote-border);
-  padding-left: 0.35rem;
+  border-left: 0.25rem solid var(--blockquote-border);
+  margin: 0.25rem 0;
+  padding-left: 0.75rem;
   color: var(--text-tertiary);
   > .alert-heading {
     font-weight: bold;
   }
   &.alert {
-    padding: 0.1rem 0.35rem;
     color: var(--text-primary);
     .alert-heading {
       margin: 0.15rem 0;
