@@ -17,22 +17,22 @@
 {{- end -}}
 
 
-<section class="post-end">
-  <div class="post-prev">
-    {{- with .NextInSection -}}
+<div class="post-end">
+  {{- with .NextInSection -}}
+    <div class="post-prev">
       «
       {{ .Name }}
       <a href="{{- .RelPermalink -}}"></a>
-    {{- end -}}
-  </div>
+    </div>
+  {{- end -}}
   <div class="post-top">
     <a href="#top"></a>
     ↑
   </div>
-  <div class="post-next">
+  {{- with .PrevInSection -}}
+    <div class="post-next">
       {{ .Name }} »
-    {{- with .PrevInSection -}}
       <a href="{{- .RelPermalink -}}"></a>
-    {{- end -}}
-  </div>
-</section>
+    </div>
+  {{- end -}}
+</div>

@@ -3,9 +3,14 @@
   <div class="sideblock">
     {{- with .Site.Params.links -}}
       <menu>
-        {{- range . }}
+        <li>Links</li>
+        {{- range . -}}
           <li>
-            <a href="{{- .url -}}" target="_blank" rel="noopener"
+            <a
+              href="{{- .url -}}"
+              {{- if findRE "^(https?:)?//" (lower .url) -}}
+                class="outlink" target="_blank" rel="noopener"
+              {{- end -}}
               >{{- .name -}}</a
             >
             {{- with .description }}

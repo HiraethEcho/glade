@@ -38,11 +38,6 @@ a:hover {
   text-decoration: underline;
   transform: translateY(-0.1rem);
 }
-a[target="_blank"]::after {
-  content: "↗";
-  font-size: 0.8em;
-  text-decoration: none;
-}
 details {
   > summary {
     list-style: none;
@@ -234,7 +229,7 @@ body {
   top: 0;
   background: var(--bg-header);
   backdrop-filter: blur(0.1rem);
-  padding: 0 1rem;
+  padding: 0 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -244,7 +239,7 @@ body {
   background: inherit;
   position: sticky;
   top: 0;
-  padding: 3rem 0 1rem 0;
+  padding: 3rem 0.5rem 1rem 0;
   margin: -3rem 0.5rem 0 0;
   /* 3 = (font-size of site-title 2) x (line-height 1.5) */
   width: 250px;
@@ -271,11 +266,13 @@ body {
 }
 .post-end {
   display: grid;
-  grid-template-columns: 40% 20% 40%;
+  grid-template-areas: "prev top next";
+  grid-template-columns: 45% 10% 45%;
   > div {
     padding: 0.5rem;
     position: relative;
     background-color: var(--bg-secondary);
+    border-radius: var(--radius);
     &:hover {
       background-color: var(--bg-tertiary);
       color: var(--hover);
@@ -290,14 +287,18 @@ body {
   }
 }
 .post-prev {
+  grid-area: prev;
   text-align: left;
   position: relative;
 }
 .post-top {
+  grid-area: top;
   text-align: center;
+  margin: 0 0.5rem;
   position: relative;
 }
 .post-next {
+  grid-area: next;
   position: relative;
   text-align: right;
 }
@@ -454,6 +455,7 @@ body {
   bottom: 0;
   color: var(--text-tertiary);
   background: inherit;
+  margin-top: 0.5rem;
   padding: 0 2rem 0 0;
   display: flex;
   align-items: center;
@@ -468,4 +470,9 @@ body {
     transform: translateY(-0.1rem);
     background-color: var(--bg-primary);
   }
+}
+.outlink::after {
+  content: "↗";
+  font-size: 0.8em;
+  text-decoration: none;
 }

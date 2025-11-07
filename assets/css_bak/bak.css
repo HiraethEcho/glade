@@ -72,3 +72,10 @@ body > nav::-moz-scrollbar {
 body > nav::-webkit-scrollbar {
   display: none;
 }
+
+
+a[target="_blank"]::after {
+  content: "↗";
+  font-size: 0.8em;
+  text-decoration: none;
+}

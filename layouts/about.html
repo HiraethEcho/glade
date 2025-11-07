@@ -2,8 +2,8 @@
   <header class="page-header">
     {{- partial "breadcrumbs.html" . -}}
   </header>
-  <article>{{- .Content -}}</article>
-  <footer class="page-footer">
+  <article>
+    {{- .Content -}}
     {{- partial "comment.html" . -}}
-  </footer>
+  </article>
 {{- end -}}

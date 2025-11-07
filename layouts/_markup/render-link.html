@@ -1,8 +1,16 @@
-<a
-  href="{{- .Destination | safeURL -}}"
-  {{- with .Title -}}title="{{- . -}}"{{- end -}}
-  {{- if findRE "^(https?:)?//" (lower .Destination) -}}
-    target="_blank" rel="noopener"
-  {{- end -}}
-  >{{- .Text | safeHTML -}}</a
->
+{{- if findRE "^(https?:)?//" (lower .Destination) -}}
+  <a
+    href="{{- .Destination | safeURL -}}"
+    {{- with .Title -}}title="{{- . -}}"{{- end -}}
+    class="outlink"
+    target="_blank"
+    rel="noopener"
+    >{{- .Text | safeHTML -}}</a
+  >
+{{- else -}}
+  <a
+    href="{{- .Destination | safeURL -}}"
+    {{- with .Title -}}title="{{- . -}}"{{- end -}}
+    >{{- .Text | safeHTML -}}</a
+  >
+{{- end -}}
