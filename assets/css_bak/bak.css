@@ -32,6 +32,9 @@
   --text-secondary: oklch(0.7 0 0);
   --text-tertiary: oklch(0.6 0 0);
 }
+.element {
+  background-color: color-mix(in srgb, var(--bg) 50%, transparent);
+}
 body > header > menu select {
   display: flex;
   list-style: none;
@@ -48,7 +51,7 @@ body > header > menu details ul {
   position: absolute;
   min-width: 6rem;
 }
-/*
+
 body > header > menu input ~ ul {
   display: none;
   position: absolute;
@@ -61,7 +64,7 @@ body > header > menu input ~ ul {
   z-index: 1000;
   text-align: center;
 }
-*/
+
 
 body > nav {
   scrollbar-width: none;
@@ -72,7 +75,6 @@ body > nav::-moz-scrollbar {
 body > nav::-webkit-scrollbar {
   display: none;
 }
-
 
 a[target="_blank"]::after {
   content: "↗";

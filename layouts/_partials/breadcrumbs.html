@@ -1,8 +1,29 @@
 <p>
   {{- range .Ancestors.Reverse }}
+    {{- if not .IsHome }}
+      <span>»</span>
+    {{ end -}}
     <a href="{{- .RelPermalink -}}">{{- .Title -}}</a>
-    <span>»</span>
   {{ end }}
-  {{ .Title -}}
-  {{- partial "rss-link" . -}}
+  {{- $rss := (.OutputFormats.Get "rss") -}}
+  {{- if (eq .Kind `page`) -}}
+    {{- $rss = (.Parent.OutputFormats.Get "rss") -}}
+    {{- with $rss }}
+      <a href="{{- .RelPermalink -}}" title="RSS" aria-label="RSS"
+        >{{- site.Params.RssIcon -}}</a
+      >
+    {{ end }}
+    <span>»</span>
+    {{ .Title -}}
+  {{- else -}}
+    {{- if not .IsHome }}
+      <span>»</span>
+    {{ end -}}
+    {{ .Title -}}
+    {{- with $rss }}
+      <a href="{{- .RelPermalink -}}" title="RSS" aria-label="RSS"
+        >{{- site.Params.RssIcon -}}</a
+      >
+    {{ end -}}
+  {{- end -}}
 </p>
