@@ -111,7 +111,7 @@ iframe,
 figure,
 object {
   margin: 0 auto;
-  max-width: 80%;
+  max-width: 90%;
   height: auto;
   text-align: center;
 }
@@ -173,7 +173,7 @@ body {
     "sidebar footer";
   grid-template-rows: auto 1fr auto;
   grid-template-columns: auto 1fr;
-  max-width: 1200px;
+  max-width: clamp(900px, 90%, 1500px);
   margin: 0 auto;
   min-height: 100dvh;
   overflow-wrap: break-word;
@@ -396,7 +396,6 @@ body {
   display: none;
 }
 .asideblock {
-  background-color: var(--bg-secondary);
   padding-left: 0.5rem;
   margin-bottom: 0.5rem;
 }

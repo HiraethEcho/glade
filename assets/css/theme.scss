@@ -11,9 +11,9 @@ body {
   --text-secondary: oklch(0.2 0.05 250);
   --text-tertiary: oklch(0.4 0.04 280);
   --text-codeblock: oklch(0.8 0.01 90);
-  --accent: oklch(0.5 0.2 255);
   --link: oklch(0.6 0.15 265);
-  --hover: oklch(0.5 0.1 260);
+  --accent: oklch(0.5 0.2 255);
+  --hover: oklch(0.5 0.1 60);
 
   --shadow: oklch(0.1 0.05 100 / 0.1);
   --line: #8c8fa1;
@@ -41,8 +41,9 @@ body.dark {
   --text-secondary: oklch(0.75 0.1 260);
   --text-tertiary: oklch(0.8 0.03 260);
   --text-codeblock: oklch(0.8 0.01 270);
+  --link: oklch(0.75 0.15 265);
+  --accent: oklch(0.7 0.05 250);
   --hover: oklch(0.8 0.1 230);
-  --accent: oklch(0.65 0.05 250);
 
   --shadow: oklch(0.2 0.02 270 / 0.4);
   --indent-line: oklch(0.6 0.02 250 / 0.5);
