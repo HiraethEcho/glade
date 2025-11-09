@@ -16,7 +16,7 @@ body {
   --text-tertiary: oklch(0.4 0.04 280);
   --text-codeblock: oklch(0.8 0.01 90);
 
-  --link: oklch(0.6 0.15 265);
+  --link: oklch(0.6 0.15 265 / 0.3);
   --accent: oklch(0.5 0.2 255);
   --hover: oklch(0.5 0.1 60);
 
@@ -45,7 +45,7 @@ body.dark {
   --text-secondary: oklch(0.75 0.1 260);
   --text-tertiary: oklch(0.8 0.03 260);
   --text-codeblock: oklch(0.8 0.01 270);
-  --link: oklch(0.75 0.15 265);
+  --link: oklch(0.75 0.15 265 / 0.3);
   --accent: oklch(0.7 0.05 250);
   --hover: oklch(0.8 0.1 230);
 

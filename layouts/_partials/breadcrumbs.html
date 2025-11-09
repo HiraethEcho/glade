@@ -3,7 +3,7 @@
     {{- if not .IsHome }}
       <span>»</span>
     {{ end -}}
-    <a href="{{- .RelPermalink -}}">{{- .Title -}}</a>
+    <a class="postlink" href="{{- .RelPermalink -}}">{{- .Title -}}</a>
   {{ end }}
   {{- $rss := (.OutputFormats.Get "rss") -}}
   {{- if (eq .Kind `page`) -}}
