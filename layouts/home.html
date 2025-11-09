@@ -1,6 +1,6 @@
 {{- define "main" -}}
   <header class="page-header">
-    {{- partial "breadcrumbs" . -}}
+    {{- partial "breadcrumbs.html" . -}}
   </header>
   {{- $pages := .Site.RegularPages -}}
   {{- $show := default false (default .Site.Params.ShowList .Params.ShowList) -}}
