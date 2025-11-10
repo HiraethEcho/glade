@@ -6,9 +6,8 @@
   <article>
     {{- .Content -}}
     {{- range .Data.Terms.Alphabetical }}
-      <code style="font-size:1.5rem;"
-        ><a href="{{- .Page.RelPermalink -}}">{{- .Page.Title -}}</a
-        ><sup>{{- .Count -}}</sup></code
+      <a class="tag" href="{{- .Page.RelPermalink -}}"
+        >{{- .Page.Title -}}<sup>{{- .Count -}}</sup></a
       >
     {{ end -}}
   </article>

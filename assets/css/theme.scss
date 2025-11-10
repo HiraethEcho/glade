@@ -1,12 +1,12 @@
 :root {
   --font-mono: Monaco, Consolas, monospace;
-  transition: all 0.3s ease;
 }
 
 body {
   --bg-primary: oklch(0.99 0.003 80);
   --bg-secondary: oklch(0.97 0.003 90);
   --bg-tertiary: oklch(0.95 0.003 90);
+
   --bg-header: color-mix(in srgb, var(--bg-tertiary) 50%, transparent);
   --bg-code: oklch(0.92 0 0);
   --bg-codeblock: oklch(0.4 0.01 270);
@@ -16,12 +16,18 @@ body {
   --text-tertiary: oklch(0.4 0.04 280);
   --text-codeblock: oklch(0.8 0.01 90);
 
+  --fg: oklch(0.3 0 0);
+  --fg-weak: oklch(0.4 0.04 280);
+  --fg-strong: oklch(0.4 0.04 280);
+
   --link: oklch(0.6 0.15 265 / 0.3);
   --accent: oklch(0.5 0.2 255);
   --hover: oklch(0.5 0.1 60);
+  --hover-bg: oklch(0.5 0.1 60);
+  --hover-fg: oklch(0.5 0.1 60);
 
   --shadow: oklch(0.1 0.05 100 / 0.1);
-  --line: #8c8fa1;
+  --line: oklch(0.6 0.01 270);
   --indent-line: oklch(0.5 0.05 250 / 0.2);
   --radius: 0.5rem;
   --waline-border: 1px solid #2a2;
@@ -49,8 +55,11 @@ body.dark {
   --accent: oklch(0.7 0.05 250);
   --hover: oklch(0.8 0.1 230);
 
+  --fg-weak: oklch(0.7 0.03 260);
+
   --shadow: oklch(0.2 0.02 270 / 0.4);
   --indent-line: oklch(0.6 0.02 250 / 0.5);
+  --line: oklch(0.3 0.1 275);
 
   --waline-white: #000;
   --waline-light-grey: #666;

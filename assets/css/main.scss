@@ -24,6 +24,7 @@ ol {
 a {
   color: inherit;
   text-decoration: none;
+  word-break: keep-all;
 }
 
 .site-header,
@@ -36,9 +37,12 @@ a {
 .site-nav a {
   color: inherit;
   font-weight: bold;
+  &:hover {
+    color: var(--accent);
+  }
 }
 
-.asideblock a,
+.rel-post a,
 .postlink {
   padding: 0 0.25rem;
   box-shadow: inset 0 -0.3em 0 var(--link);
@@ -47,6 +51,21 @@ a {
     color: inherit;
     box-shadow: inset 0 -1.25em 0 var(--link);
   }
+}
+.cc,
+.tag {
+  background-color: var(--bg-tertiary);
+  border-radius: var(--radius);
+  box-shadow: inset 0 -0.2rem 0.1rem var(--link);
+  padding: 0 0.2rem;
+  font-size: 0.8rem;
+  &:hover {
+    text-decoration: none;
+    box-shadow: inset 0 -1rem 0.1rem var(--link);
+  }
+}
+.cc {
+  border: 0.1rem solid var(--line);
 }
 
 .anchor {
@@ -58,11 +77,6 @@ a {
   content: "⤴";
   font-size: 0.8em;
   text-decoration: none;
-}
-
-a:hover {
-  color: var(--hover);
-  /* transform: translateY(-0.1rem); */
 }
 
 details {
@@ -164,7 +178,6 @@ var {
 }
 kbd {
   font-weight: bold;
-  border-radius: var(--radius);
   border: 0.1rem solid var(--line);
   border-radius: var(--radius);
 }
@@ -505,4 +518,7 @@ body {
     transform: translateY(-0.1rem);
     background-color: var(--bg-primary);
   }
+}
+.weak {
+  color: var(--fg-weak);
 }

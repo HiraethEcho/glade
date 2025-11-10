@@ -1,7 +1,9 @@
 {{- $show := default true (default .Site.Params.ShowSiteInfo .Params.ShowSiteInfo) -}}
 {{- if $show -}}
   <div class="sideblock">
-    {{- with .Site.Params.description -}}<p>{{- . -}}</p>{{- end -}}
+    {{- with .Site.Params.description -}}
+      <p class="weak">{{- . -}}</p>
+    {{- end -}}
     {{- $pages := site.RegularPages -}}
     {{- partial "countwords.html" (dict "pages" $pages) -}}
     {{- $num := (len .Site.Taxonomies ) -}}
@@ -14,10 +16,12 @@
       {{ $num }}
       <a href="/taxonomies">taxonomies</a>.
     </p>
+    <p>Copyright {{ now.Year }}.</p>
     <p>
       {{- $cc := default "nc-sa" .Site.Params.copyright -}}
-      Copyright {{ now.Year }}.
-      <a href="https://creativecommons.org/licenses/by-{{- $cc -}}/4.0"
+      <a
+        class="cc"
+        href="https://creativecommons.org/licenses/by-{{- $cc -}}/4.0"
         >CC
         BY-{{- $cc | upper -}}
       </a>

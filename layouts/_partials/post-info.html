@@ -7,7 +7,7 @@
   <span>{{ .WordCount }}字 {{ .ReadingTime }}分钟</span>
   {{- $cc := (default "nc-sa" (default .Site.Params.copyright .Params.copyright)) }}
   <a
-    class="postlink"
+    class="cc"
     href="https://creativecommons.org/licenses/by-{{- $cc -}}/4.0"
     target="_blank"
   >
@@ -15,10 +15,10 @@
     BY-{{- $cc | upper -}}
   </a>
   {{- with .Params.status }}
-    <kbd>{{- . -}}</kbd>
+    <mark class="status">{{- . -}}</mark>
   {{ end -}}
   {{- with .Params.ai }}
-    <mark>AI</mark>
+    <mark class="status">BY AI</mark>
   {{ end -}}
 </p>
 <p>
@@ -28,7 +28,7 @@
     {{- with $terms -}}
       {{- $taxonomyName -}}:
       {{- range . }}
-        <code><a href="{{- .RelPermalink -}}">{{- .LinkTitle -}}</a></code>
+        <a class="tag" href="{{- .RelPermalink -}}">{{- .LinkTitle -}}</a>
       {{ end -}}
     {{- end -}}
   {{- end -}}

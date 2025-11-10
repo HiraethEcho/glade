@@ -1,6 +1,6 @@
 {{- $show := default true (default .Site.Params.ShowRelPost .Params.ShowRelPost) -}}
 {{- if $show -}}
-  <div class="asideblock">
+  <div class="asideblock rel-post">
     {{- $page := . -}}
     {{- $taxonomyTitles := .Site.Params.taxonomyTitles -}}
     {{- range $taxonomyName, $taxonomy := .Site.Taxonomies -}}
