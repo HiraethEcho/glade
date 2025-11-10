@@ -2,29 +2,15 @@
 {{- if $show -}}
   <div class="sideblock">
     {{- with .Site.Params.description -}}<p>{{- . -}}</p>{{- end -}}
-    {{- $scratch := newScratch -}}
-    {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections -}}
-    {{- if site.Params.CountAllPages -}}
-      {{- $pages = site.RegularPages -}}
-    {{- end -}}
-    {{- range $pages -}}
-      {{- if not .Params.ai -}}
-        {{- $scratch.Add "total" .WordCount -}}
-      {{- end -}}
-    {{- end -}}
-    <p>
-      {{- $scratch.Get "total" }} words in
-      {{ len $pages }}
-      {{ if not site.Params.CountAllPages }}main{{ end }}
-      posts.
-    </p>
+    {{- $pages := site.RegularPages -}}
+    {{- partial "countwords.html" (dict "pages" $pages) -}}
     {{- $num := (len .Site.Taxonomies ) -}}
-    {{- $scratch2 := newScratch -}}
+    {{- $scratch := newScratch -}}
     {{- range .Site.Taxonomies -}}
-      {{- $scratch2.Add "total" (len .) -}}
+      {{- $scratch.Add "total" (len .) -}}
     {{- end -}}
     <p>
-      {{- $scratch2.Get "total" }} terms in
+      {{- $scratch.Get "total" }} terms in
       {{ $num }}
       <a href="/taxonomies">taxonomies</a>.
     </p>
