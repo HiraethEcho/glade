@@ -15,7 +15,7 @@
     BY-{{- $cc | upper -}}
   </a>
   {{- with .Params.status }}
-    <code>{{- . -}}</code>
+    <kbd>{{- . -}}</kbd>
   {{ end -}}
   {{- with .Params.ai }}
     <mark>AI</mark>
@@ -28,7 +28,7 @@
     {{- with $terms -}}
       {{- $taxonomyName -}}:
       {{- range . }}
-        <a class="postlink" href="{{- .RelPermalink -}}">{{- .LinkTitle -}}</a>
+        <code><a href="{{- .RelPermalink -}}">{{- .LinkTitle -}}</a></code>
       {{ end -}}
     {{- end -}}
   {{- end -}}

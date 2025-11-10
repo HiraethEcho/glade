@@ -62,7 +62,7 @@ a {
 
 a:hover {
   color: var(--hover);
-  transform: translateY(-0.1rem);
+  /* transform: translateY(-0.1rem); */
 }
 
 details {
@@ -163,6 +163,7 @@ var {
   padding: 0.1rem 0.3rem;
 }
 kbd {
+  font-weight: bold;
   border-radius: var(--radius);
   border: 0.1rem solid var(--line);
   border-radius: var(--radius);
@@ -234,8 +235,7 @@ body {
     grid-template-columns: 1fr auto;
     grid-template-rows: auto 1fr auto;
     > article {
-      max-width: min(750px, 100%);
-      min-width: 50%;
+      width: clamp(500px, 80%, 800px);
       margin: 0 auto;
       grid-area: main-content;
       position: relative;
@@ -286,6 +286,7 @@ body {
   position: relative;
   padding-right: 1rem;
   border-bottom: 0.1rem solid var(--indent-line);
+  padding-bottom: 0.5rem;
 }
 .page-aside {
   grid-area: aside-bar;
@@ -425,7 +426,7 @@ body {
   display: block;
   position: absolute;
   right: 0;
-  bottom: 0;
+  bottom: 0.5rem;
 }
 #aside-checkbox:checked ~ aside {
   display: none;
