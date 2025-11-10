@@ -17,14 +17,5 @@
       <a href="/taxonomies">taxonomies</a>.
     </p>
     <p>Copyright {{ now.Year }}.</p>
-    <p>
-      {{- $cc := default "nc-sa" .Site.Params.copyright -}}
-      <a
-        class="cc"
-        href="https://creativecommons.org/licenses/by-{{- $cc -}}/4.0"
-        >CC
-        BY-{{- $cc | upper -}}
-      </a>
-    </p>
   </div>
 {{- end -}}
