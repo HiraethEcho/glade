@@ -1,15 +1,17 @@
 {{- define "main" -}}
-  <header class="page-header">
-    {{- partial "breadcrumbs" . -}}
-  </header>
   {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections -}}
   {{- if site.Params.ShowAllPagesInArchives -}}
     {{- $pages = site.RegularPages -}}
   {{- end -}}
   {{- $type := default "date" (default .Site.Params.ListType .Params.ListType) -}}
+  <header class="page-header">
+    {{- partial "breadcrumbs" . -}}
+    {{- if eq $type "date" -}}
+      <label for="aside-checkbox" id="aside-btn">⇄</label>
+    {{- end -}}
+  </header>
   {{- if eq $type "date" -}}
     <input type="checkbox" id="aside-checkbox" style="display: none;" />
-    <label for="aside-checkbox" id="aside-btn">⇄</label>
     <aside class="page-aside" id="TableOfContents">
       {{- range $pages.GroupByPublishDate "2006" -}}
         {{- if ne .Key "0001" -}}
