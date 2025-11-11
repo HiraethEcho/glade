@@ -13,5 +13,20 @@
     {{- end -}}
     <p>{{- $scratch.Get "total" }} terms in {{ $num }} taxonomies.</p>
     <p>Copyright {{ now.Year }}.</p>
+    <p>
+      {{- with .Site.Params.social -}}
+        <span class="socials">
+          {{- range . -}}
+            <a alt="{{ .name }}" href="{{- .url -}}" target="_blank">
+              {{- if .icon -}}
+                {{- partial "icon.html" (dict "name" .icon "attributes" `class="icon"`) -}}
+              {{- else -}}
+                {{- .name -}}
+              {{- end -}}
+            </a>
+          {{ end -}}
+        </span>
+      {{- end -}}
+    </p>
   </div>
 {{- end -}}

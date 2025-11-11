@@ -13,7 +13,13 @@
               {{- else -}}
                 class="sidelink"
               {{- end -}}
-              >{{- .name -}}</a
+            >
+              {{- if .icon -}}
+                <span>
+                  {{- partial "icon.html" (dict "name" .icon "attributes" `class="icon"`) -}}
+                </span>
+              {{- end -}}
+              {{- .name -}}</a
             >
             {{- with .description }}
               {{ . -}}

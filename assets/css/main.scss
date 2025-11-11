@@ -514,3 +514,11 @@ body {
     background-color: var(--bg-hover);
   }
 }
+.socials{
+  display: flex;
+  justify-content: space-evenly;
+}
+.icon {
+  width: 1em;
+  height: 1em;
+}
