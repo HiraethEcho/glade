@@ -10,7 +10,10 @@
 
 
   <menu class="sideblock">
-    {{ $root.Title }}
+    <li>
+      {{ $root.Title }}
+      {{- partial "icon.html" (dict "name" "filetree" "attributes" `class="icon"`) -}}
+    </li>
     {{- partial "file-tree-walk.html" (dict "context" $root "depth" 1) -}}
   </menu>
 {{- end -}}

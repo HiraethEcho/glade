@@ -1,7 +1,10 @@
 {{- $show := default true (default .Site.Params.ShowTaxonomyTree .Params.ShowTaxonomyTree) -}}
 {{- if $show -}}
   <menu class="sideblock">
-    <li>分类</li>
+    <li>
+      分类
+      {{- partial "icon.html" (dict "name" "cube" "attributes" `class="icon"`) -}}
+    </li>
     {{- $taxonomyTitles := .Site.Params.taxonomyTitles -}}
     {{- range $taxonomyName, $taxonomy := .Site.Taxonomies -}}
       {{- $taxonomyTitle := index $taxonomyTitles $taxonomyName | default $taxonomyName -}}

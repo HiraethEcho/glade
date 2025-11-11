@@ -1,8 +1,7 @@
-{{/* Render raw svg icon from .Site.Data */}}
 {{- $icon := index site.Data.icons .name -}}
 
 {{- if not $icon -}}
-  {{ errorf "icon %q not found" .name }}
+  {{- $icon = index site.Data.icons "link" -}}
 {{- end -}}
 
 {{- $icon = $icon | safeHTML -}}

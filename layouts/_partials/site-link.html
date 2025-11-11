@@ -3,7 +3,10 @@
   <div class="sideblock">
     {{- with .Site.Params.links -}}
       <menu>
-        <li>Links</li>
+        <li>
+          Links
+          {{- partial "icon.html" (dict "name" "link" "attributes" `class="outlink-icon"`) -}}
+        </li>
         {{- range . -}}
           <li>
             <a
@@ -15,12 +18,13 @@
               {{- end -}}
             >
               {{- if .icon -}}
-                <span>
-                  {{- partial "icon.html" (dict "name" .icon "attributes" `class="icon"`) -}}
-                </span>
+                {{- partial "icon.html" (dict "name" .icon "attributes" `class="icon"`) -}}
               {{- end -}}
-              {{- .name -}}</a
-            >
+              {{- .name -}}
+              {{- if findRE "^(https?:)?//" (lower .url) -}}
+                {{- partial "icon.html" (dict "name" "external-link" "attributes" `class="outlink-icon"`) -}}
+              {{- end -}}
+            </a>
             {{- with .description }}
               {{ . -}}
             {{ end -}}
