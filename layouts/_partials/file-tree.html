@@ -8,8 +8,9 @@
     {{- end -}}
   {{- end -}}
 
+
   <menu class="sideblock">
-  {{ $root.Title }}
+    {{ $root.Title }}
     {{- partial "file-tree-walk.html" (dict "context" $root "depth" 1) -}}
   </menu>
 {{- end -}}
@@ -23,14 +24,16 @@
         {{- if .IsSection -}}
           <details class="menu-fold">
             <summary>
-              <a href="{{- .RelPermalink -}}">{{- .Title -}}</a>
+              <a class="sidelink" href="{{- .RelPermalink -}}"
+                >{{- .Title -}}</a
+              >
             </summary>
             <menu class="indentline">
               {{- partial "file-tree-walk.html" (dict "context" . "depth" (add $depth 1)) -}}
             </menu>
           </details>
         {{- else -}}
-          <a href="{{- .RelPermalink -}}">{{- .Title -}}</a>
+          <a class="sidelink" href="{{- .RelPermalink -}}">{{- .Title -}}</a>
         {{- end -}}
       </li>
     {{- end -}}

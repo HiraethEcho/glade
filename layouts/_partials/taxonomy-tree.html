@@ -9,14 +9,18 @@
         <li>
           <details class="menu-fold">
             <summary>
-              <a href="/{{- $taxonomyName -}}">{{- $taxonomyTitle -}}</a>
+              <a class="sidelink" href="/{{- $taxonomyName -}}"
+                >{{- $taxonomyTitle -}}</a
+              >
             </summary>
             <menu class="indentline">
               {{- range $name, $value := $taxonomy -}}
                 {{- $page := site.GetPage (printf "/%s/%s" $taxonomyName $name) -}}
                 {{- with $page -}}
                   <li>
-                    <a href="{{- .RelPermalink -}}">{{- .Name -}}</a>
+                    <a class="sidelink" href="{{- .RelPermalink -}}"
+                      >{{- .Name -}}</a
+                    >
                   </li>
                 {{- end -}}
               {{- end -}}

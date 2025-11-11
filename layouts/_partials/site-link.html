@@ -9,7 +9,9 @@
             <a
               href="{{- .url -}}"
               {{- if findRE "^(https?:)?//" (lower .url) -}}
-                class="outlink" target="_blank" rel="noopener"
+                class="outlink sidelink" target="_blank" rel="noopener"
+              {{- else -}}
+                class="sidelink"
               {{- end -}}
               >{{- .name -}}</a
             >

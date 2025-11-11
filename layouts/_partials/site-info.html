@@ -11,11 +11,7 @@
     {{- range .Site.Taxonomies -}}
       {{- $scratch.Add "total" (len .) -}}
     {{- end -}}
-    <p>
-      {{- $scratch.Get "total" }} terms in
-      {{ $num }}
-      <a href="/taxonomies">taxonomies</a>.
-    </p>
+    <p>{{- $scratch.Get "total" }} terms in {{ $num }} taxonomies.</p>
     <p>Copyright {{ now.Year }}.</p>
   </div>
 {{- end -}}

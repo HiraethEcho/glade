@@ -1,10 +1,10 @@
 {{- $show := default true (default .Site.Params.ShowSideMenu .Params.ShowSideMenu) -}}
 {{- if $show -}}
   <div class="sideblock">
-  <menu>
-    {{- with site.Menus.side -}}
-      {{- partial "menu-side.html" . -}}
-    {{- end -}}
+    <menu>
+      {{- with site.Menus.side -}}
+        {{- partial "menu-side.html" . -}}
+      {{- end -}}
     </menu>
   </div>
 {{- end -}}
@@ -22,7 +22,7 @@
           </menu>
         </details>
       {{- else -}}
-        <a href="{{- .URL -}}">{{- .Name -}}</a>
+        <a class="sidelink" href="{{- .URL -}}">{{- .Name -}}</a>
       {{- end -}}
     </li>
   {{- end -}}
