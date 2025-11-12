@@ -4,13 +4,18 @@
   </header>
   <article>
     {{- .Content -}}
+    <h2>Sections</h2>
+    {{ range .Site.Sections }}
+      {{- partial "section-tree-walk.html" (dict "page" .) -}}
+    {{ end }}
+    <h2>Taxonomies</h2>
     {{- range $taxonomyName, $taxonomy := .Site.Taxonomies -}}
       {{- with $taxonomy -}}
-        <h2>
+        <h3>
           <a class="pagelink" href="/{{- $taxonomyName -}}"
             >{{- $taxonomyName -}} </a
           ><sup>{{- len $taxonomy -}}</sup>
-        </h2>
+        </h3>
         {{- range $name, $value := $taxonomy -}}
           {{- $count := $value.Count -}}
           {{- $page := site.GetPage (printf "/%s/%s" $taxonomyName $name) -}}
@@ -23,4 +28,18 @@
       {{- end -}}
     {{- end -}}
   </article>
+{{- end -}}
+
+{{- define "_partials/section-tree-walk.html" -}}
+  {{- $page := .page -}}
+  <ul class="section-tree">
+    <li>
+      <a class="pagelink" href="{{- .RelPermalink -}}">{{- $page.Title -}}</a>
+      {{- if $page.Sections -}}
+        {{- range $page.Sections -}}
+          {{- partial "section-tree-walk.html" (dict "page" .) -}}
+        {{- end -}}
+      {{- end -}}
+    </li>
+  </ul>
 {{- end -}}

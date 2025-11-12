@@ -526,3 +526,10 @@ body {
   vertical-align: middle;
   margin: 0 0.25em;
 }
+.section-tree {
+  list-style: none;
+  margin: 0;
+  li {
+    padding-left: 1rem;
+  }
+}
