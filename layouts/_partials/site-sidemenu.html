@@ -2,10 +2,6 @@
 {{- if $show -}}
   <div class="sideblock">
     <menu>
-      <li>
-        导航
-        {{- partial "icon.html" (dict "name" "menu" "attributes" `class="icon"`) -}}
-      </li>
       {{- with site.Menus.side -}}
         {{- partial "menu-side.html" . -}}
       {{- end -}}

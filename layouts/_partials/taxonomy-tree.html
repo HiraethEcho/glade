@@ -3,7 +3,6 @@
   <menu class="sideblock">
     <li>
       分类
-      {{- partial "icon.html" (dict "name" "cube" "attributes" `class="icon"`) -}}
     </li>
     {{- $taxonomyTitles := .Site.Params.taxonomyTitles -}}
     {{- range $taxonomyName, $taxonomy := .Site.Taxonomies -}}

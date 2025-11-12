@@ -6,7 +6,7 @@
     target="_blank"
     rel="noopener"
     >{{- .Text | safeHTML -}}
-    {{- partial "icon.html" (dict "name" "external-link" "attributes" `class="outlink-icon"`) -}}
+    {{- partial "icon.html" (dict "name" "link" "attributes" `class="outlink-icon"`) -}}
   </a>
 {{- else -}}
   <a
