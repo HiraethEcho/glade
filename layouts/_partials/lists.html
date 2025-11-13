@@ -45,4 +45,8 @@
       <li>{{- partial "post-section.html" . -}}</li>
     {{- end -}}
   </ol>
+{{- else if eq $type "plain" -}}
+  {{- range $pages -}}
+    {{- partial "post-section.html" . -}}
+  {{- end -}}
 {{- end -}}
