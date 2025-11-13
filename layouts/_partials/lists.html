@@ -1,7 +1,7 @@
 {{- $page := .page -}}
 {{- $pages := .pages -}}
 {{- $type := .type -}}
-{{- with $page.Site.Params.HomeListLimit -}}
+{{- with default $page.Site.Params.ListLimit $page.Params.ListLimit -}}
   {{- $pages = first . $pages -}}
 {{- end -}}
 {{- if eq $type "split" -}}
