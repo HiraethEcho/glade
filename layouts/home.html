@@ -3,13 +3,17 @@
     {{- partial "breadcrumbs.html" . -}}
   </header>
   {{- $pages := .Site.RegularPages -}}
+  {{- $limitpages := $pages -}}
+  {{- with default .Site.Params.ListLimit .Params.ListLimit -}}
+    {{- $limitpages = first . $pages -}}
+  {{- end -}}
   {{- $show := default false (default .Site.Params.ShowList .Params.ShowList) -}}
   {{- $type := default "list" (default .Site.Params.ListType .Params.ListType) -}}
   {{- if and $show (eq $type "date") -}}
     <input type="checkbox" id="aside-checkbox" style="display: none;" />
     <label for="aside-checkbox" id="aside-btn">⇄</label>
     <aside class="page-aside" id="TableOfContents">
-      {{- range $pages.GroupByPublishDate "2006" -}}
+      {{- range $limitpages.GroupByPublishDate "2006" -}}
         {{- if ne .Key "0001" -}}
           {{- $year := replace .Key "0001" "" -}}
           <details class="menu-fold">
@@ -38,7 +42,7 @@
   <article>
     {{- .Content -}}
     {{ if $show }}
-      {{- partial "lists.html" (dict "type" $type "pages" $pages "page" .) -}}
+      {{- partial "lists.html" (dict "type" $type "pages" $limitpages "page" .) -}}
     {{- end -}}
   </article>
 {{- end -}}

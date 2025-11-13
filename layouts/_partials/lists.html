@@ -1,9 +1,6 @@
 {{- $page := .page -}}
 {{- $pages := .pages -}}
 {{- $type := .type -}}
-{{- with default $page.Site.Params.ListLimit $page.Params.ListLimit -}}
-  {{- $pages = first . $pages -}}
-{{- end -}}
 {{- if eq $type "split" -}}
   {{- range ($page.Paginate $pages).Pages -}}
     {{- partial "post-section.html" . -}}
