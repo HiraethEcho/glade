@@ -1,31 +1,44 @@
 {{- $show := default true (default .Site.Params.ShowRelPost .Params.ShowRelPost) -}}
+{{- $page := . -}}
 {{- if $show -}}
   <div class="asideblock rel-post">
-    {{- $page := . -}}
     {{- $taxonomyTitles := .Site.Params.taxonomyTitles -}}
+    {{- $flag := 0 -}}
     {{- range $taxonomyName, $taxonomy := .Site.Taxonomies -}}
       {{- $terms := ($page.GetTerms $taxonomyName) -}}
       {{- with $terms -}}
-        <details open class="menu-fold">
-          {{- $taxonomyTitle := index $taxonomyTitles $taxonomyName | default $taxonomyName -}}
-          <summary>{{- $taxonomyTitle -}}</summary>
-          <menu class="indentline">
-            {{- range . -}}
-              <li>
-                <details class="menu-fold">
-                  <summary>{{- .Title -}}</summary>
-                  <menu class="indentline">
-                    {{- range .RegularPages -}}
-                      <li>
-                        <a class="sidelink" href="{{- .RelPermalink -}}">{{- .LinkTitle -}}</a>
-                      </li>
-                    {{- end -}}
-                  </menu>
-                </details>
-              </li>
-            {{- end -}}
-          </menu>
-        </details>
+        {{- $flag = 0 -}}
+        {{- range . -}}
+          {{- $flag = add $flag (len .RegularPages) -}}
+          {{- $flag = sub $flag 1 -}}
+        {{- end -}}
+        {{- if $flag -}}
+          <details open class="menu-fold">
+            <summary>{{- $taxonomyName -}}</summary>
+            <menu class="indentline">
+              {{- range . -}}
+                {{- if gt (len .RegularPages) 1 -}}
+                  <li>
+                    <details class="menu-fold">
+                      <summary>{{- .Title -}}</summary>
+                      <menu class="indentline">
+                        {{- range .RegularPages -}}
+                          {{- if ne $page . -}}
+                            <li>
+                              <a class="sidelink" href="{{- .RelPermalink -}}"
+                                >{{- .LinkTitle -}}</a
+                              >
+                            </li>
+                          {{- end -}}
+                        {{- end -}}
+                      </menu>
+                    </details>
+                  </li>
+                {{- end -}}
+              {{- end -}}
+            </menu>
+          </details>
+        {{- end -}}
       {{- end -}}
     {{- end -}}
   </div>
