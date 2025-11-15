@@ -1,4 +1,5 @@
-{{- if findRE "^(https?:)?//" (lower .Destination) -}}
+{{- $u := urls.Parse .Destination -}}
+{{- if $u.IsAbs }}
   <a
     href="{{- .Destination | safeURL -}}"
     {{- with .Title -}}title="{{- . -}}"{{- end -}}
