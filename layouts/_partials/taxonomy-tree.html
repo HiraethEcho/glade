@@ -1,18 +1,14 @@
 {{- $show := default true (default .Site.Params.ShowTaxonomyTree .Params.ShowTaxonomyTree) -}}
 {{- if $show -}}
   <menu class="sideblock">
-    <li>
-      分类
-    </li>
-    {{- $taxonomyTitles := .Site.Params.taxonomyTitles -}}
+    <li>分类</li>
     {{- range $taxonomyName, $taxonomy := .Site.Taxonomies -}}
-      {{- $taxonomyTitle := index $taxonomyTitles $taxonomyName | default $taxonomyName -}}
       {{- with $taxonomy -}}
         <li>
           <details class="menu-fold">
             <summary>
               <a class="sidelink" href="/{{- $taxonomyName -}}"
-                >{{- $taxonomyTitle -}}</a
+                >{{- $taxonomyName -}}</a
               >
             </summary>
             <menu class="indentline">

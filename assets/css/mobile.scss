@@ -13,6 +13,8 @@
     left: -70vw;
     overflow-y: auto;
     > main {
+      margin: 0;
+      padding: 1rem;
       position: relative;
       grid-template-areas:
         "page-start"
@@ -52,8 +54,7 @@
     li {
       margin: 0.25rem 0.5rem;
       > input:checked ~ menu {
-        border-left: 0.2rem solid
-          color-mix(in srgb, var(--g-line) 30%, transparent);
+        border-left: 0.2rem solid var(--line);
         border-bottom: none;
       }
     }
@@ -81,6 +82,9 @@
     /* transform: translateX(70vw); */
     z-index: 1;
   }
+  .page-header {
+    margin: 0;
+  }
 
   #aside-btn {
     transform: rotate(90deg);
@@ -88,9 +92,10 @@
   .page-aside {
     display: none;
     max-width: none;
-    padding: 0;
-    margin-top: 0.5rem;
-    border-bottom: 0.1rem solid var(--indent-line);
+    width: 100%;
+    padding: 0.5rem 0;
+    margin: 0;
+    border-bottom: 0.1rem solid var(--line);
   }
   #aside-checkbox:checked ~ aside {
     display: block;

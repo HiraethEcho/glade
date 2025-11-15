@@ -1,17 +1,20 @@
-{{- if .Lastmod -}}
-  {{- $date := (.Lastmod.Format .Site.Params.DateFormat) -}}
-  {{- if and .GitInfo .Site.Params.LastChangeLink -}}
-    <a
-      href="{{- .Site.Params.LastChangeLink -}}/{{- .GitInfo.Hash -}}"
-      title="Last modified by"
-      target="_blank"
-      rel="noopener"
-    >
-      Modified on
-      {{ $date -}}
-    </a>
-  {{- else -}}
-    Modified on
+{{- $page := . -}}
+<p class="modified-date">
+  {{- if .Lastmod -}}
+    {{- $date := (.Lastmod.Format .Site.Params.DateFormat) -}}
+    {{- if and .GitInfo .Site.Params.LastChangeLink -}}
+      <a
+        href="{{- .Site.Params.LastChangeLink -}}/{{- .GitInfo.Hash -}}"
+        title="Last modified by"
+        target="_blank"
+        rel="noopener"
+      >
+        Modified
+      </a>
+    {{- else -}}
+      Modified
+    {{- end -}}
+    on
     {{ $date -}}
   {{- end -}}
   {{- $cc := (default "nc-sa" (default .Site.Params.copyright .Params.copyright)) }}
@@ -23,25 +26,80 @@
     CC
     BY-{{- $cc | upper -}}
   </a>
+</p>
+{{- $base := .File.ContentBaseName -}}
+{{- $base_re := printf `["/(]%s["/)]` $base -}}
+{{- $currContent := .Content -}}
+{{- $backlinks := slice -}}
+{{- $forwardlinks := slice -}}
+{{- range where .Site.RegularPages "RelPermalink" "ne" $page.RelPermalink -}}
+  {{- $back := findRE $base_re .Content 1 -}}
+  {{- if $back -}}
+    {{- $backlinks = $backlinks | append . -}}
+  {{- end -}}
+  {{- $otherbase := .File.ContentBaseName -}}
+  {{- $otherbase_re := printf `["/(]%s["/)]` $otherbase -}}
+  {{- $forward := findRE $otherbase_re $currContent 1 -}}
+  {{- if $forward -}}
+    {{- $forwardlinks = $forwardlinks | append . -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $showf := ( default true .Site.Params.ShowForwardlinks ) -}}
+{{- $showb := ( default true .Site.Params.ShowBacklinks ) -}}
+{{- if and ( or $showf $showb ) ( or $backlinks $forwardlinks ) -}}
+  <div class="post-end-link">
+    {{- if $showf -}}
+      {{- with $forwardlinks -}}
+        <details class="forwardlinks" open>
+          <summary>Forward Link</summary>
+          <menu class="indentline">
+            {{ range . }}
+              <li>
+                <a class="sidelink" href="{{- .RelPermalink -}}"
+                  >{{- .Title -}}</a
+                >
+              </li>
+            {{- end -}}
+          </menu>
+        </details>
+      {{- end -}}
+    {{ end }}
+    {{- if $showb -}}
+      {{- with $backlinks -}}
+        <details class="backlinks" open>
+          <summary>Back Link</summary>
+          <menu class="indentline">
+            {{ range . }}
+              <li>
+                <a class="sidelink" href="{{- .RelPermalink -}}"
+                  >{{- .Title -}}</a
+                >
+              </li>
+            {{- end -}}
+          </menu>
+        </details>
+      {{- end -}}
+    {{- end -}}
+  </div>
 {{- end -}}
 
 
-<div class="post-end">
+<div class="post-end-nav">
   {{- with .NextInSection -}}
     <div class="post-prev">
-      «
-      {{ .Name }}
       <a href="{{- .RelPermalink -}}"></a>
+      <p>« {{ .Name }}</p>
     </div>
   {{- end -}}
-  <div class="post-top">
+  <div class="page-top">
     <a href="#top"></a>
-    ↑
+    <p>↑</p>
   </div>
   {{- with .PrevInSection -}}
     <div class="post-next">
-      {{ .Name }} »
       <a href="{{- .RelPermalink -}}"></a>
+      <p>{{ .Name }} »</p>
     </div>
   {{- end -}}
 </div>

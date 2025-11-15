@@ -123,22 +123,17 @@ a {
   margin-right: 0.25em;
 }
 /* tags */
-.cc,
 .tag {
   color: inherit;
   border-radius: var(--radius);
   padding: 0 0.2rem;
   background-color: var(--bg-secondary);
 }
-.cc,
 mark.tag {
   font-size: 0.8rem;
 }
 mark.tag {
   border: 0.1rem solid var(--line);
-}
-.cc {
-  box-shadow: 0 0.1rem 0.1rem var(--bg-hover);
 }
 a.tag {
   box-shadow: 0 0.2rem 0.2rem var(--bg-hover);
@@ -312,13 +307,40 @@ body {
 }
 .page-footer {
   grid-area: page-end;
+}
+.modified-date {
+  color: var(--fg-weak);
   text-align: center;
 }
-.post-end {
+.post-end-link {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.backlinks,
+.forwardlinks {
+  flex: 1;
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius);
+  height: auto;
+  > summary {
+    padding: 0.5rem 1.5rem 0.5rem 0.5rem;
+    border-radius: var(--radius);
+    &:hover {
+      background-color: var(--bg-tertiary);
+    }
+  }
+  > menu {
+    margin-left: 0.5rem;
+  }
+}
+.post-end-nav {
   display: grid;
   grid-template-areas: "prev top next";
-  grid-template-columns: 45% 10% 45%;
+  grid-template-columns: 1fr 5rem 1fr;
   > div {
+    display: flex;
+    align-items: center;
     padding: 0.5rem;
     position: relative;
     background-color: var(--bg-secondary);
@@ -337,19 +359,16 @@ body {
 }
 .post-prev {
   grid-area: prev;
-  text-align: left;
-  position: relative;
+  justify-content: flex-start;
 }
-.post-top {
+.page-top {
   grid-area: top;
-  text-align: center;
+  justify-content: space-evenly;
   margin: 0 0.5rem;
-  position: relative;
 }
 .post-next {
   grid-area: next;
-  position: relative;
-  text-align: right;
+  justify-content: flex-end;
 }
 
 /* special elements */
