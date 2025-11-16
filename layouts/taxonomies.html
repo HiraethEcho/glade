@@ -34,7 +34,7 @@
   {{- $page := .page -}}
   <ul class="section-tree">
     <li>
-      <a class="pagelink" href="{{- .RelPermalink -}}">{{- $page.Title -}}</a>
+      <a class="pagelink" href="{{- $page.RelPermalink -}}">{{- $page.Title -}}</a>
       {{- if $page.Sections -}}
         {{- range $page.Sections -}}
           {{- partial "section-tree-walk.html" (dict "page" .) -}}
