@@ -175,6 +175,7 @@ kbd {
 /* inline code */
 code {
   border-radius: var(--radius);
+  white-space: pre;
   word-break: keep-all;
 }
 /* code fence */
@@ -222,10 +223,10 @@ body {
   max-width: clamp(900px, 90%, 1500px);
   margin: 0 auto;
   min-height: 100dvh;
-  overflow-wrap: break-word;
-  word-break: break-word;
   background: var(--bg-tertiary);
   color: var(--fg-weak);
+  overflow-wrap: break-word;
+  word-break: break-all;
   > main {
     grid-area: post;
     background-color: var(--bg);
@@ -233,8 +234,6 @@ body {
     position: relative;
     margin: 0 0 0.5rem 0;
     padding: 0.25rem 2rem 0;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
     overflow-y: auto;
     display: grid;
     grid-template-areas:
@@ -248,10 +247,12 @@ body {
       margin: 0 auto;
       grid-area: main-content;
       position: relative;
+      overflow: hidden;
       p {
         margin: 0.25rem 0;
       }
       details {
+        margin: 0.5rem 0;
         background-color: var(--bg-secondary);
         > summary {
           padding: 0.25rem 1rem 0.25rem 0.5rem;
@@ -372,7 +373,7 @@ body {
 
 /* special elements */
 /* header */
-#nav-checkbox:checked ~ nav {
+#nav-checkbox:checked ~ .site-nav {
   display: none;
 }
 .site-title {
