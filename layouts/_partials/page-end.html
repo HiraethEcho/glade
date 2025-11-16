@@ -38,7 +38,7 @@
     <div class="post-end-link">
       {{- if $showf -}}
         {{- with $forwardlinks -}}
-          <details class="forwardlinks" open>
+          <details class="crosslink" open>
             <summary>Forward Link</summary>
             <menu class="indentline">
               {{ range . }}
@@ -54,7 +54,7 @@
       {{ end }}
       {{- if $showb -}}
         {{- with $backlinks -}}
-          <details class="backlinks" open>
+          <details class="crosslink" open>
             <summary>Back Link</summary>
             <menu class="indentline">
               {{ range . }}
