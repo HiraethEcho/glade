@@ -6,7 +6,7 @@
   {{- $show := or $showtoc $showrelpost $showf $showb -}}
   <header class="page-header">
     {{- partial "breadcrumbs.html" . -}}
-    {{- partial "post-info.html" . -}}
+    {{- partial "post-meta.html" . -}}
     {{- if $show -}}
       <label for="aside-checkbox" id="aside-btn">⇄</label>
     {{- end -}}
@@ -21,7 +21,7 @@
   {{- end -}}
   <article>{{- .Content -}}</article>
   <footer class="page-footer">
-    {{- partial "post-modify.html" . -}}
+    {{- partial "post-info.html" . -}}
     {{- partial "post-nav.html" . -}}
     {{- partial "comment.html" . -}}
   </footer>
