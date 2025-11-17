@@ -2,7 +2,12 @@
 {{- if $u.IsAbs }}
 {{- else -}}
   {{- with .PageInner.GetPage .Destination }}
-    {{- $el := dict "sourceLink" $.Page.RelPermalink "targetLink" .RelPermalink "targetTitle" .Title "sourceTitle" $.Page.Title "linkText" $.Text }}
+    {{- $el := dict 
+      "sourceLink" $.Page.RelPermalink 
+      "targetLink" .RelPermalink 
+      "targetTitle" .Title 
+      "sourceTitle" $.Page.Title 
+    }}
     {{- site.Home.Store.Add "crosslinks" (slice $el) }}
   {{- end }}
 {{- end }}
