@@ -3,7 +3,7 @@
 {{- $type := .type -}}
 {{- if eq $type "split" -}}
   {{- range ($page.Paginate $pages).Pages -}}
-    {{- partial "post-section.html" . -}}
+    {{- partial "block-post.html" . -}}
   {{- end -}}
   {{- $paginator := $page.Paginate $pages -}}
   {{- with $paginator -}}
@@ -29,7 +29,7 @@
           </h3>
           <section class="archive-month-posts">
             {{- range .Pages -}}
-              {{- partial "post-section.html" . -}}
+              {{- partial "block-post.html" . -}}
             {{- end -}}
           </section>
         </section>
@@ -39,11 +39,11 @@
 {{- else if eq $type "list" -}}
   <ol>
     {{- range $pages -}}
-      <li>{{- partial "post-section.html" . -}}</li>
+      <li>{{- partial "block-post.html" . -}}</li>
     {{- end -}}
   </ol>
 {{- else if eq $type "plain" -}}
   {{- range $pages -}}
-    {{- partial "post-section.html" . -}}
+    {{- partial "block-post.html" . -}}
   {{- end -}}
 {{- end -}}

@@ -1,33 +1,3 @@
-{{- $page := . -}}
-<p class="modified-date">
-  {{- if .Lastmod -}}
-    {{- $date := (.Lastmod.Format .Site.Params.DateFormat) -}}
-    {{- if and .GitInfo .Site.Params.LastChangeLink -}}
-      <a
-        href="{{- .Site.Params.LastChangeLink -}}/{{- .GitInfo.Hash -}}"
-        title="Last modified by"
-        target="_blank"
-        rel="noopener"
-      >
-        Modified
-      </a>
-    {{- else -}}
-      Modified
-    {{- end -}}
-    on
-    {{ $date -}}
-  {{- end -}}
-  {{- $cc := (default "nc-sa" (default .Site.Params.copyright .Params.copyright)) }}
-  licenses
-  <a
-    href="https://creativecommons.org/licenses/by-{{- $cc -}}/4.0"
-    target="_blank"
-  >
-    CC
-    BY-{{- $cc | upper -}}
-  </a>
-</p>
-
 {{- $showf := ( default true .Site.Params.ShowForwardlinks ) -}}
 {{- $showb := ( default true .Site.Params.ShowBacklinks ) -}}
 {{- if  or $showf $showb -}}
@@ -72,22 +42,3 @@
   {{- end -}}
 {{- end -}}
 
-
-<div class="post-end-nav">
-  {{- with .NextInSection -}}
-    <div class="post-prev">
-      <a href="{{- .RelPermalink -}}"></a>
-      <p>« {{ .Name }}</p>
-    </div>
-  {{- end -}}
-  <div class="page-top">
-    <a href="#top"></a>
-    <p>↑</p>
-  </div>
-  {{- with .PrevInSection -}}
-    <div class="post-next">
-      <a href="{{- .RelPermalink -}}"></a>
-      <p>{{ .Name }} »</p>
-    </div>
-  {{- end -}}
-</div>

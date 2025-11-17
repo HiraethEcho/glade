@@ -1,23 +1,28 @@
 {{- define "main" -}}
   {{- $showrelpost := default true (default .Site.Params.ShowRelPost .Params.ShowRelPost) -}}
   {{- $showtoc := default true (default .Site.Params.ShowToc .Params.ShowToc) -}}
+  {{- $showf := default true (default .Site.Params.ShowForwardLinks .Params.ShowForwardLinks ) -}}
+  {{- $showb := default true (default .Site.Params.ShowBackLinks .Params.ShowBackLinks ) -}}
+  {{- $show := or $showtoc $showrelpost $showf $showb -}}
   <header class="page-header">
     {{- partial "breadcrumbs.html" . -}}
     {{- partial "post-info.html" . -}}
-    {{- if or $showtoc $showrelpost -}}
+    {{- if $show -}}
       <label for="aside-checkbox" id="aside-btn">⇄</label>
     {{- end -}}
   </header>
-  {{- if or $showtoc $showrelpost -}}
+  {{- if $show -}}
     <input type="checkbox" id="aside-checkbox" style="display: none;" />
     <aside class="page-aside">
-      {{- partial "toc.html" . -}}
+      {{- partial "post-toc.html" . -}}
       {{- partial "post-rel.html" . -}}
+      {{- partial "post-fb.html" . -}}
     </aside>
   {{- end -}}
   <article>{{- .Content -}}</article>
   <footer class="page-footer">
-    {{- partial "page-end.html" . -}}
+    {{- partial "post-modify.html" . -}}
+    {{- partial "post-nav.html" . -}}
     {{- partial "comment.html" . -}}
   </footer>
 {{- end -}}
