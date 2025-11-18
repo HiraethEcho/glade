@@ -16,6 +16,10 @@
             >{{- $taxonomyName -}} </a
           ><sup>{{- len $taxonomy -}}</sup>
         </h3>
+        {{- $description := index site.Params.taxonomyDescription $taxonomyName -}}
+        {{- with $description -}}
+          <p>{{- . -}}</p>
+        {{- end -}}
         {{- range $name, $value := $taxonomy -}}
           {{- $count := $value.Count -}}
           {{- $page := site.GetPage (printf "/%s/%s" $taxonomyName $name) -}}
@@ -34,7 +38,12 @@
   {{- $page := .page -}}
   <ul class="section-tree">
     <li>
-      <a class="pagelink" href="{{- $page.RelPermalink -}}">{{- $page.Title -}}</a>
+      <a class="pagelink" href="{{- $page.RelPermalink -}}"
+        >{{- $page.Title -}}</a
+      >
+      {{- with $page.Params.Summary }}
+        {{ . -}}
+      {{- end -}}
       {{- if $page.Sections -}}
         {{- range $page.Sections -}}
           {{- partial "section-tree-walk.html" (dict "page" .) -}}

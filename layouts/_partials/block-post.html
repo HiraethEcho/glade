@@ -8,6 +8,9 @@
       >
         {{- .Title | markdownify -}}</a
       >
+      {{- if .Params.weight -}}
+        {{- partial "icon.html" (dict "name" "star" "attributes" `class="icon"`) -}}
+      {{- end -}}
     </h3>
     {{- partial "post-meta" . -}}
   </section>
