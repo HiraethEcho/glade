@@ -1,4 +1,4 @@
-{{- $show := default true (default .Site.Params.ShowSideMenu .Params.ShowSideMenu) -}}
+{{- $show := default true (default .Site.Params.ShowSiteNav .Params.ShowSiteNav) -}}
 {{- if $show -}}
   <div class="sideblock">
     <menu>
