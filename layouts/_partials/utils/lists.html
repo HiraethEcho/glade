@@ -3,7 +3,7 @@
 {{- $type := .type -}}
 {{- if eq $type "split" -}}
   {{- range ($page.Paginate $pages).Pages -}}
-    {{- partial "block-post.html" . -}}
+    {{- partial "postblock.html" . -}}
   {{- end -}}
   {{- $paginator := $page.Paginate $pages -}}
   {{- with $paginator -}}
@@ -27,11 +27,11 @@
             {{- .Key -}}
             <sup class="archive-count"><small>{{- len .Pages -}}</small></sup>
           </h3>
-          <section class="archive-month-posts">
+          <div class="archive-month-posts">
             {{- range .Pages -}}
-              {{- partial "block-post.html" . -}}
+              {{- partial "postblock.html" . -}}
             {{- end -}}
-          </section>
+          </div>
         </section>
       {{- end -}}
     {{- end -}}
@@ -39,11 +39,31 @@
 {{- else if eq $type "list" -}}
   <ol>
     {{- range $pages -}}
-      <li>{{- partial "block-post.html" . -}}</li>
+      <li>{{- partial "postblock.html" . -}}</li>
     {{- end -}}
   </ol>
 {{- else if eq $type "plain" -}}
   {{- range $pages -}}
-    {{- partial "block-post.html" . -}}
+    {{- partial "postblock.html" . -}}
+  {{- end -}}
+{{- end -}}
+
+{{- define "_partials/postblock.html" -}}
+  {{- if eq .Kind "page" -}}
+    <section class="post-block">
+      <h3 class="entry-title">
+        <a
+          class="pagelink"
+          aria-label="post link to {{ .Title | plainify -}}"
+          href="{{- .RelPermalink -}}"
+        >
+          {{- .Title | markdownify -}}</a
+        >
+        {{- if .Params.weight -}}
+          {{- partial "utils/icon.html" (dict "name" "star" "attributes" `class="icon"`) -}}
+        {{- end -}}
+      </h3>
+      {{- partial "post-meta" . -}}
+    </section>
   {{- end -}}
 {{- end -}}

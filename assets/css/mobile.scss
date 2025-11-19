@@ -51,18 +51,15 @@
   .mainmenu {
     display: none;
     flex-direction: column;
-    li {
-      margin: 0.25rem 0.5rem;
-      > input:checked ~ menu {
-        border-left: 0.2rem solid var(--line);
-        border-bottom: none;
-      }
-    }
+    gap: 0;
+    align-items: center;
+    margin: 0.5rem 0;
   }
-  #menu-checkbox:checked ~ menu {
-    display: flex;
-    flex-direction: column;
+  .mainmenu-fold[open] > menu {
     position: relative;
+  }
+  #menu-checkbox:checked ~ .mainmenu {
+    display: flex;
     menu,
     li {
       flex-direction: column;
@@ -70,6 +67,7 @@
   }
   #menu-checkbox:checked ~ .site-subtitle {
     display: block;
+    margin: 0.5rem 0;
   }
   #menu-checkbox:checked ~ .site-title > #menu-btn {
     transform: rotate(-90deg);

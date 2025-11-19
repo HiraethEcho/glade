@@ -3,26 +3,32 @@
   <div class="sideblock">
     <menu>
       {{- with site.Menus.side -}}
-        {{- partial "menu-side.html" . -}}
+        {{- partial "menu-nav.html" . -}}
       {{- end -}}
     </menu>
   </div>
 {{- end -}}
 
-{{- define "_partials/menu-side.html" -}}
+{{- define "_partials/menu-nav.html" -}}
   {{- range . -}}
     <li>
       {{- if .HasChildren -}}
         <details class="menu-fold">
-          <summary>{{- .Name -}}</summary>
+          <summary>
+            {{- if .URL -}}
+              <a class="sectionlink" href="{{- .URL -}}">{{- .Name -}}</a>
+            {{- else -}}
+              {{- .Name -}}
+            {{- end -}}
+          </summary>
           <menu class="indentline">
             {{- with .Children -}}
-              {{- partial "menu-side.html" . -}}
+              {{- partial "menu-nav.html" . -}}
             {{- end -}}
           </menu>
         </details>
       {{- else -}}
-        <a class="sidelink" href="{{- .URL -}}">{{- .Name -}}</a>
+        <a class="pagelink" href="{{- .URL -}}">{{- .Name -}}</a>
       {{- end -}}
     </li>
   {{- end -}}

@@ -26,7 +26,7 @@
         {{- if .IsSection -}}
           <details class="menu-fold">
             <summary>
-              <a class="sidelink" href="{{- .RelPermalink -}}"
+              <a class="sectionlink" href="{{- .RelPermalink -}}"
                 >{{- .Title -}}</a
               >
             </summary>
@@ -35,7 +35,7 @@
             </menu>
           </details>
         {{- else -}}
-          <a class="sidelink" href="{{- .RelPermalink -}}">{{- .Title -}}</a>
+          <a class="pagelink" href="{{- .RelPermalink -}}">{{- .Title -}}</a>
         {{- end -}}
       </li>
     {{- end -}}

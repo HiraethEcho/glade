@@ -42,8 +42,8 @@
   <article>
     {{- .Content -}}
     {{- if (default true (default .Site.Params.SectionShowCountWords .Params.ShowCountWords)) -}}
-      {{- partial "countwords.html" (dict "pages" $pages "page" . ) -}}
+      {{- partial "utils/countwords.html" (dict "pages" $pages "page" . ) -}}
     {{- end -}}
-    {{- partial "lists.html" (dict "pages" $pages "type" $type ) -}}
+    {{- partial "utils/lists.html" (dict "pages" $pages "type" $type ) -}}
   </article>
 {{- end -}}

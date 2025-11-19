@@ -28,6 +28,7 @@ blockquote {
   border-left: 0.25rem solid var(--blockquote-border);
   margin: 0.25rem 0;
   padding-left: 0.75rem;
+  padding-right: 1rem;
   background-color: var(--bg-secondary);
   &.alert {
     .alert-heading {

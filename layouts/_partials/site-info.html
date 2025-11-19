@@ -6,7 +6,7 @@
     {{- end -}}
     {{- if (default true .Site.Params.SiteShowCountWords) -}}
       {{- $pages := site.RegularPages -}}
-      {{- partial "countwords.html" (dict "pages" $pages) -}}
+      {{- partial "utils/countwords.html" (dict "pages" $pages) -}}
     {{- end -}}
     {{- if (default true .Site.Params.SiteShowCountTerms) -}}
       {{- $num := (len .Site.Taxonomies ) -}}

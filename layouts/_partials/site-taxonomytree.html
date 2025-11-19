@@ -7,7 +7,7 @@
         <li>
           <details class="menu-fold">
             <summary>
-              <a class="sidelink" href="/{{- $taxonomyName -}}"
+              <a class="sectionlink" href="/{{- $taxonomyName -}}"
                 >{{- $taxonomyName -}}</a
               >
             </summary>
@@ -16,7 +16,7 @@
                 {{- $page := site.GetPage (printf "/%s/%s" $taxonomyName $name) -}}
                 {{- with $page -}}
                   <li>
-                    <a class="sidelink" href="{{- .RelPermalink -}}"
+                    <a class="pagelink" href="{{- .RelPermalink -}}"
                       >{{- .Name -}}</a
                     >
                   </li>

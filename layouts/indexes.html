@@ -12,7 +12,7 @@
     {{- range $taxonomyName, $taxonomy := .Site.Taxonomies -}}
       {{- with $taxonomy -}}
         <h3>
-          <a class="pagelink" href="/{{- $taxonomyName -}}"
+          <a class="sectionlink" href="/{{- $taxonomyName -}}"
             >{{- $taxonomyName -}} </a
           ><sup>{{- len $taxonomy -}}</sup>
         </h3>
@@ -38,7 +38,7 @@
   {{- $page := .page -}}
   <ul class="section-tree">
     <li>
-      <a class="pagelink" href="{{- $page.RelPermalink -}}"
+      <a class="sectionlink" href="{{- $page.RelPermalink -}}"
         >{{- $page.Title -}}</a
       >
       {{- with $page.Params.Summary }}

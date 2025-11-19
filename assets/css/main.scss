@@ -95,21 +95,20 @@ a {
   word-break: keep-all;
 }
 #TableOfContents a,
-.sidelink {
+.sectionlink {
   color: var(--fg);
-  box-shadow: inset 0 -0.1em 0 var(--bg-hover);
-  &:hover {
-    box-shadow: inset 0 -0.5em 0 var(--bg-hover);
-  }
-}
-.entrylink,
-.pagelink {
-  color: inherit;
   box-shadow: inset 0 -0.25em 0 var(--bg-hover);
   &:hover {
     text-decoration: none;
     color: inherit;
     box-shadow: inset 0 -0.75em 0 var(--bg-hover);
+  }
+}
+.pagelink {
+  color: inherit;
+  box-shadow: inset 0 -0.1em 0 var(--bg-hover);
+  &:hover {
+    box-shadow: inset 0 -0.5em 0 var(--bg-hover);
   }
 }
 .outlink-icon {
@@ -370,30 +369,24 @@ body {
   font-size: 2rem;
 }
 .mainmenu {
+  position: relative;
   display: flex;
-  align-items: center;
+  gap: 0.5rem;
   li {
-    margin: 0.1rem 0.25rem;
     list-style: none;
-    display: flex;
-    align-items: center;
-    input + label::after {
-      content: "»";
-      margin-left: 0.2rem;
-    }
-    input ~ menu {
-      display: none;
-    }
-    input:checked ~ menu {
-      border-bottom: 0.1rem solid var(--line);
-      display: flex;
-    }
   }
+}
+.mainmenu-top[open] > menu {
+  background-color: var(--bg-secondary);
+  position: absolute;
+  top: 100%;
+  white-space: nowrap;
+  width: auto;
 }
 /* nav */
 .sideblock {
   background-color: var(--bg-secondary);
-  padding-left: 0.5rem;
+  padding-left: 0.25rem;
   margin: 0 0 0.5rem 0;
   p {
     margin: 0;
@@ -428,7 +421,7 @@ body {
     padding: 0.1rem 1.5rem 0.1rem 0;
     &:hover {
       background-color: var(--bg-tertiary);
-      box-shadow: -0.5rem 0 0 var(--bg-tertiary);
+      box-shadow: -0.25rem 0 0 var(--bg-tertiary);
     }
   }
 }
@@ -460,9 +453,9 @@ body {
 }
 .indentline,
 #TableOfContents ul {
-  padding-left: 0.5rem;
-  border-left: 0.2rem solid var(--indent-line);
-  margin: 0 0 0.25rem;
+  padding-left: 0.25rem;
+  border-left: 0.25rem solid var(--indent-line);
+  margin: 0 0.5rem 0.25rem 0;
 }
 /* article */
 .pagination {
@@ -486,7 +479,7 @@ body {
   padding-left: 0.5rem;
   margin: 0;
 }
-.post-section {
+.post-block {
   display: flex;
   flex-direction: column;
   margin: 0 0 0.5rem;
