@@ -9,9 +9,10 @@ body {
   --bg-hover: oklch(0.6 0.15 265 / 0.3);
 
   --fg: oklch(0.3 0 0);
-  --fg-weak: oklch(0.4 0.04 280);
-  --fg-strong: oklch(0.2 0.05 270);
+  --fg-weak: oklch(0.5 0.04 280);
+  --fg-strong: oklch(0.5 0.2 330);
   --fg-accent: oklch(0.5 0.2 255);
+  --fg-hover: oklch(0.6 0.15 40);
 
   --fg-codeblock: oklch(0.8 0.01 90);
   --bg-codeblock: oklch(0.4 0.01 270);

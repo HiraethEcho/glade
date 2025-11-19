@@ -42,7 +42,7 @@
   <article>
     {{- .Content -}}
     {{ if $show }}
-      {{- partial "utils/lists.html" (dict "type" $type "pages" $limitpages "page" .) -}}
+      {{- partial "utils/section-lists.html" (dict "type" $type "pages" $limitpages "page" .) -}}
     {{- end -}}
   </article>
 {{- end -}}

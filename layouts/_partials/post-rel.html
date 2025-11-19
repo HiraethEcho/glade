@@ -3,13 +3,13 @@
 {{- if $show -}}
   {{- if .Site.Params.HugoRelPost -}}
     {{ with site.RegularPages.Related $page | first .Site.Params.HugoRelPostLimit }}
-      <div class="asideblock rel-post">
+      <div class="asideblock">
         <details open class="menu-fold">
           <summary>Related</summary>
           <menu class="indentline">
             {{- range . -}}
               <li>
-                <a class="sidelink" href="{{- .RelPermalink -}}"
+                <a class="pagelink" href="{{- .RelPermalink -}}"
                   >{{- .Title -}}</a
                 >
               </li>
@@ -19,7 +19,7 @@
       </div>
     {{- end -}}
   {{- else -}}
-    <div class="asideblock rel-post">
+    <div class="asideblock">
       <details open class="menu-fold">
         <summary>Related</summary>
         <menu class="indentline">
@@ -48,7 +48,7 @@
                                   {{- if ne $page . -}}
                                     <li>
                                       <a
-                                        class="sidelink"
+                                        class="pagelink"
                                         href="{{- .RelPermalink -}}"
                                         >{{- .LinkTitle -}}</a
                                       >
