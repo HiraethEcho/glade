@@ -3,14 +3,14 @@
 }
 
 body {
-  --bg: oklch(0.99 0.003 80);
+  --bg: oklch(0.99 0.005 90);
   --bg-secondary: oklch(0.97 0.003 90);
   --bg-tertiary: oklch(0.95 0.003 90);
   --bg-hover: oklch(0.6 0.15 265 / 0.3);
 
   --fg: oklch(0.3 0 0);
-  --fg-weak: oklch(0.5 0.04 280);
-  --fg-strong: oklch(0.2 0.2 330);
+  --fg-weak: oklch(0.5 0.01 90);
+  --fg-strong: oklch(0.4 0.1 230);
   --fg-accent: oklch(0.5 0.2 255);
   --fg-hover: oklch(0.6 0.15 40);
 
