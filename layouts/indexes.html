@@ -9,67 +9,27 @@
       {{- partial "section-tree-walk.html" (dict "page" .) -}}
     {{ end }}
     <h2>Taxonomies</h2>
-    {{- range $taxonomyName, $taxonomy := .Site.Taxonomies -}}
-      {{- with $taxonomy -}}
-        <h3>
-          <a class="sectionlink" href="/{{- $taxonomyName -}}"
-            >{{- $taxonomyName -}} {{ .Page.Title }} </a
-          ><sup>{{- len $taxonomy -}}</sup>
-        </h3>
-        {{- $description := index site.Params.taxonomyDescription $taxonomyName -}}
-        {{- with $description -}}
-          <p>{{- . -}}</p>
-        {{- end -}}
-        {{- with .Page.Params.Summary -}}
-          <p>{{- . -}}</p>
-        {{- end -}}
-        {{- range $name, $value := $taxonomy -}}
-          {{- print $value.Page.Title -}}
-          {{- $count := $value.Count -}}
-          {{- $page := site.GetPage (printf "/%s/%s" $taxonomyName $name) -}}
-          {{- with $page }}
-            <a class="tag" href="{{- .RelPermalink -}}"
-              >{{- .Name -}}<sup>{{- $count -}}</sup></a
-            >
-          {{ end -}}
-        {{- end -}}
+    {{- range $taxonomy, $terms := .Site.Taxonomies -}}
+      <h3>
+        <a class="sectionlink" href="/{{- .Page.RelPermalink -}}"
+          >{{ $terms.Page.Title }} </a
+        ><sup>{{- len $terms -}}</sup>
+      </h3>
+      {{- $description := index site.Params.taxonomyDescription $taxonomy -}}
+      {{- with $description -}}
+        <p>{{- . -}}</p>
       {{- end -}}
+      {{- with .Page.Params.Summary -}}
+        <p>{{- . -}}</p>
+      {{- end -}}
+      {{- range . }}
+        <a class="tag" href="{{- .Page.RelPermalink -}}"
+          >{{- .Page.Title -}}<sup>{{- .Count -}}</sup></a
+        >
+      {{ end -}}
     {{- end -}}
   </article>
 {{- end -}}
-
-{{ with .Site.Taxonomies }}
-  {{ $numberOfTerms := 0 }}
-  {{ range $taxonomy, $terms := . }}
-    {{ $numberOfTerms = len . | add $numberOfTerms }}
-  {{ end }}
-
-  {{ if gt $numberOfTerms 0 }}
-    <ul>
-      {{ range $taxonomy, $terms := . }}
-        {{ with $terms }}
-          <li>
-            <a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a>
-            <ul>
-              {{ range $term, $weightedPages := . }}
-                <li>
-                  <a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a>
-                  <ul>
-                    {{ range $weightedPages }}
-                      <li>
-                        <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-                      </li>
-                    {{ end }}
-                  </ul>
-                </li>
-              {{ end }}
-            </ul>
-          </li>
-        {{ end }}
-      {{ end }}
-    </ul>
-  {{ end }}
-{{ end }}
 
 {{- define "_partials/section-tree-walk.html" -}}
   {{- $page := .page -}}
