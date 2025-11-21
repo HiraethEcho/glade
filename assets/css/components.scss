@@ -167,9 +167,9 @@
 
 /* comments */
 .comment-switcher {
-  margin: 1rem 1rem 0;
+  margin: 1rem auto 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   gap: 1rem;
   width: 100%;
 }
@@ -192,6 +192,13 @@
 #comment-twikoo:checked + .comment-container {
   display: block;
 }
-#comment-test:checked + .comment-container {
+#comment-giscus:checked + .comment-container {
   display: block;
+}
+.giscus {
+  display: flex;
+  margin: 0 auto;
+}
+.giscus-frame {
+  margin: 0 auto;
 }

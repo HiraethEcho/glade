@@ -14,9 +14,11 @@
     <label class="comment-label" for="comment-waline">Waline</label>
   {{- end -}}
   {{- if .Site.Params.twikoo -}}
-    <label class="comment-label" for="comment-twkioo">Twikoo</label>
+    <label class="comment-label" for="comment-twikoo">Twikoo</label>
   {{- end -}}
-  <label class="comment-label" for="comment-test">TEST</label>
+  {{- if .Site.Params.giscus -}}
+    <label class="comment-label" for="comment-giscus">Giscus</label>
+  {{- end -}}
 </nav>
 <input
   class="comment-radio"
@@ -40,7 +42,9 @@
 <input
   class="comment-radio"
   type="radio"
-  id="comment-test"
+  id="comment-giscus"
   name="comment-system"
 />
-<div class="comment-container"><span>test</span></div>
+<div class="comment-container">
+  {{- partial "comments/giscus.html" . -}}
+</div>
