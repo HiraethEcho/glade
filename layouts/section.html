@@ -8,6 +8,9 @@
   {{- $type := default "list" (default .Site.Params.ListType .Params.ListType) -}}
   <header class="page-header">
     {{- partial "breadcrumbs.html" . -}}
+    {{- with .Page.Params.summary -}}
+      {{- . -}}
+    {{ end -}}
     <h1>{{- .Title -}}</h1>
     {{- if and $show (eq $type "date") -}}
       <label for="aside-checkbox" id="aside-btn">⇄</label>

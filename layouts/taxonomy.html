@@ -9,6 +9,9 @@
       <a class="tag" href="{{- .Page.RelPermalink -}}"
         >{{- .Page.Title -}}<sup>{{- .Count -}}</sup></a
       >
+      {{- with .Page.Params.summary -}}
+        {{- . -}}
+      {{ end -}}
     {{ end -}}
   </article>
 {{- end -}}

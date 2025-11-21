@@ -12,7 +12,7 @@
     {{- range $taxonomy, $terms := .Site.Taxonomies -}}
       <h3>
         <a class="sectionlink" href="/{{- .Page.RelPermalink -}}"
-          >{{ $terms.Page.Title }} </a
+          >{{ .Page.Title }} </a
         ><sup>{{- len $terms -}}</sup>
       </h3>
       {{- $description := index site.Params.taxonomyDescription $taxonomy -}}
