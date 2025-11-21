@@ -7,3 +7,40 @@
 {{- else if eq .Site.Params.comment "utterances" -}}
   {{- partial "comments/utterances.html" . -}}
 {{- end -}}
+
+
+<nav class="comment-switcher">
+  {{- if .Site.Params.waline -}}
+    <label class="comment-label" for="comment-waline">Waline</label>
+  {{- end -}}
+  {{- if .Site.Params.twikoo -}}
+    <label class="comment-label" for="comment-twkioo">Twikoo</label>
+  {{- end -}}
+  <label class="comment-label" for="comment-test">TEST</label>
+</nav>
+<input
+  class="comment-radio"
+  type="radio"
+  id="comment-waline"
+  name="comment-system"
+  checked
+/>
+<div class="comment-container">
+  {{- partial "comments/waline.html" . -}}
+</div>
+<input
+  class="comment-radio"
+  type="radio"
+  id="comment-twikoo"
+  name="comment-system"
+/>
+<div class="comment-container">
+  {{- partial "comments/twikoo.html" . -}}
+</div>
+<input
+  class="comment-radio"
+  type="radio"
+  id="comment-test"
+  name="comment-system"
+/>
+<div class="comment-container"><span>test</span></div>
