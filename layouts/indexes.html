@@ -11,7 +11,7 @@
     <h2>Taxonomies</h2>
     {{- range $taxonomy, $terms := .Site.Taxonomies -}}
       <h3>
-        <a class="sectionlink" href="/{{- .Page.RelPermalink -}}"
+        <a class="sectionlink" href="{{- .Page.RelPermalink -}}"
           >{{ .Page.Title }} </a
         ><sup>{{- len $terms -}}</sup>
       </h3>
