@@ -1,0 +1,11 @@
+@media (max-width: 820px) {
+  :root {
+    font-size: 16px;
+  }
+  .site-nav {
+    display: none;
+  }
+  #nav-checkbox:checked ~ .site-nav {
+    display: flex;
+  }
+}

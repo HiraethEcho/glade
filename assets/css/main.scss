@@ -231,7 +231,7 @@ body {
   background: var(--bg-tertiary);
   color: var(--fg-weak);
   overflow-wrap: break-word;
-  word-break: break-all;
+  word-break: normal;
   > main {
     grid-area: post;
     background-color: var(--bg);
@@ -248,7 +248,7 @@ body {
     grid-template-rows: auto 1fr auto;
     > article {
       color: var(--fg);
-      width: clamp(500px, 80%, 800px);
+      width: clamp(0, 80%, 800px);
       margin: 0 auto;
       grid-area: main-content;
       position: relative;
@@ -288,8 +288,8 @@ body {
   background: inherit;
   position: sticky;
   top: 0;
-  padding: 2.5rem 0.5rem 0 0;
-  margin: -2.5rem 0.5rem 0 0;
+  padding: 2.5rem 0.5rem 0 0.5rem;
+  margin: -2.5rem 0 0 0;
   /* 3 = (font-size of site-title 2) x (line-height 1.5) */
   width: 250px;
   max-height: calc(100vh - 1.5rem);
