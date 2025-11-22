@@ -10,7 +10,7 @@
       {{- end -}}
       {{- if $page.Sections -}}
         {{- range $page.Sections -}}
-          {{- partial "section-tree-walk.html" (dict "page" .) -}}
+          {{- partial "utils/section-tree-walk.html" (dict "page" .) -}}
         {{- end -}}
       {{- end -}}
     </li>
