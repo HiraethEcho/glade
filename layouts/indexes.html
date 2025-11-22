@@ -15,10 +15,6 @@
           >{{ .Page.Title }} </a
         ><sup>{{- len $terms -}}</sup>
       </h3>
-      {{- $description := index site.Params.taxonomyDescription $taxonomy -}}
-      {{- with $description -}}
-        <p>{{- . -}}</p>
-      {{- end -}}
       {{- with .Page.Params.Summary -}}
         <p>{{- . -}}</p>
       {{- end -}}

@@ -1,17 +1,28 @@
 {{- define "main" -}}
   <header>
     {{- partial "breadcrumbs.html" . -}}
-    <h1>{{- .Title -}}</h1>
   </header>
   <article>
-    {{- .Content -}}
-    {{- range .Data.Terms.Alphabetical }}
-      <a class="tag" href="{{- .Page.RelPermalink -}}"
-        >{{- .Page.Title -}}<sup>{{- .Count -}}</sup></a
-      >
-      {{- with .Page.Params.summary -}}
-        {{- . -}}
-      {{ end -}}
+    <h1>{{- .Title -}}</h1>
+    {{- with .Params.Summary -}}
+      <p>{{- . -}}</p>
     {{ end -}}
+    {{- with .Content -}}
+      {{- . -}}
+    {{ end }}
+    {{- range .Data.Terms }}
+      <h2>
+        <a class="sectionlink" href="{{- .Page.RelPermalink -}}"
+          >{{- .Page.Title -}}<sup>{{- .Count -}}</sup></a
+        >
+      </h2>
+      {{- with .Page.Params.summary -}}
+        <p>{{- . -}}</p>
+      {{ end -}}
+      {{- range .Pages | first (default 3 .Page.Site.Params.PostPerTermLimit) -}}
+        <a class="pagelink" href="{{- .RelPermalink -}}">{{- .Title -}}</a>
+      {{ end -}}
+
+    {{- end -}}
   </article>
 {{- end -}}
