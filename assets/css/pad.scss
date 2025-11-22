@@ -4,6 +4,11 @@
   }
   .site-nav {
     display: none;
+    width: 200px;
+  }
+  .page-aside {
+    max-width: 150px;
+    min-width: 100px;
   }
   #nav-checkbox:checked ~ .site-nav {
     display: flex;

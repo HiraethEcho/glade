@@ -248,7 +248,7 @@ body {
     grid-template-rows: auto 1fr auto;
     > article {
       color: var(--fg);
-      width: clamp(0, 80%, 800px);
+      width: clamp(350px, 80%, 800px);
       margin: 0 auto;
       grid-area: main-content;
       position: relative;
