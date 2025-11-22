@@ -8,10 +8,6 @@
   {{- $type := default "list" (default .Site.Params.ListType .Params.ListType) -}}
   <header class="page-header">
     {{- partial "breadcrumbs.html" . -}}
-    {{- with .Page.Params.summary -}}
-      {{- . -}}
-    {{ end -}}
-    <h1>{{- .Title -}}</h1>
     {{- if and $show (eq $type "date") -}}
       <label for="aside-checkbox" id="aside-btn">⇄</label>
     {{- end -}}
@@ -48,10 +44,23 @@
     </aside>
   {{- end -}}
   <article class="section">
+    <h1>{{- .Title -}}</h1>
+    {{- with .Page.Params.summary -}}
+      {{- . -}}
+    {{ end -}}
     {{- if (default true (default .Site.Params.SectionShowCountWords .Params.ShowCountWords)) -}}
       {{- partial "utils/countwords.html" (dict "pages" $pages "page" . ) -}}
     {{- end -}}
-    {{- .Content -}}
+    {{ with .Sections }}
+      {{ range . }}
+        {{- partial "utils/section-tree-walk.html" (dict "page" .) -}}
+      {{ end }}
+      <hr />
+    {{ end }}
+    {{- with .Content -}}
+      {{- . -}}
+      <hr />
+    {{ end }}
     {{ if $show }}
       {{- partial "utils/section-lists.html" (dict "type" $type "pages" $limitpages "page" .) -}}
     {{- end -}}

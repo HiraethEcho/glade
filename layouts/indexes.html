@@ -6,7 +6,7 @@
     {{- .Content -}}
     <h2>Sections</h2>
     {{ range .Site.Sections }}
-      {{- partial "section-tree-walk.html" (dict "page" .) -}}
+      {{- partial "utils/section-tree-walk.html" (dict "page" .) -}}
     {{ end }}
     <h2>Taxonomies</h2>
     {{- range $taxonomy, $terms := .Site.Taxonomies -}}
@@ -31,21 +31,3 @@
   </article>
 {{- end -}}
 
-{{- define "_partials/section-tree-walk.html" -}}
-  {{- $page := .page -}}
-  <ul class="section-tree">
-    <li>
-      <a class="sectionlink" href="{{- $page.RelPermalink -}}"
-        >{{- $page.Title -}}</a
-      >
-      {{- with $page.Params.Summary }}
-        {{ . -}}
-      {{- end -}}
-      {{- if $page.Sections -}}
-        {{- range $page.Sections -}}
-          {{- partial "section-tree-walk.html" (dict "page" .) -}}
-        {{- end -}}
-      {{- end -}}
-    </li>
-  </ul>
-{{- end -}}
