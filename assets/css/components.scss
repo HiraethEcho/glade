@@ -40,8 +40,8 @@
   justify-content: flex-end;
 }
 .sideblock {
-  background-color: var(--bg-secondary);
-  padding-left: 0.25rem;
+  background-color: var(--bg);
+  padding: 0.25rem 0.5rem;
   margin: 0 0 0.5rem 0;
   p {
     margin: 0;
@@ -73,10 +73,11 @@
 .menu-fold {
   margin: 0;
   > summary {
-    padding: 0.1rem 1.5rem 0.1rem 0;
     &:hover {
-      background-color: var(--bg-tertiary);
-      box-shadow: -0.25rem 0 0 var(--bg-tertiary);
+      background-color: var(--bg-secondary);
+      box-shadow:
+        -0.25rem 0 0 var(--bg-secondary),
+        0.25rem 0 0 var(--bg-secondary);
     }
   }
 }
@@ -107,7 +108,7 @@
 #TableOfContents ul {
   padding-left: 0.25rem;
   border-left: 0.25rem solid var(--indent-line);
-  margin: 0 0 0.25rem 0;
+  margin: 0.25rem 0;
 }
 .pagination {
   display: flex;
@@ -119,22 +120,22 @@
   max-width: 80%;
 }
 .archive-month {
+  margin: 0.5rem 0;
   display: flex;
 }
 .archive-month-header {
-  width: 4rem;
+  width: 3rem;
   flex: none;
 }
 .archive-month-posts {
   flex: 1;
-  padding-left: 0.5rem;
   margin: 0;
 }
 .post-section {
   display: flex;
   flex-direction: column;
-  margin: 0.5rem;
-  padding-left: 0.5rem;
+  margin: 0 0.5rem 1rem;
+  padding: 0.5rem;
   position: relative;
 }
 .top {
@@ -184,6 +185,7 @@
   display: none;
 }
 .comment-container {
+  margin-top: 1rem;
   display: none;
 }
 #comment-waline:checked + .comment-container {

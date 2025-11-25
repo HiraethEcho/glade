@@ -228,7 +228,7 @@ body {
   max-width: clamp(900px, 90%, 1500px);
   margin: 0 auto;
   min-height: 100dvh;
-  background: var(--bg-tertiary);
+  background: var(--bg-secondary);
   color: var(--fg-weak);
   overflow-wrap: break-word;
   word-break: normal;
@@ -274,7 +274,7 @@ body {
   height: 2.5rem;
   position: sticky;
   top: 0;
-  background: color-mix(in srgb, var(--bg-tertiary) 50%, transparent);
+  background: color-mix(in srgb, var(--bg-secondary) 50%, transparent);
   backdrop-filter: blur(0.1rem);
   padding: 0 0.5rem;
   display: flex;
