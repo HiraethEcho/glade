@@ -2,7 +2,10 @@
   <header class="page-header">
     {{- partial "breadcrumbs.html" . -}}
   </header>
-  {{- $pages := .Site.RegularPages -}}
+  {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections -}}
+  {{- if site.Params.ShowAllPagesInHome -}}
+    {{- $pages = site.RegularPages -}}
+  {{- end -}}
   {{- $limitpages := $pages -}}
   {{- with default .Site.Params.ListLimit .Params.ListLimit -}}
     {{- $limitpages = first . $pages -}}
