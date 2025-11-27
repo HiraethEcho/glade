@@ -1,6 +1,9 @@
 {{- define "main" -}}
   <header class="page-header">
     {{- partial "breadcrumbs.html" . -}}
+    {{- with .Params.Summary -}}
+      <p>{{- . -}}</p>
+    {{ end -}}
     <label for="aside-checkbox" id="aside-btn">⇄</label>
   </header>
   <input type="checkbox" id="aside-checkbox" style="display: none;" />
@@ -19,9 +22,6 @@
   </aside>
   <article>
     <h1>{{- .Title -}}</h1>
-    {{- with .Params.Summary -}}
-      <p>{{- . -}}</p>
-    {{ end -}}
     {{- with .Content -}}
       {{- . -}}
     {{ end }}

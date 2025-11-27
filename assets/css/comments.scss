@@ -1,0 +1,38 @@
+/* comments */
+.comment-switcher {
+  margin: 1rem auto 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+}
+.comment-label {
+  color: var(--fg-strong);
+  background-color: var(--bg-secondary);
+  width: 100%;
+  text-align: center;
+  padding: 0.5rem;
+}
+.comment-radio {
+  display: none;
+}
+.comment-container {
+  margin-top: 1rem;
+  display: none;
+}
+#comment-waline:checked + .comment-container {
+  display: block;
+}
+#comment-twikoo:checked + .comment-container {
+  display: block;
+}
+#comment-giscus:checked + .comment-container {
+  display: block;
+}
+.giscus {
+  display: flex;
+  margin: 0 auto;
+}
+.giscus-frame {
+  margin: 0 auto;
+}

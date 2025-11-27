@@ -8,6 +8,12 @@
   {{- $type := default "list" (default .Site.Params.ListType .Params.ListType) -}}
   <header class="page-header">
     {{- partial "breadcrumbs.html" . -}}
+    {{- if (default true (default .Site.Params.SectionShowCountWords .Params.ShowCountWords)) -}}
+      {{- partial "utils/countwords.html" (dict "pages" $pages "page" . ) -}}
+    {{- end -}}
+    {{- with .Params.Summary -}}
+      <p>{{- . -}}</p>
+    {{ end -}}
     {{- if and $show (eq $type "date") -}}
       <label for="aside-checkbox" id="aside-btn">⇄</label>
     {{- end -}}
@@ -45,12 +51,6 @@
   {{- end -}}
   <article class="term">
     <h1>{{- .Title -}}</h1>
-    {{- with .Params.summary -}}
-      <p>{{- . -}}</p>
-    {{ end -}}
-    {{- if (default true (default .Site.Params.SectionShowCountWords .Params.ShowCountWords)) -}}
-      {{- partial "utils/countwords.html" (dict "pages" $pages "page" . ) -}}
-    {{- end -}}
     {{- with .Content }}
       {{- . -}}
     {{ end }}
