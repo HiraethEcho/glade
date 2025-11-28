@@ -1,11 +1,9 @@
 {{- $show := default true (default .Site.Params.ShowToc .Params.ShowToc) -}}
 {{- if $show -}}
-  <menu class="asideblock">
-    <li>
-      <details open class="menu-fold">
-        <summary>{{ .Title }}</summary>
+  <div class="asideblock">
+      <details class="menu-fold" open>
+        <summary class="side-entry">{{ .Title }}</summary>
         {{- .TableOfContents -}}
       </details>
-    </li>
-  </menu>
+  </div>
 {{- end -}}

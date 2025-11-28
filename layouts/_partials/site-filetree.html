@@ -11,7 +11,7 @@
 
   <div class="sideblock">
     <details class="menu-fold" open>
-      <summary>
+      <summary class="side-entry">
         {{ $root.Title }}
       </summary>
       <menu class="indentline">
@@ -26,10 +26,10 @@
   {{- $depth := .depth -}}
   {{- range $context.Pages -}}
     {{- if not .Params.HideInFileTree -}}
-      <li>
-        {{- if .IsSection -}}
+      {{- if .IsSection -}}
+        <li>
           <details class="menu-fold">
-            <summary>
+            <summary class="side-entry">
               <a class="sectionlink" href="{{- .RelPermalink -}}"
                 >{{- .Title -}}</a
               >
@@ -38,10 +38,12 @@
               {{- partial "file-tree-walk.html" (dict "context" . "depth" (add $depth 1)) -}}
             </menu>
           </details>
-        {{- else -}}
+        </li>
+      {{- else -}}
+        <li class="side-entry">
           <a class="pagelink" href="{{- .RelPermalink -}}">{{- .Title -}}</a>
-        {{- end -}}
-      </li>
+        </li>
+      {{- end -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}

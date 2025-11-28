@@ -4,7 +4,7 @@
     <menu>
       {{- with .Site.Params.links -}}
         {{- range . -}}
-          <li>
+          <li class="side-entry">
             <a
               href="{{- .url -}}"
               {{- if findRE "^(https?:)?//" (lower .url) -}}

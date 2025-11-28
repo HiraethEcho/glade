@@ -55,7 +55,7 @@
     align-items: center;
     margin: 0.5rem 0;
   }
-  .mainmenu-fold[open] > menu {
+  .mainmenu-top[open] > menu {
     position: relative;
   }
   #menu-checkbox:checked ~ .mainmenu {
@@ -67,7 +67,6 @@
   }
   #menu-checkbox:checked ~ .site-subtitle {
     display: block;
-    margin: 0.5rem 0;
   }
   #menu-checkbox:checked ~ .site-title > #menu-btn {
     transform: rotate(-90deg);

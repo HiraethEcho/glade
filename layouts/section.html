@@ -20,24 +20,21 @@
   </header>
   {{- if and $show (eq $type "date") -}}
     <input type="checkbox" id="aside-checkbox" style="display: none;" />
-    <aside class="page-aside" id="TableOfContents">
-      <div class="asideblock">
+    <aside class="page-aside">
+      <div class="asideblock" id="TableOfContents">
         {{- range $limitpages.GroupByPublishDate "2006" -}}
           {{- if ne .Key "0001" -}}
             {{- $year := replace .Key "0001" "" -}}
             <details class="menu-fold">
-              <summary>
-                <a class="archive-header-link" href="#{{- $year -}}">
+              <summary class="side-entry">
+                <a class="inpage" href="#{{- $year -}}">
                   {{- $year -}}
                 </a>
               </summary>
               <ul class="indentline">
                 {{- range .GroupByDate "01" -}}
-                  <li>
-                    <a
-                      class="archive-header-link"
-                      href="#{{- $year -}}-{{- .Key -}}"
-                    >
+                  <li class="side-entry">
+                    <a class="inpage" href="#{{- $year -}}-{{- .Key -}}">
                       {{- .Key -}}
                     </a>
                   </li>

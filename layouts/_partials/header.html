@@ -25,7 +25,7 @@
     <li>
       {{- if .HasChildren -}}
         <details class="menu-fold mainmenu-top">
-          <summary>
+          <summary class="side-entry">
             {{- if .URL -}}
               <a class="sectionlink" href="{{- .URL -}}">{{- .Name -}}</a>
             {{- else -}}
@@ -46,10 +46,10 @@
 </menu>
 
 {{- define "_partials/menu-deeper.html" -}}
-  <li>
-    {{- if .HasChildren -}}
+  {{- if .HasChildren -}}
+    <li>
       <details class="menu-fold">
-        <summary>
+        <summary class="side-entry">
           {{- if .URL -}}
             <a class="sectionlink" href="{{- .URL -}}">{{- .Name -}}</a>
           {{- else -}}
@@ -62,8 +62,10 @@
           {{- end -}}
         </menu>
       </details>
-    {{- else -}}
+    </li>
+  {{- else -}}
+    <li class="side-entry">
       <a class="pagelink" href="{{- .URL | relURL -}}">{{- .Name -}}</a>
-    {{- end -}}
-  </li>
+    </li>
+  {{- end -}}
 {{- end -}}

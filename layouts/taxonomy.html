@@ -8,10 +8,10 @@
   </header>
   <input type="checkbox" id="aside-checkbox" style="display: none;" />
   <aside class="page-aside" id="TableOfContents">
-    <div class="asideblock">
+    <div class="asideblock" id="TableOfContents">
       <ul class="indentline">
         {{- range .Data.Terms }}
-          <li>
+          <li class="side-entry">
             <a class="inpage" href="#term-{{- .Page.Title -}}">
               {{- .Page.Title -}}
             </a>

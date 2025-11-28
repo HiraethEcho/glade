@@ -8,30 +8,30 @@
     <div class="asideblock">
       {{- with $forwardlinks -}}
         <details open class="menu-fold">
-          <summary>Forward Link</summary>
-          <menu class="indentline">
+          <summary class="side-entry">Forward Link</summary>
+          <ul class="indentline">
             {{ range . }}
-              <li>
+              <li class="side-entry">
                 <a class="pagelink" href="{{- .targetLink -}}"
                   >{{- .targetTitle -}}</a
                 >
               </li>
             {{- end -}}
-          </menu>
+          </ul>
         </details>
       {{- end -}}
       {{- with $backlinks -}}
         <details open class="menu-fold">
-          <summary>Back Link</summary>
-          <menu class="indentline">
+          <summary class="side-entry">Back Link</summary>
+          <ul class="indentline">
             {{ range . }}
-              <li>
+              <li class="side-entry">
                 <a class="pagelink" href="{{- .sourceLink -}}"
                   >{{- .sourceTitle -}}</a
                 >
               </li>
             {{- end -}}
-          </menu>
+          </ul>
         </details>
       {{- end -}}
     </div>

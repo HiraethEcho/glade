@@ -10,7 +10,7 @@ body {
 
   --fg: oklch(0.3 0 0);
   --fg-weak: oklch(0.5 0.01 90);
-  --fg-strong: oklch(0.4 0.1 230);
+  --fg-strong: oklch(0.4 0.1 240);
   --fg-accent: oklch(0.5 0.2 255);
   --fg-hover: oklch(0.6 0.15 40);
 
@@ -38,11 +38,11 @@ body.dark {
   --bg: oklch(0.38 0.03 270);
   --bg-secondary: oklch(0.36 0.029 265);
   --bg-tertiary: oklch(0.34 0.023 263);
-  --bg-hover: oklch(0.55 0.2 265 / 0.5);
+  --bg-hover: oklch(0.55 0.1 265 / 0.5);
 
-  --fg: oklch(0.9 0.01 260);
-  --fg-weak: oklch(0.7 0.03 260);
-  --fg-strong: oklch(0.9 0.05 260);
+  --fg: oklch(0.8 0.005 260);
+  --fg-weak: oklch(0.75 0.03 260);
+  --fg-strong: oklch(0.9 0.03 260);
   --fg-accent: oklch(0.7 0.10 250);
 
   --fg-codeblock: oklch(0.8 0.01 270);

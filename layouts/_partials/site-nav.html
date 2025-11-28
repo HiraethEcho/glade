@@ -11,10 +11,10 @@
 
 {{- define "_partials/menu-nav.html" -}}
   {{- range . -}}
-    <li>
-      {{- if .HasChildren -}}
+    {{- if .HasChildren -}}
+      <li>
         <details class="menu-fold">
-          <summary>
+          <summary class="side-entry">
             {{- if .URL -}}
               <a class="sectionlink" href="{{- .URL -}}">{{- .Name -}}</a>
             {{- else -}}
@@ -27,9 +27,11 @@
             {{- end -}}
           </menu>
         </details>
-      {{- else -}}
+      </li>
+    {{- else -}}
+      <li class="side-entry">
         <a class="pagelink" href="{{- .URL -}}">{{- .Name -}}</a>
-      {{- end -}}
-    </li>
+      </li>
+    {{- end -}}
   {{- end -}}
 {{- end -}}

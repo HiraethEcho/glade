@@ -2,19 +2,19 @@
 {{- if $show -}}
   <div class="sideblock">
     <details class="menu-fold" open>
-      <summary>分类</summary>
+      <summary class="side-entry">分类</summary>
       <menu class="indentline">
         {{- range $taxonomy, $terms := .Site.Taxonomies -}}
           <li>
             <details class="menu-fold">
-              <summary>
+              <summary class="side-entry">
                 <a class="sectionlink" href="{{- .Page.RelPermalink -}}"
                   >{{- .Page.Title -}}</a
                 >
               </summary>
               <menu class="indentline">
                 {{- range . -}}
-                  <li>
+                  <li class="side-entry">
                     <a class="sectionlink" href="{{- .Page.RelPermalink -}}"
                       >{{- .Page.Title -}}</a
                     >

@@ -41,11 +41,6 @@
 }
 .sideblock {
   background-color: var(--bg);
-  padding: 0.25rem 0.5rem;
-  margin: 0 0 0.5rem 0;
-  p {
-    margin: 0;
-  }
 }
 #searchbox {
   position: relative;
@@ -70,17 +65,16 @@
     background-color: var(--bg-tertiary);
   }
 }
-.menu-fold {
-  margin: 0;
-  > summary {
-    &:hover {
-      background-color: var(--bg-secondary);
-      box-shadow:
-        -0.25rem 0 0 var(--bg-secondary),
-        0.25rem 0 0 var(--bg-secondary);
-    }
-  }
+
+.side-entry,
+#TableOfContents ul li {
+  padding-left: 0.5rem;
+  padding-right: 1.25rem;
 }
+summary.side-entry:hover {
+  background-color: var(--bg-secondary);
+}
+
 #aside-btn {
   display: block;
   position: absolute;
@@ -90,6 +84,7 @@
 #aside-checkbox:checked ~ aside {
   display: none;
 }
+.sideblock,
 .asideblock {
   margin-bottom: 0.5rem;
 }
@@ -106,9 +101,8 @@
 }
 .indentline,
 #TableOfContents ul {
-  padding-left: 0.25rem;
   border-left: 0.25rem solid var(--indent-line);
-  margin: 0.25rem 0;
+  margin: 0 0 0.25rem 0.5rem;
 }
 .pagination {
   display: flex;

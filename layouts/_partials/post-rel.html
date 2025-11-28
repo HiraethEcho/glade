@@ -5,23 +5,23 @@
     {{ with site.RegularPages.Related $page | first .Site.Params.HugoRelPostLimit }}
       <div class="asideblock">
         <details open class="menu-fold">
-          <summary>Related</summary>
-          <menu class="indentline">
+          <summary class="side-entry">Related</summary>
+          <ul class="indentline">
             {{- range . -}}
-              <li>
+              <li class="side-entry">
                 <a class="pagelink" href="{{- .RelPermalink -}}"
                   >{{- .Title -}}</a
                 >
               </li>
             {{- end -}}
-          </menu>
+          </ul>
         </details>
       </div>
     {{- end -}}
   {{- else -}}
     <div class="asideblock">
       <details open class="menu-fold">
-        <summary>Related</summary>
+        <summary class="side-entry">Related</summary>
         <menu class="indentline">
           {{- $taxonomyTitles := .Site.Params.taxonomyTitles -}}
           {{- $flag := 0 -}}
@@ -36,17 +36,19 @@
               {{- if $flag -}}
                 <li>
                   <details open class="menu-fold">
-                    <summary>{{- $taxonomyName -}}</summary>
-                    <menu class="indentline">
+                    <summary class="side-entry">{{- $taxonomyName -}}</summary>
+                    <ul class="indentline">
                       {{- range . -}}
                         {{- if gt (len .RegularPages) 1 -}}
                           <li>
                             <details class="menu-fold">
-                              <summary>{{- .Title -}}</summary>
-                              <menu class="indentline">
+                              <summary class="side-entry">
+                                {{- .Title -}}
+                              </summary>
+                              <ul class="indentline">
                                 {{- range .RegularPages -}}
                                   {{- if ne $page . -}}
-                                    <li>
+                                    <li class="side-entry">
                                       <a
                                         class="pagelink"
                                         href="{{- .RelPermalink -}}"
@@ -55,12 +57,12 @@
                                     </li>
                                   {{- end -}}
                                 {{- end -}}
-                              </menu>
+                              </ul>
                             </details>
                           </li>
                         {{- end -}}
                       {{- end -}}
-                    </menu>
+                    </ul>
                   </details>
                 </li>
               {{- end -}}

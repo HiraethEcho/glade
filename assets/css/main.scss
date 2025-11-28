@@ -76,7 +76,7 @@ label {
   font-weight: bold;
   cursor: pointer;
   border-radius: var(--radius);
-  color: var(--fg-accent);
+  color: var(--fg-strong);
   &:hover {
     color: var(--fg-hover);
   }
@@ -254,7 +254,7 @@ body {
       position: relative;
       overflow: hidden;
       p {
-        margin: 0.25rem 0;
+        margin: 0.5rem 0;
       }
       details {
         margin: 0.5rem 0;
@@ -306,7 +306,6 @@ body {
 .page-aside {
   grid-area: aside-bar;
   margin-top: 0.5rem;
-  margin-left: 1rem;
   width: auto;
   max-width: 200px;
   min-width: 150px;
@@ -340,10 +339,14 @@ body {
     list-style: none;
   }
 }
+.mainmenu-top {
+  position: relative;
+}
 .mainmenu-top[open] > menu {
   background-color: var(--bg-secondary);
   position: absolute;
   top: 100%;
+  right: 0;
   white-space: nowrap;
   width: auto;
 }
