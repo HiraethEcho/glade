@@ -21,7 +21,8 @@ window.onload = function () {
                         ignoreLocation: true,
                         keys: [
                             'title',
-                            'permalink',
+                            'tags',
+                            'categories',
                             'summary',
                             'content'
                         ]
@@ -34,7 +35,7 @@ window.onload = function () {
                             minMatchCharLength: params.fuseOpts.minmatchcharlength ?? 1,
                             shouldSort: params.fuseOpts.shouldsort ?? true,
                             findAllMatches: params.fuseOpts.findallmatches ?? false,
-                            keys: params.fuseOpts.keys ?? ['title', 'permalink', 'summary', 'content'],
+                            keys: params.fuseOpts.keys ?? ['title', 'summary', 'content','tags','categories'],
                             location: params.fuseOpts.location ?? 0,
                             threshold: params.fuseOpts.threshold ?? 0.4,
                             distance: params.fuseOpts.distance ?? 100,
@@ -88,8 +89,8 @@ sInput.onkeyup = function (e) {
             let resultSet = ''; // our results bucket
 
             for (let item in results) {
-                resultSet += `<li class="post-entry">` +
-                    `<a href="${results[item].item.permalink}" aria-label="${results[item].item.title}">${results[item].item.title}</a></li>`
+                resultSet += `<li>` +
+                    `<a class="pagelink" href="${results[item].item.permalink}" aria-label="${results[item].item.title}">${results[item].item.title}</a></li>`
             }
 
             resList.innerHTML = resultSet;

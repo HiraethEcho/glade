@@ -42,30 +42,6 @@
 .sideblock {
   background-color: var(--bg);
 }
-#searchbox {
-  position: relative;
-  padding: 0.5rem;
-  width: 100%;
-}
-#searchbox input {
-  height: 1.5rem;
-  width: 100%;
-  background-color: var(--bg-tertiary);
-  color: var(--fg-accent);
-}
-#searchResults {
-  margin: 0;
-  > li {
-    list-style: none;
-    margin: 0;
-    padding: 0 0.5rem;
-    position: relative;
-  }
-  > .focus {
-    background-color: var(--bg-tertiary);
-  }
-}
-
 .side-entry,
 #TableOfContents ul li {
   padding-left: 0.5rem;

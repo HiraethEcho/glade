@@ -1,0 +1,35 @@
+#searchbox {
+  position: relative;
+  padding: 0.5rem;
+  width: 100%;
+}
+#searchbox input {
+  height: 1.5rem;
+  width: 100%;
+  background-color: var(--bg-tertiary);
+  color: var(--fg-accent);
+}
+#searchResults {
+  margin: 0;
+  > li {
+    list-style: none;
+    margin: 0;
+    padding: 0 0.5rem;
+    position: relative;
+  }
+  > .focus {
+    background-color: var(--bg-tertiary);
+  }
+}
+
+#search-query {
+  height: 1.5rem;
+  width: 50%;
+  background-color: var(--bg-tertiary);
+  color: var(--fg-accent);
+}
+#search-results {
+  .search_summary {
+    margin: 0.5rem;
+  }
+}

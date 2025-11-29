@@ -1,4 +1,4 @@
-{{- $show := default true (default .Site.Params.ShowSearch .Params.ShowSearch) -}}
+{{- $show := default true (default .Site.Params.ShowSiteSearch .Params.ShowSiteSearch) -}}
 {{- if $show -}}
   <div class="sideblock" id="searchbox">
     <input
@@ -10,24 +10,13 @@
     />
     <ul id="searchResults" aria-label="search results"></ul>
   </div>
-  <link crossorigin="anonymous" rel="preload" as="fetch" href="/index.json" />
   {{- $fastsearch := resources.Get "js/fastsearch.js" | js.Build (dict "params" (dict "fuseOpts" site.Params.fuseOpts)) | resources.Minify -}}
-  {{- $fusejs := resources.Get "js/fuse.basic.min.js" -}}
-  {{- $license_js := resources.Get "js/license.js" -}}
-  {{- if not site.Params.assets.disableFingerprinting -}}
-    {{- $search := (slice $fusejs $license_js $fastsearch ) | resources.Concat "assets/js/search.js" | fingerprint -}}
-    <script
-      defer
-      crossorigin="anonymous"
-      src="{{- $search.RelPermalink -}}"
-      integrity="{{- $search.Data.Integrity -}}"
-    ></script>
-  {{- else -}}
-    {{- $search := (slice $fusejs $fastsearch ) | resources.Concat "assets/js/search.js" -}}
-    <script
-      defer
-      crossorigin="anonymous"
-      src="{{- $search.RelPermalink -}}"
-    ></script>
-  {{- end -}}
+  {{- $fusejs := resources.Get "js/libs/fuse.basic.min.js" -}}
+  {{- $search := (slice $fusejs $fastsearch ) | resources.Concat "assets/js/search.js" | fingerprint -}}
+  <script
+    defer
+    crossorigin="anonymous"
+    src="{{- $search.RelPermalink -}}"
+    integrity="{{- $search.Data.Integrity -}}"
+  ></script>
 {{- end -}}
