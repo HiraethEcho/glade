@@ -10,6 +10,7 @@
     />
     <ul id="searchResults" aria-label="search results"></ul>
   </div>
+
   {{- $fastsearch := resources.Get "js/fastsearch.js" | js.Build (dict "params" (dict "fuseOpts" site.Params.fuseOpts)) | resources.Minify -}}
   {{- $fusejs := resources.Get "js/libs/fuse.basic.min.js" -}}
   {{- $search := (slice $fusejs $fastsearch ) | resources.Concat "assets/js/search.js" | fingerprint -}}
