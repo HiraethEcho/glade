@@ -23,6 +23,8 @@
   <footer class="page-footer">
     {{- partial "post-info.html" . -}}
     {{- partial "post-nav.html" . -}}
-    {{- partial "comment.html" . -}}
+    {{- if ( default true ( default .Site.Params.comment .Params.comment) ) -}}
+      {{- partial "comment.html" . -}}
+    {{- end -}}
   </footer>
 {{- end -}}

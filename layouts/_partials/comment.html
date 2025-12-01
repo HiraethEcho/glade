@@ -1,14 +1,3 @@
-{{- if eq .Site.Params.comment "waline" -}}
-  {{- partial "comments/waline.html" . -}}
-{{- else if eq .Site.Params.comment "twikoo" -}}
-  {{- partial "comments/twikoo.html" . -}}
-{{- else if eq .Site.Params.comment "cusdis" -}}
-  {{- partial "comments/cusdis.html" . -}}
-{{- else if eq .Site.Params.comment "utterances" -}}
-  {{- partial "comments/utterances.html" . -}}
-{{- end -}}
-
-
 <input
   class="comment-radio"
   type="radio"
@@ -45,12 +34,18 @@
     >
   {{- end -}}
 </nav>
-<div id="waline-container" class="comment-container">
-  {{- partial "comments/waline.html" . -}}
-</div>
-<div id="twikoo-container" class="comment-container">
-  {{- partial "comments/twikoo.html" . -}}
-</div>
-<div id="giscus-container" class="comment-container">
-  {{- partial "comments/giscus.html" . -}}
-</div>
+{{- if .Site.Params.waline -}}
+  <div id="waline-container" class="comment-container">
+    {{- partial "comments/waline.html" . -}}
+  </div>
+{{- end -}}
+{{- if .Site.Params.twikoo -}}
+  <div id="twikoo-container" class="comment-container">
+    {{- partial "comments/twikoo.html" . -}}
+  </div>
+{{- end -}}
+{{- if .Site.Params.giscus -}}
+  <div id="giscus-container" class="comment-container">
+    {{- partial "comments/giscus.html" . -}}
+  </div>
+{{- end -}}
