@@ -1,4 +1,5 @@
 import * as params from "@params";
+const contextRange = 20;
 
 let fuse; // holds our search engine
 let resList = document.getElementById("searchResults");
@@ -10,59 +11,52 @@ let resultsAvailable = false;
 
 let options = {
   distance: 50,
-  threshold: 0.2,
+  threshold: 0.1,
   ignoreLocation: true,
   findAllMatches: false,
   keys: [
     { name: "file", weight: 0.8 },
     { name: "title", weight: 0.8 },
     { name: "summary", weight: 0.7 },
-    { name: "tags", weight: 0.5 },
-    { name: "categories", weight: 0.5 },
     { name: "content", weight: 0.4 },
   ],
 };
 if (params.fuseOpts) {
   options = {
+    keys: params.fuseOpts.keys ?? [
+      { name: "file", weight: 0.8 },
+      { name: "title", weight: 0.8 },
+      { name: "summary", weight: 0.7 },
+      { name: "content", weight: 0.4 },
+    ],
+    distance: params.fuseOpts.distance ?? 50,
+    threshold: params.fuseOpts.threshold ?? 0.1,
+    ignoreLocation: params.fuseOpts.ignorelocation ?? true,
     isCaseSensitive: params.fuseOpts.iscasesensitive ?? false,
     includeScore: params.fuseOpts.includescore ?? false,
     includeMatches: params.fuseOpts.includematches ?? false,
     minMatchCharLength: params.fuseOpts.minmatchcharlength ?? 1,
     shouldSort: params.fuseOpts.shouldsort ?? true,
     findAllMatches: params.fuseOpts.findallmatches ?? false,
-    keys: params.fuseOpts.keys ?? [
-      { name: "title", weight: 0.6 },
-      { name: "file", weight: 0.8 },
-      { name: "tags", weight: 0.5 },
-      { name: "summary", weight: 0.7 },
-      { name: "categories", weight: 0.5 },
-      { name: "content", weight: 0.4 },
-    ],
-    location: params.fuseOpts.location ?? 0,
-    threshold: params.fuseOpts.threshold ?? 0.4,
-    distance: params.fuseOpts.distance ?? 100,
-    ignoreLocation: params.fuseOpts.ignorelocation ?? true,
   };
 }
 
-// load our search index
 window.onload = function () {
-  let xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4) {
-      if (xhr.status === 200) {
-        let data = JSON.parse(xhr.responseText);
-        if (data) {
-          // fuse.js options; check fuse.js website for details
-          fuse = new Fuse(data, options); // build the index from the json file
-        }
-      } else {
-        console.log(xhr.responseText);
+  fetch("/index.json")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-    }
-  };
-  xhr.open("GET", "/index.json");
-  xhr.send();
+      return response.json();
+    })
+    .then((data) => {
+      if (data) {
+        fuse = new Fuse(data, options); // build the index from the json file
+      }
+    })
+    .catch((error) => {
+      console.log(error.message || "Failed to load search index");
+    });
 };
 
 function activeToggle(ae) {
@@ -85,6 +79,30 @@ function reset() {
   sInput.focus(); // shift focus to input box
 }
 
+function extractContentSnippet(text, searchTerm) {
+  if (!text || !searchTerm) return "";
+  const lowerText = text.toLowerCase();
+  const lowerSearchTerm = searchTerm.toLowerCase();
+  const searchIndex = lowerText.indexOf(lowerSearchTerm);
+  if (searchIndex === -1) {
+    return text.substring(0, contextRange * 1.5) + "...";
+  }
+  const startPos = Math.max(0, searchIndex - contextRange);
+  const endPos = Math.min(
+    text.length,
+    searchIndex + searchTerm.length + contextRange,
+  );
+  let snippet = "";
+  if (startPos > 0) {
+    snippet += "...";
+  }
+  snippet += text.substring(startPos, endPos);
+  if (endPos < text.length) {
+    snippet += "...";
+  }
+  return snippet;
+}
+
 // execute search as each character is typed
 sInput.onkeyup = function (e) {
   // run a search query (for "term") every time a letter is typed
@@ -99,6 +117,7 @@ sInput.onkeyup = function (e) {
       results = fuse.search(this.value.trim()); // the actual query being run using fuse.js
     }
     if (results.length !== 0) {
+      const searchTerm = this.value.trim();
       for (let item in results) {
         const listItem = document.createElement("li");
         listItem.className = "side-entry";
@@ -106,11 +125,27 @@ sInput.onkeyup = function (e) {
         link.className = "pagelink";
         link.href = results[item].permalink;
         link.textContent = results[item].title;
-        const summary = document.createElement("p");
-        summary.textContent = results[item].summary;
+        const contentContainer = document.createElement("p");
+        contentContainer.className = "search-result-content";
+        const originalContent = results[item].content || "";
+        const contentSnippet = extractContentSnippet(
+          originalContent,
+          searchTerm,
+        );
+        contentContainer.textContent = contentSnippet;
+
         listItem.appendChild(link);
-        listItem.appendChild(summary);
+        listItem.appendChild(contentContainer);
+
         resList.appendChild(listItem);
+        if (contentContainer.textContent) {
+          const searchTerm = this.value.trim();
+          const instance = new Mark(contentContainer);
+          instance.mark(searchTerm, {
+            element: "strong",
+            separateWordSearch: false,
+          });
+        }
       }
 
       // resList.innerHTML = resultSet;
@@ -133,7 +168,6 @@ sInput.addEventListener("search", function (e) {
 document.onkeydown = function (e) {
   let key = e.key;
   let ae = document.activeElement;
-
   let inbox = document.getElementById("searchbox").contains(ae);
 
   if (ae === sInput) {
@@ -150,12 +184,15 @@ document.onkeydown = function (e) {
   } else if (key === "ArrowDown") {
     e.preventDefault();
     if (ae == sInput) {
-      // if the currently focused element is the search input, focus the <a> of first <li>
-      activeToggle(resList.firstChild.lastChild);
+      const firstLink = resList.firstChild?.firstChild;
+      if (firstLink) {
+        activeToggle(firstLink);
+      }
     } else if (ae.parentElement != last) {
-      // if the currently focused element's parent is last, do nothing
-      // otherwise select the next search result
-      activeToggle(ae.parentElement.nextSibling.lastChild);
+      const nextLink = ae.parentElement.nextSibling?.firstChild;
+      if (nextLink) {
+        activeToggle(nextLink);
+      }
     }
   } else if (key === "ArrowUp") {
     e.preventDefault();
@@ -163,9 +200,25 @@ document.onkeydown = function (e) {
       // if the currently focused element is first item, go to input box
       activeToggle(sInput);
     } else if (ae != sInput) {
-      // if the currently focused element is input box, do nothing
-      // otherwise select the previous search result
-      activeToggle(ae.parentElement.previousSibling.lastChild);
+      const prevLink = ae.parentElement.previousSibling?.firstChild;
+      if (prevLink) {
+        activeToggle(prevLink);
+      }
+    }
+  } else if (key === "ArrowRight" || key === "Enter") {
+    e.preventDefault();
+    let linkToClick;
+    
+    if (ae === sInput && first) {
+      linkToClick = first.firstChild;
+    } else if (ae.tagName === "A") {
+      linkToClick = ae;
+    } else if (ae.parentElement && ae.parentElement.tagName === "LI") {
+      linkToClick = ae.parentElement.firstChild;
+    }
+    
+    if (linkToClick && linkToClick.tagName === "A") {
+      linkToClick.click();
     }
   } else if (key === "ArrowRight") {
     ae.click(); // click on active link

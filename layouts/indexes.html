@@ -4,41 +4,29 @@
   </header>
   <article>
     {{- .Content -}}
-    {{- if .Params.ShowMarkSearch -}}
+    {{- if .Params.ShowSearch -}}
       <h2>Search</h2>
-      <form action="{{ .Permalink }}">
-        <input id="search-query" name="q" placeholder="search phrase" />
-      </form>
-      <div id="search-results"></div>
-      <template id="search-result-template"
-        ><div class="search_summary">
-          <a class="search_link search_title" href=""></a>
-          <p class="search_snippet"></p>
-          <span class="search_iftags">
-            <span>Tags:</span>
-            <span class="search_tags"></span>
-          </span>
-          </span class="search_ifcategories">
-            <span>Categories:</span>
-            <span class="search_categories"></span>
-          </span>
-          </span class="search_iftitle">
-            <span>Title:</span>
-            <span class="search_title"></span>
-          </span>
-        </div>
-      </template>
-      {{ $iecompat_scripts := "" }}
-      {{ range $i, $e := resources.Match "js/iecompat/*.js" }}
-        {{ if $i }}
-          {{ $iecompat_scripts = (printf "%s," $iecompat_scripts) }}
-        {{ end }}
-        {{ $iecompat_scripts = (printf "%s%#v" $iecompat_scripts $e.RelPermalink) }}
-      {{ end }}
-      <script src="{{ printf "%s" (resources.Get "js/libs/fuse.min.js" | fingerprint).RelPermalink }}"></script>
-      <script src="{{ printf "%s" (resources.Get "js/libs/mark.min.js" | fingerprint).RelPermalink }}"></script>
-      <script src="{{ printf "%s" (resources.Get "js/marksearch.js" | fingerprint).RelPermalink }}
-      "></script>
+      <div id="searchbox">
+        <input
+          id="searchInput"
+          placeholder="{{- .Site.Params.SearchPlaceHolder | default (printf "search ↵") -}}"
+          aria-label="search"
+          type="search"
+          autocomplete="off"
+        />
+        <ul id="searchResults" aria-label="search results"></ul>
+      </div>
+
+      {{- $mysearch := resources.Get "js/mysearch.js" | js.Build (dict "params" (dict "fuseOpts" site.Params.fuseOpts)) | resources.Minify -}}
+      {{- $fusejs := resources.Get "js/fuse.min.js" -}}
+      {{- $markjs := resources.Get "js/mark.min.js" -}}
+      {{- $search := (slice $fusejs $markjs $mysearch ) | resources.Concat "assets/js/search.js" | fingerprint -}}
+      <script
+        defer
+        crossorigin="anonymous"
+        src="{{- $search.RelPermalink -}}"
+        integrity="{{- $search.Data.Integrity -}}"
+      ></script>
     {{- end -}}
     <h2>Sections</h2>
     {{- range .Site.Sections }}
