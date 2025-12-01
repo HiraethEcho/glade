@@ -47,22 +47,22 @@ if (params.fuseOpts) {
 
 // load our search index
 window.onload = function () {
-  let xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4) {
-      if (xhr.status === 200) {
-        let data = JSON.parse(xhr.responseText);
-        if (data) {
-          // fuse.js options; check fuse.js website for details
-          fuse = new Fuse(data, options); // build the index from the json file
-        }
-      } else {
-        console.log(xhr.responseText);
+  fetch("/index.json")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-    }
-  };
-  xhr.open("GET", "/index.json");
-  xhr.send();
+      return response.json();
+    })
+    .then((data) => {
+      if (data) {
+        // fuse.js options; check fuse.js website for details
+        fuse = new Fuse(data, options); // build the index from the json file
+      }
+    })
+    .catch((error) => {
+      console.log(error.message || "Failed to load search index");
+    });
 };
 
 function activeToggle(ae) {

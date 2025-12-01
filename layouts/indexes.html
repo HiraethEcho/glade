@@ -35,8 +35,8 @@
         {{ end }}
         {{ $iecompat_scripts = (printf "%s%#v" $iecompat_scripts $e.RelPermalink) }}
       {{ end }}
-      <script src="{{ printf "%s" (resources.Get "js/libs/fuse.min.js" | fingerprint).RelPermalink }}"></script>
-      <script src="{{ printf "%s" (resources.Get "js/libs/mark.min.js" | fingerprint).RelPermalink }}"></script>
+      <script src="{{ printf "%s" (resources.Get "js/fuse.min.js" | fingerprint).RelPermalink }}"></script>
+      <script src="{{ printf "%s" (resources.Get "js/mark.min.js" | fingerprint).RelPermalink }}"></script>
       <script src="{{ printf "%s" (resources.Get "js/marksearch.js" | fingerprint).RelPermalink }}
       "></script>
     {{- end -}}
