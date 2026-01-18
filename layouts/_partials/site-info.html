@@ -5,13 +5,15 @@
       {{- with .Site.Params.description -}}
         <li class="side-entry"><p>{{- . -}}</p></li>
       {{- end -}}
-      {{- if (default true .Site.Params.SiteShowCountWords) -}}
+      {{- if (default true .Site.Params.ShowSiteCountWord) -}}
         {{- $pages := site.RegularPages -}}
         <li class="side-entry">
-          {{- partial "utils/countwords.html" (dict "pages" $pages) -}}
+          <p>
+            {{- partial "utils/countwords.html" (dict "pages" $pages) -}}
+          </p>
         </li>
       {{- end -}}
-      {{- if (default true .Site.Params.SiteShowCountTerms) -}}
+      {{- if (default true .Site.Params.ShowSiteCountTerm) -}}
         {{- $num := (len .Site.Taxonomies ) -}}
         {{- $scratch := newScratch -}}
         {{- range .Site.Taxonomies -}}

@@ -1,19 +1,31 @@
 {{- define "main" -}}
-  {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections -}}
-  {{- if site.Params.ShowAllPagesInArchives -}}
-    {{- $pages = site.RegularPages -}}
-  {{- end -}}
-  {{- $type := default "date" (default .Site.Params.ListType .Params.ListType) -}}
-  <header class="page-header">
-    {{- partial "breadcrumbs" . -}}
-    {{- if eq $type "date" -}}
-      <label for="aside-checkbox" id="aside-btn">⇄</label>
+  <main>
+    {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections -}}
+    {{- if site.Params.ShowAllPagesInArchive -}}
+      {{- $pages = site.RegularPages -}}
     {{- end -}}
-  </header>
+    {{- $type := default "date" (default .Site.Params.ListType .Params.ListType) -}}
+    <header class="page-header">
+      {{- partial "breadcrumbs" . -}}
+      {{- if (default true (default .Site.Params.ShowSectionCountWord .Params.ShowCountWords)) -}}
+        {{- partial "utils/countwords.html" (dict "pages" $pages "page" . ) -}}
+      {{- end -}}
+      {{- with .Params.Summary -}}
+        <p>{{- . -}}</p>
+      {{ end -}}
+      {{- if eq $type "date" -}}
+        <label for="aside-checkbox" id="aside-btn">⇄</label>
+      {{- end -}}
+    </header>
+    <article>
+      {{- .Content -}}
+      {{- partial "utils/section-lists.html" (dict "pages" $pages "type" $type "page" . ) -}}
+    </article>
+  </main>
   {{- if eq $type "date" -}}
     <input type="checkbox" id="aside-checkbox" style="display: none;" />
-    <aside class="page-aside">
-      <div class="asideblock">
+    <aside class="site-aside">
+      <div class="asideblock" id="TableOfContents">
         {{- range $pages.GroupByPublishDate "2006" -}}
           {{- if ne .Key "0001" -}}
             {{- $year := replace .Key "0001" "" -}}
@@ -26,10 +38,7 @@
               <ul class="indentline">
                 {{- range .GroupByDate "01" -}}
                   <li class="side-entry">
-                    <a
-                      class="inpage"
-                      href="#{{- $year -}}-{{- .Key -}}"
-                    >
+                    <a class="inpage" href="#{{- $year -}}-{{- .Key -}}">
                       {{- .Key -}}
                     </a>
                   </li>
@@ -41,11 +50,4 @@
       </div>
     </aside>
   {{- end -}}
-  <article>
-    {{- .Content -}}
-    {{- if (default true (default .Site.Params.SectionShowCountWords .Params.ShowCountWords)) -}}
-      {{- partial "utils/countwords.html" (dict "pages" $pages "page" . ) -}}
-    {{- end -}}
-    {{- partial "utils/section-lists.html" (dict "pages" $pages "type" $type ) -}}
-  </article>
 {{- end -}}

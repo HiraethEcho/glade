@@ -1,10 +1,14 @@
-baseURL = 'https://hiraethecho.github.io/lichtung'
-title = 'lichtung'
+baseURL = 'https://memex.keinmal.top/'
+title = 'MEMEX'
 # theme = 'lichtung'
 hasCJKLanguage = true
-mainSections = ['docs', 'posts']
+mainSections = ['glade', 'diary']
 enableGitInfo = true
 # defaultContentLanguage= 'zh-cn'
+
+[frontmatter]
+date = ['published', 'publishdate', 'pubdate', 'date', 'lastmod', 'modified']
+publishDate = ['publishdate', 'pubdate', 'published', 'date']
 
 [outputs]
 home = ["HTML", "RSS", "JSON", "CROSSLINKS"]
@@ -28,7 +32,7 @@ description = '隐蔽而开放的赛博角落'
 author = { name = 'Hiraeth', email = 'wyz2016zxc@outlook.com' }
 # site option
 DateFormat = "2006/01/02"
-ShowFullTextinRSS = true
+ShowContentinRSS = true
 math = false
 comment = true
 waline = true
@@ -41,30 +45,34 @@ gcsdata = { repo = "hiraethecho/hiraethecho.github.io", repoid = "R_kgDOJuZ2Uw",
 LastChangeLink = "https://github.com/hiraethecho/memex/commit"
 # site components
 ShowSiteSearch = true
+SearchContent = true
 SearchPlaceHolder = "Search ↵"
 ShowTaxonomyTree = true
 ShowFileTree = false
 ShowSiteNav = true
 ShowSiteInfo = false
-SiteShowCountWords = true
-SiteShowCountTerms = true
+ShowSiteCountWord = true
+ShowSiteCountTerm = true
 ShowSiteLink = false
 # section components
-SectionShowCountWords = true
+ShowSectionCountWord = true
+ShowSubSection = true
 ShowList = true
-ListType = 'date'             # list date split plain
-ListLimit = ""                # leave empty for unlimit list
+ListType = 'date'              # list date split plain
+ShowCountWordsPerYear = true
+ShowCountWordsPerMonth = false
+ListLimit = ""                 # leave empty for unlimit list
 # page components
 ShowToc = true
 ShowRelPost = true
 HugoRelPost = true
 HugoRelPostLimit = 10
-ShowForwardLinks = true
-ShowBackLinks = true
+ShowForwardLink = true
+ShowBackLink = true
 # Home page
 ShowAllPagesInHome = false
 # archive page
-ShowAllPagesInArchives = true
+ShowAllPagesInArchive = true
 # taxonomy page
 PostPerTermLimit = 5
 # searchoption
@@ -121,6 +129,70 @@ icon = 'rss'
 # weight = 10
 # parent = 'a'
 # identifier = 'b'
+# [[menus.side]]
+# name = '哲学'
+# url = '/forest/rudiment/philosophy'
+# weight = 10
+# parent = 'b'
+# [[menus.side]]
+# name = 'philosophy'
+# url = '/forest/rudiment/philosophy'
+# weight = 10
+# [[menus.side]]
+# name = 'Living'
+# url = '/forest/rudiment/living'
+# weight = 10
+# parent = 'b'
+# [[menus.side]]
+# name = '森林'
+# url = '/forest'
+# weight = 10
+# parent = 'a'
+# [[menus.main]]
+# name = '我的'
+# identifier = 'd'
+# url = '/glade'
+# [[menus.main]]
+# name = '项目'
+# url = '/docs/project'
+# parent = 'd'
+# [[menus.main]]
+# name = '林中空地'
+# url = '/glade'
+# parent = 'd'
+# [[menus.main]]
+# name = '外部存储'
+# identifier = 'a'
+# [[menus.main]]
+# name = '常识'
+# weight = 10
+# parent = 'a'
+# identifier = 'b'
+# [[menus.main]]
+# name = '哲学'
+# url = '/forest/rudiment/philosophy'
+# weight = 10
+# parent = 'b'
+# [[menus.main]]
+# name = 'philosophy'
+# url = '/forest/rudiment/philosophy'
+# weight = 10
+# [[menus.main]]
+# name = 'Living long long long '
+# url = '/forest/rudiment/living'
+# weight = 10
+# parent = 'b'
+# [[menus.main]]
+# name = '森林'
+# url = '/forest'
+# weight = 10
+# parent = 'a'
+# identifier = 'e'
+# [[menus.main]]
+# name = 'lalala'
+# url = '/forest'
+# weight = 10
+# parent = 'e'
 
 [markup]
 [markup.tableOfContents]
